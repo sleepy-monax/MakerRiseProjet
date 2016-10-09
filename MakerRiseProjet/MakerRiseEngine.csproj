@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B1AE74F-0E04-4402-9C99-D03175C9AA03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RiseEngine</RootNamespace>
+    <AssemblyName>MakerRiseEngine</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+    <MonoGameContentBuilderExe>
+    </MonoGameContentBuilderExe>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
+    <AssemblyVersion>0.16279.1300.132</AssemblyVersion>
+    <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Core\Audio\SongEngine.cs" />
+    <Compile Include="Core\Audio\SoundEffectEngine.cs" />
+    <Compile Include="Core\Common.cs" />
+    <Compile Include="Core\Config\Controls.cs" />
+    <Compile Include="Core\Config\Debug.cs" />
+    <Compile Include="Core\Config\Game.cs" />
+    <Compile Include="Core\Config\Gfx.cs" />
+    <Compile Include="Core\Config\Other.cs" />
+    <Compile Include="Core\Config\Sound.cs" />
+    <Compile Include="Core\Debug\DebugScreen.cs" />
+    <Compile Include="Core\Editor\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Editor\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Editor\DebugTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Editor\DebugTools.Designer.cs">
+      <DependentUpon>DebugTools.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Editor\EditorMainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Editor\OpenPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Editor\OpenPlugin.Designer.cs">
+      <DependentUpon>OpenPlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Editor\Plugin\Code.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Editor\Plugin\Code.Designer.cs">
+      <DependentUpon>Code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Editor\Plugin\PluginEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\Editor\Plugin\PluginEditor.Designer.cs">
+      <DependentUpon>PluginEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\GameDatabase.cs" />
+    <Compile Include="Core\GameMath\FastRandom.cs" />
+    <Compile Include="Core\GameMath\KeyWeightPair.cs" />
+    <Compile Include="Core\GameMath\MinMax.cs" />
+    <Compile Include="Core\GameMath\Noise\Perlin.cs" />
+    <Compile Include="Core\GameMath\Noise\Simplex.cs" />
+    <Compile Include="Core\GameMath\Random.cs" />
+    <Compile Include="Core\BaseObject.cs" />
+    <Compile Include="Core\ContentEngine.cs" />
+    <Compile Include="Core\Debug\FrameCounter.cs" />
+    <Compile Include="Core\Debug\Logs.cs" />
+    <Compile Include="Core\GameMath\Utils.cs" />
+    <Compile Include="Core\GameObject\Biome.cs" />
+    <Compile Include="Core\GameObject\Entities\Creature.cs" />
+    <Compile Include="Core\GameObject\Entities\Entity.cs" />
+    <Compile Include="Core\GameObject\Event\GameObjectEventArgs.cs" />
+    <Compile Include="Core\GameObject\IEntity.cs" />
+    <Compile Include="Core\GameObject\IGameObject.cs" />
+    <Compile Include="Core\GameObject\IItem.cs" />
+    <Compile Include="Core\GameObject\Items\Item.cs" />
+    <Compile Include="Core\GameObject\ITile.cs" />
+    <Compile Include="Core\GameObject\Recipe.cs" />
+    <Compile Include="Core\Audio\SoundEffect.cs" />
+    <Compile Include="Core\GameObject\Tiles\Tile.cs" />
+    <Compile Include="Core\Generator\ChunkDecorator.cs" />
+    <Compile Include="Core\Generator\Features\BaseFeature.cs" />
+    <Compile Include="Core\Generator\Features\Road.cs" />
+    <Compile Include="Core\Generator\RegionGenerator.cs" />
+    <Compile Include="Core\Generator\WorldEdit.cs" />
+    <Compile Include="Core\Generator\WorldGenerator.cs" />
+    <Compile Include="Core\IA\Helper\Action.cs" />
+    <Compile Include="Core\IA\Helper\ActionType.cs" />
+    <Compile Include="Core\IA\Helper\Direction.cs" />
+    <Compile Include="Core\IA\IAbase.cs" />
+    <Compile Include="Core\IA\Idle.cs" />
+    <Compile Include="Core\IA\NpcRandomWalking.cs" />
+    <Compile Include="Core\IA\Player.cs" />
+    <Compile Include="Core\Inventory\ObjInventory.cs" />
+    <Compile Include="Core\Inventory\ObjSlot.cs" />
+    <Compile Include="Core\Plugin\Builder.cs" />
+    <Compile Include="Core\Rendering\Parallax.cs" />
+    <Compile Include="Core\Scene\SplashScreen.cs" />
+    <Compile Include="Core\Plugin\IPlugin.cs" />
+    <Compile Include="Core\Plugin\Loader.cs" />
+    <Compile Include="Core\Rendering\Primitives2D.cs" />
+    <Compile Include="Core\Scene\UItest.cs" />
+    <Compile Include="Core\Storage\DataSheet.cs" />
+    <Compile Include="Core\Rendering\Helper.cs" />
+    <Compile Include="Core\Rendering\SpriteSheets\CommonSheets.cs" />
+    <Compile Include="Core\Rendering\SpriteSheets\SpriteSheetColectionItem.cs" />
+    <Compile Include="Core\Rendering\SpriteSheets\SpriteSheet.cs" />
+    <Compile Include="Core\Rendering\SpriteSheets\Sprite.cs" />
+    <Compile Include="Core\UI\Controls\ItemsGrid.cs" />
+    <Compile Include="Core\UI\Controls\MiniMap.cs" />
+    <Compile Include="Core\UI\Controls\CheckBox.cs" />
+    <Compile Include="Core\UI\Controls\Label.cs" />
+    <Compile Include="Core\UI\Controls\ProgressBar.cs" />
+    <Compile Include="Core\UI\Controls\Recipe.cs" />
+    <Compile Include="Core\UI\Controls\Slider.cs" />
+    <Compile Include="Core\UI\Cursor.cs" />
+    <Compile Include="Core\UI\helper.cs" />
+    <Compile Include="Core\Scene\MainMenu.cs" />
+    <Compile Include="Core\Scene\SceneManager.cs" />
+    <Compile Include="Core\UI\Control.cs" />
+    <Compile Include="Core\UI\Controls\Button.cs" />
+    <Compile Include="Core\UI\Container.cs" />
+    <Compile Include="Core\UI\Controls\TextBox.cs" />
+    <Compile Include="Core\UI\ContainerManager.cs" />
+    <Compile Include="Core\UI\IControls.cs" />
+    <Compile Include="Core\World\Obj\ObjChunk.cs" />
+    <Compile Include="Core\World\Obj\ObjEntity.cs" />
+    <Compile Include="Core\World\Obj\ObjNetworkNode.cs" />
+    <Compile Include="Core\World\Obj\ObjRegion.cs" />
+    <Compile Include="Core\World\Obj\ObjTile.cs" />
+    <Compile Include="Core\World\Utils\Camera.cs" />
+    <Compile Include="Core\World\Utils\ChunkManager.cs" />
+    <Compile Include="Core\World\Utils\CommandParse.cs" />
+    <Compile Include="Core\World\Utils\EntityManager.cs" />
+    <Compile Include="Core\World\Utils\EventsManager.cs" />
+    <Compile Include="Core\World\Utils\Location.cs" />
+    <Compile Include="Core\World\Utils\MiniMap.cs" />
+    <Compile Include="Core\World\Utils\GameUI.cs" />
+    <Compile Include="Core\World\Utils\SaveFile.cs" />
+    <Compile Include="Core\World\Utils\TickThreadHandle.cs" />
+    <Compile Include="Core\World\Utils\WorldProperty.cs" />
+    <Compile Include="Core\World\Utils\WorldRender.cs" />
+    <Compile Include="Core\World\Utils\WorldTick.cs" />
+    <Compile Include="Core\World\Utils\WorldUpdater.cs" />
+    <Compile Include="Core\World\World.cs" />
+    <Compile Include="MakerRiseMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\Tester\bin\Debug\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MakerRiseEngine.Windows\bin\DesktopGL\x86\Debug\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Editor\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Editor\DebugTools.resx">
+      <DependentUpon>DebugTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Editor\EditorMainFrm.resx">
+      <DependentUpon>EditorMainFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Editor\OpenPlugin.resx">
+      <DependentUpon>OpenPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Editor\Plugin\Code.resx">
+      <DependentUpon>Code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Editor\Plugin\PluginEditor.resx">
+      <DependentUpon>PluginEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
