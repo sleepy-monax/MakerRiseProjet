@@ -45,11 +45,10 @@ namespace RiseEngine.Core.AI.Entites
 
             if (e.ParrentEntity.Action == -1)
             {
-                
                 if (KeyBoard.IsKeyDown(Config.Controls.MoveUp))
                 {
-                    e.ParrentEntity.Facing  = Utils.Facing.Up;
-                    e.ParrentEntity.Action  = GameObjectsManager.ActionKeys["Base.Move"];
+                    e.ParrentEntity.Facing = Utils.Facing.Up;
+                    e.ParrentEntity.Action = GameObjectsManager.ActionKeys["Base.Move"];
                     e.ParrentEntity.Variant = MoveUpVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveDown))
@@ -70,12 +69,7 @@ namespace RiseEngine.Core.AI.Entites
                     e.ParrentEntity.Action = GameObjectsManager.ActionKeys["Base.Move"]; ;
                     e.ParrentEntity.Variant = MoveRightVariante;
                 }
-
-
-
-
             }
-
         }
 
     }

@@ -29,10 +29,10 @@ namespace RiseEngine.Core.Audio
 
         
         public static void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime) {
+
             MediaPlayer.Volume = (((Config.Sound.Master * Config.Sound.Songs) / 2) * FadeVolume);
-
+        
             if (Play == true) {
-
                 if (IsFading == true) {
 
                     FadeVolume -= 0.01f;
@@ -43,17 +43,12 @@ namespace RiseEngine.Core.Audio
                         FadeVolume = 1f;
 
                     }
-
                 }
-                
-
             } else {
                 MediaPlayer.Play(ContentEngine.Song(PluginName, NextSong));
                 Play = true;
                 IsFading = false;
             }
-
         }
-
     }
 }

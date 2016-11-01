@@ -9,7 +9,6 @@ namespace RiseEngine.Core.Audio
 {
     public class SoundEffectColection
     {
-
         public List<SoundEffect> SE;
 
         public SoundEffectColection() {
@@ -17,16 +16,11 @@ namespace RiseEngine.Core.Audio
             SE = new List<SoundEffect>();
 
         }
-
-       
-
     }
 
     public static class SoundEffectParser {
 
         public static SoundEffectColection Parse(string _PluginName, string _Name) {
-
-            
 
             System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\SoundsEffects\\" + _Name + ".rise");
             string f = sr.ReadToEnd();

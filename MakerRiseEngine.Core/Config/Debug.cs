@@ -31,9 +31,6 @@ namespace RiseEngine.Core.Config
             DebugWaterMark = Convert.ToBoolean(int.Parse(DS.GetData("DebugWaterMark", "0")));
 
             DS.Save();
-
-
-
         }
          
     }

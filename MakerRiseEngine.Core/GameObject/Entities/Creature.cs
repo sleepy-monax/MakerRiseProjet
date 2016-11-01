@@ -18,17 +18,12 @@ namespace RiseEngine.Core.GameObject.Entities
             IA = _IA;
         }
 
-        public override void OnTick(GameObjectEventArgs e, GameTime gametime)
-        {
-            
-        }
+        public override void OnTick(GameObjectEventArgs e, GameTime gametime){}
 
         public override void OnUpdate(GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime)
         {
-
             IA.Tick(e, keyboard, mouse, gametime);
             IA.ExecuteAction(e, gametime);
-
         }
 
     }

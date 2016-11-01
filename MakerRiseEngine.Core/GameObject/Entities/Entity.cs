@@ -37,10 +37,7 @@ namespace RiseEngine.Core.GameObject.Entities
 
             foreach (string str in _SpriteVariant)
             {
-
                 Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[_SpriteSheet]].GetSprite(str));
-
-
             }
             SpriteLocation = _SpriteLocation;
             DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));

@@ -6,9 +6,6 @@ namespace RiseEngine.Core.GameMath
 {
    public class RandomHelper
     {
-
-
-
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -85,7 +82,6 @@ namespace RiseEngine.Core.GameMath
 
         public static T GetRandomValueByWeight<T>(KeyWeightPair<T>[] _KeyWeightPair, Random _Rnd)
         {
-
             double RndNumber = _Rnd.NextDouble();
 
             foreach (var item in _KeyWeightPair)

@@ -9,8 +9,6 @@ namespace RiseEngine.Core.AI
 {
     public interface IAction
     {
-
         void Performe(GameObject.Event.GameObjectEventArgs e, GameTime gametime);
-
     }
 }

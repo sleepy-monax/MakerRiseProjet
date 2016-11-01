@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16306.1408.531</AssemblyVersion>
+    <AssemblyVersion>0.16306.1912.532</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -78,7 +78,7 @@
     <Compile Include="GameMath\MinMax.cs" />
     <Compile Include="GameMath\Noise\Perlin.cs" />
     <Compile Include="GameMath\Noise\Simplex.cs" />
-    <Compile Include="GameMath\Random.cs" />
+    <Compile Include="GameMath\RandomHelper.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
     <Compile Include="Debug\FrameCounter.cs" />

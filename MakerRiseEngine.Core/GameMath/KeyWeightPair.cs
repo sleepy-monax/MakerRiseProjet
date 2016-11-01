@@ -8,7 +8,6 @@ namespace RiseEngine.Core.GameMath
 {
     public class KeyWeightPair<T>
     {
-
         public T Value { get; set; }
         public double Weight { get; set; }
 
@@ -16,6 +15,5 @@ namespace RiseEngine.Core.GameMath
             Value = _Value;
             Weight = _Weight;
         }
-
     }
 }

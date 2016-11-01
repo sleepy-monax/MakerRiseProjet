@@ -53,16 +53,9 @@ namespace RiseEngine.Core.Audio
                         i.Volume = (Config.Sound.Master * Config.Sound.Effects);
 
                     }
-
                 }
             }
-            catch (Exception)
-            {
-
-
-            }
-
-
+            catch (Exception){}
         }
 
     }

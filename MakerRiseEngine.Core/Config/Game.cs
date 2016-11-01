@@ -16,8 +16,6 @@ namespace RiseEngine.Core.Config
         {
             Core.Debug.DebugLogs.WriteInLogs("[Config.Controls] Load config...", Core.Debug.LogType.Info);
             DS.Load();
-
-
         }
     }
 }

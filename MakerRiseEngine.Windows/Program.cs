@@ -15,11 +15,8 @@ namespace RiseEngine.Windows
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-
 
             using (var game = new RiseEngine.Core.RiseGame(false))
             {

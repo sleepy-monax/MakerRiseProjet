@@ -12,14 +12,11 @@ namespace RiseEngine.Core.AI
 
         public enum Facing
         {
-
             Up, Down, Left, Right
-
         }
 
         public static Point ToPoint(this Facing _Facing)
         {
-
             Point pt = Point.Zero;
 
             switch (_Facing)
@@ -42,7 +39,6 @@ namespace RiseEngine.Core.AI
                 case Facing.Right:
 
                     pt = new Point(1, 0);
-
 
                     break;
                 default:

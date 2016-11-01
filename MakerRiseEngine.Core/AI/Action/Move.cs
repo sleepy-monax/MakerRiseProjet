@@ -15,9 +15,8 @@ namespace RiseEngine.Core.AI.Action
     {
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
-            
             e.ParrentEntity.ActionProgress += GameObjectsManager.Entities[e.ParrentEntity.ID].MoveSpeed;
-            WorldLocation FocusLocation     = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
+            WorldLocation FocusLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
 
             if (!(e.World.entityManager.TileIsFree(FocusLocation)))
             {
@@ -27,8 +26,6 @@ namespace RiseEngine.Core.AI.Action
             }
             else
             {
-
-
                 if (e.ParrentEntity.ActionProgress == 100)
                 {
                     e.ParrentEntity.ActionProgress = 0;
@@ -37,21 +34,16 @@ namespace RiseEngine.Core.AI.Action
                     e.ParrentEntity.Action = -1;
 
                     GameObjectsManager.Tiles[e.ParrentTile.ID].OnEntityWalkIn(e, gametime);
-
-
                 }
                 else
                 {
-
                     e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress);
                 }
-
                 if (e.ParrentEntity.IsFocus)
                 {
                     e.World.Camera.FocusLocation = e.ParrentEntity.Location.ToPoint();
                     e.World.Camera.PreciseFocusLocation = e.ParrentEntity.OnTileLocation;
                 }
-
             }
         }
     }
