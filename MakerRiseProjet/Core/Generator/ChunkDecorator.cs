@@ -19,7 +19,7 @@ namespace RiseEngine.Core.Generator
 
         }
 
-        public World.Obj.ObjChunk Decorated(int cX, int cY, World.Obj.ObjChunk Chunk)
+        public World.WorldObj.ObjChunk Decorated(int cX, int cY, World.WorldObj.ObjChunk Chunk)
         {
 
             Debug.DebugLogs.WriteInLogs("[ChunkDecorator] Generating " + cX + " : " + cY + " ...", Debug.LogType.Info);
@@ -42,7 +42,7 @@ namespace RiseEngine.Core.Generator
                             int ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.Biomes[W.Region[Chunk.Tiles[tX, tY].Region].BiomeID].RandomEntity, Rnd);
                             int Variant = Rnd.Next(0, GameObjectsManager.Entities[ID].MaxVariantCount);
 
-                            Chunk.AddEntity(new World.Obj.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
+                            Chunk.AddEntity(new World.WorldObj.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 
 
                         }

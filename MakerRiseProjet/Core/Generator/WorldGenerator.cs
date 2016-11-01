@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RiseEngine.Core;
-using RiseEngine.Core.World.Obj;
+using RiseEngine.Core.World.WorldObj;
 using System.Drawing;
 using RiseEngine.Core.World.Utils;
 using System.Diagnostics;
@@ -136,7 +136,7 @@ namespace RiseEngine.Core.Generator
                     {
                         for (int tY = 0; tY <= 15; tY++)
                         {
-                            NewWorld.Chunks[cX, cY].Tiles[tX, tY] = new World.Obj.ObjTile();
+                            NewWorld.Chunks[cX, cY].Tiles[tX, tY] = new World.WorldObj.ObjTile();
                             NewWorld.Chunks[cX, cY].Tiles[tX, tY].Region = rGrid[cX * 16 + tX, cY * 16 + tY];
 
                         }

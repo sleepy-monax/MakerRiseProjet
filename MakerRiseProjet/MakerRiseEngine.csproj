@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16306.1306.529</AssemblyVersion>
+    <AssemblyVersion>0.16306.1332.530</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -152,11 +152,11 @@
     <Compile Include="Core\UI\Container.cs" />
     <Compile Include="Core\UI\Controls\TextBox.cs" />
     <Compile Include="Core\UI\ContainerManager.cs" />
-    <Compile Include="Core\World\Obj\ObjChunk.cs" />
-    <Compile Include="Core\World\Obj\ObjEntity.cs" />
-    <Compile Include="Core\World\Obj\ObjNetworkNode.cs" />
-    <Compile Include="Core\World\Obj\ObjRegion.cs" />
-    <Compile Include="Core\World\Obj\ObjTile.cs" />
+    <Compile Include="Core\World\WorldObj\ObjChunk.cs" />
+    <Compile Include="Core\World\WorldObj\ObjEntity.cs" />
+    <Compile Include="Core\World\WorldObj\ObjNetworkNode.cs" />
+    <Compile Include="Core\World\WorldObj\ObjRegion.cs" />
+    <Compile Include="Core\World\WorldObj\ObjTile.cs" />
     <Compile Include="Core\World\Utils\Camera.cs" />
     <Compile Include="Core\World\Utils\ChunkManager.cs" />
     <Compile Include="Core\World\Utils\CommandParse.cs" />

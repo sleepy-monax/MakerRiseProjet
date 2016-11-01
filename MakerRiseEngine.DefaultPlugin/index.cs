@@ -4,7 +4,7 @@ using RiseEngine.Core.Audio;
 using RiseEngine.Core.GameMath;
 using RiseEngine.Core.Rendering.SpriteSheets;
 using RiseEngine.Core.World;
-using RiseEngine.Core.World.Obj;
+using RiseEngine.Core.World.WorldObj;
 using RiseEngine.Core.World.Utils;
 
 namespace RiseEngine.DefaultPlugin

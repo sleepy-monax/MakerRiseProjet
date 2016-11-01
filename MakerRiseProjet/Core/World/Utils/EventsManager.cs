@@ -27,7 +27,7 @@ namespace RiseEngine.Core.World.Utils
 
             if (args.ParrentTile.Entity == -1) {
 
-                args.ParrentEntity = new Obj.ObjEntity( -1 , -1);
+                args.ParrentEntity = new WorldObj.ObjEntity( -1 , -1);
 
             } else {
 

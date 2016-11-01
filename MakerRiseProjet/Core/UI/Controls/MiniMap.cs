@@ -49,7 +49,7 @@ namespace RiseEngine.Core.UI.Controls
             spriteBatch.Draw(W.miniMap.MiniMapTexture2D, new Rectangle(7 + SizeBox.Location.X + x, 7 + SizeBox.Location.Y + y, 178, 178), Focus, Color.White);
             MiniMapSprite.Draw(spriteBatch, new Rectangle(0 + SizeBox.Location.X + x, 0 + SizeBox.Location.Y + y, 192, 192), Color.White, gameTime);
 
-            foreach (KeyValuePair<int, World.Obj.ObjRegion> Rg in W.Region) {
+            foreach (KeyValuePair<int, World.WorldObj.ObjRegion> Rg in W.Region) {
 
                 if (Focus.Contains(Location.ToPoint(Rg.Value.Origine)))
                 IconHouse.Draw(spriteBatch, new Rectangle(Location.ToPoint(Rg.Value.Origine).X - Focus.Location.X + SizeBox.Location.X + x, Location.ToPoint(Rg.Value.Origine).Y - Focus.Location.Y + SizeBox.Location.Y + y, 16,16), Rg.Value.Color, gameTime);

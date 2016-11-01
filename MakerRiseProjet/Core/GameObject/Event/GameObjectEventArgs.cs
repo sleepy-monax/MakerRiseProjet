@@ -12,8 +12,8 @@ namespace RiseEngine.Core.GameObject.Event
     public class GameObjectEventArgs
     {
 
-        public World.Obj.ObjEntity ParrentEntity;
-        public World.Obj.ObjTile ParrentTile;
+        public World.WorldObj.ObjEntity ParrentEntity;
+        public World.WorldObj.ObjTile ParrentTile;
 
         public WorldLocation CurrentLocation;
         public World.WorldScene World;

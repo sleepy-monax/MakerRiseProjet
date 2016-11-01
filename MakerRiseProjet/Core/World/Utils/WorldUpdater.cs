@@ -40,7 +40,7 @@ namespace RiseEngine.Core.World.Utils
                         GameObject.Event.GameObjectEventArgs e = W.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
                         //recuperation des objets
-                        Obj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
+                        WorldObj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
 
                         GameObjectsManager.Tiles[T.ID].OnTick(e, gameTime);
                         GameObjectsManager.Tiles[T.ID].OnUpdate(e, KeyBoard, Mouse, gameTime);
@@ -48,7 +48,7 @@ namespace RiseEngine.Core.World.Utils
                         if (!(T.Entity == -1))
                         {
                             //On recuper l'entitée
-                            Obj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
+                            WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
                             E.Location = CurrentLocation.ToWorldLocation();
 
                             GameObjectsManager.Entities[E.ID].OnTick(e, gameTime);

@@ -1,4 +1,4 @@
-﻿using RiseEngine.Core.World.Obj;
+﻿using RiseEngine.Core.World.WorldObj;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,17 +19,17 @@ namespace RiseEngine.Core.World.Utils
 
         #region GetChunk
         //Get Chunk On location
-        public Obj.ObjChunk GetChunk(Utils.WorldLocation ChunkLocation)
+        public WorldObj.ObjChunk GetChunk(Utils.WorldLocation ChunkLocation)
         {
             return GetChunk(ChunkLocation.chunk.X, ChunkLocation.chunk.Y);
         }
 
-        public Obj.ObjChunk GetChunk(Point ChunkLocation)
+        public WorldObj.ObjChunk GetChunk(Point ChunkLocation)
         {
             return GetChunk(ChunkLocation.X, ChunkLocation.Y);
         }
 
-        public Obj.ObjChunk GetChunk(int x, int y)
+        public WorldObj.ObjChunk GetChunk(int x, int y)
         {
             if (W.Chunks[x, y].IsDone == false)
             {
@@ -50,7 +50,7 @@ namespace RiseEngine.Core.World.Utils
         public ObjTile GetTile(WorldLocation _WorldLocation)
         {
 
-            Obj.ObjChunk Chunk = GetChunk(_WorldLocation.chunk);
+            WorldObj.ObjChunk Chunk = GetChunk(_WorldLocation.chunk);
             return Chunk.Tiles[_WorldLocation.tile.X, _WorldLocation.tile.Y];
 
         }

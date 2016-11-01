@@ -1,4 +1,4 @@
-﻿using RiseEngine.Core.World.Obj;
+﻿using RiseEngine.Core.World.WorldObj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +17,9 @@ namespace RiseEngine.Core.World.Utils
             W = _WorldScene;
         }
 
-        public void AddEntity(Obj.ObjEntity _Entity, WorldLocation _WorldLocation)
+        public void AddEntity(WorldObj.ObjEntity _Entity, WorldLocation _WorldLocation)
         {
-            Obj.ObjChunk Chunk = W.chunkManager.GetChunk(_WorldLocation.chunk);
+            WorldObj.ObjChunk Chunk = W.chunkManager.GetChunk(_WorldLocation.chunk);
             int EntityID = _WorldLocation.tile.X + _WorldLocation.tile.Y * 16;
             Chunk.Entities.Add(EntityID, _Entity);
             Chunk.Tiles[_WorldLocation.tile.X, _WorldLocation.tile.Y].Entity = EntityID;
@@ -46,7 +46,7 @@ namespace RiseEngine.Core.World.Utils
         public bool MoveEntity(WorldLocation _FromLocation, WorldLocation _ToLocation)
         {
 
-            Obj.ObjTile Tile = W.chunkManager.GetTile(_FromLocation);
+            WorldObj.ObjTile Tile = W.chunkManager.GetTile(_FromLocation);
 
             //on verifie si il y a une entitée
             if (Tile.Entity == -1)
@@ -62,7 +62,7 @@ namespace RiseEngine.Core.World.Utils
             }
 
             //et enfin on le deplace
-            Obj.ObjEntity EntityToMove = W.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
+            WorldObj.ObjEntity EntityToMove = W.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
 
             RemoveEntity(_FromLocation);
             AddEntity(EntityToMove, _ToLocation);
@@ -74,7 +74,7 @@ namespace RiseEngine.Core.World.Utils
         public bool TileIsFree(WorldLocation _WorldLocation)
         {
 
-            Obj.ObjTile ThisTile = W.chunkManager.GetTile(_WorldLocation);
+            WorldObj.ObjTile ThisTile = W.chunkManager.GetTile(_WorldLocation);
             if (ThisTile.Entity == -1) return true;
 
             return false;

@@ -21,7 +21,7 @@ namespace RiseEngine.Core.World.Utils
 
         }
 
-        public void SaveChunk(int x, int y, Obj.ObjChunk _Chunk)
+        public void SaveChunk(int x, int y, WorldObj.ObjChunk _Chunk)
         {
 
             Debug.DebugLogs.WriteInLogs("[IO] Saving chunk " + x + "," + y, Debug.LogType.Info);
