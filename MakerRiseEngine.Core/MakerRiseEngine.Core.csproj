@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B1AE74F-0E04-4402-9C99-D03175C9AA03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RiseEngine.Core</RootNamespace>
+    <AssemblyName>MakerRiseEngine</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+    <MonoGameContentBuilderExe>
+    </MonoGameContentBuilderExe>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
+    <AssemblyVersion>0.16306.1408.531</AssemblyVersion>
+    <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AI\Action\Attack.cs" />
+    <Compile Include="AI\Action\Move.cs" />
+    <Compile Include="AI\Action\Teleportation.cs" />
+    <Compile Include="AI\Entites\Player.cs" />
+    <Compile Include="AI\IAction.cs" />
+    <Compile Include="AI\Utils.cs" />
+    <Compile Include="Audio\SongEngine.cs" />
+    <Compile Include="Audio\SoundEffectEngine.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Config\Controls.cs" />
+    <Compile Include="Config\Debug.cs" />
+    <Compile Include="Config\Game.cs" />
+    <Compile Include="Config\Gfx.cs" />
+    <Compile Include="Config\Other.cs" />
+    <Compile Include="Config\Sound.cs" />
+    <Compile Include="Debug\DebugScreen.cs" />
+    <Compile Include="GameObjectManager.cs" />
+    <Compile Include="GameMath\FastRandom.cs" />
+    <Compile Include="GameMath\KeyWeightPair.cs" />
+    <Compile Include="GameMath\MinMax.cs" />
+    <Compile Include="GameMath\Noise\Perlin.cs" />
+    <Compile Include="GameMath\Noise\Simplex.cs" />
+    <Compile Include="GameMath\Random.cs" />
+    <Compile Include="Idrawable.cs" />
+    <Compile Include="ContentEngine.cs" />
+    <Compile Include="Debug\FrameCounter.cs" />
+    <Compile Include="Debug\DebugLogs.cs" />
+    <Compile Include="GameMath\Utils.cs" />
+    <Compile Include="GameObject\Biome.cs" />
+    <Compile Include="GameObject\Entities\Creature.cs" />
+    <Compile Include="GameObject\Entities\Entity.cs" />
+    <Compile Include="GameObject\Event\GameObjectEventArgs.cs" />
+    <Compile Include="GameObject\IEntity.cs" />
+    <Compile Include="GameObject\IGameObject.cs" />
+    <Compile Include="GameObject\IItem.cs" />
+    <Compile Include="GameObject\Items\Item.cs" />
+    <Compile Include="GameObject\ITile.cs" />
+    <Compile Include="Audio\SoundEffect.cs" />
+    <Compile Include="GameObject\Tiles\Tile.cs" />
+    <Compile Include="Generator\ChunkDecorator.cs" />
+    <Compile Include="Generator\RegionGenerator.cs" />
+    <Compile Include="Generator\WorldEdit.cs" />
+    <Compile Include="Generator\WorldGenerator.cs" />
+    <Compile Include="AI\AIbase.cs" />
+    <Compile Include="Inventory\ObjInventory.cs" />
+    <Compile Include="Inventory\ObjSlot.cs" />
+    <Compile Include="Network\HTTPServer.cs" />
+    <Compile Include="Plugin\Builder.cs" />
+    <Compile Include="Rendering\Parallax.cs" />
+    <Compile Include="Rendering\SpriteFontDraw.cs" />
+    <Compile Include="Scene\IScene.cs" />
+    <Compile Include="Scene\SplashScreen.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
+    <Compile Include="Plugin\Loader.cs" />
+    <Compile Include="Rendering\Primitives2D.cs" />
+    <Compile Include="Scene\UItest.cs" />
+    <Compile Include="Storage\DataSheet.cs" />
+    <Compile Include="Rendering\BitmapHelper.cs" />
+    <Compile Include="Rendering\SpriteSheets\CommonSheets.cs" />
+    <Compile Include="Rendering\SpriteSheets\SpriteSheetColectionItem.cs" />
+    <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
+    <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
+    <Compile Include="Storage\NamedBinaryTag\NbtFile.cs" />
+    <Compile Include="Storage\NamedBinaryTag\NbtQueryException.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Queries\TagQuery.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Queries\TagQueryToken.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\INbtTagList.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\INbtTagValue.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtByte.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtByteArray.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtCompound.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtDouble.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtFloat.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtInt.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtList.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtLong.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtShort.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtString.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtTag.cs" />
+    <Compile Include="Storage\NamedBinaryTag\Tags\NbtTagType.cs" />
+    <Compile Include="Storage\NbtHelper.cs" />
+    <Compile Include="UI\Controls\ItemsGrid.cs" />
+    <Compile Include="UI\Controls\MiniMap.cs" />
+    <Compile Include="UI\Controls\CheckBox.cs" />
+    <Compile Include="UI\Controls\Label.cs" />
+    <Compile Include="UI\Controls\ProgressBar.cs" />
+    <Compile Include="UI\Controls\Slider.cs" />
+    <Compile Include="UI\Cursor.cs" />
+    <Compile Include="UI\helper.cs" />
+    <Compile Include="Scene\MainMenu.cs" />
+    <Compile Include="Scene\SceneManager.cs" />
+    <Compile Include="UI\Control.cs" />
+    <Compile Include="UI\Controls\Button.cs" />
+    <Compile Include="UI\Container.cs" />
+    <Compile Include="UI\Controls\TextBox.cs" />
+    <Compile Include="UI\ContainerManager.cs" />
+    <Compile Include="World\WorldObj\ObjChunk.cs" />
+    <Compile Include="World\WorldObj\ObjEntity.cs" />
+    <Compile Include="World\WorldObj\ObjNetworkNode.cs" />
+    <Compile Include="World\WorldObj\ObjRegion.cs" />
+    <Compile Include="World\WorldObj\ObjTile.cs" />
+    <Compile Include="World\Utils\Camera.cs" />
+    <Compile Include="World\Utils\ChunkManager.cs" />
+    <Compile Include="World\Utils\CommandParse.cs" />
+    <Compile Include="World\Utils\EntityManager.cs" />
+    <Compile Include="World\Utils\EventsManager.cs" />
+    <Compile Include="World\Utils\Location.cs" />
+    <Compile Include="World\Utils\MiniMap.cs" />
+    <Compile Include="World\Utils\GameUI.cs" />
+    <Compile Include="World\Utils\SaveFile.cs" />
+    <Compile Include="World\Utils\WorldProperty.cs" />
+    <Compile Include="World\Utils\WorldRender.cs" />
+    <Compile Include="World\Utils\WorldUpdater.cs" />
+    <Compile Include="World\World.cs" />
+    <Compile Include="MakerRiseMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>..\..\..\..\Desktop\FastColoredTextBox-master\Tester\bin\Debug\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MakerRiseEngine.Windows\bin\DesktopGL\x86\Debug\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

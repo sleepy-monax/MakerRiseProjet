@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MakerRiseEngine.Core\MakerRiseEngine.csproj">
+    <ProjectReference Include="..\MakerRiseEngine.Core\MakerRiseEngine.Core.csproj">
       <Project>{0b1ae74f-0e04-4402-9c99-d03175c9aa03}</Project>
-      <Name>MakerRiseEngine</Name>
+      <Name>MakerRiseEngine.Core</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

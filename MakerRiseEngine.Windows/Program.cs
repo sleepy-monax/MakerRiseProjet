@@ -21,7 +21,7 @@ namespace RiseEngine.Windows
 
 
 
-            using (var game = new RiseEngine.RiseGame(false))
+            using (var game = new RiseEngine.Core.RiseGame(false))
             {
 
                 game.Run();

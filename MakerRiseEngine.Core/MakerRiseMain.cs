@@ -11,7 +11,7 @@ using RiseEngine.Core;
 using System.Windows.Forms;
 using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine
+namespace RiseEngine.Core
 {
 
 
