@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.Rendering.SpriteSheets;
 using RiseEngine.Core.Rendering;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.UI
 {
@@ -18,7 +19,7 @@ namespace RiseEngine.Core.UI
         DownLeft, Down, DownRight
     }
 
-    public class Container : BaseObject
+    public class Container : Idrawable
     {
 
         public List<Control> Controls = new List<Control>();
@@ -95,7 +96,7 @@ namespace RiseEngine.Core.UI
             BoxTUR = CommonSheets.GUI.GetSprite("BoxTUR");
         }
 
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
             switch (ScreenDock)
@@ -136,10 +137,9 @@ namespace RiseEngine.Core.UI
             ContainerRect = new Rectangle(ContainerDefaultRect.Location.X + DockPoint.X, ContainerDefaultRect.Location.Y + DockPoint.Y, ContainerDefaultRect.Width, ContainerDefaultRect.Height);
 
             foreach (Control ctrl in this.Controls) ctrl.Update(Mouse, KeyBoard, gameTime, this.ContainerRect.X, this.ContainerRect.Y);
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
             if (Visible == true)
@@ -182,7 +182,7 @@ namespace RiseEngine.Core.UI
                 BoxTUR.Draw(spriteBatch, new Rectangle(ContainerRect.Location.X + ContainerRect.Width - 64, ContainerRect.Location.Y, 64, 64), BackColor, gameTime);
                 BoxTUC.Draw(spriteBatch, new Rectangle(ContainerRect.Location.X + 64, ContainerRect.Location.Y, ContainerRect.Width - 128, 64), BackColor, gameTime);
 
-                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Title, new Rectangle(ContainerRect.Location.X, ContainerRect.Location.Y, ContainerRect.Width, 64), helper.Alignment.Center, helper.Style.DropShadow, Color.White);
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Title, new Rectangle(ContainerRect.Location.X, ContainerRect.Location.Y, ContainerRect.Width, 64), Alignment.Center, Style.DropShadow, Color.White);
             }
 
             foreach (Control i in this.Controls)
@@ -193,7 +193,6 @@ namespace RiseEngine.Core.UI
                     spriteBatch.DrawRectangle(i.ClickRect, Color.Black);
                 }
             }
-            base.Draw(spriteBatch, gameTime);
             if (Config.Debug.GuiFrame) spriteBatch.DrawRectangle(ContainerRect, Color.Black);
         }
     }

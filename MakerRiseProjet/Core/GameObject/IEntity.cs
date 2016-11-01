@@ -15,6 +15,9 @@ namespace RiseEngine.Core.GameObject
 
         int MaxLife { get; set; }
         int MoveSpeed { get; set; }
+        int MoveRunSpeed { get; set; }
+
+        void OnEntityInteract(Event.GameObjectEventArgs eThisEntity, Event.GameObjectEventArgs eInteratingEntity);
 
     }
 }

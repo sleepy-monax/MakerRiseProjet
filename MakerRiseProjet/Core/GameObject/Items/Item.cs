@@ -25,7 +25,7 @@ namespace RiseEngine.Core.GameObject.Items
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectsManager.SpriteSheets[_SpriteSheet].GetSprite(str));
+                Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[ _SpriteSheet]].GetSprite(str));
 
             }
 

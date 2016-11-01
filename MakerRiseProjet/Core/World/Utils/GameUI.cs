@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RiseEngine.Core.World.Utils
 {
-    public class GameUI : BaseObject
+    public class GameUI : Idrawable
     {
         WorldScene W;
 
@@ -18,7 +18,6 @@ namespace RiseEngine.Core.World.Utils
 
         //pauseMenu
         UI.Container PauseMenu;
-        UI.Controls.Label PauseLabTitle;
 
         UI.Controls.Button PauseButResume;
         UI.Controls.Button PauseButSave;
@@ -45,19 +44,18 @@ namespace RiseEngine.Core.World.Utils
             cManager = new UI.ContainerManager();
 
             //PauseMenu
-            PauseMenu = new UI.Container(new Rectangle(-256, -206, 512, 412), false, UI.Dock.Center, Color.White);
-
-            PauseLabTitle = new UI.Controls.Label("Pause", 480, 16, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            PauseMenu = new UI.Container(new Rectangle(-256, -206, 512, 384), true, UI.Dock.Center, Color.White);
+            PauseMenu.Title = "Pause";
+            PauseMenu.ShowTitle = true;
 
             PauseButResume = new UI.Controls.Button("Reprendre", 480, 16, 96, Color.White);
             PauseButResume.OnMouseClick += ResumeGame;
-            PauseButSave = new UI.Controls.Button("Sauvegarder", 480, 16, 174, Color.White);
-            PauseButOption = new UI.Controls.Button("Option", 480, 16, 256, Color.White);
+            PauseButSave = new UI.Controls.Button("Sauvegarder", 480, 16, 160, Color.White);
+            PauseButOption = new UI.Controls.Button("Option", 480, 16, 224, Color.White);
             PauseButOption.OnMouseClick += ShowOption;
-            PauseButQuit = new UI.Controls.Button("Quitter", 480, 16, 336, Color.White);
+            PauseButQuit = new UI.Controls.Button("Quitter", 480, 16, 304, Color.White);
             PauseButQuit.OnMouseClick += PauseButQuit_OnMouseClick;
 
-            PauseMenu.Controls.Add(PauseLabTitle);
             PauseMenu.Controls.Add(PauseButResume);
             PauseMenu.Controls.Add(PauseButSave);
             PauseMenu.Controls.Add(PauseButOption);
@@ -91,7 +89,7 @@ namespace RiseEngine.Core.World.Utils
 
 
         KeyboardState PasteKeyboard = Keyboard.GetState();
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
             if (KeyBoard.IsKeyUp(Config.Controls.ShowMenu) && PasteKeyboard.IsKeyDown(Config.Controls.ShowMenu))
@@ -100,6 +98,7 @@ namespace RiseEngine.Core.World.Utils
                 W.TogglePauseGame();
 
             }
+
 
             if (KeyBoard.IsKeyUp(Config.Controls.ShowChat) && PasteKeyboard.IsKeyDown(Config.Controls.ShowChat))
             {
@@ -124,12 +123,9 @@ namespace RiseEngine.Core.World.Utils
                 OptionMenuManager.Update(Mouse, KeyBoard, gameTime);
             }
 
-            
-
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             cManager.Draw(spriteBatch, gameTime);
 
@@ -138,7 +134,6 @@ namespace RiseEngine.Core.World.Utils
                 OptionMenuManager.Draw(spriteBatch, gameTime);
             }
 
-            base.Draw(spriteBatch, gameTime);
         }
 
         #region PauseEvent

@@ -10,14 +10,9 @@ namespace RiseEngine.Core.Plugin
     public static class PluginLoader
     {
 
-        public static ICollection<IPlugin> LoadPluguins(string path)
+        public static ICollection<IPlugin> LoadPlugin(Assembly assembly)
         {
-            if (File.Exists(path))
-            {
-                //get Assembly
-                AssemblyName an = AssemblyName.GetAssemblyName(path);
-                Debug.Logs.Write("[Plugin.Loader] load \'" + path + "\'", Debug.LogType.Info);
-                Assembly assembly = Assembly.Load(an);
+                Debug.DebugLogs.WriteInLogs("[Plugin.Loader] load \'" + assembly.CodeBase + "\'", Debug.LogType.Info);
 
                 Type pluginType = typeof(IPlugin);
                 ICollection<Type> pluginTypes = new List<Type>();
@@ -50,9 +45,6 @@ namespace RiseEngine.Core.Plugin
                 }
 
                 return plugins;
-            }
-
-            return null;
         }
 
     }

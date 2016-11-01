@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RiseEngine.Core.Rendering.SpriteSheets;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.UI.Controls
 {
@@ -59,7 +60,7 @@ namespace RiseEngine.Core.UI.Controls
                     ButLD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
                     ButRD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
 
-                    helper.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y + 4, SizeBox.Width, SizeBox.Height), helper.Alignment.Center, helper.Style.Regular, Color.White);
+                    spriteBatch.DrawString( ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y + 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
                 }
                 else if (this.MouseOver)
                 {
@@ -67,7 +68,7 @@ namespace RiseEngine.Core.UI.Controls
                     ButL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControleHoverColor, gameTime);
                     ButR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControleHoverColor, gameTime);
 
-                    helper.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), helper.Alignment.Center, helper.Style.Regular, Color.White);
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
                 }
                 else
                 {
@@ -75,7 +76,7 @@ namespace RiseEngine.Core.UI.Controls
                     ButL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
                     ButR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
 
-                    helper.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), helper.Alignment.Center, helper.Style.Regular, Color.White);
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
                 }
             }
 

@@ -20,23 +20,13 @@ namespace RiseEngine.Windows
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            if (System.IO.File.Exists("MakerRiseEngine.dll"))
-            {
-                using (var game = new RiseEngine.RiseGame(false))
-                {
 
-                    game.Run();
-
-                }
-            }
-            else
+            using (var game = new RiseEngine.RiseGame(false))
             {
 
-                if (MessageBox.Show("Engine Not found ") == DialogResult.OK) { }
+                game.Run();
 
             }
-
-
         }
 
 

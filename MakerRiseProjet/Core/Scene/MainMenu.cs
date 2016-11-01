@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Reflection;
-using RiseEngine.Core.World;
 using RiseEngine.Core.Rendering;
+using RiseEngine.Core.World;
+using System;
 using System.Windows.Forms;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.Scene
 {
-    public class MainMenu : BaseObject
+    public class MainMenu : Idrawable
     {
 
         #region MainMenu
@@ -38,7 +35,6 @@ namespace RiseEngine.Core.Scene
         private UI.Controls.Button OptionSoundButton;
         private UI.Controls.Button OptionGraphButton;
         private UI.Controls.Button OptionApplyButton;
-        private UI.Controls.Button OptionExtButton;
         public UI.Controls.Button OptionBackButton;
 
         //WorldManager
@@ -90,9 +86,6 @@ namespace RiseEngine.Core.Scene
         private UI.Controls.CheckBox OtherOptionDebugWorldFocusLocation;
         private UI.Controls.CheckBox OtherOptionDebugWaterMark;
 
-        private UI.Container OptExtContainer;
-        private UI.Controls.Button OptExtShowPlEdit;
-        private UI.Controls.Button OptExtReloadEngine;
 
 
 
@@ -161,7 +154,6 @@ namespace RiseEngine.Core.Scene
             OptionSoundButton = new UI.Controls.Button("Sons", 256, 16, 160, Color.White);
             OptionGraphButton = new UI.Controls.Button("Performances", 256, 16, 224, Color.White);
             OptionInputButton = new UI.Controls.Button("Commandes", 256, 16, 288, Color.White);
-            OptionExtButton = new UI.Controls.Button("Extentions", 256, 16, 352, Color.White);
             OptionOtherButton = new UI.Controls.Button("Autre", 256, 16, 416, Color.White);
             OptionApplyButton = new UI.Controls.Button("Appliquer", 256, 16, OptionContainer.ContainerRect.Height - 64 - 16 - 16 - 64, Color.White);
             OptionBackButton = new UI.Controls.Button("Retour", 256, 16, OptionContainer.ContainerRect.Height - 64 - 16, Color.White);
@@ -173,7 +165,6 @@ namespace RiseEngine.Core.Scene
             OptionOtherButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Other);
             OptionApplyButton.OnMouseClick += new UI.Control.ClickEventHandler(this.Apply);
             OptionBackButton.OnMouseClick += new UI.Control.ClickEventHandler(this.GoBackToMain);
-            OptionExtButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Ext);
 
             OptionContainer.Controls.Add(OptionBackButton);
             OptionContainer.Controls.Add(OptionOtherButton);
@@ -182,15 +173,16 @@ namespace RiseEngine.Core.Scene
             OptionContainer.Controls.Add(OptionInputButton);
             OptionContainer.Controls.Add(OptionApplyButton);
             OptionContainer.Controls.Add(OptionSoundButton);
-            OptionContainer.Controls.Add(OptionExtButton);
 
             #region OptionPanel
             //=======================================================================================================================================
             OptionMenuManager = new UI.ContainerManager();
 
+
+
             //=====Game=====
             GameOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
-            GameOptionTitle = new UI.Controls.Label("Jeux", Common.graphics.PreferredBackBufferWidth - 304, 0, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            GameOptionTitle = new UI.Controls.Label("Jeux", Common.graphics.PreferredBackBufferWidth - 304, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             GameOptionContainer.Controls.Add(GameOptionTitle);
 
@@ -198,8 +190,8 @@ namespace RiseEngine.Core.Scene
 
             //=====sound=====
             SoundOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
-            SoundOptionTitle = new UI.Controls.Label("Music et sons", SoundOptionContainer.ContainerRect.Width, 0, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
-            SoundOptionMasterLabel = new UI.Controls.Label("Volume Principale", SoundOptionContainer.ContainerRect.Width - 64, 32, 96, UI.helper.Alignment.Left, UI.helper.Style.Regular, Color.White);
+            SoundOptionTitle = new UI.Controls.Label("Music et sons", SoundOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
+            SoundOptionMasterLabel = new UI.Controls.Label("Volume Principale", SoundOptionContainer.ContainerRect.Width - 64, 32, 96, Alignment.Left, Style.Regular, Color.White);
             SoundOptionMasterSlider = new UI.Controls.Slider(32, 160, SoundOptionContainer.ContainerRect.Width - 64);
 
             SoundOptionContainer.Controls.Add(SoundOptionTitle);
@@ -210,7 +202,7 @@ namespace RiseEngine.Core.Scene
 
             //=====Perf=====
             PerfOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
-            PerfOptionTitle = new UI.Controls.Label("Graphisme", PerfOptionContainer.ContainerRect.Width, 0, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            PerfOptionTitle = new UI.Controls.Label("Graphisme", PerfOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             PerfOptionContainer.Controls.Add(PerfOptionTitle);
 
@@ -218,32 +210,16 @@ namespace RiseEngine.Core.Scene
 
             //=====Inputs=====
             InputOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
-            InputOptionTitle = new UI.Controls.Label("Commande", InputOptionContainer.ContainerRect.Width, 0, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            InputOptionTitle = new UI.Controls.Label("Commande", InputOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             InputOptionContainer.Controls.Add(InputOptionTitle);
 
             OptionMenuManager.AddContainer("Input", InputOptionContainer);
 
-            //PlEdit
-
-            OptExtContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White) {
-                ShowTitle = true,
-                Title = "Extentions"
-            };
-
-            OptExtShowPlEdit = new UI.Controls.Button("Ouvrir l'éditeur de code", 320 , 16,96, Color.White);
-            OptExtShowPlEdit.OnMouseClick += ShowCodeEdit;
-
-            OptExtReloadEngine = new UI.Controls.Button("Recharger le moteur", 320, 16, 160, Color.White);
-            OptExtReloadEngine.OnMouseClick += ReloadEngine;
-
-            OptExtContainer.Controls.Add(OptExtReloadEngine);
-            OptExtContainer.Controls.Add(OptExtShowPlEdit);
-            OptionMenuManager.AddContainer("Ext", OptExtContainer);
 
             //=====Other=====
             OtherOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
-            OtherOptionTitle = new UI.Controls.Label("Autre", OtherOptionContainer.ContainerRect.Width, 0, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            OtherOptionTitle = new UI.Controls.Label("Autre", OtherOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             OtherOptionDebugFrameCounter = new UI.Controls.CheckBox("Conteur d'ips", Config.Debug.FrameCounter, 256, 16, 96);
             OtherOptionDebugGuiFrame = new UI.Controls.CheckBox("Contours des interfaces", Config.Debug.GuiFrame, 256, 16, 176);
@@ -274,7 +250,7 @@ namespace RiseEngine.Core.Scene
             MngrNewButton = new UI.Controls.Button("Nouveau", 330, 347, WrlMngrContainer.ContainerRect.Height - 160 + 16, Color.White);
             MngrDelButton = new UI.Controls.Button("Supprimer", 330, 678, WrlMngrContainer.ContainerRect.Height - 160 + 16, Color.White);
             MngrDoneButton = new UI.Controls.Button("Retour", WrlMngrContainer.ContainerRect.Width - 32, 16, WrlMngrContainer.ContainerRect.Height - 64 - 16, Color.White);
-            MngrLabel = new UI.Controls.Label("Mes Mondes", 320, WrlMngrContainer.ContainerRect.Width / 2 - 160, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            MngrLabel = new UI.Controls.Label("Mes Mondes", 320, WrlMngrContainer.ContainerRect.Width / 2 - 160, 16, Alignment.Center, Style.DropShadow, Color.White);
 
 
             MngrDoneButton.OnMouseClick += new UI.Control.ClickEventHandler(this.GoBackToMain);
@@ -290,12 +266,12 @@ namespace RiseEngine.Core.Scene
 
             NewWrldContainer = new UI.Container(Common.graphics.PreferredBackBufferWidth / 2 - 512, 64, 1024, Common.graphics.PreferredBackBufferHeight - 128, true, UI.Dock.UpLeft, Color.White);
 
-            NewWrldTitleLabel = new UI.Controls.Label("Créer Un Nouveau Monde", 320, NewWrldContainer.ContainerRect.Width / 2 - 160, 16, UI.helper.Alignment.Center, UI.helper.Style.DropShadow, Color.White);
+            NewWrldTitleLabel = new UI.Controls.Label("Créer Un Nouveau Monde", 320, NewWrldContainer.ContainerRect.Width / 2 - 160, 16, Alignment.Center, Style.DropShadow, Color.White);
 
-            NewWrldNameLabel = new UI.Controls.Label("Nom du monde", 800, NewWrldContainer.ContainerRect.Width / 2 - 400, 96, UI.helper.Alignment.Left, UI.helper.Style.Regular, Color.White);
+            NewWrldNameLabel = new UI.Controls.Label("Nom du monde", 800, NewWrldContainer.ContainerRect.Width / 2 - 400, 96, Alignment.Left, Style.Regular, Color.White);
             NewWrldNameTextBox = new UI.Controls.TextBox("Monde", 64, NewWrldContainer.ContainerRect.Width / 2 - 400, 160);
 
-            NewWrldSeedlabel = new UI.Controls.Label("Graine pour la génération du monde", 800, NewWrldContainer.ContainerRect.Width / 2 - 400, 240, UI.helper.Alignment.Left, UI.helper.Style.Regular, Color.White);
+            NewWrldSeedlabel = new UI.Controls.Label("Graine pour la génération du monde", 800, NewWrldContainer.ContainerRect.Width / 2 - 400, 240, Alignment.Left, Style.Regular, Color.White);
             NewWrldSeedTextBox = new UI.Controls.TextBox("123456789", 64, NewWrldContainer.ContainerRect.Width / 2 - 400, 304); //800px
 
             NewWrldCreateButton = new UI.Controls.Button("Créer le nouveau Monde", 496, 16, NewWrldContainer.ContainerRect.Height - 64 - 16, Color.White);
@@ -327,20 +303,6 @@ namespace RiseEngine.Core.Scene
             MainMenuManager.SwitchContainer("MainMenu");
 
         }
-
-        private void ReloadEngine()
-        {
-            Engine.ReloadEngine();
-        }
-
-        private void ShowCodeEdit()
-        {
-            Core.Editor.EditorMainFrm PLE;
-            PLE = new Core.Editor.EditorMainFrm();
-            PLE.Show();
-        }
-
-
 
         #region MainMenu
         private void playGame()
@@ -442,19 +404,14 @@ namespace RiseEngine.Core.Scene
 
             Generator.WorldGenerator Gen = new Generator.WorldGenerator(wrldp);
             WorldScene wrldsc = Gen.Generate();
-            wrldsc.Initialize();
+
             SceneManager.StartGame(wrldsc);
         }
 
         #endregion
 
 
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
-
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
             Background.Update(Mouse, KeyBoard, gameTime);
             MainMenuManager.Update(Mouse, KeyBoard, gameTime);
@@ -464,17 +421,17 @@ namespace RiseEngine.Core.Scene
                 OptionMenuManager.Update(Mouse, KeyBoard, gameTime);
             }
 
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             BackgroundSB.Begin();
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
+
             spriteBatch.FillRectangle(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 100));
 
+            spriteBatch.Draw(Logo, new Vector2(Common.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Common.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
             spriteBatch.Draw(Logo, new Vector2(Common.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, Common.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
 
 
@@ -485,8 +442,7 @@ namespace RiseEngine.Core.Scene
                 OptionMenuManager.Draw(spriteBatch, gameTime);
             }
 
-            
-            base.Draw(spriteBatch, gameTime);
+           
         }
     }
 }

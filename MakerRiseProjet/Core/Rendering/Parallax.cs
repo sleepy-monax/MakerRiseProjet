@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace RiseEngine.Core.Rendering
 {
-    public class Parallax : BaseObject
+    public class Parallax : Idrawable
     {
 
         ParallaxLayer[] Layers;
@@ -27,7 +27,7 @@ namespace RiseEngine.Core.Rendering
 
         }
 
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
             for (int i = 0; i < Layers.Length; i++)
@@ -43,11 +43,9 @@ namespace RiseEngine.Core.Rendering
                 }
 
             }
-
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
             for (int i = 0; i < Layers.Length; i++)
@@ -58,7 +56,7 @@ namespace RiseEngine.Core.Rendering
 
             }
 
-            base.Draw(spriteBatch, gameTime);
+
         }
 
     }

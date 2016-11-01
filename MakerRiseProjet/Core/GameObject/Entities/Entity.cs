@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.GameObject.Event;
+using RiseEngine.Core.Rendering.SpriteSheets;
 
 namespace RiseEngine.Core.GameObject.Entities
 {
@@ -21,11 +22,13 @@ namespace RiseEngine.Core.GameObject.Entities
 
         public int MaxVariantCount { get; set; }
 
-        public int MoveSpeed { get; set; }
+        public int MoveSpeed { get; set; } = 5;
 
-        public string Name { get; set; }
+        public string Name { get; set; } = "none";
 
-        public int MaxLife {get;set;}
+        public int MaxLife { get; set; } = 20;
+
+        public int MoveRunSpeed { get; set; } = 10;
 
         public Entity(string _Name, string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation)
         {
@@ -35,7 +38,7 @@ namespace RiseEngine.Core.GameObject.Entities
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectsManager.SpriteSheets[_SpriteSheet].GetSprite(str));
+                Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[_SpriteSheet]].GetSprite(str));
 
 
             }
@@ -59,6 +62,16 @@ namespace RiseEngine.Core.GameObject.Entities
         public virtual void OnUpdate(GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime)
         {
 
+        }
+
+        public void OnEntityInteract(GameObjectEventArgs eThisEntity, GameObjectEventArgs eInteratingEntity)
+        {
+            
+        }
+
+        public Sprite GetSprite(GameObjectEventArgs e)
+        {
+            return Variant[e.ParrentEntity.Variant];
         }
     }
 }

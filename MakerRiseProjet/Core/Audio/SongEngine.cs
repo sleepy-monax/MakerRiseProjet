@@ -28,7 +28,6 @@ namespace RiseEngine.Core.Audio
         } 
 
         
-
         public static void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime) {
             MediaPlayer.Volume = (((Config.Sound.Master * Config.Sound.Songs) / 2) * FadeVolume);
 

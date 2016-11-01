@@ -10,7 +10,7 @@ using RiseEngine.Core.UI;
 
 namespace RiseEngine.Core.Scene
 {
-    public class UItest : BaseObject
+    public class UItest : Idrawable
     {
         ContainerManager cManager;
         Container container;
@@ -33,17 +33,15 @@ namespace RiseEngine.Core.Scene
             cManager.SwitchContainer("test");
         }
 
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
             cManager.Update(Mouse, KeyBoard, gameTime);
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             cManager.Draw(spriteBatch, gameTime);
-            base.Draw(spriteBatch, gameTime);
         }
     }
 }

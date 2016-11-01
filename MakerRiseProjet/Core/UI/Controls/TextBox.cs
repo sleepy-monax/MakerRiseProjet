@@ -1,9 +1,10 @@
-﻿using RiseEngine.Core.Rendering;
-using RiseEngine.Core.Rendering.SpriteSheets;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using RiseEngine.Core.Rendering;
+using RiseEngine.Core.Rendering.SpriteSheets;
 using System.Linq;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.UI.Controls
 {
@@ -78,7 +79,7 @@ namespace RiseEngine.Core.UI.Controls
 
                 PastKeyState = KeyBoard;
 
-                Engine.MouseCursor.Type = CursorType.Ibeam;
+                Common.MouseCursor.Type = CursorType.Ibeam;
             }
             else CharInput = false;
             base.Update(Mouse, KeyBoard, gameTime, X, Y);
@@ -134,7 +135,7 @@ namespace RiseEngine.Core.UI.Controls
             TxtL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), Color.White, gameTime);
             TxtR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), Color.White, gameTime);
 
-            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(x + SizeBox.X + 16, y + SizeBox.Y + 4, SizeBox.Width - 32, SizeBox.Height), helper.Alignment.Left, helper.Style.Regular, Color.Black);
+            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(x + SizeBox.X + 16, y + SizeBox.Y + 4, SizeBox.Width - 32, SizeBox.Height), Alignment.Left, Style.Regular, Color.Black);
 
             if (this.MouseOver)
                 spriteBatch.FillRectangle(new Rectangle((int)ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + x + SizeBox.X + 16, y + SizeBox.Y + 20, 1, (int)CharSize.Y), Color.Black);

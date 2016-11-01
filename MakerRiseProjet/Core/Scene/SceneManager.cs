@@ -26,8 +26,6 @@ namespace RiseEngine.Core.Scene
             Splash = new SplashScreen();
             MainMn = new MainMenu();
             uiTest = new UItest();
-            
-            
         }
 
         //0 = MainMenu
@@ -40,7 +38,7 @@ namespace RiseEngine.Core.Scene
 
             CurrentScene = -1;
             Gm = game;
-            Core.Audio.SongEngine.SwitchSong("Engine", "A Title");
+            Audio.SongEngine.SwitchSong("Engine", "A Title");
             CurrentScene = 1;
 
         }
@@ -121,8 +119,6 @@ namespace RiseEngine.Core.Scene
 
                     break;
                 case 4:
-
-
 
                     break;
             }

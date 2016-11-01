@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using RiseEngine.Core.Storage.NamedBinaryTag.Tags;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,17 @@ namespace RiseEngine.Core.World.Utils
             WorldLocation NewWorldLocation = ToWorldLocation(pt);
 
             return NewWorldLocation;
+        }
+
+        public static NbtCompound ToNbtCompound(this WorldLocation worldLocation, string tagName)
+        {
+
+            NbtCompound newCompound = new NbtCompound(tagName);
+            Point point = worldLocation.ToPoint();
+            newCompound.Tags.Add(new NbtInt("x", point.X));
+            newCompound.Tags.Add(new NbtInt("x", point.Y));
+
+            return newCompound;
         }
     }
 

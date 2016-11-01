@@ -17,8 +17,6 @@ namespace RiseEngine.Core.World.Utils
         SpriteBatch TileSpriteBatch;
         SpriteBatch EntitySpriteBatch;
 
-        Point CurrentLocation;
-        Point OnScreenLocation;
 
         public WorldRender(WorldScene _WorldScene)
         {
@@ -38,28 +36,29 @@ namespace RiseEngine.Core.World.Utils
                 EntitySpriteBatch.Begin();
 
             }
-            else {
+            else
+            {
 
-                TileSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);
-                EntitySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);
-
-
+                TileSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
+                EntitySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
             }
 
             for (int Ty = W.Camera.StartTile.Y; Ty <= W.Camera.EndTile.Y; Ty++)
             {
                 for (int Tx = W.Camera.StartTile.X; Tx <= W.Camera.EndTile.X; Tx++)
                 {
-                    if (Tx >= 0 && Ty >=0 && Tx < W.worldProperty.Size * 16 - 1 && Ty < W.worldProperty.Size * 16 - 1) {
+                    if (Tx >= 0 && Ty >= 0 && Tx < W.worldProperty.Size * 16 - 1 && Ty < W.worldProperty.Size * 16 - 1)
+                    {
+
                         //Calcule des emplacements
-                        CurrentLocation = new Point(Tx, Ty);
-                        OnScreenLocation = new Point(
+                        Point CurrentLocation = new Point(Tx, Ty);
+                        Point OnScreenLocation = new Point(
                             (Tx - W.Camera.StartTile.X) * W.Camera.Zoom + W.Camera.ScreenOrigine.X,
                              (Ty - W.Camera.StartTile.Y) * W.Camera.Zoom + W.Camera.ScreenOrigine.Y);
 
                         //Recuperation des arguments
                         GameObject.Event.GameObjectEventArgs e = W.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
-                        
+
                         //recuperation des objets
                         Obj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
 
@@ -73,7 +72,7 @@ namespace RiseEngine.Core.World.Utils
 
                         if (!(T.Entity == -1))
                         {
-                            Obj.ObjEntity  E = W.chunkManager.GetEntity(CurrentLocation);
+                            Obj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
                             GameObjectsManager.Entities[E.ID].OnDraw(e, EntitySpriteBatch, gameTime);
 
                         }

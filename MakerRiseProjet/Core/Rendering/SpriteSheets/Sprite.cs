@@ -21,6 +21,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
 
 
 
+
         public Sprite(SpriteSheet _ParrentMapedSheet, TilesheetColectionItem _sprites)
         {
 
@@ -28,6 +29,8 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
             MainSprite = _sprites;
             sprites = new TilesheetColectionItem[1];
             sprites[0] = _sprites;
+
+
         }
 
         public Sprite(SpriteSheet _ParrentMapedSheet, TilesheetColectionItem _MainSprite, TilesheetColectionItem[] _sprites)
@@ -36,7 +39,13 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
             ParrentSpriteSheet = _ParrentMapedSheet;
             MainSprite = _MainSprite;
             sprites = _sprites;
+            MainSprite.Height = sprites[0].Height;
+            MainSprite.Width = sprites[0].Width;
+
         }
+
+
+
 
         public void Draw(SpriteBatch spritebatch, Rectangle DestinationRectangle, Color color, GameTime gameTime)
         {
@@ -49,11 +58,24 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
             }
             else
             {
-                if (!(LasteFrame == Engine.CurrentFrame))
-                {
-                    LasteFrame = Engine.CurrentFrame;
 
-                    ElapsedTime += gameTime.ElapsedGameTime.Milliseconds;
+                UpdateAnimation(gameTime);
+                spritebatch.Draw(ParrentSpriteSheet.SpriteSheetTexture2D, DestinationRectangle, new Rectangle(sprites[CurrentFrame].X * ParrentSpriteSheet.SpriteSize.X, sprites[CurrentFrame].Y * ParrentSpriteSheet.SpriteSize.Y, sprites[CurrentFrame].Width * ParrentSpriteSheet.SpriteSize.X, sprites[CurrentFrame].Height * ParrentSpriteSheet.SpriteSize.Y), color);
+            }
+
+
+        }
+
+        public void UpdateAnimation(GameTime _gameTime)
+        {
+            if (MainSprite.Animated == true)
+            {
+
+                if (!(LasteFrame == Common.CurrentFrame))
+                {
+                    LasteFrame = Common.CurrentFrame;
+
+                    ElapsedTime += _gameTime.ElapsedGameTime.Milliseconds;
 
                     if (ElapsedTime >= MainSprite.FrameTime)
                     {
@@ -97,10 +119,8 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
 
                 }
 
-                spritebatch.Draw(ParrentSpriteSheet.SpriteSheetTexture2D, DestinationRectangle, new Rectangle(sprites[CurrentFrame].X * ParrentSpriteSheet.SpriteSize.X, sprites[CurrentFrame].Y * ParrentSpriteSheet.SpriteSize.Y, sprites[CurrentFrame].Width * ParrentSpriteSheet.SpriteSize.X, sprites[CurrentFrame].Height * ParrentSpriteSheet.SpriteSize.Y), color);
+
             }
-
-
         }
 
     }

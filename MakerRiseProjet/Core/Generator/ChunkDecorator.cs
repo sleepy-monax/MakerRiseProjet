@@ -22,7 +22,7 @@ namespace RiseEngine.Core.Generator
         public World.Obj.ObjChunk Decorated(int cX, int cY, World.Obj.ObjChunk Chunk)
         {
 
-            Debug.Logs.Write("[ChunkDecorator] Generating " + cX + " : " + cY + " ...", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[ChunkDecorator] Generating " + cX + " : " + cY + " ...", Debug.LogType.Info);
 
             for (int tX = 0; tX <= 15; tX++)
             {

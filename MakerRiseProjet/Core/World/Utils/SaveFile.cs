@@ -24,49 +24,9 @@ namespace RiseEngine.Core.World.Utils
         public void SaveChunk(int x, int y, Obj.ObjChunk _Chunk)
         {
 
-            Debug.Logs.Write("[IO] Saving chunk " + x + "," + y, Debug.LogType.Info);
-
-            List<byte> Chunk = new List<byte>();
-
-            for (int tX = 0; tX <= 15; tX++)
-            {
-                for (int tY = 0; tY <= 15; tY++)
-                {
-
-                    // Localisation
-                    Chunk.Add((byte)(tY * 16 + tX));
-
-                    Obj.ObjTile Tile = _Chunk.Tiles[tX, tY];
-
-                    bool AsEntity = Tile.Entity > -1;
-
-                    //Contien une entité ?
-                    if (AsEntity)
-                    {
-                        Chunk.Add(1);
-                    }
-                    else
-                    {
-                        Chunk.Add(0);
-                    }
+            Debug.DebugLogs.WriteInLogs("[IO] Saving chunk " + x + "," + y, Debug.LogType.Info);
 
 
-
-                    byte[] TileBytes = Tile.ToBytes();
-
-                    if (AsEntity)
-                    {
-                        Chunk.AddRange(_Chunk.Entities[Tile.Entity].ToBytes().ToList());
-                    }
-
-                    Chunk.AddRange(TileBytes.ToList());
-
-
-
-                }
-            }
-
-            SaveData("Saves\\" + W.worldProperty.WorldName + "\\Chunk_" + x + "_" + y + ".bytes", Chunk.ToArray());
 
         }
 

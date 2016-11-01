@@ -20,7 +20,7 @@ namespace RiseEngine.Core.Storage
         public void Load()
         {
 
-            Debug.Logs.Write("[Storage.DataSheet] Load '" + sheetPath + "'", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[Storage.DataSheet] Load '" + sheetPath + "'", Debug.LogType.Info);
 
             //Check if the fille existe
             if (System.IO.File.Exists(sheetPath))
@@ -52,7 +52,7 @@ namespace RiseEngine.Core.Storage
         public void Save()
         {
 
-            Debug.Logs.Write("[Storage.DataSheet] Save '" + sheetPath + "'", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[Storage.DataSheet] Save '" + sheetPath + "'", Debug.LogType.Info);
 
             string FileText = "";
 

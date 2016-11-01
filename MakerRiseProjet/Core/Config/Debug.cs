@@ -15,13 +15,13 @@ namespace RiseEngine.Core.Config
         public static bool WorldFocusLocation = false;
         public static bool DebugWaterMark = false;
 
-        public static bool EnableDebugLogs = false;
+        public static bool EnableDebugLogs = true;
 
         public static Storage.DataSheet DS = new Storage.DataSheet("Data\\Engine\\Config\\Debug.rise");
 
         public static void Load()
         {
-            Core.Debug.Logs.Write("[Config.Debugs] Load config...", Core.Debug.LogType.Info);
+            Core.Debug.DebugLogs.WriteInLogs("[Config.Debugs] Load config...", Core.Debug.LogType.Info);
             DS.Load();
 
             FrameCounter = Convert.ToBoolean(int.Parse(DS.GetData("FrameCounter", "0")));

@@ -6,6 +6,7 @@ using RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.UI.Controls
 {
@@ -57,7 +58,7 @@ namespace RiseEngine.Core.UI.Controls
                 CheckB.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x - 2, SizeBox.Location.Y + y), new Point(64)), Color.White, gameTime);
             }
 
-            helper.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x + 64, SizeBox.Location.Y + y, SizeBox.Width - 64, SizeBox.Height), helper.Alignment.Left, helper.Style.Regular, Color.White);
+            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x + 64, SizeBox.Location.Y + y, SizeBox.Width - 64, SizeBox.Height), Alignment.Left, Style.Regular, Color.White);
 
             base.Draw(spriteBatch, gameTime, x, y);
         }

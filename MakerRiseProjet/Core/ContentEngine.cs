@@ -31,7 +31,7 @@ namespace RiseEngine.Core
             { return ColectionTexture2D[contentname]; }
             else
             {
-                Debug.Logs.Write("[ContentEngine] Load <Texture2D>" + PluginName + "." + contentname, Debug.LogType.Info);
+                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <Texture2D>" + PluginName + "." + contentname, Debug.LogType.Info);
                 ColectionTexture2D.Add(contentname, Content.Load<Texture2D>(PluginName + "/Textures2D/" + contentname));
                 return ColectionTexture2D[contentname];
             }
@@ -46,7 +46,7 @@ namespace RiseEngine.Core
             bitmap.SetPixel(1, 0, System.Drawing.Color.Black);
             bitmap.SetPixel(0, 1, System.Drawing.Color.Black);
 
-            return RiseEngine.Core.Rendering.Helper.BitmapToTexture2D(Common.GraphicsDevice ,bitmap);
+            return RiseEngine.Core.Rendering.BitmapHelper.BitmapToTexture2D(Common.GraphicsDevice ,bitmap);
 
         }
 
@@ -57,7 +57,7 @@ namespace RiseEngine.Core
             { return ColectionSoundEffect[contentname]; }
             else
             {
-                Debug.Logs.Write("[ContentEngine] Load <SoundEffect>" + PluginName + "." + contentname, Debug.LogType.Info);
+                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <SoundEffect>" + PluginName + "." + contentname, Debug.LogType.Info);
                 ColectionSoundEffect.Add(contentname, Content.Load<SoundEffect>(PluginName + "/SoundsEffects/" + contentname));
                 return ColectionSoundEffect[contentname];
             }
@@ -71,7 +71,7 @@ namespace RiseEngine.Core
             { return ColectionSong[contentname]; }
             else
             {
-                Debug.Logs.Write("[ContentEngine] Load <Song>" + PluginName + "." + contentname, Debug.LogType.Info);
+                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <Song>" + PluginName + "." + contentname, Debug.LogType.Info);
                 ColectionSong.Add(contentname, Content.Load<Song>(PluginName + "/Songs/" + contentname));
                 return ColectionSong[contentname];
             }
@@ -85,7 +85,7 @@ namespace RiseEngine.Core
             { return ColectionFont[contentname]; }
             else
             {
-                Debug.Logs.Write("[ContentEngine] Load <SpriteFont>" + PluginName + "." + contentname, Debug.LogType.Info);
+                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <SpriteFont>" + PluginName + "." + contentname, Debug.LogType.Info);
                 ColectionFont.Add(contentname, Content.Load<SpriteFont>(PluginName + "/Fonts/" + contentname));
                 return ColectionFont[contentname];
             }
@@ -94,7 +94,7 @@ namespace RiseEngine.Core
 
         public static void ReloadContent() {
 
-            Debug.Logs.Write("[ContentEngine] Reloading...", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[ContentEngine] Reloading...", Debug.LogType.Info);
             ColectionTexture2D.Clear();
             ColectionSoundEffect.Clear();
             ColectionSong.Clear();

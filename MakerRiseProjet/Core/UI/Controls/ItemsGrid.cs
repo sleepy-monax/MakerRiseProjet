@@ -1,13 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.Rendering;
-using RiseEngine.Core.UI;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.UI.Controls
 {
@@ -16,9 +11,6 @@ namespace RiseEngine.Core.UI.Controls
 
         int ColumnCount;
         int RowCount;
-
-        int ScrollValue;
-
         Rendering.SpriteSheets.Sprite Slot;
         Inventory.ObjInventory inventory;
 
@@ -47,27 +39,29 @@ namespace RiseEngine.Core.UI.Controls
                     if (ItemKey < inventory.Slots.Length)
                     {
 
-                        
-
-                        
 
 
-                            //GameObjectsManager.Items[Inventory.Slots[ItemKey].ID].Variant[Inventory.Slots[ItemKey].Variant].Draw(spriteBatch, new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32), Color.White, gameTime);
 
-                            if (new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32).Contains(Engine.MouseCursor.MouseLocation)){
 
-                                if (lastMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released) {
 
-                                    Inventory.ObjItem s = inventory.Slots[ItemKey];
-                                    inventory.Slots[ItemKey] = Engine.MouseCursor.Item;
+                        //GameObjectsManager.Items[Inventory.Slots[ItemKey].ID].Variant[Inventory.Slots[ItemKey].Variant].Draw(spriteBatch, new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32), Color.White, gameTime);
 
-                                    Engine.MouseCursor.Item = s;
-                                }
+                        if (new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32).Contains(Common.MouseCursor.MouseLocation))
+                        {
 
+                            if (lastMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released)
+                            {
+
+                                Inventory.ObjItem s = inventory.Slots[ItemKey];
+                                inventory.Slots[ItemKey] = Common.MouseCursor.Item;
+
+                                Common.MouseCursor.Item = s;
                             }
 
+                        }
 
-                        
+
+
 
                     }
 
@@ -81,23 +75,25 @@ namespace RiseEngine.Core.UI.Controls
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, int x, int y)
         {
             for (int Column = 0; Column < ColumnCount; Column++) //X
-            { 
+            {
 
                 for (int Row = 0; Row < RowCount; Row++) //Y
-                { 
+                {
 
                     int ItemKey = Row * ColumnCount + Column;
 
-                    if (ItemKey < inventory.Slots.Length) {
+                    if (ItemKey < inventory.Slots.Length)
+                    {
 
                         Slot.Draw(spriteBatch, new Rectangle(SizeBox.X + x + Column * 64, SizeBox.Y + y + Row * 64, 64, 64), Color.White, gameTime);
 
-                        if (inventory.Slots[ItemKey].ID >= 0) {
+                        if (inventory.Slots[ItemKey].ID >= 0)
+                        {
 
-                            
+
                             GameObjectsManager.Items[inventory.Slots[ItemKey].ID].Variant[inventory.Slots[ItemKey].Variant].Draw(spriteBatch, new Rectangle(SizeBox.X + x + Column * 64 + 16, SizeBox.Y + y + Row * 64 + 16, 32, 32), Color.White, gameTime);
-                            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), inventory.Slots[ItemKey].Count.ToString(), new Rectangle(SizeBox.X + x + Column * 64 + 24, SizeBox.Y + y + Row * 64 + 24, 32, 32), helper.Alignment.Left, helper.Style.DropShadow, Color.White);
-                            
+                            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), inventory.Slots[ItemKey].Count.ToString(), new Rectangle(SizeBox.X + x + Column * 64 + 24, SizeBox.Y + y + Row * 64 + 24, 32, 32), Alignment.Left, Style.DropShadow, Color.White);
+
                         }
 
                     }

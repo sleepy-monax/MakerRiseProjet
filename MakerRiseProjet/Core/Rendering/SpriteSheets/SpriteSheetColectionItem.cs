@@ -30,6 +30,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
         public TilesheetColectionItem(string[] f, AnimationMode m, int _FrameTime)
         {
 
+
             Animated = true;
             Frames = f;
             AnimMode = m;

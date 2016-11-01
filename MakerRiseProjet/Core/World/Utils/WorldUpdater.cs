@@ -5,15 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace RiseEngine.Core.World.Utils
 {
-    public class WorldUpdater : BaseObject
+    public class WorldUpdater : Idrawable
     {
         WorldScene W;
-
-        Point CurrentLocation;
-        Point OnScreenLocation;
 
         public WorldUpdater(WorldScene _WorldScene)
         {
@@ -22,7 +20,7 @@ namespace RiseEngine.Core.World.Utils
 
         #region Update
 
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
             for (int Tx = W.Camera.StartTile.X; Tx <= W.Camera.EndTile.X; Tx++)
@@ -33,8 +31,8 @@ namespace RiseEngine.Core.World.Utils
                     {
 
                         //Calcule des emplacements
-                        CurrentLocation = new Point(Tx, Ty);
-                        OnScreenLocation = new Point(
+                        Point CurrentLocation = new Point(Tx, Ty);
+                        Point OnScreenLocation = new Point(
                             (Tx - W.Camera.StartTile.X) * W.Camera.Zoom + W.Camera.ScreenOrigine.X, 
                             (Ty - W.Camera.StartTile.Y) * W.Camera.Zoom + W.Camera.ScreenOrigine.Y);
 
@@ -62,7 +60,11 @@ namespace RiseEngine.Core.World.Utils
                 }
             }
 
-            base.Update(Mouse, KeyBoard, gameTime);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

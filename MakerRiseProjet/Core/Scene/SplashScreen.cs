@@ -6,23 +6,24 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.UI;
+using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace RiseEngine.Core.Scene
 {
-    public class SplashScreen : BaseObject
+    public class SplashScreen : Idrawable
     {
         bool OneTime = true;
         bool FirstFrame = true;
 
         bool EngineLogo = false;
 
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
             if (OneTime == true)
             {
                 if (FirstFrame == false)
                 {
-                    Engine.Initializer();
+                    Common.Initializer();
 
                     OneTime = false;
 
@@ -42,10 +43,9 @@ namespace RiseEngine.Core.Scene
 
 
 
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
             if (EngineLogo)
@@ -59,19 +59,14 @@ namespace RiseEngine.Core.Scene
 
             if (FirstFrame)
             {
-                
-                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Loading data...", new Rectangle(0, Common.graphics.PreferredBackBufferHeight - 64, Common.graphics.PreferredBackBufferWidth, 64), helper.Alignment.Center, helper.Style.DropShadow, Color.Black);
+
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Loading data...", new Rectangle(0, Common.graphics.PreferredBackBufferHeight - 64, Common.graphics.PreferredBackBufferWidth, 64), Alignment.Center, Style.DropShadow, Color.Black);
 
             }
 
 
             FirstFrame = false;
 
-            
-
-
-
-            base.Draw(spriteBatch, gameTime);
         }
 
     }

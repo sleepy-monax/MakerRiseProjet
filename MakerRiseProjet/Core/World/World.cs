@@ -11,7 +11,7 @@ using RiseEngine.Core.Rendering;
 
 namespace RiseEngine.Core.World
 {
-    public class WorldScene : BaseObject
+    public class WorldScene : Idrawable
     {
 
         public ObjChunk[,] Chunks;
@@ -25,6 +25,7 @@ namespace RiseEngine.Core.World
         public Rectangle SelectionRect;
 
         public Utils.WorldRender worldRender;
+
         public Utils.WorldUpdater worldUpdater;
         public Utils.ChunkManager chunkManager;
         public Utils.WorldProperty worldProperty;
@@ -32,7 +33,6 @@ namespace RiseEngine.Core.World
         public Utils.EntityManager entityManager;
         public Utils.MiniMap miniMap;
         public Utils.GameUI gameUI;
-        public Utils.WorldTick worldTick;
         public Utils.SaveFile saveFile;
 
         SpriteBatch BackgroundSB;
@@ -49,48 +49,51 @@ namespace RiseEngine.Core.World
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
             Noise = new GameMath.Noise.PerlinNoise(worldProperty.Seed);
 
-            worldRender = new Utils.WorldRender(this);
+
+
             worldUpdater = new Utils.WorldUpdater(this);
             chunkManager = new Utils.ChunkManager(this);
             eventsManager = new Utils.EventsManager(this);
             entityManager = new Utils.EntityManager(this);
             miniMap = new Utils.MiniMap(this);
             gameUI = new Utils.GameUI(this);
-            worldTick = new Utils.WorldTick(this);
 
             Camera = new Utils.GameCamera(this);
+
+            worldRender = new Utils.WorldRender(this);
 
             BackgroundSB = new SpriteBatch(Common.GraphicsDevice);
             Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight));
 
         }
 
-        public override void Update(MouseState _Mouse, KeyboardState _KeyBoard, GameTime _GameTime)
+        public void Update(MouseState _Mouse, KeyboardState _KeyBoard, GameTime _GameTime)
         {
-            
 
-            if (!Pause) {
+
+            if (!Pause)
+            {
                 Background.Update(_Mouse, _KeyBoard, _GameTime);
                 worldUpdater.Update(_Mouse, _KeyBoard, _GameTime);
             }
             Camera.Update();
-
             gameUI.Update(_Mouse, _KeyBoard, _GameTime);
 
-            base.Update(_Mouse, _KeyBoard, _GameTime);
 
 
         }
 
 
 
-        public override void Draw(SpriteBatch _SpriteBatch, GameTime _GameTime)
+        public void Draw(SpriteBatch _SpriteBatch, GameTime _GameTime)
         {
 
             BackgroundSB.Begin();
             Background.Draw(BackgroundSB, _GameTime);
             BackgroundSB.End();
+
             worldRender.Draw(_GameTime, Pause);
+
 
             if (Pause)
             {
@@ -99,15 +102,12 @@ namespace RiseEngine.Core.World
             }
 
             gameUI.Draw(_SpriteBatch, _GameTime);
-
-            base.Draw(_SpriteBatch, _GameTime);
-
         }
 
         public void startGame()
         {
 
-            
+
 
         }
 
@@ -120,13 +120,17 @@ namespace RiseEngine.Core.World
 
         }
 
-        public void TogglePauseGame() {
+        public void TogglePauseGame()
+        {
 
             Pause = !Pause;
 
-            if (Pause) {
+            if (Pause)
+            {
                 gameUI.cManager.SwitchContainer("PauseMenu");
-            } else {
+            }
+            else
+            {
                 gameUI.cManager.SwitchContainer("GameUI");
             }
 

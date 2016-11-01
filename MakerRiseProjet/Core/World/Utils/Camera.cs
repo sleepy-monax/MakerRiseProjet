@@ -26,6 +26,7 @@ namespace RiseEngine.Core.World.Utils
 
 
 
+
         public GameCamera(WorldScene _WorldScene)
         {
 
@@ -44,67 +45,68 @@ namespace RiseEngine.Core.World.Utils
 
         }
 
-        int DSx; //DrawStartX
-        int DSy;
+        int DrawStartX; //DrawStartX
+        int DrawStartY;
 
-        int Sx;
-        int Sy;
-
-
-        int DEx;
-        int DEy;
+        int StartX;
+        int StartY;
 
 
-        int Ex;
-        int Ey;
-
-        int Dx;
-        int Dy;
+        int DrawEndX;
+        int DrawEndY;
 
 
-        int Ox;
-        int Oy;
+        int EndX;
+        int EndY;
+
+        int DeltaX;
+        int DeltaY;
+
+
+        int OrigineX;
+        int OrigineY;
 
         public void Update()
         {
 
-            DSx = FocusLocation.X - Config.Gfx.ViewDistance;
-            DSy = FocusLocation.Y - Config.Gfx.ViewDistance;
+            DrawStartX = FocusLocation.X - Config.Gfx.ViewDistance;
+            DrawStartY = FocusLocation.Y - Config.Gfx.ViewDistance;
 
-            Sx = FocusLocation.X - Config.Gfx.ViewDistance;
-            Sy = FocusLocation.Y - Config.Gfx.ViewDistance;
+            StartX = FocusLocation.X - Config.Gfx.ViewDistance;
+            StartY = FocusLocation.Y - Config.Gfx.ViewDistance;
 
-            if (DSx <= 0)
+            if (DrawStartX <= 0)
             {
-                DSx = 0;
+                DrawStartX = 0;
 
             }
-            if (DSy <= 0)
+            if (DrawStartY <= 0)
             {
-                DSy = 0;
+                DrawStartY = 0;
 
             }
 
-            StartTile = new Point(Sx, Sy);
+            StartTile = new Point(StartX, StartY);
 
-            DEx = FocusLocation.X + Config.Gfx.ViewDistance;
-            DEy = FocusLocation.Y + Config.Gfx.ViewDistance;
+            DrawEndX = FocusLocation.X + Config.Gfx.ViewDistance;
+            DrawEndY = FocusLocation.Y + Config.Gfx.ViewDistance;
 
-            Ex = FocusLocation.X + Config.Gfx.ViewDistance;
-            Ey = FocusLocation.Y + Config.Gfx.ViewDistance;
+            EndX = FocusLocation.X + Config.Gfx.ViewDistance;
+            EndY = FocusLocation.Y + Config.Gfx.ViewDistance;
 
-            if (DEx > (W.worldProperty.Size * 16) - 1) DEx = (W.worldProperty.Size * 16) - 1;
-            if (DEy > (W.worldProperty.Size * 16) - 1) DEy = (W.worldProperty.Size * 16) - 1;
+            if (DrawEndX > (W.worldProperty.Size * 16) - 1) DrawEndX = (W.worldProperty.Size * 16) - 1;
+            if (DrawEndY > (W.worldProperty.Size * 16) - 1) DrawEndY = (W.worldProperty.Size * 16) - 1;
 
-            EndTile = new Point(Ex, Ey);
+            EndTile = new Point(EndX, EndY);
 
-            Dx = Ex - Sx;
-            Dy = Ey - Sy;
+            DeltaX = EndX - StartX;
+            DeltaY = EndY - StartY;
 
-            Ox = (int)((Size.X / 2) - (Dx * Zoom) / 2 - (PreciseFocusLocation.X * Zoom));
-            Oy = (int)((Size.Y / 2) - (Dy * Zoom) / 2 - (PreciseFocusLocation.Y * Zoom));
+            OrigineX = (int)((Size.X / 2) - (DeltaX * Zoom) / 2 - (PreciseFocusLocation.X * Zoom));
+            OrigineY = (int)((Size.Y / 2) - (DeltaY * Zoom) / 2 - (PreciseFocusLocation.Y * Zoom));
 
-            ScreenOrigine = new Point(Ox, Oy);
+            ScreenOrigine = new Point(OrigineX - Zoom / 2, OrigineY - Zoom / 2);
+
 
         }
     }

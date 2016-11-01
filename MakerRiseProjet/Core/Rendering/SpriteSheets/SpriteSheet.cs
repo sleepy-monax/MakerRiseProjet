@@ -65,7 +65,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
                     else
                     {
 
-                        Debug.Logs.Write("[SpriteMapParse] Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning);
+                        Debug.DebugLogs.WriteInLogs("[SpriteMapParse] Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning);
 
                     }
 
@@ -111,7 +111,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
                     else
                     {
 
-                        Debug.Logs.Write("[SpriteMapParse] Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning);
+                        Debug.DebugLogs.WriteInLogs("[SpriteMapParse] Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning);
 
                     }
 
@@ -152,7 +152,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
             }
             else
             {
-                Debug.Logs.Write("[SpriteMapParse] Missing Sprite '" + _SpriteName + "'", Debug.LogType.Warning);
+                Debug.DebugLogs.WriteInLogs("[SpriteMapParse] Missing Sprite '" + _SpriteName + "'", Debug.LogType.Warning);
                 return null;
             }
 

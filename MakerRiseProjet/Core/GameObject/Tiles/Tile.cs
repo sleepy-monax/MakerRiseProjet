@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.GameObject.Event;
 using RiseEngine.Core.Audio;
+using RiseEngine.Core.Rendering.SpriteSheets;
 
 namespace RiseEngine.Core.GameObject.Tiles
 {
@@ -35,10 +36,10 @@ namespace RiseEngine.Core.GameObject.Tiles
             foreach (string str in _SpriteVariant)
             {
 
-                this.Variant.Add(GameObjectsManager.SpriteSheets[_SpriteSheet].GetSprite(str));
+                Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[_SpriteSheet]].GetSprite(str));
 
             }
-
+            MaxVariantCount = Variant.Count;
 
         }
 
@@ -52,7 +53,15 @@ namespace RiseEngine.Core.GameObject.Tiles
 
         public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
-            Variant[e.ParrentTile.Variant].Draw(spritebatch, new Microsoft.Xna.Framework.Rectangle(new Microsoft.Xna.Framework.Point(e.OnScreenLocation.X - e.World.Camera.Zoom / 2, e.OnScreenLocation.Y - e.World.Camera.Zoom / 2), new Microsoft.Xna.Framework.Point(e.World.Camera.Zoom * 2, e.World.Camera.Zoom * 2)), Microsoft.Xna.Framework.Color.White, gametime);
+            Variant[e.ParrentTile.Variant].Draw(spritebatch, 
+                new Microsoft.Xna.Framework.Rectangle(
+
+                new Microsoft.Xna.Framework.Point(e.OnScreenLocation.X - e.World.Camera.Zoom / 2, e.OnScreenLocation.Y - e.World.Camera.Zoom / 2), 
+                new Microsoft.Xna.Framework.Point(e.World.Camera.Zoom * 2, e.World.Camera.Zoom * 2)
+                
+                ),
+                
+                Microsoft.Xna.Framework.Color.White, gametime);
 
         }
 
@@ -75,5 +84,12 @@ namespace RiseEngine.Core.GameObject.Tiles
         {
          
         }
+
+        public Sprite GetSprite(GameObjectEventArgs e)
+        {
+            return Variant[e.ParrentTile.Variant];
+        }
+
+
     }
 }

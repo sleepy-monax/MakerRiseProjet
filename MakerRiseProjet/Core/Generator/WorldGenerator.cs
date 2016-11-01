@@ -43,7 +43,7 @@ namespace RiseEngine.Core.Generator
             int[,] rGrid = new int[MaxWorldSize, MaxWorldSize];
 
             //Adding randome Region
-            Debug.Logs.Write("[WorldGenerator] Creating Random Point", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[WorldGenerator] Creating Random Point", Debug.LogType.Info);
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
             {
 
@@ -58,7 +58,7 @@ namespace RiseEngine.Core.Generator
 
             //expanding Region
 
-            Debug.Logs.Write("[WorldGenerator] Expending Region", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[WorldGenerator] Expending Region", Debug.LogType.Info);
 
             bool DoLoop = true;
             int LoopCount = 0;
@@ -122,7 +122,7 @@ namespace RiseEngine.Core.Generator
 
            
 
-            Debug.Logs.Write("[WorldGenerator] Creating Chunk", Debug.LogType.Info);
+            Debug.DebugLogs.WriteInLogs("[WorldGenerator] Creating Chunk", Debug.LogType.Info);
             NewWorld.Chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
 
             for (int cX = 0; cX <= WrldProps.Size - 1; cX++)
@@ -147,8 +147,7 @@ namespace RiseEngine.Core.Generator
 
             NewWorld.miniMap.MiniMapBitmap = Map;
 
-            Features.Road r = new Features.Road();
-            r.Apply(rGrid, Map, NewWorld);
+
 
             Map.Save("World.png");
             NewWorld.miniMap.RefreshMiniMap();
@@ -158,7 +157,7 @@ namespace RiseEngine.Core.Generator
             }
 
             stw.Stop();
-            Debug.Logs.Write("Generator elapsed time : " + stw.ElapsedMilliseconds);
+            Debug.DebugLogs.WriteInLogs("Generator elapsed time : " + stw.ElapsedMilliseconds);
 
             return NewWorld;
 

@@ -21,7 +21,7 @@ namespace RiseEngine.Core.World.Utils
 
         public void RefreshMiniMap() {
 
-            MiniMapTexture2D = Rendering.Helper.BitmapToTexture2D(Common.GraphicsDevice, MiniMapBitmap);
+            MiniMapTexture2D = Rendering.BitmapHelper.BitmapToTexture2D(Common.GraphicsDevice, MiniMapBitmap);
 
         }
     }

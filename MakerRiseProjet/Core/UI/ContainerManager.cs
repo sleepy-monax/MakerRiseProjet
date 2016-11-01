@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RiseEngine.Core.UI
 {
-    public class ContainerManager : BaseObject
+    public class ContainerManager : Idrawable
     {
 
         Dictionary<string, Container> Containers;
@@ -35,17 +35,16 @@ namespace RiseEngine.Core.UI
 
         }
 
-        public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
             if (!(CurrentContainerKey == "null")) {
                 Containers[CurrentContainerKey].Update(Mouse, KeyBoard, gameTime);
             }
 
-            base.Update(Mouse, KeyBoard, gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
             if (!(CurrentContainerKey == "null"))
@@ -53,7 +52,6 @@ namespace RiseEngine.Core.UI
                 Containers[CurrentContainerKey].Draw(spriteBatch, gameTime);
             }
 
-            base.Draw(spriteBatch, gameTime);
         }
     }
 }

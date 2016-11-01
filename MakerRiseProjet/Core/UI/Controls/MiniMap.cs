@@ -48,7 +48,6 @@ namespace RiseEngine.Core.UI.Controls
         {
             spriteBatch.Draw(W.miniMap.MiniMapTexture2D, new Rectangle(7 + SizeBox.Location.X + x, 7 + SizeBox.Location.Y + y, 178, 178), Focus, Color.White);
             MiniMapSprite.Draw(spriteBatch, new Rectangle(0 + SizeBox.Location.X + x, 0 + SizeBox.Location.Y + y, 192, 192), Color.White, gameTime);
-            spriteBatch.DrawRectangle(new Rectangle(W.Camera.StartTile.X + 7 - SizeBox.Location.X + x, W.Camera.StartTile.Y + 7 + SizeBox.Location.Y + y, W.Camera.EndTile.X - W.Camera.StartTile.X, W.Camera.EndTile.Y - W.Camera.StartTile.Y), Color.White);
 
             foreach (KeyValuePair<int, World.Obj.ObjRegion> Rg in W.Region) {
 
