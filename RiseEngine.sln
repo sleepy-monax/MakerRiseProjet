@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakerRiseEngine", "MakerRiseProjet\MakerRiseEngine.csproj", "{0B1AE74F-0E04-4402-9C99-D03175C9AA03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakerRiseEngine", "MakerRiseEngine.Core\MakerRiseEngine.csproj", "{0B1AE74F-0E04-4402-9C99-D03175C9AA03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakerRiseEngine.DefaultPlugin", "MakerRiseEngine.DefaultPlugin\MakerRiseEngine.DefaultPlugin.csproj", "{CE75BBEA-8023-487E-9463-7E984F7CAF75}"
 EndProject
