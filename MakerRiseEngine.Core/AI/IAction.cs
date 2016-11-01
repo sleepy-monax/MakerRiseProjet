@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RiseEngine.Core.AI
 {
-    public interface IAction
+    public interface IAction : GameObject.IGameObject
     {
         void Performe(GameObject.Event.GameObjectEventArgs e, GameTime gametime);
     }

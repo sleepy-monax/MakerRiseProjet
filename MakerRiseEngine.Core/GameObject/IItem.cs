@@ -21,10 +21,10 @@ namespace RiseEngine.Core.GameObject
         Weapon
     }
 
-    public interface IItem
+    public interface IItem: IGameObject
     {
 
-        string Name { get; set; }
+        
         ItemType Type { get; set; }
         List<Rendering.SpriteSheets.Sprite> Variant { get; set; }
 

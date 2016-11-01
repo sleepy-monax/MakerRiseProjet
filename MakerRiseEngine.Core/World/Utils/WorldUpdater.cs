@@ -42,8 +42,8 @@ namespace RiseEngine.Core.World.Utils
                         //recuperation des objets
                         WorldObj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
 
-                        GameObjectsManager.Tiles[T.ID].OnTick(e, gameTime);
-                        GameObjectsManager.Tiles[T.ID].OnUpdate(e, KeyBoard, Mouse, gameTime);
+                        GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
+                        GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
 
                         if (!(T.Entity == -1))
                         {
@@ -51,8 +51,8 @@ namespace RiseEngine.Core.World.Utils
                             WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
                             E.Location = CurrentLocation.ToWorldLocation();
 
-                            GameObjectsManager.Entities[E.ID].OnTick(e, gameTime);
-                            GameObjectsManager.Entities[E.ID].OnUpdate(e, KeyBoard, Mouse, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
                         }
 
                     }

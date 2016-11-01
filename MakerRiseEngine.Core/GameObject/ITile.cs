@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RiseEngine.Core.GameObject
 {
-    public interface ITile : IGameObject
+    public interface ITile : IWorldGameObject
     {
 
         System.Drawing.Color MapColor { get; set; }

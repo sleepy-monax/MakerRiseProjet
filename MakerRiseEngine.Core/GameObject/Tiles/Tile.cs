@@ -19,7 +19,7 @@ namespace RiseEngine.Core.GameObject.Tiles
 
         public int MaxVariantCount { get; set; }
 
-        public string Name { get; set; }
+        public string gameObjectName { get; set; }
 
         public List<Rendering.SpriteSheets.Sprite> Variant;
 
@@ -28,7 +28,7 @@ namespace RiseEngine.Core.GameObject.Tiles
 
         public Tile(string _Name, string[] _SpriteVariant, string _SpriteSheet, System.Drawing.Color _MapColor)
         {
-            Name = _Name;
+            gameObjectName = _Name;
             MapColor = _MapColor;
 
             this.Variant = new List<Rendering.SpriteSheets.Sprite>();
@@ -36,7 +36,7 @@ namespace RiseEngine.Core.GameObject.Tiles
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[_SpriteSheet]].GetSprite(str));
+                Variant.Add(GameObjectsManager.GetGameObject<Rendering.SpriteSheets.SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
 
             }
             MaxVariantCount = Variant.Count;

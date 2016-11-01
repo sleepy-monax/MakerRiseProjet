@@ -56,7 +56,7 @@ namespace RiseEngine.Core.UI
             }
 
             if (!(Item.ID == -1)) {
-                GameObjectsManager.Items[Item.ID].Variant[Item.Variant].Draw(spriteBatch, new Rectangle(MouseLocation + new Point(8,22), new Point(32)), Color.White, gameTime);
+                GameObjectsManager.GetGameObject<GameObject.IItem>(Item.ID).Variant[Item.Variant].Draw(spriteBatch, new Rectangle(MouseLocation + new Point(8,22), new Point(32)), Color.White, gameTime);
                 spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Item.Count.ToString(), new Rectangle(MouseLocation + new Point(16,30), new Point(32)), Alignment.Left, Style.DropShadow, Color.White);
             }
         }

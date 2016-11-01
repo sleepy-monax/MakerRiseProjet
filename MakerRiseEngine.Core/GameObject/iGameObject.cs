@@ -11,14 +11,6 @@ namespace RiseEngine.Core.GameObject
 {
     public interface IGameObject
     {
-        string Name { get; set; }
-        int MaxVariantCount { get; set; }
-
-        void OnTick(Event.GameObjectEventArgs e, GameTime gametime);
-        void OnUpdate(Event.GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime);
-        void OnDraw(Event.GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime);
-
-        Rendering.SpriteSheets.Sprite GetSprite(Event.GameObjectEventArgs e);
-
+        string gameObjectName { get; set; }
     }
 }

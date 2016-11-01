@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RiseEngine.Core.GameObject;
 
 namespace RiseEngine.Core.Rendering.SpriteSheets
 {
-    public class SpriteSheet
+    public class SpriteSheet : IGameObject
     {
 
         public Dictionary<string, TilesheetColectionItem> SpriteColection;
         public Texture2D SpriteSheetTexture2D;
         public Point SpriteSize;
+
+        public string gameObjectName{get;set;}
 
         public SpriteSheet(string PluginName, Texture2D _SpriteSheet, string _SpriteMapName, Point _SpriteSize)
         {
@@ -28,7 +31,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
         {
 
             //Creating and read the tilemap file.
-            System.IO.StreamReader srMap = new System.IO.StreamReader("Data\\" + PluginName + "\\SpriteMap\\" + _TileMapName + ".rise");
+            System.IO.StreamReader srMap = new System.IO.StreamReader("Data\\" + PluginName + "\\SpriteSheet\\" + _TileMapName + ".rise");
             string SheetMapString = srMap.ReadToEnd().Replace(System.Environment.NewLine, "");
             srMap.Close();
 
@@ -65,7 +68,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
                     else
                     {
 
-                        Debug.DebugLogs.WriteInLogs("[SpriteMapParse] Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning);
+                        Debug.DebugLogs.WriteInLogs("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning, "SpriteSheetParse");
 
                     }
 
@@ -111,7 +114,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
                     else
                     {
 
-                        Debug.DebugLogs.WriteInLogs("[SpriteMapParse] Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning);
+                        Debug.DebugLogs.WriteInLogs("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), Debug.LogType.Warning, "SpriteSheetParse ");
 
                     }
 
@@ -152,7 +155,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
             }
             else
             {
-                Debug.DebugLogs.WriteInLogs("[SpriteMapParse] Missing Sprite '" + _SpriteName + "'", Debug.LogType.Warning);
+                Debug.DebugLogs.WriteInLogs("Missing Sprite '" + _SpriteName + "'", Debug.LogType.Warning, "SpriteSheetParse");
                 return null;
             }
 

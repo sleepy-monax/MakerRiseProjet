@@ -5,9 +5,9 @@ using System.Text;
 
 namespace RiseEngine.Core.GameObject
 {
-    public class Biome
+    public class Biome : IGameObject
     {
-        string Name;
+        public string gameObjectName { get; set; }
         public GameMath.KeyWeightPair<int>[] RandomEntity;
         public GameMath.KeyWeightPair<int>[] RandomTile;
         public double EntityDensity { get; set; }
@@ -16,7 +16,7 @@ namespace RiseEngine.Core.GameObject
         {
 
             
-            Name = _Name;
+            gameObjectName = _Name;
 
             EntityDensity = _EntityDensity;
             RandomEntity = _RandomEntity;

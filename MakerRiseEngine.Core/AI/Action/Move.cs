@@ -8,14 +8,21 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.GameObject.Event;
 using RiseEngine.Core.World.Utils;
+using RiseEngine.Core.GameObject;
 
 namespace RiseEngine.Core.AI.Action
 {
     public class Move : IAction
     {
+        public string gameObjectName
+        {
+            get;
+            set;
+        }
+
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
-            e.ParrentEntity.ActionProgress += GameObjectsManager.Entities[e.ParrentEntity.ID].MoveSpeed;
+            e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
             WorldLocation FocusLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
 
             if (!(e.World.entityManager.TileIsFree(FocusLocation)))
@@ -33,7 +40,7 @@ namespace RiseEngine.Core.AI.Action
                     e.World.entityManager.MoveEntity(e.CurrentLocation, FocusLocation);
                     e.ParrentEntity.Action = -1;
 
-                    GameObjectsManager.Tiles[e.ParrentTile.ID].OnEntityWalkIn(e, gametime);
+                    GameObjectsManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);
                 }
                 else
                 {

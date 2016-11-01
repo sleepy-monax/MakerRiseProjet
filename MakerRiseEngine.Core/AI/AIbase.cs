@@ -21,7 +21,7 @@ namespace RiseEngine.Core.AI
         public void ExecuteAction(GameObject.Event.GameObjectEventArgs e, GameTime gametime)
         {
             if (e.ParrentEntity.Action != -1) 
-                GameObjectsManager.Actions[e.ParrentEntity.Action].Performe(e, gametime);
+                GameObjectsManager.GetGameObject<IAction>(e.ParrentEntity.Action).Performe(e, gametime);
         }
     }
 }

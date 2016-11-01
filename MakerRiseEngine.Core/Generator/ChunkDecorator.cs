@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RiseEngine.Core.GameObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,24 +32,22 @@ namespace RiseEngine.Core.Generator
 
                     if (Chunk.Tiles[tX, tY].ID == -1) {
 
-                        Chunk.Tiles[tX, tY].ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.Biomes[W.Region[Chunk.Tiles[tX, tY].Region].BiomeID].RandomTile, Rnd);
-                        Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.Tiles[Chunk.Tiles[tX, tY].ID].MaxVariantCount);
+                        Chunk.Tiles[tX, tY].ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
+                        Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 
-                        W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectsManager.Tiles[Chunk.Tiles[tX, tY].ID].MapColor);
+                        W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
 
-                        if (Rnd.NextDouble() < GameObjectsManager.Biomes[W.Region[Chunk.Tiles[tX, tY].Region].BiomeID].EntityDensity)
+                        if (Rnd.NextDouble() < GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
                         {
 
-                            int ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.Biomes[W.Region[Chunk.Tiles[tX, tY].Region].BiomeID].RandomEntity, Rnd);
-                            int Variant = Rnd.Next(0, GameObjectsManager.Entities[ID].MaxVariantCount);
+                            int ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
+                            int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount);
 
                             Chunk.AddEntity(new World.WorldObj.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 
 
                         }
                     }
-                    
-
                 }
             }
 

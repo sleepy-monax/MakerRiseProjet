@@ -43,32 +43,35 @@ namespace RiseEngine.Core.AI.Entites
                 Speed = 5;
             }
 
+            int MoveActionIndex = GameObjectsManager.GetGameObjectIndex("Base", "Move");
+
             if (e.ParrentEntity.Action == -1)
             {
                 if (KeyBoard.IsKeyDown(Config.Controls.MoveUp))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Up;
-                    e.ParrentEntity.Action = GameObjectsManager.ActionKeys["Base.Move"];
+                    e.ParrentEntity.Action = MoveActionIndex;
                     e.ParrentEntity.Variant = MoveUpVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveDown))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Down;
-                    e.ParrentEntity.Action = GameObjectsManager.ActionKeys["Base.Move"]; ;
+                    e.ParrentEntity.Action = MoveActionIndex; 
                     e.ParrentEntity.Variant = MoveDownVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveLeft))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Left;
-                    e.ParrentEntity.Action = GameObjectsManager.ActionKeys["Base.Move"]; ;
+                    e.ParrentEntity.Action = MoveActionIndex; 
                     e.ParrentEntity.Variant = MoveLeftVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveRight))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Right;
-                    e.ParrentEntity.Action = GameObjectsManager.ActionKeys["Base.Move"]; ;
+                    e.ParrentEntity.Action = MoveActionIndex; 
                     e.ParrentEntity.Variant = MoveRightVariante;
                 }
+
             }
         }
 

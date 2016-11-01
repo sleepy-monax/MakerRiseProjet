@@ -24,7 +24,7 @@ namespace RiseEngine.Core.GameObject.Entities
 
         public int MoveSpeed { get; set; } = 5;
 
-        public string Name { get; set; } = "none";
+        public string gameObjectName { get; set; } = "none";
 
         public int MaxLife { get; set; } = 20;
 
@@ -32,12 +32,12 @@ namespace RiseEngine.Core.GameObject.Entities
 
         public Entity(string _Name, string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation)
         {
-            Name = _Name;
+            gameObjectName = _Name;
             Variant = new List<Rendering.SpriteSheets.Sprite>();
 
             foreach (string str in _SpriteVariant)
             {
-                Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[_SpriteSheet]].GetSprite(str));
+                Variant.Add(GameObjectsManager.GetGameObject<Rendering.SpriteSheets.SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
             }
             SpriteLocation = _SpriteLocation;
             DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));

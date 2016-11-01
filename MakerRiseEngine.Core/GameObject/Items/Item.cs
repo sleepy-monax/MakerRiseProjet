@@ -13,19 +13,19 @@ namespace RiseEngine.Core.GameObject.Items
 
         public List<Sprite> Variant { get; set; }
 
-        public string Name{get;set; }
+        public string gameObjectName{get;set; }
 
         public Item(string _Name, ItemType _Type, string[] _SpriteVariant, string _SpriteSheet)
         {
 
-            Name = _Name;
+            gameObjectName = _Name;
             Type = _Type;
 
             Variant = new List<Rendering.SpriteSheets.Sprite>();
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectsManager.SpriteSheets[GameObjectsManager.SpriteSheetKeys[ _SpriteSheet]].GetSprite(str));
+                Variant.Add(GameObjectsManager.GetGameObject<Rendering.SpriteSheets.SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
 
             }
 

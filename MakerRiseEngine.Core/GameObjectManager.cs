@@ -6,6 +6,7 @@ using System.IO;
 
 using RiseEngine.Core.Rendering.SpriteSheets;
 using RiseEngine.Core.Plugin;
+using RiseEngine.Core.GameObject;
 
 namespace RiseEngine.Core
 {
@@ -14,8 +15,75 @@ namespace RiseEngine.Core
     public static class GameObjectsManager
     {
 
+
+
         static bool IsLoaded = false;
 
+
+        static List<IGameObject> gameObject = new List<IGameObject>();
+        static Dictionary<string, int> gameObjectDict = new Dictionary<string, int>();
+
+        public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject _gameObject)
+        {
+
+            int gameObjectID = gameObject.Count;
+
+            _gameObject.gameObjectName = gameObjectName;
+
+            gameObject.Add(_gameObject);
+            gameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);
+
+        }
+
+       
+
+        public static T GetGameObject<T>(int index) where T : IGameObject
+        {
+            if (0 <= index && index <= gameObject.Count())
+            {
+
+                return (T)gameObject[index];
+
+            }
+            else
+            {
+
+                throw new KeyNotFoundException();
+
+            }
+        }
+
+        public static T GetGameObject<T>(this IPlugin plugin, string gameObjectName) where T : IGameObject
+        {
+            return GetGameObject<T>(plugin.Name, gameObjectName);
+        }
+        public static T GetGameObject<T>(string pluginName, string gameObjectName) where T : IGameObject
+        {
+            return GetGameObject<T>(GetGameObjectIndex(pluginName, gameObjectName));
+        }
+
+        public static int GetGameObjectIndex(this IPlugin plugin, string gameObjectName)
+        {
+
+            return GetGameObjectIndex(plugin.Name, gameObjectName);
+
+        }
+
+        public static int GetGameObjectIndex(string pluginName, string gameObjectName)
+        {
+
+            if (gameObjectDict.ContainsKey(pluginName + '.' + gameObjectName))
+            {
+                return gameObjectDict[pluginName + '.' + gameObjectName];
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
+
+        }
+
+        /*
         //Game Object
         public static Dictionary<string, int> SpriteSheetKeys = new Dictionary<string, int>();
         public static Dictionary<int, SpriteSheet> SpriteSheets = new Dictionary<int, SpriteSheet>();
@@ -26,7 +94,7 @@ namespace RiseEngine.Core
             SpriteSheetKeys.Add(_Plugin.Name + "." + _Name, SpriteSheets.Count());
             SpriteSheets.Add(SpriteSheets.Count, _SpriteSheet);
         }
- 
+
 
         public static Dictionary<string, int> ActionKeys = new Dictionary<string, int>();
         public static Dictionary<int, Core.AI.IAction> Actions = new Dictionary<int, Core.AI.IAction>();
@@ -49,7 +117,7 @@ namespace RiseEngine.Core
             Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <Item>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
             ItemKeys.Add(_Plugin.Name + "." + _Name, Items.Count());
             Items.Add(Items.Count, _Item);
-            
+
         }
 
         #endregion
@@ -100,39 +168,30 @@ namespace RiseEngine.Core
 
         #endregion
 
+            */
         #region  security
 
         public static bool IsFullLoaded()
         {
 
-            if (Tiles.Count >= 1 && Entities.Count >= 1 && Biomes.Count >= 1 && Items.Count >= 1)
+            if (gameObject.Count() != 0)
                 return true;
             return false;
         }
 
         #endregion
 
-        public static void Reload() {
+        public static void Reload()
+        {
 
             Debug.DebugLogs.WriteInLogs("[Plugin] Reloading...", Debug.LogType.Info);
 
             IsLoaded = false;
 
-            SpriteSheets.Clear();
+            gameObject.Clear();
+            gameObjectDict.Clear();
 
-            Items.Clear();
-            ItemKeys.Clear();
 
-            Biomes.Clear();
-            BiomeKey.Clear();
-
-            Entities.Clear();
-            EntityKey.Clear();
-
-            Tiles.Clear();
-            TileKeys.Clear();
-
-             
         }
 
         #region Plugin
@@ -148,7 +207,7 @@ namespace RiseEngine.Core
                 //getting all plugin.
                 foreach (string Dir in Directory.GetDirectories("Data"))
                 {
-                    
+
                     //Check if the main file existe.
                     if (File.Exists(Dir + "\\Main.cs") || File.Exists(Dir + "\\Main.vb"))
                     {
@@ -176,11 +235,11 @@ namespace RiseEngine.Core
                                 {
                                     //try
                                     //{
-                                        //Load All plugin
-                                        Plugins.Add(i.Name, i);
+                                    //Load All plugin
+                                    Plugins.Add(i.Name, i);
 
-                                        Debug.DebugLogs.WriteInLogs("[Plugin." + i.Name + "] Initializing...", Debug.LogType.Info);
-                                        Plugins[i.Name].Initialize();
+                                    Debug.DebugLogs.WriteInLogs("[Plugin." + i.Name + "] Initializing...", Debug.LogType.Info);
+                                    Plugins[i.Name].Initialize();
                                     //}
                                     //catch (Exception ex)
                                     //{
@@ -200,6 +259,7 @@ namespace RiseEngine.Core
 
             IsLoaded = true;
         }
-        #endregion
+        #endregion 
+
     }
 }

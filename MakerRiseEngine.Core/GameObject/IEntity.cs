@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RiseEngine.Core.GameObject
 {
-    public interface IEntity : IGameObject
+    public interface IEntity : IWorldGameObject
     {
 
         int MaxLife { get; set; }

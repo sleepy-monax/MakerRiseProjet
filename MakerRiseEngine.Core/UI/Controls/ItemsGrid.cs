@@ -91,7 +91,7 @@ namespace RiseEngine.Core.UI.Controls
                         {
 
 
-                            GameObjectsManager.Items[inventory.Slots[ItemKey].ID].Variant[inventory.Slots[ItemKey].Variant].Draw(spriteBatch, new Rectangle(SizeBox.X + x + Column * 64 + 16, SizeBox.Y + y + Row * 64 + 16, 32, 32), Color.White, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.IItem>(inventory.Slots[ItemKey].ID).Variant[inventory.Slots[ItemKey].Variant].Draw(spriteBatch, new Rectangle(SizeBox.X + x + Column * 64 + 16, SizeBox.Y + y + Row * 64 + 16, 32, 32), Color.White, gameTime);
                             spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), inventory.Slots[ItemKey].Count.ToString(), new Rectangle(SizeBox.X + x + Column * 64 + 24, SizeBox.Y + y + Row * 64 + 24, 32, 32), Alignment.Left, Style.DropShadow, Color.White);
 
                         }

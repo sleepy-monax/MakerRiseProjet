@@ -23,7 +23,7 @@ namespace RiseEngine.Core.Generator
             World.WorldObj.ObjRegion NewRegion = new World.WorldObj.ObjRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
-            NewRegion.BiomeID = rnd.Next(GameObjectsManager.Biomes.Count);
+            NewRegion.BiomeID = rnd.Next(GameObjectsManager.Biomes.Count();
             NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
             
 

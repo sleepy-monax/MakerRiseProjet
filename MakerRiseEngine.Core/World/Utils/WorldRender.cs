@@ -66,14 +66,14 @@ namespace RiseEngine.Core.World.Utils
                         //desin des objets
 
 
-                        GameObjectsManager.Tiles[T.ID].OnDraw(e, TileSpriteBatch, gameTime);
+                        GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, TileSpriteBatch, gameTime);
 
 
 
                         if (!(T.Entity == -1))
                         {
                             WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
-                            GameObjectsManager.Entities[E.ID].OnDraw(e, EntitySpriteBatch, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, EntitySpriteBatch, gameTime);
 
                         }
 
