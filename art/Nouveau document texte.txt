@@ -1,2 +1,0 @@
-226; 173; 115
-TilesetTree.Draw(spriteBatch, variente, 0, 1, 1, new Rectangle(DrawBox.X*zoom + ChunkScreenX, DrawBox.Y * zoom + ChunkScreenY, DrawBox.Width*zoom, DrawBox.Height*zoom), Color.White);
