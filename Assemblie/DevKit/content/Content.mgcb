@@ -1,0 +1,123 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin
+/intermediateDir:obj
+/platform:Windows
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin Songs/A Battle.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/A Battle.ogg
+
+#begin Songs/A Golden Sky at the End of the Storm.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/A Golden Sky at the End of the Storm.ogg
+
+#begin Songs/A Title.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/A Title.ogg
+
+#begin Songs/Almost There.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Almost There.ogg
+
+#begin Songs/Bye.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Bye.ogg
+
+#begin Songs/City of Funk.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/City of Funk.ogg
+
+#begin Songs/Clouds of Orange Juice.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Clouds of Orange Juice.ogg
+
+#begin Songs/Dudurumbumbumbadumbadum.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Dudurumbumbumbadumbadum.ogg
+
+#begin Songs/Heavenly Resort.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Heavenly Resort.ogg
+
+#begin Songs/Idiot's Theme.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Idiot's Theme.ogg
+
+#begin Songs/Look Up.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Look Up.ogg
+
+#begin Songs/Raindrops.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Raindrops.ogg
+
+#begin Songs/Thunder Ride.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Thunder Ride.ogg
+
+#begin Songs/Time.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Time.ogg
+
+#begin Songs/Under the Sun.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Songs/Under the Sun.ogg
+
+#begin Effects/dirtfootstep0.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Effects/dirtfootstep0.wav
+
+#begin Effects/dirtfootstep1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Effects/dirtfootstep1.wav
+
+#begin Effects/Button click.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Effects/Button click.wav
+

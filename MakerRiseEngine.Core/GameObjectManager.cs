@@ -17,6 +17,7 @@ namespace RiseEngine.Core
 
         static bool IsLoaded = false;
 
+        #region GameObjects
         static List<IGameObject> gameObject = new List<IGameObject>();
         static Dictionary<string, int> gameObjectDict = new Dictionary<string, int>();
 
@@ -79,92 +80,8 @@ namespace RiseEngine.Core
             }
         }
 
-        /*
-        //Game Object
-        public static Dictionary<string, int> SpriteSheetKeys = new Dictionary<string, int>();
-        public static Dictionary<int, SpriteSheet> SpriteSheets = new Dictionary<int, SpriteSheet>();
-
-        public static void AddSpriteSheet(this IPlugin _Plugin, string _Name, SpriteSheet _SpriteSheet)
-        {
-            Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <SpriteSheet>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
-            SpriteSheetKeys.Add(_Plugin.Name + "." + _Name, SpriteSheets.Count());
-            SpriteSheets.Add(SpriteSheets.Count, _SpriteSheet);
-        }
-
-
-        public static Dictionary<string, int> ActionKeys = new Dictionary<string, int>();
-        public static Dictionary<int, Core.AI.IAction> Actions = new Dictionary<int, Core.AI.IAction>();
-
-        public static void AddAction(this Plugin.IPlugin _Plugin, string _Name, Core.AI.IAction _Action)
-        {
-            Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <Action>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
-            ActionKeys.Add(_Plugin.Name + "." + _Name, Actions.Count());
-            Actions.Add(Actions.Count, _Action);
-
-        }
-
-        #region Item
-
-        public static Dictionary<string, int> ItemKeys = new Dictionary<string, int>();
-        public static Dictionary<int, Core.GameObject.IItem> Items = new Dictionary<int, Core.GameObject.IItem>();
-
-        public static void AddItem(this Plugin.IPlugin _Plugin, string _Name, Core.GameObject.IItem _Item)
-        {
-            Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <Item>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
-            ItemKeys.Add(_Plugin.Name + "." + _Name, Items.Count());
-            Items.Add(Items.Count, _Item);
-
-        }
-
         #endregion
 
-
-        #region Biome
-
-        public static Dictionary<string, int> BiomeKey = new Dictionary<string, int>();
-        public static Dictionary<int, Core.GameObject.Biome> Biomes = new Dictionary<int, Core.GameObject.Biome>();
-
-        public static void AddBiome(this IPlugin _Plugin, string _Name, Core.GameObject.Biome _Biome)
-        {
-            Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <Biome>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
-            BiomeKey.Add(_Plugin.Name + "." + _Name, Biomes.Count());
-            Biomes.Add(Biomes.Count, _Biome);
-
-        }
-
-        #endregion
-
-        #region Entities
-
-        public static Dictionary<string, int> EntityKey = new Dictionary<string, int>();
-        public static Dictionary<int, Core.GameObject.IEntity> Entities = new Dictionary<int, GameObject.IEntity>();
-
-        public static void AddEntity(this IPlugin _Plugin, string _Name, Core.GameObject.IEntity _Entity)
-        {
-            Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <Entity>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
-            EntityKey.Add(_Plugin.Name + "." + _Name, Entities.Count());
-            Entities.Add(Entities.Count, _Entity);
-
-        }
-
-        #endregion
-
-        #region Tiles
-
-        public static Dictionary<string, int> TileKeys = new Dictionary<string, int>();
-        public static Dictionary<int, Core.GameObject.ITile> Tiles = new Dictionary<int, Core.GameObject.ITile>();
-
-        public static void AddTile(this IPlugin _Plugin, string _Name, Core.GameObject.ITile _Tile)
-        {
-            Debug.DebugLogs.WriteInLogs("[Plugin." + _Plugin.Name + "] <Tile>" + _Plugin.Name + "." + _Name, Debug.LogType.Info);
-            TileKeys.Add(_Plugin.Name + "." + _Name, Tiles.Count());
-            Tiles.Add(Tiles.Count, _Tile);
-
-        }
-
-        #endregion
-
-            */
         #region  security
 
         public static bool IsFullLoaded()
@@ -220,22 +137,9 @@ namespace RiseEngine.Core
 
                                 foreach (Plugin.IPlugin i in PluginCollection)
                                 {
-                                    //try
-                                    //{
-                                    //Load All plugin
                                     Plugins.Add(i.Name, i);
-
                                     Debug.DebugLogs.WriteInLogs("[Plugin." + i.Name + "] Initializing...", Debug.LogType.Info);
                                     Plugins[i.Name].Initialize();
-                                    //}
-                                    //catch (Exception ex)
-                                    //{
-
-                                    //    Debug.Logs.Write("Failed to load " + i.Name + " !", Debug.LogType.Warning, "Plugin");
-                                    //    System.Windows.Forms.MessageBox.Show(ex.ToString());
-                                    //    throw;
-                                    //}
-
                                 }
                             }
                         }

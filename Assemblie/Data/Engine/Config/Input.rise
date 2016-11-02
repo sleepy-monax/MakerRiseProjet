@@ -1,0 +1,10 @@
+MoveUP:90;
+MoveDown:83;
+MoveLeft:81;
+MoveRight:68;
+MoveRun:160;
+Interact:69;
+Attack:65;
+ShowInventory:69;
+ShowMenu:27;
+ShowChat:84;
