@@ -15,13 +15,14 @@ SpriteSheetParse  Warning Syntaxe error on 'Engine.Tilesheet_Cursor' Ln3
  Info [ContentEngine] Load <SpriteFont>Engine.segoeUI_16pt
  Info [ContentEngine] Load <Texture2D>Engine.Logo
  Info [ContentEngine] Load <Texture2D>Engine.MakerLogo
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Forest\Background
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Forest\MiddleTrees
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Forest\Lights
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Forest\FrontTrees
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Backgound
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\FarStars
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Noise
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Stars
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Cloud
  Info [ContentEngine] Load <SoundEffect>Engine.ButtonClick
  Info [ContentEngine] Load <SpriteFont>Engine.Consolas_16pt
- Info [ContentEngine] Load <Song>Engine.Look Up
+ Info [ContentEngine] Load <Song>Engine.Clouds of Orange Juice
  Info [ContentEngine] Load <Texture2D>Engine.MonoGameLogo
  Info [Engine] Initializing...
  Info [Plugin.Builder] Compilation success! 'Data\Base\Plugin.dll'
