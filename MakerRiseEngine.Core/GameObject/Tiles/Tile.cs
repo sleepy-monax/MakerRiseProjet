@@ -25,32 +25,32 @@ namespace RiseEngine.Core.GameObject.Tiles
 
         
 
-        public List<Rendering.SpriteSheets.Sprite> Variant;
+        public List<Sprite> Variant;
 
         SoundEffectColection SE;
-        bool AsSE = false;
+        bool AsSoundEffect = false;
 
         public Tile(string[] _SpriteVariant, string _SpriteSheet, System.Drawing.Color _MapColor)
         {
             MapColor = _MapColor;
 
-            this.Variant = new List<Rendering.SpriteSheets.Sprite>();
+            this.Variant = new List<Sprite>();
 
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectsManager.GetGameObject<Rendering.SpriteSheets.SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameObjectsManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
 
             }
             MaxVariantCount = Variant.Count;
 
         }
 
-        public void SetSouneffect(SoundEffectColection _SE)
+        public void SetSoundEffect(SoundEffectColection _SE)
         {
 
             SE = _SE;
-            AsSE = true;
+            AsSoundEffect = true;
 
         }
 
@@ -70,10 +70,10 @@ namespace RiseEngine.Core.GameObject.Tiles
 
         public void OnEntityWalkIn(GameObjectEventArgs e, GameTime gametime)
         {
-            if (AsSE)
+            if (AsSoundEffect)
             {
 
-                Audio.SoundEffectEngine.PlaySoundEffects(SE);
+                SoundEffectEngine.PlaySoundEffects(SE);
 
             }
         }
@@ -88,10 +88,6 @@ namespace RiseEngine.Core.GameObject.Tiles
          
         }
 
-        public Sprite GetSprite(GameObjectEventArgs e)
-        {
-            return Variant[e.ParrentTile.Variant];
-        }
 
         public void OnGameObjectAdded()
         {

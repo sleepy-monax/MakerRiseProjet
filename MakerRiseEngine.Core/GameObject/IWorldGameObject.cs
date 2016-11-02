@@ -18,7 +18,6 @@ namespace RiseEngine.Core.GameObject
         void OnUpdate(Event.GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime);
         void OnDraw(Event.GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime);
 
-        Rendering.SpriteSheets.Sprite GetSprite(Event.GameObjectEventArgs e);
 
     }
 }

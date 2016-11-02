@@ -14,6 +14,8 @@ namespace RiseEngine.Core.World
     public class WorldScene : Idrawable
     {
 
+        
+
         public ObjChunk[,] Chunks;
         public Dictionary<int, ObjRegion> Region;
         public Generator.ChunkDecorator chunkDecorator;
@@ -48,8 +50,6 @@ namespace RiseEngine.Core.World
             Region = new Dictionary<int, ObjRegion>();
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
             Noise = new GameMath.Noise.PerlinNoise(worldProperty.Seed);
-
-
 
             worldUpdater = new Utils.WorldUpdater(this);
             chunkManager = new Utils.ChunkManager(this);
