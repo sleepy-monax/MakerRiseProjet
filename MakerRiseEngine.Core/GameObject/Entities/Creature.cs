@@ -13,7 +13,7 @@ namespace RiseEngine.Core.GameObject.Entities
     {
         public AI.AIbase IA { get; set; }
 
-        public Creature(string _Name, AI.AIbase _IA, string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation) : base(_Name, _SpriteVariant, _SpriteSheet, _SpriteLocation)
+        public Creature(AI.AIbase _IA, string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation) : base(_SpriteVariant, _SpriteSheet, _SpriteLocation)
         {
             IA = _IA;
         }

@@ -15,20 +15,23 @@ namespace RiseEngine.Core.GameObject.Tiles
 {
     public class Tile : ITile
     {
+        public string gameObjectName { get; set; }
+        public string pluginName { get; set; }
+
+
         public System.Drawing.Color MapColor { get;set; }
 
         public int MaxVariantCount { get; set; }
 
-        public string gameObjectName { get; set; }
+        
 
         public List<Rendering.SpriteSheets.Sprite> Variant;
 
         SoundEffectColection SE;
         bool AsSE = false;
 
-        public Tile(string _Name, string[] _SpriteVariant, string _SpriteSheet, System.Drawing.Color _MapColor)
+        public Tile(string[] _SpriteVariant, string _SpriteSheet, System.Drawing.Color _MapColor)
         {
-            gameObjectName = _Name;
             MapColor = _MapColor;
 
             this.Variant = new List<Rendering.SpriteSheets.Sprite>();
@@ -90,6 +93,9 @@ namespace RiseEngine.Core.GameObject.Tiles
             return Variant[e.ParrentTile.Variant];
         }
 
+        public void OnGameObjectAdded()
+        {
 
+        }
     }
 }

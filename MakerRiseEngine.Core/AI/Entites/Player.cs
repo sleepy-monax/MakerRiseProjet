@@ -43,7 +43,7 @@ namespace RiseEngine.Core.AI.Entites
                 Speed = 5;
             }
 
-            int MoveActionIndex = GameObjectsManager.GetGameObjectIndex("Base", "Move");
+            int MoveActionIndex = GameObjectsManager.GetGameObjectIndex("Base.Move");
 
             if (e.ParrentEntity.Action == -1)
             {

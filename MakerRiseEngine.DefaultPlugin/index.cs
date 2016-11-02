@@ -21,9 +21,6 @@ namespace RiseEngine.DefaultPlugin
 
         public void Initialize()
         {
-
-
-
             this.AddGameObject("Move", new Core.AI.Action.Move());
 
             //TileSheet
@@ -34,30 +31,30 @@ namespace RiseEngine.DefaultPlugin
             this.AddGameObject("Tilesheet_Water", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
 
             //Items
-            this.AddGameObject("Stick", new Core.GameObject.Items.Item("Stick", Core.GameObject.ItemType.Crafting, new string[] { "Stick" }, "Base.Tilesheet_Item"));
-            this.AddGameObject("Apple", new Core.GameObject.Items.Item("Apple", Core.GameObject.ItemType.Food, new string[] { "AppleRed", "AppleGreen", "AppleYellow" }, "Base.Tilesheet_Item"));
+            this.AddGameObject("Stick", new Core.GameObject.Items.Item(Core.GameObject.ItemType.Crafting, new string[] { "Stick" }, "Base.Tilesheet_Item"));
+            this.AddGameObject("Apple", new Core.GameObject.Items.Item(Core.GameObject.ItemType.Food, new string[] { "AppleRed", "AppleGreen", "AppleYellow" }, "Base.Tilesheet_Item"));
 
             //Tiles
-            Core.GameObject.Tiles.Tile Grass = new Core.GameObject.Tiles.Tile("Grass", new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11));
+            Core.GameObject.Tiles.Tile Grass = new Core.GameObject.Tiles.Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11));
             Grass.SetSouneffect(SoundEffectParser.Parse(this.Name, "dirtfootstep"));
             this.AddGameObject("Grass", Grass);
 
 
-            this.AddGameObject("FlowerOnGrass", new Core.GameObject.Tiles.Tile("FlowerOnGrass", new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11)));
-            this.AddGameObject("Sand", new Core.GameObject.Tiles.Tile("Sand", new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.Yellow));
-            this.AddGameObject("Water", new Core.GameObject.Tiles.Tile("Water", new string[] { "Water" }, "Base.Tilesheet_Water", System.Drawing.Color.Blue));
+            this.AddGameObject("FlowerOnGrass", new Core.GameObject.Tiles.Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11)));
+            this.AddGameObject("Sand", new Core.GameObject.Tiles.Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.Yellow));
+            this.AddGameObject("Water", new Core.GameObject.Tiles.Tile(new string[] { "Water" }, "Base.Tilesheet_Water", System.Drawing.Color.Blue));
 
             //Entity
 
-            this.AddGameObject("BigTree", new Core.GameObject.Entities.Entity("BigTree", new string[] { "BigTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
-            this.AddGameObject("PinTree", new Core.GameObject.Entities.Entity("PinTree", new string[] { "PinTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
-            this.AddGameObject("LargeTree", new Core.GameObject.Entities.Entity("LargeTree", new string[] { "LargeTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -1f)));
-            this.AddGameObject("Rock", new Core.GameObject.Entities.Entity("Rock", new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
-            this.AddGameObject("Plant", new Core.GameObject.Entities.Entity("Plant", new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
-            this.AddGameObject("Player", new Core.GameObject.Entities.Creature("Player", new Core.AI.Entites.Player(0, 1, 2, 3, 4), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle" }, "Base.Tilesheet_Creatures", new Vector2(0, 0)));
+            this.AddGameObject("BigTree", new Core.GameObject.Entities.Entity(new string[] { "BigTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
+            this.AddGameObject("PinTree", new Core.GameObject.Entities.Entity(new string[] { "PinTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
+            this.AddGameObject("LargeTree", new Core.GameObject.Entities.Entity(new string[] { "LargeTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -1f)));
+            this.AddGameObject("Rock", new Core.GameObject.Entities.Entity(new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("Plant", new Core.GameObject.Entities.Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("Player", new Core.GameObject.Entities.Creature(new Core.AI.Entites.Player(0, 1, 2, 3, 4), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle" }, "Base.Tilesheet_Creatures", new Vector2(0, 0)));
 
             //Biome
-            this.AddGameObject("Plains", new Core.GameObject.Biome("Plains", 0.1,
+            this.AddGameObject("Plains", new Core.GameObject.Biome( 0.1,
                  new KeyWeightPair<int>[] {
                     new KeyWeightPair<int>(this.GetGameObjectIndex("Rock"), 0.5),
                     new KeyWeightPair<int>(this.GetGameObjectIndex("Plant"), 0.5)
@@ -70,7 +67,7 @@ namespace RiseEngine.DefaultPlugin
 
 
             
-            this.AddGameObject("Forest", new Core.GameObject.Biome("Forest", 0.3,
+            this.AddGameObject("Forest", new Core.GameObject.Biome(0.3,
                 new KeyWeightPair<int>[] {
                     new KeyWeightPair<int>(this.GetGameObjectIndex("BigTree"), 0.3),
                     new KeyWeightPair<int>(this.GetGameObjectIndex("PinTree"), 0.3),
@@ -83,8 +80,8 @@ namespace RiseEngine.DefaultPlugin
 
                 }));
 
-            this.AddGameObject("Ocean", new Core.GameObject.Biome("Ocean", 0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
-            this.AddGameObject("Desert", new Core.GameObject.Biome("Desert", 0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
+            this.AddGameObject("Ocean", new Core.GameObject.Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
+            this.AddGameObject("Desert", new Core.GameObject.Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
 
         }
 

@@ -15,41 +15,39 @@ namespace RiseEngine.Core
     public static class GameObjectsManager
     {
 
-
-
         static bool IsLoaded = false;
-
 
         static List<IGameObject> gameObject = new List<IGameObject>();
         static Dictionary<string, int> gameObjectDict = new Dictionary<string, int>();
 
         public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject _gameObject)
         {
-
             int gameObjectID = gameObject.Count;
 
             _gameObject.gameObjectName = gameObjectName;
+            _gameObject.pluginName = plugin.Name;
 
             gameObject.Add(_gameObject);
             gameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);
 
+            _gameObject.OnGameObjectAdded();
         }
 
-       
+        internal static int GetGameObjectIndex(string gameObjectID)
+        {
+            string[] Names = gameObjectID.Split('.');
+            return GetGameObjectIndex(Names[0], Names[1]);
+        }
 
         public static T GetGameObject<T>(int index) where T : IGameObject
         {
             if (0 <= index && index <= gameObject.Count())
             {
-
                 return (T)gameObject[index];
-
             }
             else
             {
-
                 throw new KeyNotFoundException();
-
             }
         }
 
@@ -71,7 +69,6 @@ namespace RiseEngine.Core
 
         public static int GetGameObjectIndex(string pluginName, string gameObjectName)
         {
-
             if (gameObjectDict.ContainsKey(pluginName + '.' + gameObjectName))
             {
                 return gameObjectDict[pluginName + '.' + gameObjectName];
@@ -80,7 +77,6 @@ namespace RiseEngine.Core
             {
                 throw new KeyNotFoundException();
             }
-
         }
 
         /*
@@ -173,7 +169,6 @@ namespace RiseEngine.Core
 
         public static bool IsFullLoaded()
         {
-
             if (gameObject.Count() != 0)
                 return true;
             return false;
@@ -183,15 +178,12 @@ namespace RiseEngine.Core
 
         public static void Reload()
         {
-
             Debug.DebugLogs.WriteInLogs("[Plugin] Reloading...", Debug.LogType.Info);
 
             IsLoaded = false;
 
             gameObject.Clear();
             gameObjectDict.Clear();
-
-
         }
 
         #region Plugin
@@ -203,24 +195,19 @@ namespace RiseEngine.Core
         {
             if (IsLoaded == false)
             {
-
                 //getting all plugin.
                 foreach (string Dir in Directory.GetDirectories("Data"))
                 {
-
                     //Check if the main file existe.
                     if (File.Exists(Dir + "\\Main.cs") || File.Exists(Dir + "\\Main.vb"))
                     {
-
                         //Building file.
                         BuildOutput builderOutput = Builder.Build(Dir + "\\Main.cs", Dir + "\\Plugin.dll");
                         if (builderOutput.Sucess)
                         {
-
                             //Load Plugin
                             LoadedAssemblies.Add(Dir.Split('\\').Last(), builderOutput.Result.CompiledAssembly);
                             ICollection<Plugin.IPlugin> PluginCollection = Plugin.PluginLoader.LoadPlugin(builderOutput.Result.CompiledAssembly);
-
 
                             if (PluginCollection.Count == 0)
                             {
@@ -248,7 +235,6 @@ namespace RiseEngine.Core
                                     //    System.Windows.Forms.MessageBox.Show(ex.ToString());
                                     //    throw;
                                     //}
-
 
                                 }
                             }

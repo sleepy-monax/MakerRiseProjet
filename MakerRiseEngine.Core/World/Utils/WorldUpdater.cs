@@ -51,8 +51,8 @@ namespace RiseEngine.Core.World.Utils
                             WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
                             E.Location = CurrentLocation.ToWorldLocation();
 
-                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
-                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
                         }
 
                     }

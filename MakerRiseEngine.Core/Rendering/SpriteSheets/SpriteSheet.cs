@@ -17,6 +17,12 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
 
         public string gameObjectName{get;set;}
 
+        public string pluginName
+        {
+            get;
+            set;
+        }
+
         public SpriteSheet(string PluginName, Texture2D _SpriteSheet, string _SpriteMapName, Point _SpriteSize)
         {
 
@@ -162,5 +168,8 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
 
         }
 
+        public void OnGameObjectAdded()
+        {
+        }
     }
 }

@@ -20,6 +20,17 @@ namespace RiseEngine.Core.AI.Action
             set;
         }
 
+        public string pluginName
+        {
+            get;
+            set;
+        }
+
+        public void OnGameObjectAdded()
+        {
+            
+        }
+
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
             e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;

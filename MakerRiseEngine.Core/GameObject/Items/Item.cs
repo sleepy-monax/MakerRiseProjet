@@ -9,16 +9,14 @@ namespace RiseEngine.Core.GameObject.Items
 {
     public class Item : IItem
     {
-        public ItemType Type { get; set; }
+        public string gameObjectName { get; set; }
+        public string pluginName { get; set; }
 
+        public ItemType Type { get; set; }
         public List<Sprite> Variant { get; set; }
 
-        public string gameObjectName{get;set; }
-
-        public Item(string _Name, ItemType _Type, string[] _SpriteVariant, string _SpriteSheet)
+        public Item(ItemType _Type, string[] _SpriteVariant, string _SpriteSheet)
         {
-
-            gameObjectName = _Name;
             Type = _Type;
 
             Variant = new List<Rendering.SpriteSheets.Sprite>();
@@ -29,6 +27,11 @@ namespace RiseEngine.Core.GameObject.Items
 
             }
 
+
+        }
+
+        public void OnGameObjectAdded()
+        {
 
         }
     }

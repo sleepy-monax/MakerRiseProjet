@@ -10,7 +10,7 @@ namespace RiseEngine.Core.Config
     {
 
         public static int ViewDistance = 32;
-        public static bool FullScreen = true;
+        public static bool FullScreen = false;
 
         public static Storage.DataSheet DS = new Storage.DataSheet("Game\\Config\\Input.rise");
         public static void Load()

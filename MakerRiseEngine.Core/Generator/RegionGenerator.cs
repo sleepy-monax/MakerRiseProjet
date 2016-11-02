@@ -12,20 +12,22 @@ namespace RiseEngine.Core.Generator
 
         WorldGenerator worldGenerator;
 
-        public RegionGenerator(WorldGenerator _WorldGenerator) {
+        public RegionGenerator(WorldGenerator _WorldGenerator)
+        {
 
             worldGenerator = _WorldGenerator;
 
         }
 
-        public void GenerateRegion(int ID,WorldLocation Location, World.WorldScene NewWorld, Random rnd) {
+        public void GenerateRegion(int ID, WorldLocation Location, World.WorldScene NewWorld, Random rnd)
+        {
 
             World.WorldObj.ObjRegion NewRegion = new World.WorldObj.ObjRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
-            NewRegion.BiomeID = rnd.Next(GameObjectsManager.Biomes.Count();
+            NewRegion.BiomeID =  GameObjectsManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
             NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
-            
+
 
             NewWorld.Region.Add(ID, NewRegion);
 
