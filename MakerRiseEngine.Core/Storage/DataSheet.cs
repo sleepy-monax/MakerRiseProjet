@@ -28,7 +28,7 @@ namespace RiseEngine.Core.Storage
 
                 //Reading Sheet from the file
                 System.IO.StreamReader sr = new System.IO.StreamReader(sheetPath);
-                string RawText = sr.ReadToEnd();
+                string RawText = sr.ReadToEnd().ToDosLineEnd();
                 sr.Close();
 
                 //parse file

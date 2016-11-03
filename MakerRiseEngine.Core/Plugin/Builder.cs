@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.CodeDom.Compiler;
 using System.Reflection;
+using RiseEngine.Core.Storage;
 
 namespace RiseEngine.Core.Plugin
 {
@@ -47,7 +48,7 @@ namespace RiseEngine.Core.Plugin
 
                 //Reading the source file
                 System.IO.StreamReader sr = new System.IO.StreamReader(SourcePath);
-                string Code = sr.ReadToEnd();
+                string Code = sr.ReadToEnd().ToDosLineEnd();
                 sr.Close();
 
 

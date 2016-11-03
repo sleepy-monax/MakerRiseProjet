@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using RiseEngine.Core.GameObject;
+using RiseEngine.Core.Storage;
 
 namespace RiseEngine.Core.Rendering.SpriteSheets
 {
@@ -38,7 +39,7 @@ namespace RiseEngine.Core.Rendering.SpriteSheets
 
             //Creating and read the tilemap file.
             System.IO.StreamReader srMap = new System.IO.StreamReader("Data\\" + PluginName + "\\SpriteSheet\\" + _TileMapName + ".rise");
-            string SheetMapString = srMap.ReadToEnd().Replace(System.Environment.NewLine, "");
+            string SheetMapString = srMap.ReadToEnd().ToDosLineEnd().Replace(System.Environment.NewLine, "");
             srMap.Close();
 
             // Create new instance of TilesColection

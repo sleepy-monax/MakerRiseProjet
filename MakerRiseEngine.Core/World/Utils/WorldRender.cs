@@ -75,6 +75,13 @@ namespace RiseEngine.Core.World.Utils
                             WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
                             GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, EntitySpriteBatch, gameTime);
 
+                            if (Config.Debug.WorldOverDraw && E.IsFocus) {
+
+                                EntitySpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2,2) + E.OnTileLocation, Color.Black);
+                                EntitySpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.OnTileLocation, Color.White);
+
+                            }
+
                         }
 
                     }

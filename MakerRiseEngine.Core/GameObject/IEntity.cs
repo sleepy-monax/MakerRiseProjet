@@ -17,7 +17,14 @@ namespace RiseEngine.Core.GameObject
         int MoveSpeed { get; set; }
         int MoveRunSpeed { get; set; }
 
-        void OnEntityInteract(Event.GameObjectEventArgs eThisEntity, Event.GameObjectEventArgs eInteratingEntity);
+        float GetDamage(Event.GameObjectEventArgs e);
+        float GetDefence(Event.GameObjectEventArgs e);
+        void OnDamageTaken(Event.GameObjectEventArgs e);
+        void OnEntityDestroy(Event.GameObjectEventArgs e);
+
+
+        void OnEntityInteract(Event.GameObjectEventArgs e, Event.GameObjectEventArgs eInteratingEntity);
+
 
     }
 }

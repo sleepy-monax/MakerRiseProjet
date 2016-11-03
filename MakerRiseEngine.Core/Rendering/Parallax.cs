@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Globalization;
+using RiseEngine.Core.Storage;
 
 namespace RiseEngine.Core.Rendering
 {
@@ -87,7 +88,7 @@ namespace RiseEngine.Core.Rendering
             culture.NumberFormat.NumberDecimalSeparator = ".";
 
             System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\Textures2D\\Parallax\\" + _Name + ".rise");
-            string f = sr.ReadToEnd();
+            string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
 
             f = f.Replace(System.Environment.NewLine, "");

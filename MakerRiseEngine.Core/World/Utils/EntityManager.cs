@@ -46,7 +46,7 @@ namespace RiseEngine.Core.World.Utils
         public bool MoveEntity(WorldLocation _FromLocation, WorldLocation _ToLocation)
         {
 
-            WorldObj.ObjTile Tile = W.chunkManager.GetTile(_FromLocation);
+            ObjTile Tile = W.chunkManager.GetTile(_FromLocation);
 
             //on verifie si il y a une entitée
             if (Tile.Entity == -1)
@@ -62,7 +62,7 @@ namespace RiseEngine.Core.World.Utils
             }
 
             //et enfin on le deplace
-            WorldObj.ObjEntity EntityToMove = W.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
+            ObjEntity EntityToMove = W.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
 
             RemoveEntity(_FromLocation);
             AddEntity(EntityToMove, _ToLocation);
@@ -74,7 +74,7 @@ namespace RiseEngine.Core.World.Utils
         public bool TileIsFree(WorldLocation _WorldLocation)
         {
 
-            WorldObj.ObjTile ThisTile = W.chunkManager.GetTile(_WorldLocation);
+            ObjTile ThisTile = W.chunkManager.GetTile(_WorldLocation);
             if (ThisTile.Entity == -1) return true;
 
             return false;

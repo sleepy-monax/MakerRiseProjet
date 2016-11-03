@@ -16,6 +16,11 @@ namespace RiseEngine.Core.World.WorldObj
         public int ID = 0;
         public int Variant = 0;
 
+        //Stats
+
+        public float maxHeal = 1;
+        public float heal = 1;
+
         //IA
         public AI.Utils.Facing Facing = AI.Utils.Facing.Down;
         public WorldLocation Location;
@@ -24,7 +29,7 @@ namespace RiseEngine.Core.World.WorldObj
 
         //Tags
 
-        Storage.NamedBinaryTag.Tags.NbtCompound rootCompound;
+        NbtCompound rootNbtCompound;
 
         //entity Moving
         public Vector2 OnTileLocation = Vector2.Zero;
@@ -36,7 +41,11 @@ namespace RiseEngine.Core.World.WorldObj
             ID = _ID;
             Variant = _Variant;
 
-            rootCompound = new Storage.NamedBinaryTag.Tags.NbtCompound();
+            rootNbtCompound = new NbtCompound();
+        }
+
+        public ObjEntity(NbtCompound nbtEntity) {
+
         }
 
         public NbtCompound ToNbtCompound()
@@ -46,6 +55,7 @@ namespace RiseEngine.Core.World.WorldObj
             nbtObjEntity.Tags.Add(new NbtInt("id", ID));
             nbtObjEntity.Tags.Add(new NbtInt("variant", Variant));
             nbtObjEntity.Tags.Add(new NbtInt("facing", (int)Facing));
+            nbtObjEntity.Tags.Add(new NbtFloat("heal", heal));
 
             return nbtObjEntity;
 

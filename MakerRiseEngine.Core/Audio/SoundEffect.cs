@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
+using RiseEngine.Core.Storage;
 
 namespace RiseEngine.Core.Audio
 {
@@ -23,7 +24,7 @@ namespace RiseEngine.Core.Audio
         public static SoundEffectColection Parse(string _PluginName, string _Name) {
 
             System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\SoundsEffects\\" + _Name + ".rise");
-            string f = sr.ReadToEnd();
+            string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
 
             f = f.Replace(System.Environment.NewLine, "");

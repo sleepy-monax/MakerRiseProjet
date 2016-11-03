@@ -75,5 +75,25 @@ namespace RiseEngine.Core.GameObject.Entities
         public void OnGameObjectAdded()
         {
         }
+
+        public float GetDamage(GameObjectEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public float GetDefence(GameObjectEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDamageTaken(GameObjectEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEntityDestroy(GameObjectEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
