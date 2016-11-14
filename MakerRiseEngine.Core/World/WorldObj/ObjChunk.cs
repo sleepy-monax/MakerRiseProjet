@@ -6,14 +6,17 @@ using System.Text;
 
 namespace RiseEngine.Core.World.WorldObj
 {
+
+    public enum chunkStatutList { Done, onDecoration, needDecoration}
+
     [Serializable]
     public class ObjChunk
     {
         public Dictionary<int, WorldObj.ObjEntity> Entities = new Dictionary<int, WorldObj.ObjEntity>();
-        public WorldObj.ObjTile[,] Tiles = new ObjTile[16, 16];
+        public ObjTile[,] Tiles = new ObjTile[16, 16];
 
-        
-        public bool IsDone = false; //cette valeur est passé à true quand le chunk a été décoré.
+
+        public chunkStatutList chunkStatut = chunkStatutList.needDecoration; //cette valeur est passé à true quand le chunk a été décoré.
 
         public void AddEntity(WorldObj.ObjEntity _Entity, Point Location)
         {

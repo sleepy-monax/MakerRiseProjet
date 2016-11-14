@@ -32,7 +32,7 @@ namespace RiseEngine.Core.World.Utils
 
             W = _WorldScene;
 
-            Zoom = 64;
+            Zoom = 8;
             Size = new Point(Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight);
 
             FocusLocation = Point.Zero;

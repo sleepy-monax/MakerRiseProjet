@@ -15,14 +15,14 @@ SpriteSheetParse  Warning Syntaxe error on 'Engine.Tilesheet_Cursor' Ln3
  Info [ContentEngine] Load <SpriteFont>Engine.segoeUI_16pt
  Info [ContentEngine] Load <Texture2D>Engine.Logo
  Info [ContentEngine] Load <Texture2D>Engine.MakerLogo
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Dusk Mountain\Background
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Dusk Mountain\FarMontain
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Dusk Mountain\Mountains
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Dusk Mountain\Trees
- Info [ContentEngine] Load <Texture2D>Engine.Parallax\Dusk Mountain\ForegroundTrees
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Backgound
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\FarStars
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Noise
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Stars
+ Info [ContentEngine] Load <Texture2D>Engine.Parallax\Void\Cloud
  Info [ContentEngine] Load <SoundEffect>Engine.ButtonClick
  Info [ContentEngine] Load <SpriteFont>Engine.Consolas_16pt
- Info [ContentEngine] Load <Song>Engine.A Title
+ Info [ContentEngine] Load <Song>Engine.Clouds of Orange Juice
  Info [ContentEngine] Load <Texture2D>Engine.MonoGameLogo
  Info [Engine] Initializing...
  Info [Plugin.Builder] Compilation success! 'Data\Base\Plugin.dll'
@@ -41,4 +41,26 @@ SpriteSheetParse  Warning Syntaxe error on 'Base.Tilesheet_Water' Ln17
  Info [ContentEngine] Load <SoundEffect>Base.dirtfootstep0
  Info [ContentEngine] Load <SoundEffect>Base.dirtfootstep1
  Info [Engine] Initializing Done !
+ Info [ContentEngine] Load <Texture2D>Engine.Loading
+ Info [WorldGenerator] Creating Random Point
+ Info [WorldGenerator] Expending Region
+ Info [WorldGenerator] Creating Chunk
+ Info Generator elapsed time : 3113
+ Info [ChunkDecorator] Generating 3 : 4 ...
+ Info [ChunkDecorator] Generating 3 : 3 ...
+ Info [ChunkDecorator] Generating 3 : 6 ...
+ Info [ChunkDecorator] Generating 3 : 7 ...
+ Info [ChunkDecorator] Generating 3 : 5 ...
+ Info [ChunkDecorator] Generating 4 : 3 ...
+ Info [IO] Saving chunk 3,7
+ Info [IO] Saving chunk 3,4
+ Info [ChunkDecorator] Generating 4 : 5 ...
+ Info [ChunkDecorator] Generating 4 : 4 ...
+ Info [ChunkDecorator] Generating 4 : 6 ...
+ Info [ChunkDecorator] Generating 4 : 7 ...
+ Info [ChunkDecorator] Generating 5 : 3 ...
+ Info [IO] Saving chunk 4,4
+ Info [ChunkDecorator] Generating 5 : 4 ...
+ Info [IO] Saving chunk 3,5
+ Info [IO] Saving chunk 4,6
 

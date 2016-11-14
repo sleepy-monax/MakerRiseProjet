@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.Scene
+namespace Maker.RiseEngine.Core.Scene
 {
-    interface IScene : Idrawable
+    class SceneManager
     {
-        void Intitialize();
     }
 }

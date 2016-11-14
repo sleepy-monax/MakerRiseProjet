@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16308.1711.558</AssemblyVersion>
+    <AssemblyVersion>0.16318.1651.594</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -80,6 +80,8 @@
     <Compile Include="GameMath\Noise\Simplex.cs" />
     <Compile Include="GameMath\RandomHelper.cs" />
     <Compile Include="GameObject\IWorldGameObject.cs" />
+    <Compile Include="GameScene\GameScene.cs" />
+    <Compile Include="GameScene\GameSceneManager.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
     <Compile Include="Debug\FrameCounter.cs" />
@@ -107,12 +109,12 @@
     <Compile Include="Plugin\Builder.cs" />
     <Compile Include="Rendering\Parallax.cs" />
     <Compile Include="Rendering\SpriteFontDraw.cs" />
-    <Compile Include="Scene\IScene.cs" />
     <Compile Include="Scene\SplashScreen.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\Loader.cs" />
     <Compile Include="Rendering\Primitives2D.cs" />
     <Compile Include="Scene\UItest.cs" />
+    <Compile Include="Scene\WorldGenerating.cs" />
     <Compile Include="Storage\DataSheet.cs" />
     <Compile Include="Rendering\BitmapHelper.cs" />
     <Compile Include="Rendering\SpriteSheets\CommonSheets.cs" />

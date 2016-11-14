@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.GameObject.Event;
 using RiseEngine.Core.Rendering.SpriteSheets;
+using RiseEngine.Core.World.WorldObj;
 
 namespace RiseEngine.Core.GameObject.Entities
 {
@@ -19,18 +20,22 @@ namespace RiseEngine.Core.GameObject.Entities
 
         //Drawing Property
         public Rectangle DrawBox;
-        public List<Rendering.SpriteSheets.Sprite> Variant;
+        public List<Sprite> Variant;
 
         //Determine la position de l'entiter sur la case
         public Vector2 SpriteLocation = new Vector2(0, -1f);
 
         public int MaxVariantCount { get; set; }
 
-        public int MoveSpeed { get; set; } = 5;
+        public int MoveSpeed { get; set; } = 50;
 
         public int MaxLife { get; set; } = 20;
 
-        public int MoveRunSpeed { get; set; } = 10;
+        public int MoveRunSpeed { get; set; } = 100;
+
+        public bool canTakeDamage { get; set; } = false;
+
+        public bool canBeKilled { get; set; } = false;
 
         public Entity(string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation)
         {
@@ -67,33 +72,36 @@ namespace RiseEngine.Core.GameObject.Entities
             
         }
 
-        public Sprite GetSprite(GameObjectEventArgs e)
-        {
-            return Variant[e.ParrentEntity.Variant];
-        }
-
         public void OnGameObjectAdded()
         {
         }
 
+        public float damage = 5;
         public float GetDamage(GameObjectEventArgs e)
         {
-            throw new NotImplementedException();
+            return damage;
         }
 
+        public float defence = 0;
         public float GetDefence(GameObjectEventArgs e)
         {
-            throw new NotImplementedException();
+            return defence;
         }
 
         public void OnDamageTaken(GameObjectEventArgs e)
         {
-            throw new NotImplementedException();
+            Debug.DebugLogs.WriteInLogs("Take Damages" + e.ParrentEntity.heal);
         }
 
         public void OnEntityDestroy(GameObjectEventArgs e)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void OnEntityKilled(GameObjectEventArgs e, ObjEntity entityKills)
+        {
+            e.World.entityManager.RemoveEntity(e.CurrentLocation);
+            Debug.DebugLogs.WriteInLogs("Dead");
         }
     }
 }

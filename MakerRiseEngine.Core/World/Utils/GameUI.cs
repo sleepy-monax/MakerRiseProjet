@@ -73,7 +73,7 @@ namespace RiseEngine.Core.World.Utils
             GameUIContainer = new UI.Container(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), false, UI.Dock.UpLeft, Color.White);
             miniMap = new UI.Controls.MiniMap(16, 16, W);
 
-            GameUIContainer.Controls.Add(miniMap);
+            //GameUIContainer.Controls.Add(miniMap);
             cManager.AddContainer("GameUI", GameUIContainer);
 
             //Chat

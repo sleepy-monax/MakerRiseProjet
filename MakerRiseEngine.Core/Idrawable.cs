@@ -8,7 +8,7 @@ namespace RiseEngine.Core
     public interface Idrawable
     {
 
-        void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime);
+        void Update(MouseState mouse, KeyboardState keyBoard, GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, GameTime gameTime);
             
     }

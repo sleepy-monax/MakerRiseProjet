@@ -22,6 +22,7 @@ namespace RiseEngine.DefaultPlugin
         public void Initialize()
         {
             this.AddGameObject("Move", new Core.AI.Action.Move());
+            this.AddGameObject("Attack", new Core.AI.Action.Attack());
 
             //TileSheet
             this.AddGameObject("Tilesheet_Terrain", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));

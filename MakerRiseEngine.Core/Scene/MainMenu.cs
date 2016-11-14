@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using RiseEngine.Core.Rendering;
 using RiseEngine.Core.World;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 using static RiseEngine.Core.Rendering.SpriteFontDraw;
 
@@ -396,16 +397,25 @@ namespace RiseEngine.Core.Scene
         private void CreateWorld()
         {
 
-            World.Utils.WorldProperty wrldp = new World.Utils.WorldProperty()
+            ThreadStart GenHandle = new ThreadStart(delegate
             {
-                WorldName = NewWrldNameTextBox.Text,
-                Seed = int.Parse(NewWrldSeedTextBox.Text)
-            };
+                World.Utils.WorldProperty wrldp = new World.Utils.WorldProperty()
+                {
+                    WorldName = NewWrldNameTextBox.Text,
+                    Seed = int.Parse(NewWrldSeedTextBox.Text)
+                };
 
-            Generator.WorldGenerator Gen = new Generator.WorldGenerator(wrldp);
-            WorldScene wrldsc = Gen.Generate();
+                Generator.WorldGenerator Gen = new Generator.WorldGenerator(wrldp);
+                WorldScene wrldsc = Gen.Generate();
 
-            SceneManager.StartGame(wrldsc);
+                SceneManager.StartGame(wrldsc);
+            });
+
+            SceneManager.CurrentScene = 4;
+
+            Thread t = new Thread(GenHandle);
+            t.Start();
+
         }
 
         #endregion

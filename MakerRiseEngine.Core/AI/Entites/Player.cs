@@ -25,10 +25,8 @@ namespace RiseEngine.Core.AI.Entites
         int MoveRightVariante { get; set; }
 
         int Speed { get; set; }
-        public Player(int _MoveUpVariante, int _MoveDownVariante, int _MoveLeftVariante, int _MoveRightVariante, int _IdleUpVariante, int _IdleDownVariante, int _IdleLeftVariante,int _IdleRightVariante)
+        public Player(int _MoveUpVariante, int _MoveDownVariante, int _MoveLeftVariante, int _MoveRightVariante, int _IdleUpVariante, int _IdleDownVariante, int _IdleLeftVariante, int _IdleRightVariante)
         {
-
-
             MoveUpVariante = _MoveUpVariante;
             MoveDownVariante = _MoveDownVariante;
             MoveLeftVariante = _MoveLeftVariante;
@@ -39,50 +37,47 @@ namespace RiseEngine.Core.AI.Entites
             IdleLeftVariante = _IdleLeftVariante;
             IdleRightVariante = _IdleRightVariante;
 
-            Speed = 5;
         }
 
         public override void Tick(GameObjectEventArgs e, KeyboardState KeyBoard, MouseState Mouse, GameTime gameTime)
         {
 
-            if (KeyBoard.IsKeyDown(Config.Controls.MoveRun))
-            {
-                Speed = 10;
-            }
-            else
-            {
-                Speed = 5;
-            }
-
-            int MoveActionIndex = GameObjectsManager.GetGameObjectIndex("Base.Move");
+            int moveActionIndex = GameObjectsManager.GetGameObjectIndex("Base.Move");
+            int attckActionIndex = GameObjectsManager.GetGameObjectIndex("Base.Attack");
 
             if (e.ParrentEntity.Action == -1)
             {
                 if (KeyBoard.IsKeyDown(Config.Controls.MoveUp))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Up;
-                    e.ParrentEntity.Action = MoveActionIndex;
+                    e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveUpVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveDown))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Down;
-                    e.ParrentEntity.Action = MoveActionIndex;
+                    e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveDownVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveLeft))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Left;
-                    e.ParrentEntity.Action = MoveActionIndex;
+                    e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveLeftVariante;
                 }
                 else if (KeyBoard.IsKeyDown(Config.Controls.MoveRight))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Right;
-                    e.ParrentEntity.Action = MoveActionIndex;
+                    e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveRightVariante;
                 }
-                else {
+                else
+                {
+
+                    if (KeyBoard.IsKeyDown(Config.Controls.Attack))
+                    {
+                        e.ParrentEntity.Action = attckActionIndex;
+                    }
 
                     switch (e.ParrentEntity.Facing)
                     {

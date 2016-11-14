@@ -30,19 +30,19 @@ namespace RiseEngine.Core.Config
             Core.Debug.DebugLogs.WriteInLogs("[Config.Controls] Load config...", Core.Debug.LogType.Info);
             DS.Load();
 
-            MoveUp = (Keys)Int32.Parse(DS.GetData("MoveUP", ((int)Keys.Z).ToString()));
-            MoveDown = (Keys)Int32.Parse(DS.GetData("MoveDown", ((int)Keys.S).ToString()));
-            MoveLeft = (Keys)Int32.Parse(DS.GetData("MoveLeft", ((int)Keys.Q).ToString()));
-            MoveRight = (Keys)Int32.Parse(DS.GetData("MoveRight", ((int)Keys.D).ToString()));
+            MoveUp = (Keys)int.Parse(DS.GetData("MoveUP", ((int)Keys.Z).ToString()));
+            MoveDown = (Keys)int.Parse(DS.GetData("MoveDown", ((int)Keys.S).ToString()));
+            MoveLeft = (Keys)int.Parse(DS.GetData("MoveLeft", ((int)Keys.Q).ToString()));
+            MoveRight = (Keys)int.Parse(DS.GetData("MoveRight", ((int)Keys.D).ToString()));
 
-            MoveRun = (Keys)Int32.Parse(DS.GetData("MoveRun", ((int)Keys.LeftShift).ToString()));
+            MoveRun = (Keys)int.Parse(DS.GetData("MoveRun", ((int)Keys.LeftShift).ToString()));
 
-            Interact = (Keys)Int32.Parse(DS.GetData("Interact", ((int)Keys.E).ToString()));
-            Attack = (Keys)Int32.Parse(DS.GetData("Attack", ((int)Keys.A).ToString()));
+            Interact = (Keys)int.Parse(DS.GetData("Interact", ((int)Keys.E).ToString()));
+            Attack = (Keys)int.Parse(DS.GetData("Attack", ((int)Keys.A).ToString()));
 
-            ShowInventory = (Keys)Int32.Parse(DS.GetData("ShowInventory", ((int)Keys.E).ToString()));
-            ShowMenu = (Keys)Int32.Parse(DS.GetData("ShowMenu", ((int)Keys.Escape).ToString()));
-            ShowChat = (Keys)Int32.Parse(DS.GetData("ShowChat", ((int)Keys.T).ToString()));
+            ShowInventory = (Keys)int.Parse(DS.GetData("ShowInventory", ((int)Keys.E).ToString()));
+            ShowMenu = (Keys)int.Parse(DS.GetData("ShowMenu", ((int)Keys.Escape).ToString()));
+            ShowChat = (Keys)int.Parse(DS.GetData("ShowChat", ((int)Keys.T).ToString()));
 
             DS.Save();
         }

@@ -30,31 +30,34 @@ namespace RiseEngine.Core.World.Utils
                     if (Tx >= 0 && Ty >= 0 && Tx < W.worldProperty.Size * 16 - 1 && Ty < W.worldProperty.Size * 16 - 1)
                     {
 
+
                         //Calcule des emplacements
                         Point CurrentLocation = new Point(Tx, Ty);
                         Point OnScreenLocation = new Point(
-                            (Tx - W.Camera.StartTile.X) * W.Camera.Zoom + W.Camera.ScreenOrigine.X, 
+                            (Tx - W.Camera.StartTile.X) * W.Camera.Zoom + W.Camera.ScreenOrigine.X,
                             (Ty - W.Camera.StartTile.Y) * W.Camera.Zoom + W.Camera.ScreenOrigine.Y);
 
-                        //recuperation des arguments
-                        GameObject.Event.GameObjectEventArgs e = W.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
-
-                        //recuperation des objets
-                        WorldObj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
-
-                        GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
-                        GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
-
-                        if (!(T.Entity == -1))
+                        if (W.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunk.X, CurrentLocation.ToWorldLocation().chunk.Y))
                         {
-                            //On recuper l'entitée
-                            WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
-                            E.Location = CurrentLocation.ToWorldLocation();
+                            //recuperation des arguments
+                            GameObject.Event.GameObjectEventArgs e = W.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
-                            GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
-                            GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
+                            //recuperation des objets
+                            WorldObj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
+
+                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
+                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
+
+                            if (!(T.Entity == -1))
+                            {
+                                //On recuper l'entitée
+                                WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
+                                E.Location = CurrentLocation.ToWorldLocation();
+
+                                GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
+                                GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
+                            }
                         }
-
                     }
 
                 }

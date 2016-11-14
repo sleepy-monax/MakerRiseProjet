@@ -18,8 +18,8 @@ namespace RiseEngine.Core.World.WorldObj
 
         //Stats
 
-        public float maxHeal = 1;
-        public float heal = 1;
+        public float maxHeal = 20;
+        public float heal = 20;
 
         //IA
         public AI.Utils.Facing Facing = AI.Utils.Facing.Down;

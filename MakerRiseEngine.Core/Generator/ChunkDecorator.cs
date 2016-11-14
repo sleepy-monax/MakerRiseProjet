@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 
 namespace RiseEngine.Core.Generator
 {
@@ -20,41 +20,53 @@ namespace RiseEngine.Core.Generator
 
         }
 
-        public World.WorldObj.ObjChunk Decorated(int cX, int cY, World.WorldObj.ObjChunk Chunk)
+        public void Decorated(int cX, int cY, World.WorldObj.ObjChunk Chunk)
         {
 
-            Debug.DebugLogs.WriteInLogs("[ChunkDecorator] Generating " + cX + " : " + cY + " ...", Debug.LogType.Info);
+            Chunk.chunkStatut = World.WorldObj.chunkStatutList.onDecoration;
 
-            for (int tX = 0; tX <= 15; tX++)
+            ThreadStart GenHandle = new ThreadStart(delegate
             {
-                for (int tY = 0; tY <= 15; tY++)
+                Debug.DebugLogs.WriteInLogs("[ChunkDecorator] Generating " + cX + " : " + cY + " ...", Debug.LogType.Info);
+
+                for (int tX = 0; tX <= 15; tX++)
                 {
+                    for (int tY = 0; tY <= 15; tY++)
+                    {
 
-                    if (Chunk.Tiles[tX, tY].ID == -1) {
-
-                        Chunk.Tiles[tX, tY].ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
-                        Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
-
-                        W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
-
-                        if (Rnd.NextDouble() < GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
+                        if (Chunk.Tiles[tX, tY].ID == -1)
                         {
 
-                            int ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
-                            int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount);
+                            Chunk.Tiles[tX, tY].ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
+                            Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 
-                            Chunk.AddEntity(new World.WorldObj.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
+                            //W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
+
+                            if (Rnd.NextDouble() < GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
+                            {
+
+                                int ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
+                                int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount);
+
+                                Chunk.AddEntity(new World.WorldObj.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 
 
+                            }
                         }
+
+
                     }
                 }
-            }
 
-            Chunk.IsDone = true;
-            W.miniMap.RefreshMiniMap();
-            W.saveFile.SaveChunk(cX, cY, Chunk);
-            return Chunk;
+                Chunk.chunkStatut = World.WorldObj.chunkStatutList.Done;
+                W.miniMap.RefreshMiniMap();
+                W.saveFile.SaveChunk(cX, cY, Chunk);
+            });
+
+
+
+            Thread t = new Thread(GenHandle);
+            t.Start();
 
         }
 

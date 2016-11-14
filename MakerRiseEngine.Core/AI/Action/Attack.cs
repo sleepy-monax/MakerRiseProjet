@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Microsoft.Xna.Framework;
 using RiseEngine.Core.GameObject.Event;
 using RiseEngine.Core.World.Utils;
 using RiseEngine.Core.World.WorldObj;
+using RiseEngine.Core.GameObject;
 
 namespace RiseEngine.Core.AI.Action
 {
     public class Attack : IAction
     {
         public string gameObjectName { get; set; }
-
         public string pluginName { get; set; }
 
         public void OnGameObjectAdded()
@@ -29,18 +25,55 @@ namespace RiseEngine.Core.AI.Action
             if (!(e.World.entityManager.TileIsFree(CurrentLocation.ToWorldLocation())))
             {
 
-                ObjEntity attackedEntity = e.World.chunkManager.GetEntity(CurrentLocation);
-                GameObjectEventArgs attackedEntityEventsArgs = e.World.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
+                e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
 
-                float defense = attackedEntity.ToGameObject().GetDamage(attackedEntityEventsArgs);
-                float damages = e.ParrentEntity.ToGameObject().GetDamage(e);
+                if (e.ParrentEntity.ActionProgress == 100)
+                {
+                    e.ParrentEntity.ActionProgress = 0;
+                    e.ParrentEntity.OnTileLocation = Vector2.Zero;
 
-                
-                float totalDamages = damages - defense;
-                if (totalDamages < 0)
-                    totalDamages = 0;
+                    ObjEntity attackedEntity = e.World.chunkManager.GetEntity(CurrentLocation);
+                    GameObjectEventArgs attackedEntityEventsArgs = e.World.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
+
+                    float defense = attackedEntityEventsArgs.ParrentEntity.ToGameObject().GetDefence(attackedEntityEventsArgs);
+                    float damages = e.ParrentEntity.ToGameObject().GetDamage(e);
+
+
+                    float totalDamages = damages - defense;
+                    Debug.DebugLogs.WriteInLogs(totalDamages.ToString());
+                    if (totalDamages < 0)
+                        totalDamages = 0;
+
+                    attackedEntityEventsArgs.ParrentEntity.heal -= totalDamages;
+
+                    attackedEntityEventsArgs.ParrentEntity.ToGameObject().OnDamageTaken(attackedEntityEventsArgs);
+
+                    if (attackedEntityEventsArgs.ParrentEntity.heal <= 0)
+                    {
+                        attackedEntityEventsArgs.ParrentEntity.heal = 0;
+                        attackedEntityEventsArgs.ParrentEntity.ToGameObject().OnEntityKilled(attackedEntityEventsArgs, e.ParrentEntity);
+                    }
+
+                    e.ParrentEntity.Action = -1;
+                    e.ParrentEntity.ActionProgress = 0;
+
+                }
+                else
+                {
+                    e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress);
+                }
+
+
 
             }
+            else {
+
+                e.ParrentEntity.Action = -1;
+                e.ParrentEntity.ActionProgress = 0;
+
+            }
+
+            
 
         }
     }

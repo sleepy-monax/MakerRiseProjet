@@ -44,7 +44,7 @@ namespace RiseEngine.Core.AI.Action
             }
             else
             {
-                if (e.ParrentEntity.ActionProgress == 100)
+                if (e.ParrentEntity.ActionProgress >= 100)
                 {
                     e.ParrentEntity.ActionProgress = 0;
                     e.ParrentEntity.OnTileLocation = Vector2.Zero;
@@ -57,6 +57,7 @@ namespace RiseEngine.Core.AI.Action
                 {
                     e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress);
                 }
+
                 if (e.ParrentEntity.IsFocus)
                 {
                     e.World.Camera.FocusLocation = e.ParrentEntity.Location.ToPoint();

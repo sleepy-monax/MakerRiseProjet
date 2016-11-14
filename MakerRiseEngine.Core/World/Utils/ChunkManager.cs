@@ -19,29 +19,45 @@ namespace RiseEngine.Core.World.Utils
 
         #region GetChunk
         //Get Chunk On location
-        public WorldObj.ObjChunk GetChunk(Utils.WorldLocation ChunkLocation)
+        public ObjChunk GetChunk(Utils.WorldLocation ChunkLocation)
         {
             return GetChunk(ChunkLocation.chunk.X, ChunkLocation.chunk.Y);
         }
 
-        public WorldObj.ObjChunk GetChunk(Point ChunkLocation)
+        public ObjChunk GetChunk(Point ChunkLocation)
         {
             return GetChunk(ChunkLocation.X, ChunkLocation.Y);
         }
 
-        public WorldObj.ObjChunk GetChunk(int x, int y)
+        public bool PrepareChunk(int x, int y) {
+
+            ObjChunk chunk = W.Chunks[x, y];
+
+            switch (chunk.chunkStatut)
+            {
+                case chunkStatutList.Done:
+                    return true;
+                    break;
+                case chunkStatutList.onDecoration:
+                    return false;
+                    break;
+                case chunkStatutList.needDecoration:
+                    W.chunkDecorator.Decorated(x, y, W.Chunks[x, y]);
+                    return false;
+                    break;
+                default:
+                    break;
+            }
+
+            return false;
+
+        }
+
+        public ObjChunk GetChunk(int x, int y)
         {
-            if (W.Chunks[x, y].IsDone == false)
-            {
 
-                W.Chunks[x, y] = W.chunkDecorator.Decorated(x, y, W.Chunks[x, y]);
                 return W.Chunks[x, y];
 
-            }
-            else
-            {
-                return W.Chunks[x, y];
-            }
         }
         #endregion
 

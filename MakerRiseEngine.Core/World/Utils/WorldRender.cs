@@ -56,33 +56,41 @@ namespace RiseEngine.Core.World.Utils
                             (Tx - W.Camera.StartTile.X) * W.Camera.Zoom + W.Camera.ScreenOrigine.X,
                              (Ty - W.Camera.StartTile.Y) * W.Camera.Zoom + W.Camera.ScreenOrigine.Y);
 
-                        //Recuperation des arguments
-                        GameObject.Event.GameObjectEventArgs e = W.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
+                        if (W.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunk.X, CurrentLocation.ToWorldLocation().chunk.Y)) {
 
-                        //recuperation des objets
-                        WorldObj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
+                            //Recuperation des arguments
+                            GameObject.Event.GameObjectEventArgs e = W.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
-
-                        //desin des objets
-
-
-                        GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, TileSpriteBatch, gameTime);
+                            //recuperation des objets
+                            WorldObj.ObjTile T = W.chunkManager.GetTile(CurrentLocation);
 
 
+                            //desin des objets
 
-                        if (!(T.Entity == -1))
-                        {
-                            WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
-                            GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, EntitySpriteBatch, gameTime);
 
-                            if (Config.Debug.WorldOverDraw && E.IsFocus) {
+                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, TileSpriteBatch, gameTime);
 
-                                EntitySpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2,2) + E.OnTileLocation, Color.Black);
-                                EntitySpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.OnTileLocation, Color.White);
+
+
+                            if (!(T.Entity == -1))
+                            {
+                                WorldObj.ObjEntity E = W.chunkManager.GetEntity(CurrentLocation);
+                                GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, EntitySpriteBatch, gameTime);
+
+                                if (Config.Debug.WorldOverDraw && E.IsFocus)
+                                {
+
+                                    EntitySpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2, 2) + E.OnTileLocation, Color.Black);
+                                    EntitySpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.OnTileLocation, Color.White);
+
+                                }
 
                             }
 
+
                         }
+
+
 
                     }
 

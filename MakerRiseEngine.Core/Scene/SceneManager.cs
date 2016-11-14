@@ -20,6 +20,7 @@ namespace RiseEngine.Core.Scene
         static UItest uiTest;
 
         static Point MouseXY = Point.Zero;
+        static WorldGenerating WG = new WorldGenerating();
 
         public static void Initialize()
         {
@@ -119,7 +120,7 @@ namespace RiseEngine.Core.Scene
 
                     break;
                 case 4:
-
+                    WG.Draw(spriteBatch, gameTime);
                     break;
             }
             
