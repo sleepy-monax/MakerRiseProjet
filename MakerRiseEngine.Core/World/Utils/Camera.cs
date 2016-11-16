@@ -32,7 +32,7 @@ namespace Maker.RiseEngine.Core.World.Utils
 
             W = _WorldScene;
 
-            Zoom = 8;
+            Zoom = 64;
             Size = new Point(Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight);
 
             FocusLocation = Point.Zero;

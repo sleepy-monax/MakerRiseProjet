@@ -13,14 +13,14 @@ namespace Maker.RiseEngine.Core.Generator
     public class WorldGenerator
     {
 
-        World.Utils.WorldProperty WrldProps;
+        WorldProperty WrldProps;
 
         RegionGenerator regionGenerator;
         Random Rnd;
         GameMath.FastRandom FastRnd;
 
 
-        public WorldGenerator(World.Utils.WorldProperty _WrldProps) {
+        public WorldGenerator(WorldProperty _WrldProps) {
             WrldProps = _WrldProps;
             Rnd = new Random(_WrldProps.Seed);
             FastRnd = new GameMath.FastRandom(_WrldProps.Seed);
@@ -44,6 +44,7 @@ namespace Maker.RiseEngine.Core.Generator
 
             //Adding randome Region
             Debug.DebugLogs.WriteInLogs("[WorldGenerator] Creating Random Point", Debug.LogType.Info);
+            Scene.SceneManager.WG.message = "Creating Random Point...";
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
             {
 
@@ -59,6 +60,7 @@ namespace Maker.RiseEngine.Core.Generator
             //expanding Region
 
             Debug.DebugLogs.WriteInLogs("[WorldGenerator] Expending Region", Debug.LogType.Info);
+            Scene.SceneManager.WG.message = "Expending Region...";
 
             bool DoLoop = true;
             int LoopCount = 0;
@@ -113,6 +115,7 @@ namespace Maker.RiseEngine.Core.Generator
                     }
                 }
 
+                Scene.SceneManager.WG.message = "Expending Region... (" + LoopCount + "/" + WrldProps.RegionExpention + ")";
                 //exit Loop
                 if (LoopCount == WrldProps.RegionExpention) DoLoop = false;
 
@@ -129,7 +132,7 @@ namespace Maker.RiseEngine.Core.Generator
             {
                 for (int cY = 0; cY <= WrldProps.Size - 1; cY++)
                 {
-
+                    Scene.SceneManager.WG.message = "Generating chunk " + cX + " " + cY;
                     NewWorld.Chunks[cX, cY] = new ObjChunk();
 
                     for (int tX = 0; tX <= 15; tX++)

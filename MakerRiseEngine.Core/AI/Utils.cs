@@ -55,7 +55,7 @@ namespace Maker.RiseEngine.Core.AI
             {
                 case Facing.Up:
 
-                    Vc2 = new Vector2(0, -ActionProgress / 100);
+                    Vc2 = new Vector2(0, -(ActionProgress / 100));
 
                     break;
                 case Facing.Down:
@@ -65,7 +65,7 @@ namespace Maker.RiseEngine.Core.AI
                     break;
                 case Facing.Left:
 
-                    Vc2 = new Vector2(-ActionProgress / 100, 0);
+                    Vc2 = new Vector2(-(ActionProgress / 100), 0);
 
                     break;
                 case Facing.Right:

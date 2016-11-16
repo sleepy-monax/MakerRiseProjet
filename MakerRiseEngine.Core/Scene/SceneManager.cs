@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Core.Scene
         static UItest uiTest;
 
         static Point MouseXY = Point.Zero;
-        static WorldGenerating WG = new WorldGenerating();
+        public static WorldGenerating WG = new WorldGenerating();
 
         public static void Initialize()
         {
