@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.GameMath
+namespace Maker.RiseEngine.Core.GameMath
 {
     public class MinMax
     {

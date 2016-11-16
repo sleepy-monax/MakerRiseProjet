@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.AI
+namespace Maker.RiseEngine.Core.AI
 {
     public interface IAction : GameObject.IGameObject
     {

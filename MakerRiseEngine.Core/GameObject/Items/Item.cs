@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 
-namespace RiseEngine.Core.GameObject.Items
+namespace Maker.RiseEngine.Core.GameObject.Items
 {
     public class Item : IItem
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.World.Utils
 {
     public class WorldUpdater : Idrawable
     {

@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using RiseEngine.Core.Storage.NamedBinaryTag.Tags;
-using RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags;
+using Maker.RiseEngine.Core.World.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace RiseEngine.Core.World.WorldObj
+namespace Maker.RiseEngine.Core.World.WorldObj
 {
     [Serializable]
     public class ObjEntity

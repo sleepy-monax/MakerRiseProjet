@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RiseEngine.Core.World;
+using Maker.RiseEngine.Core.World;
 using Microsoft.Xna.Framework;
 
-namespace RiseEngine.Core.Generator
+namespace Maker.RiseEngine.Core.Generator
 {
     public static class WorldEdit
     {

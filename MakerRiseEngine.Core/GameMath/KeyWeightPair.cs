@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.GameMath
+namespace Maker.RiseEngine.Core.GameMath
 {
     public class KeyWeightPair<T>
     {

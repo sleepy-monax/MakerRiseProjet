@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.GameObject.Event;
 
-namespace RiseEngine.Core.GameObject.Entities
+namespace Maker.RiseEngine.Core.GameObject.Entities
 {
     public class Creature : Entity
     {

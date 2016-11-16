@@ -1,11 +1,11 @@
-﻿using RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.GameObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.World.WorldObj
+namespace Maker.RiseEngine.Core.World.WorldObj
 {
     public static class WorldObjectHelper
     {

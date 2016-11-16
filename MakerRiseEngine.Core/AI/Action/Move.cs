@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.GameObject.Event;
-using RiseEngine.Core.World.Utils;
-using RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.GameObject;
 
-namespace RiseEngine.Core.AI.Action
+namespace Maker.RiseEngine.Core.AI.Action
 {
     public class Move : IAction
     {

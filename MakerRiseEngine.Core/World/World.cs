@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.World.WorldObj;
-using RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.World.WorldObj;
+using Maker.RiseEngine.Core.Rendering;
 
-namespace RiseEngine.Core.World
+namespace Maker.RiseEngine.Core.World
 {
     public class WorldScene : Idrawable
     {

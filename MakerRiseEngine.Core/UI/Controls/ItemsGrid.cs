@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.Rendering;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using Maker.RiseEngine.Core.Rendering;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.UI.Controls
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     public class ItemsGrid : Control
     {

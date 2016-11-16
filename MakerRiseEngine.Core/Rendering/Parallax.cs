@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Globalization;
-using RiseEngine.Core.Storage;
+using Maker.RiseEngine.Core.Storage;
 
-namespace RiseEngine.Core.Rendering
+namespace Maker.RiseEngine.Core.Rendering
 {
     public class Parallax : Idrawable
     {

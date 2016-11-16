@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RiseEngine.Core;
-using RiseEngine.Core.World.WorldObj;
+using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.World.WorldObj;
 using System.Drawing;
-using RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.World.Utils;
 using System.Diagnostics;
 
-namespace RiseEngine.Core.Generator
+namespace Maker.RiseEngine.Core.Generator
 {
     public class WorldGenerator
     {

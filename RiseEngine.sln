@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakerRiseEngine.Core", "MakerRiseEngine.Core\MakerRiseEngine.Core.csproj", "{0B1AE74F-0E04-4402-9C99-D03175C9AA03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Core", "MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj", "{0B1AE74F-0E04-4402-9C99-D03175C9AA03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakerRiseEngine.DefaultPlugin", "MakerRiseEngine.DefaultPlugin\MakerRiseEngine.DefaultPlugin.csproj", "{CE75BBEA-8023-487E-9463-7E984F7CAF75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.DefaultPlugin", "MakerRiseEngine.DefaultPlugin\Maker.RiseEngine.DefaultPlugin.csproj", "{CE75BBEA-8023-487E-9463-7E984F7CAF75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakerRiseEngine.Windows", "MakerRiseEngine.Windows\MakerRiseEngine.Windows.csproj", "{4D2C3C25-14F7-4555-9692-331897F1F3CA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine", "Maker.RiseEngine\Maker.RiseEngine.csproj", "{3E40DDC8-84ED-498E-B18D-3669F0460E76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Windows", "MakerRiseEngine.Windows\Maker.RiseEngine.Windows.csproj", "{4D2C3C25-14F7-4555-9692-331897F1F3CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,16 +59,6 @@ Global
 		{4D2C3C25-14F7-4555-9692-331897F1F3CA}.Release|x64.ActiveCfg = Release|x86
 		{4D2C3C25-14F7-4555-9692-331897F1F3CA}.Release|x86.ActiveCfg = Release|x86
 		{4D2C3C25-14F7-4555-9692-331897F1F3CA}.Release|x86.Build.0 = Release|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Debug|ARM.ActiveCfg = Debug|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Debug|x64.ActiveCfg = Debug|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Debug|x86.ActiveCfg = Debug|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Debug|x86.Build.0 = Debug|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Release|Any CPU.ActiveCfg = Release|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Release|ARM.ActiveCfg = Release|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Release|x64.ActiveCfg = Release|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Release|x86.ActiveCfg = Release|x86
-		{3E40DDC8-84ED-498E-B18D-3669F0460E76}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

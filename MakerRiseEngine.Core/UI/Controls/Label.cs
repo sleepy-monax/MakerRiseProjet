@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.UI.Controls
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     class Label : Control
     {

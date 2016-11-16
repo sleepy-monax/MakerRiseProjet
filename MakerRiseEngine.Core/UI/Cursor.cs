@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.Rendering.SpriteSheets;
-using RiseEngine.Core.Inventory;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.Inventory;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.UI
+namespace Maker.RiseEngine.Core.UI
 {
     public enum CursorType {
         Cursor,Ibeam, Hiden

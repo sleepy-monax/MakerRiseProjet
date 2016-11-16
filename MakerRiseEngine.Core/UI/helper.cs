@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.UI
+namespace Maker.RiseEngine.Core.UI
 {
     public static class helper
     {

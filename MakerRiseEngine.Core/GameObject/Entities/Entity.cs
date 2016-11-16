@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.GameObject.Event;
-using RiseEngine.Core.Rendering.SpriteSheets;
-using RiseEngine.Core.World.WorldObj;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.World.WorldObj;
 
-namespace RiseEngine.Core.GameObject.Entities
+namespace Maker.RiseEngine.Core.GameObject.Entities
 {
     public class Entity : IEntity
     {

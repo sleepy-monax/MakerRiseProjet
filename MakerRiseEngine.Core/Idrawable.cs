@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace RiseEngine.Core
+namespace Maker.RiseEngine.Core
 {
     
     public interface Idrawable

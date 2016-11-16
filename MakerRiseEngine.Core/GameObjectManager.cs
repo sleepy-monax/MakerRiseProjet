@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-using RiseEngine.Core.Rendering.SpriteSheets;
-using RiseEngine.Core.Plugin;
-using RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.Plugin;
+using Maker.RiseEngine.Core.GameObject;
 
-namespace RiseEngine.Core
+namespace Maker.RiseEngine.Core
 {
 
 

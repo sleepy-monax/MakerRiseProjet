@@ -1,4 +1,4 @@
-﻿using RiseEngine.Core.Rendering;
+﻿using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-namespace RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.World.Utils
 {
     public class WorldRender
     {

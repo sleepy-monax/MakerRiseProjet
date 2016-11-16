@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Reflection;
 
-namespace RiseEngine.Core
+namespace Maker.RiseEngine.Core
 {
     public static class Common
     {

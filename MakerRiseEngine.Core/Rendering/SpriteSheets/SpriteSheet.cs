@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RiseEngine.Core.GameObject;
-using RiseEngine.Core.Storage;
+using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.Storage;
 
-namespace RiseEngine.Core.Rendering.SpriteSheets
+namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
     public class SpriteSheet : IGameObject
     {

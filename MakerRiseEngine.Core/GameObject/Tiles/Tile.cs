@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.GameObject.Event;
-using RiseEngine.Core.Audio;
-using RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 
-namespace RiseEngine.Core.GameObject.Tiles
+namespace Maker.RiseEngine.Core.GameObject.Tiles
 {
     public class Tile : ITile
     {

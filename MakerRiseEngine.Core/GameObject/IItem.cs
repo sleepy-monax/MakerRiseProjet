@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.GameObject
+namespace Maker.RiseEngine.Core.GameObject
 {
     public enum ItemType
     {

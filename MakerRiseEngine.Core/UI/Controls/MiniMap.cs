@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.Rendering.SpriteSheets;
-using RiseEngine.Core.World.Utils;
-using RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.Rendering;
 
-namespace RiseEngine.Core.UI.Controls
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     public class MiniMap : UI.Control
     {

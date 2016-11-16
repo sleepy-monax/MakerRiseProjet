@@ -1,11 +1,11 @@
-﻿using RiseEngine.Core.World.WorldObj;
+﻿using Maker.RiseEngine.Core.World.WorldObj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.World.Utils
 {
     public class EntityManager
     {

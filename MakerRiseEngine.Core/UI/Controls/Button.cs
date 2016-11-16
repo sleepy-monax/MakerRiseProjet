@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RiseEngine.Core.Rendering.SpriteSheets;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.UI.Controls
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     public class Button : Control
     {

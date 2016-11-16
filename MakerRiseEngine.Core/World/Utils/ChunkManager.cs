@@ -1,4 +1,4 @@
-﻿using RiseEngine.Core.World.WorldObj;
+﻿using Maker.RiseEngine.Core.World.WorldObj;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.World.Utils
 {
     public class ChunkManager
     {
@@ -37,27 +37,21 @@ namespace RiseEngine.Core.World.Utils
             {
                 case chunkStatutList.Done:
                     return true;
-                    break;
                 case chunkStatutList.onDecoration:
                     return false;
-                    break;
                 case chunkStatutList.needDecoration:
                     W.chunkDecorator.Decorated(x, y, W.Chunks[x, y]);
                     return false;
-                    break;
                 default:
                     break;
             }
 
             return false;
-
         }
 
         public ObjChunk GetChunk(int x, int y)
         {
-
                 return W.Chunks[x, y];
-
         }
         #endregion
 

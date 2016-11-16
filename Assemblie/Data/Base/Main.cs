@@ -1,13 +1,13 @@
 using Microsoft.Xna.Framework;
-using RiseEngine.Core;
-using RiseEngine.Core.Audio;
-using RiseEngine.Core.GameMath;
-using RiseEngine.Core.Rendering.SpriteSheets;
-using RiseEngine.Core.World;
-using RiseEngine.Core.World.WorldObj;
-using RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.GameMath;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.World;
+using Maker.RiseEngine.Core.World.WorldObj;
+using Maker.RiseEngine.Core.World.Utils;
 
-namespace RiseEngine.DefaultPlugin
+namespace Maker.RiseEngine.DefaultPlugin
 {
     class Plugin : Core.Plugin.IPlugin
     {

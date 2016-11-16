@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using RiseEngine.Core.Storage.NamedBinaryTag.Exceptions;
-using RiseEngine.Core.Storage.NamedBinaryTag.Queries;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Exceptions;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Tags
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {
     public class NbtList : NbtTag, INbtTagList
     {

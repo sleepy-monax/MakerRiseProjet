@@ -6,12 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RiseEngine.Core.UI;
-using RiseEngine.Core;
+using Maker.RiseEngine.Core.UI;
+using Maker.RiseEngine.Core;
 using System.Windows.Forms;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core
+namespace Maker.RiseEngine.Core
 {
 
 

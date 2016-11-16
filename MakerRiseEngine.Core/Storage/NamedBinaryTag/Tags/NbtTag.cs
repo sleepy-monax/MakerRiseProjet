@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using RiseEngine.Core.Storage.NamedBinaryTag.Exceptions;
-using RiseEngine.Core.Storage.NamedBinaryTag.Queries;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Exceptions;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Tags
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {
     public abstract class NbtTag
     {

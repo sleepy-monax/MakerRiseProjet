@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace RiseEngine.Core.Config
+namespace Maker.RiseEngine.Core.Config
 {
     public static class Controls
     {

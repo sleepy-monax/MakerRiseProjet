@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.Config
+namespace Maker.RiseEngine.Core.Config
 {
     class Gfx
     {

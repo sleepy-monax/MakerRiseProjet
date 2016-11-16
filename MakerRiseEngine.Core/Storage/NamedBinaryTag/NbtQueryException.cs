@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Exceptions
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Exceptions
 {
     public class NbtQueryException : Exception
     {

@@ -9,7 +9,7 @@
     <ProjectGuid>{4D2C3C25-14F7-4555-9692-331897F1F3CA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MakerRiseEngine.Windows</RootNamespace>
+    <RootNamespace>Maker.RiseEngine.Windows</RootNamespace>
     <AssemblyName>MakerRiseEngine.Windows</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
@@ -90,9 +90,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MakerRiseEngine.Core\MakerRiseEngine.Core.csproj">
+    <ProjectReference Include="..\MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj">
       <Project>{0b1ae74f-0e04-4402-9c99-d03175c9aa03}</Project>
-      <Name>MakerRiseEngine.Core</Name>
+      <Name>Maker.RiseEngine.Core</Name>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

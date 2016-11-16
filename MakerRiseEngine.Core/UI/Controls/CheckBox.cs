@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.UI.Controls
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     public class CheckBox : Control
     {

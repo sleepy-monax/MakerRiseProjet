@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.GameObject.Event;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.AI;
+using Maker.RiseEngine.Core.AI;
 
-namespace RiseEngine.Core.AI.Entites
+namespace Maker.RiseEngine.Core.AI.Entites
 {
     public class Player : AIbase
     {

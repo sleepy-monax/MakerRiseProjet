@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace RiseEngine.Windows
+namespace Maker.RiseEngine.Windows
 {
 #if WINDOWS || LINUX
     /// <summary>
@@ -18,7 +18,7 @@ namespace RiseEngine.Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (var game = new RiseEngine.Core.RiseGame(false))
+            using (var game = new Core.RiseGame(false))
             {
 
                 game.Run();

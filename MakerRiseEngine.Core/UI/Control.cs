@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.Audio;
 
-namespace RiseEngine.Core.UI
+namespace Maker.RiseEngine.Core.UI
 {
     public class Control
     {

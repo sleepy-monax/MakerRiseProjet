@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using RiseEngine.Core.Storage.NamedBinaryTag.Tags;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.World.Utils
 {
     public static class Location
     {

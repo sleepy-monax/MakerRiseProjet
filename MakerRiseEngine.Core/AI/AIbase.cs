@@ -1,5 +1,5 @@
 ﻿
-using RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.World.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.AI
+namespace Maker.RiseEngine.Core.AI
 {
     public class AIbase
     {

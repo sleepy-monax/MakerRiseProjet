@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.Rendering.SpriteSheets
+namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
     public class TilesheetColectionItem
     {

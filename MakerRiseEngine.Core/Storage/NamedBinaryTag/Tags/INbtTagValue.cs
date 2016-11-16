@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Tags
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {
     internal interface INbtTagValue<T>
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.Rendering
+namespace Maker.RiseEngine.Core.Rendering
 {
     public static class SpriteFontDraw
     {

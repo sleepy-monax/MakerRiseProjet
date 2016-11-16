@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace RiseEngine.Core.Network
+namespace Maker.RiseEngine.Core.Network
 {
     public class HTTPServer
     {

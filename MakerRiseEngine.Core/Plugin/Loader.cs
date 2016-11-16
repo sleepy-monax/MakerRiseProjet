@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace RiseEngine.Core.Plugin
+namespace Maker.RiseEngine.Core.Plugin
 {
     public static class PluginLoader
     {

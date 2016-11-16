@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.UI;
+using Maker.RiseEngine.Core.UI;
 
-namespace RiseEngine.Core.Scene
+namespace Maker.RiseEngine.Core.Scene
 {
     public class UItest : Idrawable
     {

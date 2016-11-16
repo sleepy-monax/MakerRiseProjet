@@ -1,4 +1,4 @@
-﻿namespace RiseEngine.Core.Storage.NamedBinaryTag.Tags
+﻿namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {
     public enum NbtTagType
     {

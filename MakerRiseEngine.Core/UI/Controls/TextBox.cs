@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.Rendering;
-using RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Linq;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.UI.Controls
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     class TextBox : Control
     {

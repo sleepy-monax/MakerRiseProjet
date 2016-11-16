@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace RiseEngine.Core.World.WorldObj
+namespace Maker.RiseEngine.Core.World.WorldObj
 {
     public class ObjRegion
     {

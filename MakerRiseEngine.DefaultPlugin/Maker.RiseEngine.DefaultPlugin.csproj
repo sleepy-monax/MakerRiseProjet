@@ -7,7 +7,7 @@
     <ProjectGuid>{CE75BBEA-8023-487E-9463-7E984F7CAF75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MakerRiseEngine.DefaultPlugin</RootNamespace>
+    <RootNamespace>Maker.RiseEngine.DefaultPlugin</RootNamespace>
     <AssemblyName>MakerRiseEngine.DefaultPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MakerRiseEngine.Core\MakerRiseEngine.Core.csproj">
+    <ProjectReference Include="..\MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj">
       <Project>{0b1ae74f-0e04-4402-9c99-d03175c9aa03}</Project>
-      <Name>MakerRiseEngine.Core</Name>
+      <Name>Maker.RiseEngine.Core</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

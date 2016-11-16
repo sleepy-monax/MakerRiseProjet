@@ -1,5 +1,5 @@
-﻿using RiseEngine.Core.Rendering.SpriteSheets;
-using RiseEngine.Core.World;
+﻿using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.Scene
+namespace Maker.RiseEngine.Core.Scene
 {
     public struct SceneManager
     {

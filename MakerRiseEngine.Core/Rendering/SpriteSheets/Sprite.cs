@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RiseEngine.Core.Rendering.SpriteSheets
+namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
     public class Sprite
     {

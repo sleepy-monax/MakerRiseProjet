@@ -1,11 +1,11 @@
 ﻿
 using Microsoft.Xna.Framework;
-using RiseEngine.Core.GameObject.Event;
-using RiseEngine.Core.World.Utils;
-using RiseEngine.Core.World.WorldObj;
-using RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.World.WorldObj;
+using Maker.RiseEngine.Core.GameObject;
 
-namespace RiseEngine.Core.AI.Action
+namespace Maker.RiseEngine.Core.AI.Action
 {
     public class Attack : IAction
     {

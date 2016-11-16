@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RiseEngine.Core.UI;
-using static RiseEngine.Core.Rendering.SpriteFontDraw;
+using Maker.RiseEngine.Core.UI;
+using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
-namespace RiseEngine.Core.Scene
+namespace Maker.RiseEngine.Core.Scene
 {
     public class SplashScreen : Idrawable
     {

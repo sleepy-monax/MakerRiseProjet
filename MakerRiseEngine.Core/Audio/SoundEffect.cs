@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Audio;
-using RiseEngine.Core.Storage;
+using Maker.RiseEngine.Core.Storage;
 
-namespace RiseEngine.Core.Audio
+namespace Maker.RiseEngine.Core.Audio
 {
     public class SoundEffectColection
     {

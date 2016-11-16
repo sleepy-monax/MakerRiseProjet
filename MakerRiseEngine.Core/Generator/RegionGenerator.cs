@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.World.Utils;
 
-namespace RiseEngine.Core.Generator
+namespace Maker.RiseEngine.Core.Generator
 {
     public class RegionGenerator
     {

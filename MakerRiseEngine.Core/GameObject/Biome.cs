@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.GameObject
+namespace Maker.RiseEngine.Core.GameObject
 {
     public class Biome : IGameObject
     {

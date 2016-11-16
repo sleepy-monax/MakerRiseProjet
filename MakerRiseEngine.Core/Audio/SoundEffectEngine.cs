@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.Audio
+namespace Maker.RiseEngine.Core.Audio
 {
     public static class SoundEffectEngine
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.Rendering
+namespace Maker.RiseEngine.Core.Rendering
 {
     public static class Primitives2D
     {

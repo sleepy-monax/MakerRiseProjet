@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using RiseEngine.Core.Storage.NamedBinaryTag.Queries;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Tags
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {
     internal interface INbtTagList
     {

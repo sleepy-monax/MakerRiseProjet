@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using RiseEngine.Core.Storage.NamedBinaryTag.Queries;
+using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Tags
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {
     public class NbtString : NbtTag, INbtTagValue<string>
     {

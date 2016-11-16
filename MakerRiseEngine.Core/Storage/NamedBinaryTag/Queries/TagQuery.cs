@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RiseEngine.Core.Storage.NamedBinaryTag.Queries
+namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries
 {
     public class TagQuery
     {

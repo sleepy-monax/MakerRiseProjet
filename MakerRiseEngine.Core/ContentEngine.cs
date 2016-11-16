@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System.Drawing;
 
-namespace RiseEngine.Core
+namespace Maker.RiseEngine.Core
 {
    public struct ContentEngine
     {
@@ -46,7 +46,7 @@ namespace RiseEngine.Core
             bitmap.SetPixel(1, 0, System.Drawing.Color.Black);
             bitmap.SetPixel(0, 1, System.Drawing.Color.Black);
 
-            return RiseEngine.Core.Rendering.BitmapHelper.BitmapToTexture2D(Common.GraphicsDevice ,bitmap);
+            return Core.Rendering.BitmapHelper.BitmapToTexture2D(Common.GraphicsDevice ,bitmap);
 
         }
 

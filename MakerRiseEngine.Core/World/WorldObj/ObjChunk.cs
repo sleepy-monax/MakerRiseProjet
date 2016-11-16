@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RiseEngine.Core.World.WorldObj
+namespace Maker.RiseEngine.Core.World.WorldObj
 {
 
     public enum chunkStatutList { Done, onDecoration, needDecoration}

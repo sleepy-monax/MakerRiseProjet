@@ -1,11 +1,11 @@
-﻿using RiseEngine.Core.Storage.NamedBinaryTag.Tags;
+﻿using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiseEngine.Core.Storage
+namespace Maker.RiseEngine.Core.Storage
 {
     public static class NbtHelper
     {
