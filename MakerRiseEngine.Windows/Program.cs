@@ -18,6 +18,9 @@ namespace Maker.RiseEngine.Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Console.WriteLine("Number Of Logical Processors: {0}", Environment.ProcessorCount);
+
+
             using (var game = new Core.RiseGame(false))
             {
 

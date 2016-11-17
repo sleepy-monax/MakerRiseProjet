@@ -27,11 +27,11 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
 
         public int MaxVariantCount { get; set; }
 
-        public int MoveSpeed { get; set; } = 50;
+        public int MoveSpeed { get; set; } = 5;
 
         public int MaxLife { get; set; } = 20;
 
-        public int MoveRunSpeed { get; set; } = 100;
+        public int MoveRunSpeed { get; set; } = 10;
 
         public bool canTakeDamage { get; set; } = false;
 

@@ -9,7 +9,7 @@ namespace Maker.RiseEngine.Core.Config
     class Sound
     {
 
-        public static float Master = 1f;
+        public static float Master = 0.1f;
         public static float Songs = 1f;
         public static float Effects = 0.5f;
         
