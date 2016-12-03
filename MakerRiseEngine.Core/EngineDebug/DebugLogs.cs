@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Maker.RiseEngine.Core.Debug
+namespace Maker.RiseEngine.Core.EngineDebug
 {
     public static class DebugLogs
     {
@@ -16,13 +16,13 @@ namespace Maker.RiseEngine.Core.Debug
         /// <param name="_Text">Text to write in logs.</param>
         /// <param name="_Type">Style of the text.</param>
         /// <param name="_SenderName">Name of the sender modules.</param>
-        public static void WriteInLogs(string _Text, LogType _Type = LogType.Info, string _SenderName = "")
+        public static void WriteInLogs(string _Text, LogType _Type = LogType.Info, string _SenderName = "Debug")
         {
             if (Config.Debug.EnableDebugLogs)
             {
                 //Getting logs type texte.
                 string LogTypeText = "";
-         
+
                 switch (_Type)
                 {
                     case LogType.Error:
@@ -44,7 +44,7 @@ namespace Maker.RiseEngine.Core.Debug
 
                 //formating text.
                 string t = $"{_SenderName} {LogTypeText} {_Text}";
-                
+
                 //write in console.
                 Console.WriteLine(t);
 

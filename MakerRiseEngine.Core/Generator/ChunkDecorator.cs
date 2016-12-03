@@ -26,7 +26,7 @@ namespace Maker.RiseEngine.Core.Generator
             Chunk.chunkStatut = World.WorldObj.chunkStatutList.onDecoration;
 
 
-            Debug.DebugLogs.WriteInLogs("[ChunkDecorator] Generating " + cX + " : " + cY + " ...", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", EngineDebug.LogType.Info, "ChunkDecorator");
 
             for (int tX = 0; tX <= 15; tX++)
             {

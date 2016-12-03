@@ -12,7 +12,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
         public static ICollection<IPlugin> LoadPlugin(Assembly assembly)
         {
-                Debug.DebugLogs.WriteInLogs("[Plugin.Loader] load \'" + assembly.CodeBase + "\'", Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("load \'" + assembly.CodeBase + "\'", EngineDebug.LogType.Info, "Plugin.Loader");
 
                 Type pluginType = typeof(IPlugin);
                 ICollection<Type> pluginTypes = new List<Type>();

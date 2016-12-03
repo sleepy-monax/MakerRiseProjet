@@ -95,7 +95,7 @@ namespace Maker.RiseEngine.Core
 
         public static void Reload()
         {
-            Debug.DebugLogs.WriteInLogs("[Plugin] Reloading...", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "Plugin");
 
             IsLoaded = false;
 
@@ -129,7 +129,7 @@ namespace Maker.RiseEngine.Core
                             if (PluginCollection.Count == 0)
                             {
 
-                                Debug.DebugLogs.WriteInLogs(Dir.Split('\\')[1] + " is not a plugin !", Debug.LogType.Warning, "Plugin");
+                                EngineDebug.DebugLogs.WriteInLogs(Dir.Split('\\')[1] + " is not a plugin !", EngineDebug.LogType.Warning, "Plugin");
 
                             }
                             else
@@ -138,7 +138,7 @@ namespace Maker.RiseEngine.Core
                                 foreach (Plugin.IPlugin i in PluginCollection)
                                 {
                                     Plugins.Add(i.Name, i);
-                                    Debug.DebugLogs.WriteInLogs("[Plugin." + i.Name + "] Initializing...", Debug.LogType.Info);
+                                    EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Plugin." + i.Name);
                                     Plugins[i.Name].Initialize();
                                 }
                             }

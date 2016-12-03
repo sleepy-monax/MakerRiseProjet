@@ -43,7 +43,7 @@ namespace Maker.RiseEngine.Core.Generator
             int[,] rGrid = new int[MaxWorldSize, MaxWorldSize];
 
             //Adding randome Region
-            Debug.DebugLogs.WriteInLogs("[WorldGenerator] Creating Random Point", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Creating Random Point", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Creating Random Point...";
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
             {
@@ -59,7 +59,7 @@ namespace Maker.RiseEngine.Core.Generator
 
             //expanding Region
 
-            Debug.DebugLogs.WriteInLogs("[WorldGenerator] Expending Region", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Expending Region", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Expending Region...";
 
             bool DoLoop = true;
@@ -125,7 +125,7 @@ namespace Maker.RiseEngine.Core.Generator
 
            
 
-            Debug.DebugLogs.WriteInLogs("[WorldGenerator] Creating Chunk", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Creating Chunk", EngineDebug.LogType.Info, "WorldGenerator");
             NewWorld.Chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
 
             for (int cX = 0; cX <= WrldProps.Size - 1; cX++)
@@ -160,7 +160,7 @@ namespace Maker.RiseEngine.Core.Generator
             }
 
             stw.Stop();
-            Debug.DebugLogs.WriteInLogs("Generator elapsed time : " + stw.ElapsedMilliseconds);
+            EngineDebug.DebugLogs.WriteInLogs("Generator elapsed time : " + stw.ElapsedMilliseconds, EngineDebug.LogType.Info, "WorldGenerator");
 
             return NewWorld;
 

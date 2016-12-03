@@ -24,7 +24,7 @@ namespace Maker.RiseEngine.Core.World.Utils
         public void SaveChunk(int x, int y, WorldObj.ObjChunk _Chunk)
         {
 
-            Debug.DebugLogs.WriteInLogs("[IO] Saving chunk " + x + "," + y, Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Saving chunk " + x + "," + y, EngineDebug.LogType.Info, "IO");
 
 
 

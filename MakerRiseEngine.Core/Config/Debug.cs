@@ -21,7 +21,7 @@ namespace Maker.RiseEngine.Core.Config
 
         public static void Load()
         {
-            Core.Debug.DebugLogs.WriteInLogs("[Config.Debugs] Load config...", Core.Debug.LogType.Info);
+            Core.EngineDebug.DebugLogs.WriteInLogs("Load config...", Core.EngineDebug.LogType.Info, "Config.Debugs");
             DS.Load();
 
             FrameCounter = Convert.ToBoolean(int.Parse(DS.GetData("FrameCounter", "0")));

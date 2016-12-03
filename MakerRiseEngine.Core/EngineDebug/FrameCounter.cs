@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace Maker.RiseEngine.Core.Debug
+namespace Maker.RiseEngine.Core.EngineDebug
 {
     public static class FrameCounter
     {

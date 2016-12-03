@@ -55,7 +55,6 @@ namespace Maker.RiseEngine.Core.Plugin
                 CodeDomProvider Provider = CodeDomProvider.CreateProvider("CSharp");
 
                 //Setup compiler.
-
                 #pragma warning disable CS0618 // Le type ou le membre est obsolète
                 ICodeCompiler Compiler = Provider.CreateCompiler();
                 #pragma warning restore CS0618 // Le type ou le membre est obsolète
@@ -77,25 +76,25 @@ namespace Maker.RiseEngine.Core.Plugin
                 if (result.Errors.Count == 0)
                 {
                     //compilation sucess do nothing.
-                    Debug.DebugLogs.WriteInLogs("[Plugin.Builder] Compilation success! '" + OutputPath + "'", Debug.LogType.Info);
+                    EngineDebug.DebugLogs.WriteInLogs("Compilation success! '" + OutputPath + "'", EngineDebug.LogType.Info, "Plugin.Builder");
                     return new BuildOutput(true, result);
                 }
                 else
                 {
                     //Compilation failled. Catch and trow error to the user.
-                    Debug.DebugLogs.WriteInLogs("Compilation failled! '" + OutputPath + "' with (" + result.Errors.Count + " ERROR!)", Debug.LogType.Error, "Plugin.Builder");
+                    EngineDebug.DebugLogs.WriteInLogs("Compilation failled! '" + OutputPath + "' with (" + result.Errors.Count + " ERROR!)", EngineDebug.LogType.Error, "Plugin.Builder");
 
                     foreach (CompilerError Error in result.Errors)
                     {
                         if (Error.IsWarning)
                         {
 
-                            Debug.DebugLogs.WriteInLogs("   Ln" + Error.Line + " '" + Error.ErrorText + "'", Debug.LogType.Warning);
+                            EngineDebug.DebugLogs.WriteInLogs("   Ln" + Error.Line + " '" + Error.ErrorText + "'", EngineDebug.LogType.Warning, "Plugin.Builder");
                         }
                         else
                         {
 
-                            Debug.DebugLogs.WriteInLogs("    Ln" + Error.Line + " '" + Error.ErrorText + "'", Debug.LogType.Error);
+                            EngineDebug.DebugLogs.WriteInLogs("    Ln" + Error.Line + " '" + Error.ErrorText + "'", EngineDebug.LogType.Error, "Plugin.Builder");
                         }
 
 
@@ -108,8 +107,8 @@ namespace Maker.RiseEngine.Core.Plugin
             {
 
                 //Catch exeption, write in logs.
-                Debug.DebugLogs.WriteInLogs("Compilation failled!", Debug.LogType.Error, "Plugin.Builder");
-                Debug.DebugLogs.WriteInLogs(ex.ToString(), Debug.LogType.Info, "Plugin.Builder");
+                EngineDebug.DebugLogs.WriteInLogs("Compilation failled!", EngineDebug.LogType.Error, "Plugin.Builder");
+                EngineDebug.DebugLogs.WriteInLogs(ex.ToString(), EngineDebug.LogType.Info, "Plugin.Builder");
 
                 return new BuildOutput(false, null);
             }

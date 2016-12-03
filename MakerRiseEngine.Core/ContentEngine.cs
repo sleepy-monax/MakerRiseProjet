@@ -31,7 +31,7 @@ namespace Maker.RiseEngine.Core
             { return ColectionTexture2D[contentname]; }
             else
             {
-                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <Texture2D>" + PluginName + "." + contentname, Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("Load <Texture2D>" + PluginName + "." + contentname, EngineDebug.LogType.Info, "ContentEngine");
                 ColectionTexture2D.Add(contentname, Content.Load<Texture2D>(PluginName + "/Textures2D/" + contentname));
                 return ColectionTexture2D[contentname];
             }
@@ -57,7 +57,7 @@ namespace Maker.RiseEngine.Core
             { return ColectionSoundEffect[contentname]; }
             else
             {
-                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <SoundEffect>" + PluginName + "." + contentname, Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("Load <SoundEffect>" + PluginName + "." + contentname, EngineDebug.LogType.Info, "ContentEngine");
                 ColectionSoundEffect.Add(contentname, Content.Load<SoundEffect>(PluginName + "/SoundsEffects/" + contentname));
                 return ColectionSoundEffect[contentname];
             }
@@ -71,7 +71,7 @@ namespace Maker.RiseEngine.Core
             { return ColectionSong[contentname]; }
             else
             {
-                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <Song>" + PluginName + "." + contentname, Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("Load <Song>" + PluginName + "." + contentname, EngineDebug.LogType.Info, "ContentEngine");
                 ColectionSong.Add(contentname, Content.Load<Song>(PluginName + "/Songs/" + contentname));
                 return ColectionSong[contentname];
             }
@@ -85,7 +85,7 @@ namespace Maker.RiseEngine.Core
             { return ColectionFont[contentname]; }
             else
             {
-                Debug.DebugLogs.WriteInLogs("[ContentEngine] Load <SpriteFont>" + PluginName + "." + contentname, Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("Load <SpriteFont>" + PluginName + "." + contentname, EngineDebug.LogType.Info, "ContentEngine");
                 ColectionFont.Add(contentname, Content.Load<SpriteFont>(PluginName + "/Fonts/" + contentname));
                 return ColectionFont[contentname];
             }
@@ -94,7 +94,7 @@ namespace Maker.RiseEngine.Core
 
         public static void ReloadContent() {
 
-            Debug.DebugLogs.WriteInLogs("[ContentEngine] Reloading...", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "ContentEngine");
             ColectionTexture2D.Clear();
             ColectionSoundEffect.Clear();
             ColectionSong.Clear();

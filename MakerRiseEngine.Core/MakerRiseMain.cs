@@ -19,7 +19,7 @@ namespace Maker.RiseEngine.Core
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Core.Debug.DebugScreen DbgScr;
+        Core.EngineDebug.DebugScreen DbgScr;
 
         bool GLmode = false;
 
@@ -44,7 +44,7 @@ namespace Maker.RiseEngine.Core
 
         protected override void Initialize()
         {
-            Core.Debug.DebugLogs.WriteInLogs("[Core] Initializing game engine...", Core.Debug.LogType.Info);
+            Core.EngineDebug.DebugLogs.WriteInLogs("Initializing game engine...", Core.EngineDebug.LogType.Info, "Core");
 
             Core.Config.Controls.Load();
             Core.Config.Debug.Load();
@@ -82,7 +82,7 @@ namespace Maker.RiseEngine.Core
         protected override void LoadContent()
         {
     
-            Core.Debug.DebugLogs.WriteInLogs("[Core] LoadContent...", Core.Debug.LogType.Info);
+            Core.EngineDebug.DebugLogs.WriteInLogs("LoadContent...", Core.EngineDebug.LogType.Info, "Core");
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -90,7 +90,7 @@ namespace Maker.RiseEngine.Core
             Core.ContentEngine.Content = this.Content;
             Core.Rendering.SpriteSheets.CommonSheets.Load();
 
-            DbgScr = new Core.Debug.DebugScreen();
+            DbgScr = new Core.EngineDebug.DebugScreen();
             Core.Scene.SceneManager.Initialize();
             Core.Scene.SceneManager.CurrentScene = 2;
 
@@ -133,7 +133,7 @@ namespace Maker.RiseEngine.Core
             Common.CurrentFrame++;
             //Debug Framecounter
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            Core.Debug.FrameCounter.Update(deltaTime);
+            Core.EngineDebug.FrameCounter.Update(deltaTime);
 
 
             //draw

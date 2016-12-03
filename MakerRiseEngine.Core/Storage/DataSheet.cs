@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Core.Storage
         public void Load()
         {
 
-            Debug.DebugLogs.WriteInLogs("[Storage.DataSheet] Load '" + sheetPath + "'", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Load '" + sheetPath + "'", EngineDebug.LogType.Info, "Storage.DataSheet");
 
             //Check if the fille existe
             if (System.IO.File.Exists(sheetPath))
@@ -52,7 +52,7 @@ namespace Maker.RiseEngine.Core.Storage
         public void Save()
         {
 
-            Debug.DebugLogs.WriteInLogs("[Storage.DataSheet] Save '" + sheetPath + "'", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Save '" + sheetPath + "'", EngineDebug.LogType.Info, "Storage.DataSheet");
 
             string FileText = "";
 

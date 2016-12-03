@@ -27,7 +27,7 @@ namespace Maker.RiseEngine.Core.Config
 
         public static Storage.DataSheet DS = new Storage.DataSheet("Data\\Engine\\Config\\Input.rise");
         public static void Load() {
-            Core.Debug.DebugLogs.WriteInLogs("[Config.Controls] Load config...", Core.Debug.LogType.Info);
+            Core.EngineDebug.DebugLogs.WriteInLogs("Load config...", Core.EngineDebug.LogType.Info, "Config.Controls");
             DS.Load();
 
             MoveUp = (Keys)int.Parse(DS.GetData("MoveUP", ((int)Keys.Z).ToString()));

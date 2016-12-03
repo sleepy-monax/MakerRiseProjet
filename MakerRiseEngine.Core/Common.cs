@@ -23,7 +23,7 @@ namespace Maker.RiseEngine.Core
         public static void ReloadEngine()
         {
 
-            Debug.DebugLogs.WriteInLogs("[Engine] Reloading...", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "Engine");
             ContentEngine.ReloadContent();
             GameObjectsManager.Reload();
             Initializer();
@@ -33,7 +33,7 @@ namespace Maker.RiseEngine.Core
         public static void Initializer()
         {
 
-            Debug.DebugLogs.WriteInLogs("[Engine] Initializing...", Debug.LogType.Info);
+            EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Engine");
 
 
             MouseCursor = new UI.Cursor();
@@ -43,11 +43,11 @@ namespace Maker.RiseEngine.Core
 
             if (GameObjectsManager.IsFullLoaded())
             {
-                Debug.DebugLogs.WriteInLogs("[Engine] Initializing Done !", Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("Initializing Done !", EngineDebug.LogType.Info, "Engine");
             }
             else
             {
-                Debug.DebugLogs.WriteInLogs("[Engine] Initializing Failed !", Debug.LogType.Info);
+                EngineDebug.DebugLogs.WriteInLogs("Initializing Failed !", EngineDebug.LogType.Info, "Engine");
 
                 switch (System.Windows.Forms.MessageBox.Show("Gosh !" + Environment.NewLine + "An error that occurred during initialization of the engine.", "MakerRiseEngine " + Version, System.Windows.Forms.MessageBoxButtons.AbortRetryIgnore, System.Windows.Forms.MessageBoxIcon.Error))
                 {

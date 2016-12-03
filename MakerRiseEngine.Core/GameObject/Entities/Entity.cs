@@ -90,7 +90,7 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
 
         public void OnDamageTaken(GameObjectEventArgs e)
         {
-            Debug.DebugLogs.WriteInLogs("Take Damages" + e.ParrentEntity.heal);
+
         }
 
         public void OnEntityDestroy(GameObjectEventArgs e)
@@ -101,7 +101,6 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
         public void OnEntityKilled(GameObjectEventArgs e, ObjEntity entityKills)
         {
             e.World.entityManager.RemoveEntity(e.CurrentLocation);
-            Debug.DebugLogs.WriteInLogs("Dead");
         }
     }
 }

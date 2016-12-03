@@ -40,7 +40,6 @@ namespace Maker.RiseEngine.Core.AI.Action
 
 
                     float totalDamages = damages - defense;
-                    Debug.DebugLogs.WriteInLogs(totalDamages.ToString());
                     if (totalDamages < 0)
                         totalDamages = 0;
 

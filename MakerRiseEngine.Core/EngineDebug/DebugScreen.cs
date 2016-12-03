@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.Debug
+namespace Maker.RiseEngine.Core.EngineDebug
 {
     class DebugScreen : Idrawable
     {
@@ -16,7 +16,7 @@ namespace Maker.RiseEngine.Core.Debug
         public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
             //Get FPS value
-            FPS = Math.Round(Debug.FrameCounter.CurrentFramesPerSecond, MidpointRounding.AwayFromZero);
+            FPS = Math.Round(EngineDebug.FrameCounter.CurrentFramesPerSecond, MidpointRounding.AwayFromZero);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
