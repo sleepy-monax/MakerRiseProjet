@@ -1,12 +1,7 @@
-﻿using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-using Maker.RiseEngine.Core.World;
+﻿using Maker.RiseEngine.Core.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Maker.RiseEngine.Core.Scene
 {
@@ -80,7 +75,7 @@ namespace Maker.RiseEngine.Core.Scene
                     break;
                 case 4:
 
-
+                    WG.Update(Mouse, KeyBoard, gameTime);
 
                     break;
             }

@@ -4,6 +4,7 @@ using System.IO.Compression;
 using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Exceptions;
 using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries;
 using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags;
+
 namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag
 {
     public class NbtFile : IDisposable

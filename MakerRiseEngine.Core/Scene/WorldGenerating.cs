@@ -21,14 +21,17 @@ namespace Maker.RiseEngine.Core.Scene
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            spriteBatch.Draw(ContentEngine.Texture2D("Engine", "Loading"), new Rectangle(0,0,Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), Color.White);
+            SceneManager.MainMn.BackgroundSB.Begin();
+            SceneManager.MainMn.Background.Draw(SceneManager.MainMn.BackgroundSB, gameTime);
+            SceneManager.MainMn.BackgroundSB.End();
+
             spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), message, new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), Alignment.Center, Style.DropShadow, Color.White);
 
         }
 
         public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
-            
+            SceneManager.MainMn.Background.Update(Mouse, KeyBoard, gameTime);
         }
     }
 }

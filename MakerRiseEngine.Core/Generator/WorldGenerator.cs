@@ -115,7 +115,7 @@ namespace Maker.RiseEngine.Core.Generator
                     }
                 }
 
-                Scene.SceneManager.WG.message = "Expending Region... (" + LoopCount + "/" + WrldProps.RegionExpention + ")";
+                Scene.SceneManager.WG.message = "Generating world " + (int)((float)LoopCount / (float)WrldProps.RegionExpention * 100f) + '%';
                 //exit Loop
                 if (LoopCount == WrldProps.RegionExpention) DoLoop = false;
 
@@ -132,7 +132,7 @@ namespace Maker.RiseEngine.Core.Generator
             {
                 for (int cY = 0; cY <= WrldProps.Size - 1; cY++)
                 {
-                    Scene.SceneManager.WG.message = "Generating chunk " + cX + " " + cY;
+                    Scene.SceneManager.WG.message = "Building Terrain...";
                     NewWorld.Chunks[cX, cY] = new ObjChunk();
 
                     for (int tX = 0; tX <= 15; tX++)

@@ -14,7 +14,7 @@ namespace Maker.RiseEngine.Core
         public static GameWindow Window;
         public static System.Windows.Forms.Form GameForm;
 
-        public static System.Version Version = Assembly.GetExecutingAssembly().GetName().Version;
+        public static Version Version = Assembly.GetExecutingAssembly().GetName().Version;
         public static bool AsErrore = false;
         public static bool IsLoaded = false;
         public static int CurrentFrame = 0;

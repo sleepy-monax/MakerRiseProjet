@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Queries;
 
 namespace Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags
 {

@@ -13,7 +13,7 @@ namespace Maker.RiseEngine.Core.World.WorldObj
 
         public int BiomeID;
         public Color Color = Color.White;
-        public World.Utils.WorldLocation Origine;
+        public Utils.WorldLocation Origine;
         
     }
 }

@@ -15,8 +15,8 @@ namespace Maker.RiseEngine.Core.Scene
 
         #region MainMenu
 
-        private SpriteBatch BackgroundSB;
-        private Rendering.Parallax Background;
+        public SpriteBatch BackgroundSB;
+        public Rendering.Parallax Background;
 
         private UI.ContainerManager MainMenuManager;
 

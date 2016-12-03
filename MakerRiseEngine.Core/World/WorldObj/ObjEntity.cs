@@ -44,21 +44,6 @@ namespace Maker.RiseEngine.Core.World.WorldObj
             rootNbtCompound = new NbtCompound();
         }
 
-        public ObjEntity(NbtCompound nbtEntity) {
 
-        }
-
-        public NbtCompound ToNbtCompound()
-        {
-
-            NbtCompound nbtObjEntity = new NbtCompound();
-            nbtObjEntity.Tags.Add(new NbtInt("id", ID));
-            nbtObjEntity.Tags.Add(new NbtInt("variant", Variant));
-            nbtObjEntity.Tags.Add(new NbtInt("facing", (int)Facing));
-            nbtObjEntity.Tags.Add(new NbtFloat("heal", heal));
-
-            return nbtObjEntity;
-
-        }
     }
 }
