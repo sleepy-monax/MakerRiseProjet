@@ -71,7 +71,7 @@
     <Compile Include="Config\Gfx.cs" />
     <Compile Include="Config\Other.cs" />
     <Compile Include="Config\Sound.cs" />
-    <Compile Include="Debug\DebugScreen.cs" />
+    <Compile Include="EngineDebug\DebugScreen.cs" />
     <Compile Include="GameObjectManager.cs" />
     <Compile Include="GameMath\FastRandom.cs" />
     <Compile Include="GameMath\KeyWeightPair.cs" />
@@ -84,8 +84,8 @@
     <Compile Include="GameScene\GameSceneManager.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
-    <Compile Include="Debug\FrameCounter.cs" />
-    <Compile Include="Debug\DebugLogs.cs" />
+    <Compile Include="EngineDebug\FrameCounter.cs" />
+    <Compile Include="EngineDebug\DebugLogs.cs" />
     <Compile Include="GameMath\Utils.cs" />
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />

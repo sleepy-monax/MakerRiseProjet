@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Maker.RiseEngine.Core.Debug
+{
+    public static class DebugLogs
+    {
+
+        static string LasteDebugText = "";
+
+        /// <summary>
+        /// Write something in application logs.
+        /// </summary>
+        /// <param name="_Text">Text to write in logs.</param>
+        /// <param name="_Type">Style of the text.</param>
+        /// <param name="_SenderName">Name of the sender modules.</param>
+        public static void WriteInLogs(string _Text, LogType _Type = LogType.Info, string _SenderName = "")
+        {
+            if (Config.Debug.EnableDebugLogs)
+            {
+                //Getting logs type texte.
+                string LogTypeText = "";
+         
+                switch (_Type)
+                {
+                    case LogType.Error:
+                        LogTypeText = "Error";
+                        break;
+
+                    case LogType.Info:
+                        LogTypeText = "Info";
+                        break;
+
+                    case LogType.Warning:
+                        LogTypeText = "Warning";
+                        break;
+
+                    default:
+                        LogTypeText = "Info";
+                        break;
+                }
+
+                //formating text.
+                string t = $"{_SenderName} {LogTypeText} {_Text}";
+                
+                //write in console.
+                Console.WriteLine(t);
+
+                //writing in logs file.
+                LasteDebugText = $"{LasteDebugText}{t}{Environment.NewLine}";
+                //System.IO.StreamWriter sw = new System.IO.StreamWriter("Logs.txt");
+                //sw.WriteLine(LasteDebugText);
+                //sw.Close();
+            }
+        }
+    }
+    public enum LogType
+    {
+        Error,
+        Info,
+        Warning,
+    }
+}
