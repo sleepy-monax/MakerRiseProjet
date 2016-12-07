@@ -26,7 +26,7 @@ namespace Maker.RiseEngine.Core.Generator
             Chunk.chunkStatut = World.WorldObj.chunkStatutList.onDecoration;
 
 
-            EngineDebug.DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", EngineDebug.LogType.Info, "ChunkDecorator");
+            EngineDebug.DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", EngineDebug.LogType.Info);
 
             for (int tX = 0; tX <= 15; tX++)
             {
@@ -35,7 +35,7 @@ namespace Maker.RiseEngine.Core.Generator
 
                     if (Chunk.Tiles[tX, tY].ID == -1)
                     {
-
+                        
                         Chunk.Tiles[tX, tY].ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.Region[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
                         Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 

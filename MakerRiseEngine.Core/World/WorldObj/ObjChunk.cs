@@ -7,7 +7,7 @@ using System.Text;
 namespace Maker.RiseEngine.Core.World.WorldObj
 {
 
-    public enum chunkStatutList { Done, onDecoration, needDecoration}
+    public enum chunkStatutList { Done, onDecoration, needDecoration }
 
     [Serializable]
     public class ObjChunk
@@ -20,13 +20,21 @@ namespace Maker.RiseEngine.Core.World.WorldObj
 
         public void AddEntity(ObjEntity _Entity, Point Location)
         {
+            int EntityID = (Location.Y * 16) + Location.X;
 
-                int EntityID = (Location.Y * 16) + Location.X;
+            if (!this.Entities.ContainsKey(EntityID))
+            {
                 this.Entities.Add(EntityID, _Entity);
                 this.Tiles[Location.X, Location.Y].Entity = EntityID;
-            
+            }
+            else
+            {
 
-            
+                EngineDebug.DebugLogs.WriteInLogs("Illegal placing at " + EntityID, EngineDebug.LogType.Warning, "ObjChunk");
+
+            }
+
+
         }
     }
 }

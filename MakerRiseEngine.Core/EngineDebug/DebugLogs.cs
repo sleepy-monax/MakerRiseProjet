@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Maker.RiseEngine.Core.EngineDebug
 {
@@ -50,9 +47,6 @@ namespace Maker.RiseEngine.Core.EngineDebug
 
                 //writing in logs file.
                 LasteDebugText = $"{LasteDebugText}{t}{Environment.NewLine}";
-                //System.IO.StreamWriter sw = new System.IO.StreamWriter("Logs.txt");
-                //sw.WriteLine(LasteDebugText);
-                //sw.Close();
             }
         }
     }

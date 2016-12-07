@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16338.2003.626</AssemblyVersion>
+    <AssemblyVersion>0.16342.1929.638</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -72,6 +72,7 @@
     <Compile Include="Config\Other.cs" />
     <Compile Include="Config\Sound.cs" />
     <Compile Include="EngineDebug\DebugScreen.cs" />
+    <Compile Include="GameMath\Geometry.cs" />
     <Compile Include="GameObjectManager.cs" />
     <Compile Include="GameMath\FastRandom.cs" />
     <Compile Include="GameMath\KeyWeightPair.cs" />
@@ -82,6 +83,11 @@
     <Compile Include="GameObject\IWorldGameObject.cs" />
     <Compile Include="GameScene\GameScene.cs" />
     <Compile Include="GameScene\GameSceneManager.cs" />
+    <Compile Include="Generator\Polygonal\Cell.cs" />
+    <Compile Include="Generator\Polygonal\Edge.cs" />
+    <Compile Include="Generator\Polygonal\Node.cs" />
+    <Compile Include="Generator\Polygonal\PolygonalWorld.cs" />
+    <Compile Include="Generator\Polygonal\PolygonalWorldGenerator.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
     <Compile Include="EngineDebug\FrameCounter.cs" />
@@ -115,6 +121,7 @@
     <Compile Include="Rendering\Primitives2D.cs" />
     <Compile Include="Scene\UItest.cs" />
     <Compile Include="Scene\WorldGenerating.cs" />
+    <Compile Include="Scene\WorldGeneratorTest.cs" />
     <Compile Include="Storage\DataSheet.cs" />
     <Compile Include="Rendering\BitmapHelper.cs" />
     <Compile Include="Rendering\SpriteSheets\CommonSheets.cs" />
@@ -122,25 +129,6 @@
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
-    <Compile Include="Storage\NamedBinaryTag\NbtFile.cs" />
-    <Compile Include="Storage\NamedBinaryTag\NbtQueryException.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Queries\TagQuery.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Queries\TagQueryToken.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\INbtTagList.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\INbtTagValue.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtByte.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtByteArray.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtCompound.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtDouble.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtFloat.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtInt.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtList.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtLong.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtShort.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtString.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtTag.cs" />
-    <Compile Include="Storage\NamedBinaryTag\Tags\NbtTagType.cs" />
-    <Compile Include="Storage\NbtHelper.cs" />
     <Compile Include="Threading\ITreadingTask.cs" />
     <Compile Include="Threading\TreadingWorker.cs" />
     <Compile Include="UI\Controls\ItemsGrid.cs" />
@@ -222,7 +210,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

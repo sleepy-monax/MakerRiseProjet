@@ -37,7 +37,7 @@ namespace Maker.RiseEngine.Core.Scene
 
             if (gameTime.TotalGameTime.Seconds > 2)
             {
-                Core.Scene.SceneManager.CurrentScene = 0;
+                Core.Scene.SceneManager.CurrentScene = 5;
             }
 
 

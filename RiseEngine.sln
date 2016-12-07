@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.DefaultPlugin", "MakerRiseEngine.DefaultPlugin\Maker.RiseEngine.DefaultPlugin.csproj", "{CE75BBEA-8023-487E-9463-7E984F7CAF75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Windows", "MakerRiseEngine.Windows\Maker.RiseEngine.Windows.csproj", "{4D2C3C25-14F7-4555-9692-331897F1F3CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CE75BBEA-8023-487E-9463-7E984F7CAF75} = {CE75BBEA-8023-487E-9463-7E984F7CAF75}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

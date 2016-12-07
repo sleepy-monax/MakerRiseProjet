@@ -13,6 +13,7 @@ namespace Maker.RiseEngine.Core.Scene
         public static WorldScene Gm;
         static SplashScreen Splash;
         static UItest uiTest;
+        static WorldGeneratorTest w;
 
         static Point MouseXY = Point.Zero;
         public static WorldGenerating WG = new WorldGenerating();
@@ -22,6 +23,7 @@ namespace Maker.RiseEngine.Core.Scene
             Splash = new SplashScreen();
             MainMn = new MainMenu();
             uiTest = new UItest();
+            w = new WorldGeneratorTest();
         }
 
         //0 = MainMenu
@@ -78,6 +80,9 @@ namespace Maker.RiseEngine.Core.Scene
                     WG.Update(Mouse, KeyBoard, gameTime);
 
                     break;
+                case 5:
+                    w.Update(Mouse, KeyBoard, gameTime);
+                    break;
             }
             
 
@@ -116,6 +121,9 @@ namespace Maker.RiseEngine.Core.Scene
                     break;
                 case 4:
                     WG.Draw(spriteBatch, gameTime);
+                    break;
+                case 5:
+                    w.Draw(spriteBatch, gameTime);
                     break;
             }
             

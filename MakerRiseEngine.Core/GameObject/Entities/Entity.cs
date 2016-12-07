@@ -47,6 +47,7 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
             }
             SpriteLocation = _SpriteLocation;
             DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));
+            this.MaxVariantCount = Variant.Count - 1;
         }
 
         public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)

@@ -61,9 +61,6 @@ namespace Maker.RiseEngine.Core.AI.Action
                 {
                     e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress);
                 }
-
-
-
             }
             else {
 
@@ -71,8 +68,6 @@ namespace Maker.RiseEngine.Core.AI.Action
                 e.ParrentEntity.ActionProgress = 0;
 
             }
-
-            
 
         }
     }

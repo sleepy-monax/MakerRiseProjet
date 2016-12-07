@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Maker.RiseEngine.Core.Storage.NamedBinaryTag.Tags;
 using Maker.RiseEngine.Core.World.Utils;
 using System;
 using System.Collections.Generic;
@@ -20,16 +19,13 @@ namespace Maker.RiseEngine.Core.World.WorldObj
 
         public float maxHeal = 20;
         public float heal = 20;
-
+        
         //IA
         public AI.Utils.Facing Facing = AI.Utils.Facing.Down;
+        public AI.Utils.Facing[] Path;
         public WorldLocation Location;
         public int Action = -1;
         public int ActionProgress = 0;
-
-        //Tags
-
-        NbtCompound rootNbtCompound;
 
         //entity Moving
         public Vector2 OnTileLocation = Vector2.Zero;
@@ -40,8 +36,6 @@ namespace Maker.RiseEngine.Core.World.WorldObj
         {
             ID = _ID;
             Variant = _Variant;
-
-            rootNbtCompound = new NbtCompound();
         }
 
 
