@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.UI;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace Maker.RiseEngine.Core.Scene
@@ -37,7 +32,7 @@ namespace Maker.RiseEngine.Core.Scene
 
             if (gameTime.TotalGameTime.Seconds > 2)
             {
-                Core.Scene.SceneManager.CurrentScene = 5;
+                Core.Scene.SceneManager.CurrentScene = 0;
             }
 
 

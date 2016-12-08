@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
+﻿namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
     public static class CommonSheets
     {

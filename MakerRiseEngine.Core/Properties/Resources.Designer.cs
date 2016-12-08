@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maker.Maker.RiseEngine.Core.Properties {
-    using System;
-    
-    
+namespace Maker.Maker.RiseEngine.Core.Properties
+{
+
+
     /// <summary>
     ///   Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
     /// </summary>

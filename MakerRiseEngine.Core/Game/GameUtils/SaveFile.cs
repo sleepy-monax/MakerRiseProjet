@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class SaveFile
     {
-        WorldScene W;
+        GameScene G;
 
-        public SaveFile(WorldScene _WorldScene)
+        public SaveFile(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
         }
 
         public void SaveAll()
@@ -21,7 +16,7 @@ namespace Maker.RiseEngine.Core.World.Utils
 
         }
 
-        public void SaveChunk(int x, int y, WorldObj.ObjChunk _Chunk)
+        public void SaveChunk(int x, int y, World.ObjChunk _Chunk)
         {
 
             EngineDebug.DebugLogs.WriteInLogs("Saving chunk " + x + "," + y, EngineDebug.LogType.Info, "IO");

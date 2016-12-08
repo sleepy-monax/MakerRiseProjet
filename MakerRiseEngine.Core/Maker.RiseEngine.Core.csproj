@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16342.1929.638</AssemblyVersion>
+    <AssemblyVersion>0.16343.1653.643</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -83,11 +83,8 @@
     <Compile Include="GameObject\IWorldGameObject.cs" />
     <Compile Include="GameScene\GameScene.cs" />
     <Compile Include="GameScene\GameSceneManager.cs" />
-    <Compile Include="Generator\Polygonal\Cell.cs" />
-    <Compile Include="Generator\Polygonal\Edge.cs" />
-    <Compile Include="Generator\Polygonal\Node.cs" />
-    <Compile Include="Generator\Polygonal\PolygonalWorld.cs" />
-    <Compile Include="Generator\Polygonal\PolygonalWorldGenerator.cs" />
+    <Compile Include="Game\World\ObjWorld.cs" />
+    <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
     <Compile Include="EngineDebug\FrameCounter.cs" />
@@ -146,23 +143,23 @@
     <Compile Include="UI\Container.cs" />
     <Compile Include="UI\Controls\TextBox.cs" />
     <Compile Include="UI\ContainerManager.cs" />
-    <Compile Include="World\WorldObj\ObjChunk.cs" />
-    <Compile Include="World\WorldObj\ObjEntity.cs" />
-    <Compile Include="World\WorldObj\ObjRegion.cs" />
-    <Compile Include="World\WorldObj\ObjTile.cs" />
-    <Compile Include="World\Utils\Camera.cs" />
-    <Compile Include="World\Utils\ChunkManager.cs" />
-    <Compile Include="World\Utils\CommandParse.cs" />
-    <Compile Include="World\Utils\EntityManager.cs" />
-    <Compile Include="World\Utils\EventsManager.cs" />
-    <Compile Include="World\Utils\Location.cs" />
-    <Compile Include="World\Utils\MiniMap.cs" />
-    <Compile Include="World\Utils\GameUI.cs" />
-    <Compile Include="World\Utils\SaveFile.cs" />
-    <Compile Include="World\Utils\WorldProperty.cs" />
-    <Compile Include="World\Utils\WorldRender.cs" />
-    <Compile Include="World\Utils\WorldUpdater.cs" />
-    <Compile Include="World\World.cs" />
+    <Compile Include="Game\World\ObjChunk.cs" />
+    <Compile Include="Game\World\ObjEntity.cs" />
+    <Compile Include="Game\World\ObjRegion.cs" />
+    <Compile Include="Game\World\ObjTile.cs" />
+    <Compile Include="Game\GameUtils\Camera.cs" />
+    <Compile Include="Game\GameUtils\ChunkManager.cs" />
+    <Compile Include="Game\GameUtils\CommandParse.cs" />
+    <Compile Include="Game\GameUtils\EntityManager.cs" />
+    <Compile Include="Game\GameUtils\EventsManager.cs" />
+    <Compile Include="Game\GameUtils\Location.cs" />
+    <Compile Include="Game\GameUtils\MiniMap.cs" />
+    <Compile Include="Game\GameUtils\GameUI.cs" />
+    <Compile Include="Game\GameUtils\SaveFile.cs" />
+    <Compile Include="Game\GameUtils\WorldProperty.cs" />
+    <Compile Include="Game\GameUtils\WorldRender.cs" />
+    <Compile Include="Game\GameUtils\WorldUpdater.cs" />
+    <Compile Include="Game\GameScene.cs" />
     <Compile Include="MakerRiseMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -175,7 +172,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="World\WorldObj\WorldObjectHelper.cs" />
+    <Compile Include="Game\World\WorldObjectHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />

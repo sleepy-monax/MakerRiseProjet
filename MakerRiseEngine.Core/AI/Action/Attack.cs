@@ -1,9 +1,9 @@
 ﻿
-using Microsoft.Xna.Framework;
-using Maker.RiseEngine.Core.GameObject.Event;
-using Maker.RiseEngine.Core.World.Utils;
-using Maker.RiseEngine.Core.World.WorldObj;
+using Maker.RiseEngine.Core.Game.GameUtils;
+using Maker.RiseEngine.Core.Game.World;
 using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Microsoft.Xna.Framework;
 
 namespace Maker.RiseEngine.Core.AI.Action
 {

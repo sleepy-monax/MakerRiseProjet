@@ -1,18 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class EventsManager
     {
-        WorldScene W;
-        public EventsManager(WorldScene _WorldScene)
+        GameScene G;
+        public EventsManager(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
         }
 
 
@@ -23,19 +18,19 @@ namespace Maker.RiseEngine.Core.World.Utils
 
             args.CurrentLocation = Location;
 
-            args.ParrentTile = W.chunkManager.GetTile(Location);
+            args.ParrentTile = G.chunkManager.GetTile(Location);
 
             if (args.ParrentTile.Entity == -1) {
 
-                args.ParrentEntity = new WorldObj.ObjEntity( -1 , -1);
+                args.ParrentEntity = new World.ObjEntity( -1 , -1);
 
             } else {
 
-            args.ParrentEntity = W.chunkManager.GetEntity(Location);
+            args.ParrentEntity = G.chunkManager.GetEntity(Location);
 
             }
 
-            args.World = W;
+            args.World = G;
             args.OnScreenLocation = _OnScreenLocation;
 
             return args;

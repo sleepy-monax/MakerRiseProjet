@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.GameObject.Event;
-using Maker.RiseEngine.Core.Audio;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using System.Collections.Generic;
 
 namespace Maker.RiseEngine.Core.GameObject.Tiles
 {

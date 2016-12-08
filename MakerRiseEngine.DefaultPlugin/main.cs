@@ -3,9 +3,9 @@ using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.GameMath;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-using Maker.RiseEngine.Core.World;
-using Maker.RiseEngine.Core.World.WorldObj;
-using Maker.RiseEngine.Core.World.Utils;
+using Maker.RiseEngine.Core.Game;
+using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.Game.GameUtils;
 
 namespace Maker.RiseEngine.DefaultPlugin
 {
@@ -88,7 +88,7 @@ namespace Maker.RiseEngine.DefaultPlugin
 
         }
 
-        public void OnWorldGeneration(WorldScene world)
+        public void OnWorldGeneration(GameScene world)
         {
 
             ObjEntity E = new ObjEntity(this.GetGameObjectIndex("Player"), 0);

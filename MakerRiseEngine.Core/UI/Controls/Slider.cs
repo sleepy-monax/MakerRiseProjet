@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-using Maker.RiseEngine.Core.Rendering;
 
 namespace Maker.RiseEngine.Core.UI.Controls
 {

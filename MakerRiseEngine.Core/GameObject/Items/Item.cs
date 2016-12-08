@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 
 namespace Maker.RiseEngine.Core.GameObject.Items
 {

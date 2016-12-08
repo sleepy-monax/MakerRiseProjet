@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class CommandParse
     {
-        WorldScene W;
+        GameScene G;
 
-        public CommandParse(WorldScene _WorldScene)
+        public CommandParse(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
         }
 
         public string Parse(String _cmd) {

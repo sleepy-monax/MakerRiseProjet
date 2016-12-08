@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.Rendering;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.Rendering;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace Maker.RiseEngine.Core.UI.Controls

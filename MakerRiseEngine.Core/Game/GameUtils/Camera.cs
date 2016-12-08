@@ -1,17 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class GameCamera
     {
 
-        WorldScene W;
+        GameScene G;
 
         public int Zoom;
         public Point Size;
@@ -27,10 +21,10 @@ namespace Maker.RiseEngine.Core.World.Utils
 
 
 
-        public GameCamera(WorldScene _WorldScene)
+        public GameCamera(GameScene _WorldScene)
         {
 
-            W = _WorldScene;
+            G = _WorldScene;
 
             Zoom = 64;
             Size = new Point(Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight);
@@ -94,8 +88,8 @@ namespace Maker.RiseEngine.Core.World.Utils
             EndX = FocusLocation.X + Config.Gfx.ViewDistance;
             EndY = FocusLocation.Y + Config.Gfx.ViewDistance;
 
-            if (DrawEndX > (W.worldProperty.Size * 16) - 1) DrawEndX = (W.worldProperty.Size * 16) - 1;
-            if (DrawEndY > (W.worldProperty.Size * 16) - 1) DrawEndY = (W.worldProperty.Size * 16) - 1;
+            if (DrawEndX > (G.worldProperty.Size * 16) - 1) DrawEndX = (G.worldProperty.Size * 16) - 1;
+            if (DrawEndY > (G.worldProperty.Size * 16) - 1) DrawEndY = (G.worldProperty.Size * 16) - 1;
 
             EndTile = new Point(EndX, EndY);
 

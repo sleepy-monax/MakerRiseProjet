@@ -1,25 +1,20 @@
-﻿using Maker.RiseEngine.Core.World.WorldObj;
+﻿using Maker.RiseEngine.Core.Game.World;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class ChunkManager
     {
-        WorldScene W;
+        GameScene G;
 
-        public ChunkManager(WorldScene _WorldScene)
+        public ChunkManager(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
         }
 
         #region GetChunk
         //Get Chunk On location
-        public ObjChunk GetChunk(Utils.WorldLocation ChunkLocation)
+        public ObjChunk GetChunk(GameUtils.WorldLocation ChunkLocation)
         {
             return GetChunk(ChunkLocation.chunk.X, ChunkLocation.chunk.Y);
         }
@@ -31,7 +26,7 @@ namespace Maker.RiseEngine.Core.World.Utils
 
         public bool PrepareChunk(int x, int y) {
 
-            ObjChunk chunk = W.Chunks[x, y];
+            ObjChunk chunk = G.world.chunks[x, y];
 
             switch (chunk.chunkStatut)
             {
@@ -40,7 +35,7 @@ namespace Maker.RiseEngine.Core.World.Utils
                 case chunkStatutList.onDecoration:
                     return false;
                 case chunkStatutList.needDecoration:
-                    W.chunkDecorator.Decorated(x, y, W.Chunks[x, y]);
+                    G.chunkDecorator.Decorated(x, y, G.world.chunks[x, y]);
                     return false;
                 default:
                     break;
@@ -51,7 +46,7 @@ namespace Maker.RiseEngine.Core.World.Utils
 
         public ObjChunk GetChunk(int x, int y)
         {
-                return W.Chunks[x, y];
+                return G.world.chunks[x, y];
         }
         #endregion
 
@@ -60,7 +55,7 @@ namespace Maker.RiseEngine.Core.World.Utils
         public ObjTile GetTile(WorldLocation _WorldLocation)
         {
 
-            WorldObj.ObjChunk Chunk = GetChunk(_WorldLocation.chunk);
+            World.ObjChunk Chunk = GetChunk(_WorldLocation.chunk);
             return Chunk.Tiles[_WorldLocation.tile.X, _WorldLocation.tile.Y];
 
         }

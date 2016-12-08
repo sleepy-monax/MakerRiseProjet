@@ -1,5 +1,4 @@
-﻿using Maker.RiseEngine.Core.World;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -10,7 +9,7 @@ namespace Maker.RiseEngine.Core.Scene
 
         public static int CurrentScene = -1;
         public static MainMenu MainMn;
-        public static WorldScene Gm;
+        public static Game.GameScene Gm;
         static SplashScreen Splash;
         static UItest uiTest;
         static WorldGeneratorTest w;
@@ -31,7 +30,7 @@ namespace Maker.RiseEngine.Core.Scene
         //2 = WorldManager
         //3 = loading
 
-        public static void StartGame(WorldScene game)
+        public static void StartGame(Game.GameScene game)
         {
 
             CurrentScene = -1;

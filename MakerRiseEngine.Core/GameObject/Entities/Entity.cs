@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.GameObject.Event;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-using Maker.RiseEngine.Core.World.WorldObj;
+using System.Collections.Generic;
 
 namespace Maker.RiseEngine.Core.GameObject.Entities
 {

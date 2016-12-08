@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Maker.RiseEngine.Core.GameObject;
-using Maker.RiseEngine.Core.Storage;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {

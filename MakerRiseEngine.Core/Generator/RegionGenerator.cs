@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Maker.RiseEngine.Core.Game.GameUtils;
 using Microsoft.Xna.Framework;
-using Maker.RiseEngine.Core.World.Utils;
+using System;
 
 namespace Maker.RiseEngine.Core.Generator
 {
@@ -19,17 +16,17 @@ namespace Maker.RiseEngine.Core.Generator
 
         }
 
-        public void GenerateRegion(int ID, WorldLocation Location, World.WorldScene NewWorld, Random rnd)
+        public void GenerateRegion(int ID, WorldLocation Location, Game.GameScene newGame, Random rnd)
         {
 
-            World.WorldObj.ObjRegion NewRegion = new World.WorldObj.ObjRegion();
+            Game.World.ObjRegion NewRegion = new Game.World.ObjRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
             NewRegion.BiomeID =  GameObjectsManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
             NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
 
-            NewWorld.Region.Add(ID, NewRegion);
+            newGame.world.regions.Add(ID, NewRegion);
 
         }
 

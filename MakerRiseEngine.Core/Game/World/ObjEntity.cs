@@ -1,12 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Maker.RiseEngine.Core.World.Utils;
+﻿using Maker.RiseEngine.Core.Game.GameUtils;
+using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 
-namespace Maker.RiseEngine.Core.World.WorldObj
+namespace Maker.RiseEngine.Core.Game.World
 {
     [Serializable]
     public class ObjEntity

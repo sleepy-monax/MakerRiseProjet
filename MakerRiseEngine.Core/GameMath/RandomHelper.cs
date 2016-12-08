@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Maker.RiseEngine.Core.GameMath
 {
-   public class RandomHelper
+    public class RandomHelper
     {
         public static string RandomString(int length)
         {

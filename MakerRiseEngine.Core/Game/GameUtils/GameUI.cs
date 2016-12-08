@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class GameUI : Idrawable
     {
-        WorldScene W;
+        GameScene G;
 
         public UI.ContainerManager cManager;
         UI.ContainerManager OptionMenuManager;
@@ -37,9 +32,9 @@ namespace Maker.RiseEngine.Core.World.Utils
 
 
 
-        public GameUI(WorldScene _WorldScene)
+        public GameUI(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
 
             cManager = new UI.ContainerManager();
 
@@ -71,7 +66,7 @@ namespace Maker.RiseEngine.Core.World.Utils
             //GameUI
 
             GameUIContainer = new UI.Container(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), false, UI.Dock.UpLeft, Color.White);
-            miniMap = new UI.Controls.MiniMap(16, 16, W);
+            miniMap = new UI.Controls.MiniMap(16, 16, G);
 
             GameUIContainer.Controls.Add(miniMap);
             cManager.AddContainer("GameUI", GameUIContainer);
@@ -95,7 +90,7 @@ namespace Maker.RiseEngine.Core.World.Utils
             if (KeyBoard.IsKeyUp(Config.Controls.ShowMenu) && PasteKeyboard.IsKeyDown(Config.Controls.ShowMenu))
             {
 
-                W.TogglePauseGame();
+                G.TogglePauseGame();
 
             }
 
@@ -105,7 +100,7 @@ namespace Maker.RiseEngine.Core.World.Utils
 
                 if (cManager.CurrentContainerKey == "GameUI") {
 
-                    W.Pause = true;
+                    G.Pause = true;
                     cManager.SwitchContainer("Chat");
 
                 }
@@ -143,7 +138,7 @@ namespace Maker.RiseEngine.Core.World.Utils
         private void ResumeGame()
         {
             cManager.SwitchContainer("GameUI");
-            W.Pause = false;
+            G.Pause = false;
         }
         private void ShowOption()
         {
@@ -159,7 +154,7 @@ namespace Maker.RiseEngine.Core.World.Utils
 
         private void PauseButQuit_OnMouseClick()
         {
-            W.StopGame();
+            G.StopGame();
         }
         #endregion
 

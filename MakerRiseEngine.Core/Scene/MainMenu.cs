@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.Rendering;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core.World;
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -399,14 +398,14 @@ namespace Maker.RiseEngine.Core.Scene
 
             ThreadStart GenHandle = new ThreadStart(delegate
             {
-                World.Utils.WorldProperty wrldp = new World.Utils.WorldProperty()
+                Game.GameUtils.WorldProperty wrldp = new Game.GameUtils.WorldProperty()
                 {
                     WorldName = NewWrldNameTextBox.Text,
                     Seed = int.Parse(NewWrldSeedTextBox.Text)
                 };
 
                 Generator.WorldGenerator Gen = new Generator.WorldGenerator(wrldp);
-                WorldScene wrldsc = Gen.Generate();
+                Game.GameScene wrldsc = Gen.Generate();
 
                 SceneManager.StartGame(wrldsc);
             });

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.GameObject.Event;
-using Maker.RiseEngine.Core.World.Utils;
+﻿using Maker.RiseEngine.Core.Game.GameUtils;
 using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameObject.Event;
+using Microsoft.Xna.Framework;
 
 namespace Maker.RiseEngine.Core.AI.Action
 {

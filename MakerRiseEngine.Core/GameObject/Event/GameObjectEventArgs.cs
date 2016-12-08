@@ -1,22 +1,16 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Maker.RiseEngine.Core.World.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.Game.GameUtils;
+using Microsoft.Xna.Framework;
 
 namespace Maker.RiseEngine.Core.GameObject.Event
 {
     public class GameObjectEventArgs
     {
 
-        public World.WorldObj.ObjEntity ParrentEntity;
-        public World.WorldObj.ObjTile ParrentTile;
+        public Game.World.ObjEntity ParrentEntity;
+        public Game.World.ObjTile ParrentTile;
 
         public WorldLocation CurrentLocation;
-        public World.WorldScene World;
+        public Game.GameScene World;
 
         public Point OnScreenLocation;
 

@@ -8,7 +8,7 @@ namespace Maker.RiseEngine.Core
     public static class Common
     {
         public static GraphicsDeviceManager graphics;
-        public static Game MainGame;
+        public static Microsoft.Xna.Framework.Game MainGame;
         public static GraphicsDevice GraphicsDevice;
         public static string SaveLocation = "Save";
         public static GameWindow Window;

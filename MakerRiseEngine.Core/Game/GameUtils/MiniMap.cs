@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Maker.RiseEngine.Core.World.Utils
+﻿namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class MiniMap
     {
 
-        WorldScene W;
+        GameScene G;
 
-        public MiniMap(WorldScene _WorldScene)
+        public MiniMap(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
         }
 
         public System.Drawing.Bitmap MiniMapBitmap;

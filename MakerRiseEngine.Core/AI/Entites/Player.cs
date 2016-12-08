@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.GameObject.Event;
 using Microsoft.Xna.Framework;
-using Maker.RiseEngine.Core.GameObject.Event;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.AI;
 
 namespace Maker.RiseEngine.Core.AI.Entites
 {

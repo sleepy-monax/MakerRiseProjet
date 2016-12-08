@@ -1,66 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.World.WorldObj;
-using Maker.RiseEngine.Core.Rendering;
+using System;
 
-namespace Maker.RiseEngine.Core.World
+namespace Maker.RiseEngine.Core.Game
 {
-    public class WorldScene : Idrawable
+    public class GameScene : Idrawable
     {
-
-        
-
-        public ObjChunk[,] Chunks;
-        public Dictionary<int, ObjRegion> Region;
+        public ObjWorld world;
         public Generator.ChunkDecorator chunkDecorator;
 
         public Random Rnd;
         public GameMath.Noise.PerlinNoise Noise;
 
-        public Utils.GameCamera Camera;
+        public GameUtils.GameCamera Camera;
         public Rectangle SelectionRect;
 
-        public Utils.WorldRender worldRender;
+        public GameUtils.WorldRender worldRender;
 
-        public Utils.WorldUpdater worldUpdater;
-        public Utils.ChunkManager chunkManager;
-        public Utils.WorldProperty worldProperty;
-        public Utils.EventsManager eventsManager;
-        public Utils.EntityManager entityManager;
-        public Utils.MiniMap miniMap;
-        public Utils.GameUI gameUI;
-        public Utils.SaveFile saveFile;
+        public GameUtils.WorldUpdater worldUpdater;
+        public GameUtils.ChunkManager chunkManager;
+        public GameUtils.WorldProperty worldProperty;
+        public GameUtils.EventsManager eventsManager;
+        public GameUtils.EntityManager entityManager;
+        public GameUtils.MiniMap miniMap;
+        public GameUtils.GameUI gameUI;
+        public GameUtils.SaveFile saveFile;
 
         SpriteBatch BackgroundSB;
         Parallax Background;
 
         public bool Pause = false;
 
-        public WorldScene(Utils.WorldProperty _worldProperty, Random _Rnd)
+        public GameScene(GameUtils.WorldProperty _worldProperty, Random _Rnd)
         {
-            saveFile = new Utils.SaveFile(this);
+            world = new ObjWorld();
+
+            saveFile = new GameUtils.SaveFile(this);
             worldProperty = _worldProperty;
             Rnd = _Rnd;
-            Region = new Dictionary<int, ObjRegion>();
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
             Noise = new GameMath.Noise.PerlinNoise(worldProperty.Seed);
 
-            worldUpdater = new Utils.WorldUpdater(this);
-            chunkManager = new Utils.ChunkManager(this);
-            eventsManager = new Utils.EventsManager(this);
-            entityManager = new Utils.EntityManager(this);
-            miniMap = new Utils.MiniMap(this);
-            gameUI = new Utils.GameUI(this);
+            worldUpdater = new GameUtils.WorldUpdater(this);
+            chunkManager = new GameUtils.ChunkManager(this);
+            eventsManager = new GameUtils.EventsManager(this);
+            entityManager = new GameUtils.EntityManager(this);
+            miniMap = new GameUtils.MiniMap(this);
+            gameUI = new GameUtils.GameUI(this);
 
-            Camera = new Utils.GameCamera(this);
+            Camera = new GameUtils.GameCamera(this);
 
-            worldRender = new Utils.WorldRender(this);
+            worldRender = new GameUtils.WorldRender(this);
 
             BackgroundSB = new SpriteBatch(Common.GraphicsDevice);
             Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight));

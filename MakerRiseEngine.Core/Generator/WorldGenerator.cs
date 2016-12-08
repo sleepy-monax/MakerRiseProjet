@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Maker.RiseEngine.Core.Game.GameUtils;
+using Maker.RiseEngine.Core.Game.World;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.World.WorldObj;
-using System.Drawing;
-using Maker.RiseEngine.Core.World.Utils;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Maker.RiseEngine.Core.Generator
 {
@@ -14,97 +11,77 @@ namespace Maker.RiseEngine.Core.Generator
     {
 
         WorldProperty WrldProps;
-
         RegionGenerator regionGenerator;
         Random Rnd;
         GameMath.FastRandom FastRnd;
 
-
-        public WorldGenerator(WorldProperty _WrldProps) {
+        public WorldGenerator(WorldProperty _WrldProps)
+        {
             WrldProps = _WrldProps;
             Rnd = new Random(_WrldProps.Seed);
             FastRnd = new GameMath.FastRandom(_WrldProps.Seed);
             regionGenerator = new RegionGenerator(this);
-            
-
         }
 
-        public World.WorldScene Generate() {
-
+        public Game.GameScene Generate()
+        {
             Stopwatch stw = new Stopwatch();
             stw.Start();
-            World.WorldScene NewWorld = new World.WorldScene(WrldProps, Rnd);
-            
 
+            Game.GameScene NewGame = new Game.GameScene(WrldProps, Rnd);
             int MaxWorldSize = WrldProps.Size * 16;
-            //debug;
-            Bitmap Map = new System.Drawing.Bitmap(MaxWorldSize, MaxWorldSize);
+            Bitmap minimap = new Bitmap(MaxWorldSize, MaxWorldSize);
+            int[,] regionGrid = new int[MaxWorldSize, MaxWorldSize];
 
-            int[,] rGrid = new int[MaxWorldSize, MaxWorldSize];
-
-            //Adding randome Region
-            EngineDebug.DebugLogs.WriteInLogs("Creating Random Point", EngineDebug.LogType.Info, "WorldGenerator");
+            // Adding randome Region
+            EngineDebug.DebugLogs.WriteInLogs("Creating Random Point...", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Creating Random Point...";
+
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
             {
-
+                // Get Random Region location.
                 int x = FastRnd.Next(MaxWorldSize);
                 int y = FastRnd.Next(MaxWorldSize);
 
-                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x,y)), NewWorld, Rnd);
+                // Create the region.
+                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), NewGame, Rnd);
 
-                PutPixel(rGrid, Map, x, y, rID);
-                Map.SetPixel(x, y, Color.Red);
+                // Create the source tile.
+                regionGrid.SetTile(x, y, rID);
             }
 
             //expanding Region
-
-            EngineDebug.DebugLogs.WriteInLogs("Expending Region", EngineDebug.LogType.Info, "WorldGenerator");
+            EngineDebug.DebugLogs.WriteInLogs("Expending Region...", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Expending Region...";
 
-            bool DoLoop = true;
-            int LoopCount = 0;
-            do
+            for (int i = 0; i < WrldProps.RegionExpention; i++)
             {
-                
                 for (int x = 0; x <= MaxWorldSize - 1; x++)
                 {
                     for (int y = 0; y <= MaxWorldSize - 1; y++)
                     {
 
-                        if (!(rGrid[x, y] == 0)) {
+                        if (!(regionGrid[x, y] == 0))
+                        {
 
-                            int RegionID = rGrid[x, y];
+                            int RegionID = regionGrid[x, y];
                             int Direction = FastRnd.Next(0, 5);
 
+                            // Placing Pixel at coordinate.
                             switch (Direction)
                             {
-                                case 0:
-
-                                    //do nothing
-
-                                    break;
                                 case 1:
-
-                                    
-                                    PutPixel(rGrid, Map, x - 1, y, RegionID);
-
+                                    regionGrid.SetTile(x - 1, y, RegionID);
                                     break;
                                 case 2:
-
-                                    
-                                    PutPixel(rGrid, Map, x + 1, y, RegionID);
-
+                                    regionGrid.SetTile(x + 1, y, RegionID);
                                     break;
                                 case 3:
-
-                                    PutPixel(rGrid, Map, x, y - 1, RegionID);
+                                    regionGrid.SetTile(x, y - 1, RegionID);
 
                                     break;
                                 case 4:
-
-                                    PutPixel(rGrid, Map, x, y + 1, RegionID);
-
+                                    regionGrid.SetTile(x, y + 1, RegionID);
                                     break;
                                 default:
                                     break;
@@ -115,32 +92,27 @@ namespace Maker.RiseEngine.Core.Generator
                     }
                 }
 
-                Scene.SceneManager.WG.message = "Generating world " + (int)((float)LoopCount / (float)WrldProps.RegionExpention * 100f) + '%';
-                //exit Loop
-                if (LoopCount == WrldProps.RegionExpention) DoLoop = false;
+                Scene.SceneManager.WG.message = "Generating world " + WrldProps.RegionExpention + " iteration left..";
+            }
 
-                LoopCount++;
-            } while (DoLoop);
+            // Set loading message.
+            EngineDebug.DebugLogs.WriteInLogs("Converting Chunk... ", EngineDebug.LogType.Info, "WorldGenerator");
+            Scene.SceneManager.WG.message = "Converting Chunk...";
 
-
-           
-
-            EngineDebug.DebugLogs.WriteInLogs("Creating Chunk", EngineDebug.LogType.Info, "WorldGenerator");
-            NewWorld.Chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
+            NewGame.world.chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
 
             for (int cX = 0; cX <= WrldProps.Size - 1; cX++)
             {
                 for (int cY = 0; cY <= WrldProps.Size - 1; cY++)
                 {
-                    Scene.SceneManager.WG.message = "Building Terrain...";
-                    NewWorld.Chunks[cX, cY] = new ObjChunk();
+                    NewGame.world.chunks[cX, cY] = new ObjChunk();
 
                     for (int tX = 0; tX <= 15; tX++)
                     {
                         for (int tY = 0; tY <= 15; tY++)
                         {
-                            NewWorld.Chunks[cX, cY].Tiles[tX, tY] = new World.WorldObj.ObjTile();
-                            NewWorld.Chunks[cX, cY].Tiles[tX, tY].Region = rGrid[cX * 16 + tX, cY * 16 + tY];
+                            NewGame.world.chunks[cX, cY].Tiles[tX, tY] = new Game.World.ObjTile();
+                            NewGame.world.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
 
                         }
                     }
@@ -148,40 +120,19 @@ namespace Maker.RiseEngine.Core.Generator
                 }
             }
 
-            NewWorld.miniMap.MiniMapBitmap = Map;
+            NewGame.miniMap.MiniMapBitmap = minimap;
+            NewGame.miniMap.RefreshMiniMap();
 
-
-
-            Map.Save("World.png");
-            NewWorld.miniMap.RefreshMiniMap();
-
-            foreach (KeyValuePair<string, Plugin.IPlugin> i in GameObjectsManager.Plugins) {
-                i.Value.OnWorldGeneration(NewWorld);
+            // Raising onWorldGeneration event on plugin.
+            foreach (KeyValuePair<string, Plugin.IPlugin> i in GameObjectsManager.Plugins)
+            {
+                i.Value.OnWorldGeneration(NewGame);
             }
 
             stw.Stop();
             EngineDebug.DebugLogs.WriteInLogs("Generator elapsed time : " + stw.ElapsedMilliseconds, EngineDebug.LogType.Info, "WorldGenerator");
 
-            return NewWorld;
-
-        }
-
-
-        public static int[,] PutPixel(int[,] Grid,Bitmap bitmap, int x, int y, int Value) {
-
-            if (x < 0) return Grid;
-            if (y < 0) return Grid;
-
-            if (x > Grid.GetLength(0) - 1) return Grid;
-            if (y > Grid.GetLength(1) - 1) return Grid;
-
-            if (Grid[x, y] == 0)
-            {
-                Grid[x, y] = Value;
-                bitmap.SetPixel(x, y, Color.FromArgb(Value, Value, Value));
-            }
-
-            return Grid;
+            return NewGame;
         }
 
     }

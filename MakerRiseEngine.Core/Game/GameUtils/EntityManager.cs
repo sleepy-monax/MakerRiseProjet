@@ -1,25 +1,20 @@
-﻿using Maker.RiseEngine.Core.World.WorldObj;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.Game.World;
 
-namespace Maker.RiseEngine.Core.World.Utils
+namespace Maker.RiseEngine.Core.Game.GameUtils
 {
     public class EntityManager
     {
 
-        WorldScene W;
+        GameScene G;
 
-        public EntityManager(WorldScene _WorldScene)
+        public EntityManager(GameScene _WorldScene)
         {
-            W = _WorldScene;
+            G = _WorldScene;
         }
 
-        public void AddEntity(WorldObj.ObjEntity _Entity, WorldLocation _WorldLocation)
+        public void AddEntity(World.ObjEntity _Entity, WorldLocation _WorldLocation)
         {
-            WorldObj.ObjChunk Chunk = W.chunkManager.GetChunk(_WorldLocation.chunk);
+            World.ObjChunk Chunk = G.chunkManager.GetChunk(_WorldLocation.chunk);
             int EntityID = _WorldLocation.tile.X + _WorldLocation.tile.Y * 16;
             Chunk.Entities.Add(EntityID, _Entity);
             Chunk.Tiles[_WorldLocation.tile.X, _WorldLocation.tile.Y].Entity = EntityID;
@@ -28,14 +23,14 @@ namespace Maker.RiseEngine.Core.World.Utils
         public void RemoveEntity(WorldLocation _WorldLocation)
         {
 
-            ObjTile Tile = W.chunkManager.GetTile(_WorldLocation);
+            ObjTile Tile = G.chunkManager.GetTile(_WorldLocation);
             if (Tile.Entity == -1)
             { // do nothing
             }
             else
             {
 
-                ObjChunk Chunk = W.chunkManager.GetChunk(_WorldLocation);
+                ObjChunk Chunk = G.chunkManager.GetChunk(_WorldLocation);
                 Chunk.Entities.Remove(Tile.Entity);
                 Tile.Entity = -1;
 
@@ -46,7 +41,7 @@ namespace Maker.RiseEngine.Core.World.Utils
         public bool MoveEntity(WorldLocation _FromLocation, WorldLocation _ToLocation)
         {
 
-            ObjTile Tile = W.chunkManager.GetTile(_FromLocation);
+            ObjTile Tile = G.chunkManager.GetTile(_FromLocation);
 
             //on verifie si il y a une entitée
             if (Tile.Entity == -1)
@@ -62,7 +57,7 @@ namespace Maker.RiseEngine.Core.World.Utils
             }
 
             //et enfin on le deplace
-            ObjEntity EntityToMove = W.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
+            ObjEntity EntityToMove = G.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
 
             RemoveEntity(_FromLocation);
             AddEntity(EntityToMove, _ToLocation);
@@ -74,7 +69,7 @@ namespace Maker.RiseEngine.Core.World.Utils
         public bool TileIsFree(WorldLocation _WorldLocation)
         {
 
-            ObjTile ThisTile = W.chunkManager.GetTile(_WorldLocation);
+            ObjTile ThisTile = G.chunkManager.GetTile(_WorldLocation);
             if (ThisTile.Entity == -1) return true;
 
             return false;
