@@ -131,9 +131,9 @@ namespace Maker.RiseEngine.Core.Scene
             MenuButtonOpti = new UI.Controls.Button("Option", 480, 16, 80, Color.White);
             MenuButtonQuit = new UI.Controls.Button("Quitter", 480, 16, 160, Color.White);
 
-            MenuButtonPlay.OnMouseClick += new UI.Control.ClickEventHandler(this.playGame);
-            MenuButtonOpti.OnMouseClick += new UI.Control.ClickEventHandler(this.ShowOption);
-            MenuButtonQuit.OnMouseClick += new UI.Control.ClickEventHandler(this.ExitGame);
+            MenuButtonPlay.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.playGame);
+            MenuButtonOpti.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.ShowOption);
+            MenuButtonQuit.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.ExitGame);
 
             MenuContainer.Controls.Add(MenuButtonPlay);
             MenuContainer.Controls.Add(MenuButtonOpti);
@@ -158,13 +158,13 @@ namespace Maker.RiseEngine.Core.Scene
             OptionApplyButton = new UI.Controls.Button("Appliquer", 256, 16, OptionContainer.ContainerRect.Height - 64 - 16 - 16 - 64, Color.White);
             OptionBackButton = new UI.Controls.Button("Retour", 256, 16, OptionContainer.ContainerRect.Height - 64 - 16, Color.White);
 
-            OptionGameButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Game);
-            OptionSoundButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Sound);
-            OptionGraphButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Gfx);
-            OptionInputButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Input);
-            OptionOtherButton.OnMouseClick += new UI.Control.ClickEventHandler(this.SwitchOptMenu_Other);
-            OptionApplyButton.OnMouseClick += new UI.Control.ClickEventHandler(this.Apply);
-            OptionBackButton.OnMouseClick += new UI.Control.ClickEventHandler(this.GoBackToMain);
+            OptionGameButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.SwitchOptMenu_Game);
+            OptionSoundButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.SwitchOptMenu_Sound);
+            OptionGraphButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.SwitchOptMenu_Gfx);
+            OptionInputButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.SwitchOptMenu_Input);
+            OptionOtherButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.SwitchOptMenu_Other);
+            OptionApplyButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.Apply);
+            OptionBackButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.GoBackToMain);
 
             OptionContainer.Controls.Add(OptionBackButton);
             OptionContainer.Controls.Add(OptionOtherButton);
@@ -253,8 +253,8 @@ namespace Maker.RiseEngine.Core.Scene
             MngrLabel = new UI.Controls.Label("Mes Mondes", 320, WrlMngrContainer.ContainerRect.Width / 2 - 160, 16, Alignment.Center, Style.DropShadow, Color.White);
 
 
-            MngrDoneButton.OnMouseClick += new UI.Control.ClickEventHandler(this.GoBackToMain);
-            MngrNewButton.OnMouseClick += new UI.Control.ClickEventHandler(this.ShowCreateWorld);
+            MngrDoneButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.GoBackToMain);
+            MngrNewButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.ShowCreateWorld);
 
             WrlMngrContainer.Controls.Add(MngrLoadButton);
             WrlMngrContainer.Controls.Add(MngrNewButton);
@@ -280,8 +280,8 @@ namespace Maker.RiseEngine.Core.Scene
             NewWrldStorieMode = new UI.Controls.CheckBox("Créer une histoire", true, 496, 16, NewWrldContainer.ContainerRect.Height - 128 - 16);
             NewWrldCheat = new UI.Controls.CheckBox("Activé la triche", true, 496, 512, NewWrldContainer.ContainerRect.Height - 128 - 16);
 
-            NewWrldCancelButton.OnMouseClick += new UI.Control.ClickEventHandler(this.GoBackToWorldManager);
-            NewWrldCreateButton.OnMouseClick += new UI.Control.ClickEventHandler(this.CreateWorld);
+            NewWrldCancelButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.GoBackToWorldManager);
+            NewWrldCreateButton.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.CreateWorld);
 
             NewWrldContainer.Controls.Add(NewWrldTitleLabel);
             NewWrldContainer.Controls.Add(NewWrldSeedlabel);

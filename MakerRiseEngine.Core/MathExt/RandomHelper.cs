@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Maker.RiseEngine.Core.GameMath
+namespace Maker.RiseEngine.Core.MathExt
 {
     public class RandomHelper
     {

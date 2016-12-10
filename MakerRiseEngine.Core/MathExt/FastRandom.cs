@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace Maker.RiseEngine.Core.GameMath
+namespace Maker.RiseEngine.Core.MathExt
 {
     public class FastRandom
     {

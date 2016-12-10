@@ -6,7 +6,7 @@ using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace Maker.RiseEngine.Core.UI.Controls
 {
-    public class CheckBox : Control
+    public class CheckBox : UI.Controls.Control
     {
 
         //Sprites 
@@ -29,7 +29,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
             SizeBox.X = x;
             SizeBox.Y = y;
 
-            this.OnMouseClick += new UI.Control.ClickEventHandler(this.CheckBox_MouseClick);
+            this.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.CheckBox_MouseClick);
         }
 
         private void CheckBox_MouseClick()

@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16343.1653.643</AssemblyVersion>
+    <AssemblyVersion>0.16345.1233.645</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="AI\Action\Attack.cs" />
     <Compile Include="AI\Action\Move.cs" />
-    <Compile Include="AI\Action\Teleportation.cs" />
     <Compile Include="AI\Entites\Player.cs" />
     <Compile Include="AI\IAction.cs" />
     <Compile Include="AI\Utils.cs" />
@@ -72,24 +71,22 @@
     <Compile Include="Config\Other.cs" />
     <Compile Include="Config\Sound.cs" />
     <Compile Include="EngineDebug\DebugScreen.cs" />
-    <Compile Include="GameMath\Geometry.cs" />
+    <Compile Include="MathExt\Geometry.cs" />
     <Compile Include="GameObjectManager.cs" />
-    <Compile Include="GameMath\FastRandom.cs" />
-    <Compile Include="GameMath\KeyWeightPair.cs" />
-    <Compile Include="GameMath\MinMax.cs" />
-    <Compile Include="GameMath\Noise\Perlin.cs" />
-    <Compile Include="GameMath\Noise\Simplex.cs" />
-    <Compile Include="GameMath\RandomHelper.cs" />
+    <Compile Include="MathExt\FastRandom.cs" />
+    <Compile Include="MathExt\KeyWeightPair.cs" />
+    <Compile Include="MathExt\MinMax.cs" />
+    <Compile Include="MathExt\Noise\Perlin.cs" />
+    <Compile Include="MathExt\Noise\Simplex.cs" />
+    <Compile Include="MathExt\RandomHelper.cs" />
     <Compile Include="GameObject\IWorldGameObject.cs" />
-    <Compile Include="GameScene\GameScene.cs" />
-    <Compile Include="GameScene\GameSceneManager.cs" />
     <Compile Include="Game\World\ObjWorld.cs" />
     <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
     <Compile Include="EngineDebug\FrameCounter.cs" />
     <Compile Include="EngineDebug\DebugLogs.cs" />
-    <Compile Include="GameMath\Utils.cs" />
+    <Compile Include="MathExt\Utils.cs" />
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />
     <Compile Include="GameObject\Entities\Entity.cs" />
@@ -126,8 +123,6 @@
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
-    <Compile Include="Threading\ITreadingTask.cs" />
-    <Compile Include="Threading\TreadingWorker.cs" />
     <Compile Include="UI\Controls\ItemsGrid.cs" />
     <Compile Include="UI\Controls\MiniMap.cs" />
     <Compile Include="UI\Controls\CheckBox.cs" />
@@ -135,10 +130,9 @@
     <Compile Include="UI\Controls\ProgressBar.cs" />
     <Compile Include="UI\Controls\Slider.cs" />
     <Compile Include="UI\Cursor.cs" />
-    <Compile Include="UI\helper.cs" />
     <Compile Include="Scene\MainMenu.cs" />
     <Compile Include="Scene\SceneManager.cs" />
-    <Compile Include="UI\Control.cs" />
+    <Compile Include="UI\Controls\Control.cs" />
     <Compile Include="UI\Controls\Button.cs" />
     <Compile Include="UI\Container.cs" />
     <Compile Include="UI\Controls\TextBox.cs" />
@@ -173,6 +167,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Game\World\WorldObjectHelper.cs" />
+    <Compile Include="UI\Layout\uiLayout.cs" />
+    <Compile Include="UI\Layout\uiLayoutParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />

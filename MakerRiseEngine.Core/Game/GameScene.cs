@@ -13,7 +13,7 @@ namespace Maker.RiseEngine.Core.Game
         public Generator.ChunkDecorator chunkDecorator;
 
         public Random Rnd;
-        public GameMath.Noise.PerlinNoise Noise;
+        public MathExt.Noise.PerlinNoise Noise;
 
         public GameUtils.GameCamera Camera;
         public Rectangle SelectionRect;
@@ -42,7 +42,7 @@ namespace Maker.RiseEngine.Core.Game
             worldProperty = _worldProperty;
             Rnd = _Rnd;
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
-            Noise = new GameMath.Noise.PerlinNoise(worldProperty.Seed);
+            Noise = new MathExt.Noise.PerlinNoise(worldProperty.Seed);
 
             worldUpdater = new GameUtils.WorldUpdater(this);
             chunkManager = new GameUtils.ChunkManager(this);

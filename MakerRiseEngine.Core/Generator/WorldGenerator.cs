@@ -13,13 +13,13 @@ namespace Maker.RiseEngine.Core.Generator
         WorldProperty WrldProps;
         RegionGenerator regionGenerator;
         Random Rnd;
-        GameMath.FastRandom FastRnd;
+        MathExt.FastRandom FastRnd;
 
         public WorldGenerator(WorldProperty _WrldProps)
         {
             WrldProps = _WrldProps;
             Rnd = new Random(_WrldProps.Seed);
-            FastRnd = new GameMath.FastRandom(_WrldProps.Seed);
+            FastRnd = new MathExt.FastRandom(_WrldProps.Seed);
             regionGenerator = new RegionGenerator(this);
         }
 

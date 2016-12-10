@@ -32,7 +32,7 @@ namespace Maker.RiseEngine.Core.Generator
                     if (Chunk.Tiles[tX, tY].ID == -1)
                     {
                         
-                        Chunk.Tiles[tX, tY].ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
+                        Chunk.Tiles[tX, tY].ID = MathExt.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
                         Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 
                         W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
@@ -40,7 +40,7 @@ namespace Maker.RiseEngine.Core.Generator
                         if (Rnd.NextDouble() < GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
                         {
 
-                            int ID = GameMath.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
+                            int ID = MathExt.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
                             int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount);
 
                             Chunk.AddEntity(new Game.World.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));

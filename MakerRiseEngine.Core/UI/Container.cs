@@ -1,5 +1,6 @@
 ﻿using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.UI.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -164,7 +165,6 @@ namespace Maker.RiseEngine.Core.UI
                 {
                     if (ContainerRect.Width > 128)
                     {
-
                         BoxC.Draw(spriteBatch, new Rectangle(ContainerRect.Location.X + 64, ContainerRect.Location.Y + 64, ContainerRect.Width - 128, ContainerRect.Height - 128), BackColor, gameTime);
                     }
                 }
@@ -191,6 +191,10 @@ namespace Maker.RiseEngine.Core.UI
                 }
             }
             if (Config.Debug.GuiFrame) spriteBatch.DrawRectangle(ContainerRect, Color.Black);
+        }
+
+        public void applyLayout(string name) {
+
         }
     }
 }

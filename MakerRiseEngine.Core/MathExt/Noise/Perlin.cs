@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maker.RiseEngine.Core.GameMath.Noise
+namespace Maker.RiseEngine.Core.MathExt.Noise
 {
     public class PerlinNoise
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Maker.RiseEngine.Core.GameMath
+namespace Maker.RiseEngine.Core.MathExt
 {
     public static class Geometry
     {

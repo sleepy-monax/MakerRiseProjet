@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Maker.RiseEngine.Core.UI.Controls
 {
-    public class MiniMap : UI.Control
+    public class MiniMap : UI.Controls.Control
     {
 
         Game.GameScene G;

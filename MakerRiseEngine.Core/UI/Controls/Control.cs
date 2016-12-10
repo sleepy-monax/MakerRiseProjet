@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.UI
+namespace Maker.RiseEngine.Core.UI.Controls
 {
     public class Control
     {
@@ -19,7 +19,7 @@ namespace Maker.RiseEngine.Core.UI
         public bool MouseOver = false;
         public bool MouseDown = false;
 
-        
+
 
         public virtual void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime, int ContainerX, int ContainerY)
         {
@@ -52,14 +52,15 @@ namespace Maker.RiseEngine.Core.UI
                 }
 
             }
-            else {
+            else
+            {
 
                 MouseDown = false;
                 MouseOver = false;
 
             }
 
-            
+
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, int x, int y)

@@ -7,13 +7,13 @@ namespace Maker.RiseEngine.Core.GameObject
         public string gameObjectName { get; set; }
         public string pluginName { get; set; }
 
-        public GameMath.KeyWeightPair<int>[] RandomEntity;
-        public GameMath.KeyWeightPair<int>[] RandomTile;
+        public MathExt.KeyWeightPair<int>[] RandomEntity;
+        public MathExt.KeyWeightPair<int>[] RandomTile;
         public double EntityDensity { get; set; }
 
         public static List<string> Biomes = new List<string>();
 
-        public Biome(double _EntityDensity, GameMath.KeyWeightPair<int>[] _RandomEntity, GameMath.KeyWeightPair<int>[] _RandomTile)
+        public Biome(double _EntityDensity, MathExt.KeyWeightPair<int>[] _RandomEntity, MathExt.KeyWeightPair<int>[] _RandomTile)
         {
 
             EntityDensity = _EntityDensity;

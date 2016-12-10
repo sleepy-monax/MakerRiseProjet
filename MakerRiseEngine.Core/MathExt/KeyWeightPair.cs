@@ -1,4 +1,4 @@
-﻿namespace Maker.RiseEngine.Core.GameMath
+﻿namespace Maker.RiseEngine.Core.MathExt
 {
     public class KeyWeightPair<T>
     {
