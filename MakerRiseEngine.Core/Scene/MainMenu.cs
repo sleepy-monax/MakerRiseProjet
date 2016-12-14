@@ -98,19 +98,19 @@ namespace Maker.RiseEngine.Core.Scene
             Logo = ContentEngine.Texture2D("Engine", "Logo");
             MakerLogo = ContentEngine.Texture2D("Engine", "MakerLogo");
 
-            BackgroundSB = new SpriteBatch(Common.GraphicsDevice);
+            BackgroundSB = new SpriteBatch(Engine.GraphicsDevice);
             switch (new Random().Next(3))
             {
                 case 0:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight));
+                    Background = Rendering.ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
                     Core.Audio.SongEngine.SwitchSong("Engine", "A Title");
                     break;
                 case 1:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight));
+                    Background = Rendering.ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
                     Core.Audio.SongEngine.SwitchSong("Engine", "Look Up");
                     break;
                 case 2:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight));
+                    Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
                     Core.Audio.SongEngine.SwitchSong("Engine", "Clouds of Orange Juice");
                     break;
                 default:
@@ -141,7 +141,7 @@ namespace Maker.RiseEngine.Core.Scene
 
             //Option
 
-            OptionContainer = new UI.Container(16, 16, 288, Common.graphics.PreferredBackBufferHeight - 32, false, UI.Dock.UpLeft, Color.White)
+            OptionContainer = new UI.Container(16, 16, 288, Engine.graphics.PreferredBackBufferHeight - 32, false, UI.Dock.UpLeft, Color.White)
             {
                 ShowTitle = true,
                 Title = "Option"
@@ -181,15 +181,15 @@ namespace Maker.RiseEngine.Core.Scene
 
 
             //=====Game=====
-            GameOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
-            GameOptionTitle = new UI.Controls.Label("Jeux", Common.graphics.PreferredBackBufferWidth - 304, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
+            GameOptionContainer = new UI.Container(new Rectangle(320, 16, Engine.graphics.PreferredBackBufferWidth - 336, Engine.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
+            GameOptionTitle = new UI.Controls.Label("Jeux", Engine.graphics.PreferredBackBufferWidth - 304, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             GameOptionContainer.Controls.Add(GameOptionTitle);
 
             OptionMenuManager.AddContainer("Game", GameOptionContainer);
 
             //=====sound=====
-            SoundOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
+            SoundOptionContainer = new UI.Container(new Rectangle(320, 16, Engine.graphics.PreferredBackBufferWidth - 336, Engine.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
             SoundOptionTitle = new UI.Controls.Label("Music et sons", SoundOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
             SoundOptionMasterLabel = new UI.Controls.Label("Volume Principale", SoundOptionContainer.ContainerRect.Width - 64, 32, 96, Alignment.Left, Style.Regular, Color.White);
             SoundOptionMasterSlider = new UI.Controls.Slider(32, 160, SoundOptionContainer.ContainerRect.Width - 64);
@@ -201,7 +201,7 @@ namespace Maker.RiseEngine.Core.Scene
             OptionMenuManager.AddContainer("Sound", SoundOptionContainer);
 
             //=====Perf=====
-            PerfOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
+            PerfOptionContainer = new UI.Container(new Rectangle(320, 16, Engine.graphics.PreferredBackBufferWidth - 336, Engine.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
             PerfOptionTitle = new UI.Controls.Label("Graphisme", PerfOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             PerfOptionContainer.Controls.Add(PerfOptionTitle);
@@ -209,7 +209,7 @@ namespace Maker.RiseEngine.Core.Scene
             OptionMenuManager.AddContainer("Gfx", PerfOptionContainer);
 
             //=====Inputs=====
-            InputOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
+            InputOptionContainer = new UI.Container(new Rectangle(320, 16, Engine.graphics.PreferredBackBufferWidth - 336, Engine.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
             InputOptionTitle = new UI.Controls.Label("Commande", InputOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
             InputOptionContainer.Controls.Add(InputOptionTitle);
@@ -218,14 +218,14 @@ namespace Maker.RiseEngine.Core.Scene
 
 
             //=====Other=====
-            OtherOptionContainer = new UI.Container(new Rectangle(320, 16, Common.graphics.PreferredBackBufferWidth - 336, Common.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
+            OtherOptionContainer = new UI.Container(new Rectangle(320, 16, Engine.graphics.PreferredBackBufferWidth - 336, Engine.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
             OtherOptionTitle = new UI.Controls.Label("Autre", OtherOptionContainer.ContainerRect.Width, 0, 16, Alignment.Center, Style.DropShadow, Color.White);
 
-            OtherOptionDebugFrameCounter = new UI.Controls.CheckBox("Conteur d'ips", Config.Debug.FrameCounter, 256, 16, 96);
-            OtherOptionDebugGuiFrame = new UI.Controls.CheckBox("Contours des interfaces", Config.Debug.GuiFrame, 256, 16, 176);
-            OtherOptionDebugWorldOverDraw = new UI.Controls.CheckBox("Limites des Chunks", Config.Debug.WorldOverDraw, 256, 16, 256);
-            OtherOptionDebugWorldFocusLocation = new UI.Controls.CheckBox("Afficher l'objet central de la camera", Config.Debug.WorldFocusLocation, 256, 16, 336);
-            OtherOptionDebugWaterMark = new UI.Controls.CheckBox("Information Avancées", Config.Debug.DebugWaterMark, 256, 16, 416);
+            OtherOptionDebugFrameCounter = new UI.Controls.CheckBox("Conteur d'ips", Engine.engineConfig.Debug_FrameCounter, 256, 16, 96);
+            OtherOptionDebugGuiFrame = new UI.Controls.CheckBox("Contours des interfaces", Engine.engineConfig.Debug_GuiFrame, 256, 16, 176);
+            OtherOptionDebugWorldOverDraw = new UI.Controls.CheckBox("Limites des Chunks", Engine.engineConfig.Debug_WorldOverDraw, 256, 16, 256);
+            OtherOptionDebugWorldFocusLocation = new UI.Controls.CheckBox("Afficher l'objet central de la camera", Engine.engineConfig.Debug_WorldFocusLocation, 256, 16, 336);
+            OtherOptionDebugWaterMark = new UI.Controls.CheckBox("Information Avancées", Engine.engineConfig.Debug_DebugWaterMark, 256, 16, 416);
 
 
             OtherOptionContainer.Controls.Add(OtherOptionTitle);
@@ -244,7 +244,7 @@ namespace Maker.RiseEngine.Core.Scene
 
             //World Manager
 
-            WrlMngrContainer = new UI.Container(Common.graphics.PreferredBackBufferWidth / 2 - 512, 64, 1024, Common.graphics.PreferredBackBufferHeight - 128, true, UI.Dock.UpLeft, Color.White);
+            WrlMngrContainer = new UI.Container(Engine.graphics.PreferredBackBufferWidth / 2 - 512, 64, 1024, Engine.graphics.PreferredBackBufferHeight - 128, true, UI.Dock.UpLeft, Color.White);
 
             MngrLoadButton = new UI.Controls.Button("Charger", 330, 16, WrlMngrContainer.ContainerRect.Height - 160 + 16, Color.White);
             MngrNewButton = new UI.Controls.Button("Nouveau", 330, 347, WrlMngrContainer.ContainerRect.Height - 160 + 16, Color.White);
@@ -264,7 +264,7 @@ namespace Maker.RiseEngine.Core.Scene
 
             //new World
 
-            NewWrldContainer = new UI.Container(Common.graphics.PreferredBackBufferWidth / 2 - 512, 64, 1024, Common.graphics.PreferredBackBufferHeight - 128, true, UI.Dock.UpLeft, Color.White);
+            NewWrldContainer = new UI.Container(Engine.graphics.PreferredBackBufferWidth / 2 - 512, 64, 1024, Engine.graphics.PreferredBackBufferHeight - 128, true, UI.Dock.UpLeft, Color.White);
 
             NewWrldTitleLabel = new UI.Controls.Label("Créer Un Nouveau Monde", 320, NewWrldContainer.ContainerRect.Width / 2 - 160, 16, Alignment.Center, Style.DropShadow, Color.White);
 
@@ -376,11 +376,11 @@ namespace Maker.RiseEngine.Core.Scene
 
             //Other
 
-            Config.Debug.FrameCounter = OtherOptionDebugFrameCounter.IsChecked;
-            Config.Debug.GuiFrame = OtherOptionDebugGuiFrame.IsChecked;
-            Config.Debug.WorldFocusLocation = OtherOptionDebugWorldFocusLocation.IsChecked;
-            Config.Debug.WorldOverDraw = OtherOptionDebugWorldOverDraw.IsChecked;
-            Config.Debug.DebugWaterMark = OtherOptionDebugWaterMark.IsChecked;
+            Engine.engineConfig.Debug_FrameCounter = OtherOptionDebugFrameCounter.IsChecked;
+            Engine.engineConfig.Debug_GuiFrame = OtherOptionDebugGuiFrame.IsChecked;
+            Engine.engineConfig.Debug_WorldFocusLocation = OtherOptionDebugWorldFocusLocation.IsChecked;
+            Engine.engineConfig.Debug_WorldOverDraw = OtherOptionDebugWorldOverDraw.IsChecked;
+            Engine.engineConfig.Debug_DebugWaterMark = OtherOptionDebugWaterMark.IsChecked;
 
         }
 
@@ -438,10 +438,10 @@ namespace Maker.RiseEngine.Core.Scene
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
 
-            spriteBatch.FillRectangle(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 100));
+            spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 100));
 
-            spriteBatch.Draw(Logo, new Vector2(Common.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Common.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
-            spriteBatch.Draw(Logo, new Vector2(Common.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, Common.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
+            spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
+            spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
 
 
             MainMenuManager.Draw(spriteBatch, gameTime);

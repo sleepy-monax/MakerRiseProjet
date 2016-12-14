@@ -15,7 +15,7 @@ namespace Maker.RiseEngine.Core.Scene
         public UItest() {
 
             cManager = new ContainerManager();
-            container = new Container(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), true, Dock.UpLeft, Color.White);
+            container = new Container(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), true, Dock.UpLeft, Color.White);
 
             Inventory.ObjInventory ObjI = new Inventory.ObjInventory("test", 64);
             ObjI.Slots[0] = new Inventory.ObjItem(0, 0, 10);

@@ -25,7 +25,7 @@ namespace Maker.RiseEngine.Core.Audio
         
         public static void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime) {
 
-            MediaPlayer.Volume = (((Config.Sound.Master * Config.Sound.Songs) / 2) * FadeVolume);
+            MediaPlayer.Volume = (((Engine.engineConfig.Sound_Master_Level * Engine.engineConfig.Sound_Song_Level) / 2) * FadeVolume);
         
             if (Play == true) {
                 if (IsFading == true) {

@@ -100,31 +100,31 @@ namespace Maker.RiseEngine.Core.UI
             switch (ScreenDock)
             {
                 case Dock.Up:
-                    DockPoint = new Point(Common.graphics.PreferredBackBufferWidth / 2, 0);
+                    DockPoint = new Point(Engine.graphics.PreferredBackBufferWidth / 2, 0);
                     break;
                 case Dock.Center:
-                    DockPoint = new Point(Common.graphics.PreferredBackBufferWidth / 2, Common.graphics.PreferredBackBufferHeight / 2);
+                    DockPoint = new Point(Engine.graphics.PreferredBackBufferWidth / 2, Engine.graphics.PreferredBackBufferHeight / 2);
                     break;
                 case Dock.Down:
-                    DockPoint = new Point(Common.graphics.PreferredBackBufferWidth / 2, Common.graphics.PreferredBackBufferHeight);
+                    DockPoint = new Point(Engine.graphics.PreferredBackBufferWidth / 2, Engine.graphics.PreferredBackBufferHeight);
                     break;
                 case Dock.UpLeft:
                     DockPoint = new Point(0, 0);
                     break;
                 case Dock.Left:
-                    DockPoint = new Point(0, Common.graphics.PreferredBackBufferHeight / 2);
+                    DockPoint = new Point(0, Engine.graphics.PreferredBackBufferHeight / 2);
                     break;
                 case Dock.DownLeft:
-                    DockPoint = new Point(0, Common.graphics.PreferredBackBufferHeight);
+                    DockPoint = new Point(0, Engine.graphics.PreferredBackBufferHeight);
                     break;
                 case Dock.UpRight:
-                    DockPoint = new Point(Common.graphics.PreferredBackBufferWidth, 0);
+                    DockPoint = new Point(Engine.graphics.PreferredBackBufferWidth, 0);
                     break;
                 case Dock.Right:
-                    DockPoint = new Point(Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight / 2);
+                    DockPoint = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight / 2);
                     break;
                 case Dock.DownRight:
-                    DockPoint = new Point(Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight);
+                    DockPoint = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
                     break;
                 default:
                     break;
@@ -185,12 +185,12 @@ namespace Maker.RiseEngine.Core.UI
             foreach (Control i in this.Controls)
             {
                 i.Draw(spriteBatch, gameTime, this.ContainerRect.X, this.ContainerRect.Y);
-                if (Config.Debug.GuiFrame)
+                if (Engine.engineConfig.Debug_GuiFrame)
                 {
                     spriteBatch.DrawRectangle(i.ClickRect, Color.Black);
                 }
             }
-            if (Config.Debug.GuiFrame) spriteBatch.DrawRectangle(ContainerRect, Color.Black);
+            if (Engine.engineConfig.Debug_GuiFrame) spriteBatch.DrawRectangle(ContainerRect, Color.Black);
         }
 
         public void applyLayout(string name) {

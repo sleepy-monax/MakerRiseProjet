@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Core.Scene
             SceneManager.MainMn.Background.Draw(SceneManager.MainMn.BackgroundSB, gameTime);
             SceneManager.MainMn.BackgroundSB.End();
 
-            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), message, new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), Alignment.Center, Style.DropShadow, Color.White);
+            spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), message, new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), Alignment.Center, Style.DropShadow, Color.White);
 
         }
 

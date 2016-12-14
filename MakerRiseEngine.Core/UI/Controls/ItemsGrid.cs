@@ -46,16 +46,16 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
                         //GameObjectsManager.Items[Inventory.Slots[ItemKey].ID].Variant[Inventory.Slots[ItemKey].Variant].Draw(spriteBatch, new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32), Color.White, gameTime);
 
-                        if (new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32).Contains(Common.MouseCursor.MouseLocation))
+                        if (new Rectangle(SizeBox.X + cX + Column * 64 + 16, SizeBox.Y + cY + Row * 64 + 16, 32, 32).Contains(Engine.MouseCursor.MouseLocation))
                         {
 
                             if (lastMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released)
                             {
 
                                 Inventory.ObjItem s = inventory.Slots[ItemKey];
-                                inventory.Slots[ItemKey] = Common.MouseCursor.Item;
+                                inventory.Slots[ItemKey] = Engine.MouseCursor.Item;
 
-                                Common.MouseCursor.Item = s;
+                                Engine.MouseCursor.Item = s;
                             }
 
                         }

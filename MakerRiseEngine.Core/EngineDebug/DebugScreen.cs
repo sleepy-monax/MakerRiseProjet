@@ -19,9 +19,9 @@ namespace Maker.RiseEngine.Core.EngineDebug
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             //Draw FPS values
-            if (Config.Debug.FrameCounter)
+            if (Engine.engineConfig.Debug_FrameCounter)
             {
-                spriteBatch.DrawString(NormalFont, "FPS : " + FPS, new Vector2(Common.graphics.PreferredBackBufferWidth - NormalFont.MeasureString("FPS : " + FPS).X - 16, 16), Color.White);
+                spriteBatch.DrawString(NormalFont, "FPS : " + FPS, new Vector2(Engine.graphics.PreferredBackBufferWidth - NormalFont.MeasureString("FPS : " + FPS).X - 16, 16), Color.White);
             }
         }
 

@@ -39,7 +39,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
             TxtL = CommonSheets.GUI.GetSprite("TxtL");
             TxtR = CommonSheets.GUI.GetSprite("TxtR");
 
-            Common.Window.TextInput += Window_TextInput;
+            Engine.Window.TextInput += Window_TextInput;
         }
 
         private void Window_TextInput(object sender, TextInputEventArgs e)
@@ -79,7 +79,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
                 PastKeyState = KeyBoard;
 
-                Common.MouseCursor.Type = CursorType.Ibeam;
+                Engine.MouseCursor.Type = CursorType.Ibeam;
             }
             else CharInput = false;
             base.Update(Mouse, KeyBoard, gameTime, X, Y);

@@ -55,8 +55,8 @@ namespace Maker.RiseEngine.Core.Game
 
             worldRender = new GameUtils.WorldRender(this);
 
-            BackgroundSB = new SpriteBatch(Common.GraphicsDevice);
-            Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight));
+            BackgroundSB = new SpriteBatch(Engine.GraphicsDevice);
+            Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
 
         }
 
@@ -90,7 +90,7 @@ namespace Maker.RiseEngine.Core.Game
 
             if (Pause)
             {
-                _SpriteBatch.FillRectangle(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
+                _SpriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
 
             }
 

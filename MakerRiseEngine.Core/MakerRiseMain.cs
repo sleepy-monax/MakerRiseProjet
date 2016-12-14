@@ -23,11 +23,11 @@ namespace Maker.RiseEngine.Core
         {
 
             graphics = new GraphicsDeviceManager(this);
-            Core.Common.graphics = graphics;
+            Engine.graphics = graphics;
             Content.RootDirectory = "Data";
-            Core.Common.MainGame = this;
-            Core.Common.Window = Window;
-            Core.Common.GameForm = (Form)System.Windows.Forms.Control.FromHandle(Window.Handle);
+            Engine.MainGame = this;
+            Engine.Window = Window;
+            Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
             GLmode = _Glmode;
 
 
@@ -37,15 +37,10 @@ namespace Maker.RiseEngine.Core
 
         protected override void Initialize()
         {
-            Core.EngineDebug.DebugLogs.WriteInLogs("Initializing game engine...", Core.EngineDebug.LogType.Info, "Core");
-
-            Core.Config.Controls.Load();
-            Core.Config.Debug.Load();
-
-
+            EngineDebug.DebugLogs.WriteInLogs("Initializing game engine...", EngineDebug.LogType.Info, "Core");
 
             //setting up screen
-            if (Core.Config.Gfx.FullScreen == true)
+            if (Engine.engineConfig.GFX_FullScreen == true)
             {
                 graphics.PreferredBackBufferWidth = Screen.PrimaryScreen.Bounds.Width;
                 graphics.PreferredBackBufferHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -79,7 +74,7 @@ namespace Maker.RiseEngine.Core
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Core.Common.GraphicsDevice = this.GraphicsDevice;
+            Core.Engine.GraphicsDevice = this.GraphicsDevice;
             Core.ContentEngine.Content = this.Content;
             Core.Rendering.SpriteSheets.CommonSheets.Load();
 
@@ -103,8 +98,8 @@ namespace Maker.RiseEngine.Core
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (Common.IsLoaded)
-                Common.MouseCursor.Update(mouseState, keyboardState, gameTime);
+            if (Engine.IsLoaded)
+                Engine.MouseCursor.Update(mouseState, keyboardState, gameTime);
 
             Core.Scene.SceneManager.Update(mouseState, keyboardState, gameTime);
             DbgScr.Update(mouseState, keyboardState, gameTime);
@@ -123,7 +118,7 @@ namespace Maker.RiseEngine.Core
             //clear screen
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Common.CurrentFrame++;
+            Engine.CurrentFrame++;
             //Debug Framecounter
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Core.EngineDebug.FrameCounter.Update(deltaTime);
@@ -136,18 +131,18 @@ namespace Maker.RiseEngine.Core
             Core.Scene.SceneManager.Draw(spriteBatch, gameTime);
 
             //draw Debug
-            if (Core.Common.AsErrore)
+            if (Core.Engine.AsErrore)
             {
                 spriteBatch.DrawString(Core.ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Error Mode !", new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Alignment.Bottom, Style.Bold, Color.Red);
             }
 
             DbgScr.Draw(spriteBatch, gameTime);
 
-            if (Common.IsLoaded)
-                Common.MouseCursor.Draw(spriteBatch, gameTime);
+            if (Engine.IsLoaded)
+                Engine.MouseCursor.Draw(spriteBatch, gameTime);
 
-            if (Core.Config.Debug.DebugWaterMark)
-                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Common.Version.Revision + "\nLoaded plugin : " + Core.GameObjectsManager.LoadedAssemblies.Count, new Rectangle(16, 0, 256, 64), Alignment.Left, Style.DropShadow, Color.White);
+            if (Engine.engineConfig.Debug_DebugWaterMark)
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision + "\nLoaded plugin : " + Core.GameObjectsManager.LoadedAssemblies.Count, new Rectangle(16, 0, 256, 64), Alignment.Left, Style.DropShadow, Color.White);
 
             spriteBatch.End();
 

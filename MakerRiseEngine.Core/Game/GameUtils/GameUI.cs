@@ -65,7 +65,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
             //GameUI
 
-            GameUIContainer = new UI.Container(new Rectangle(0, 0, Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight), false, UI.Dock.UpLeft, Color.White);
+            GameUIContainer = new UI.Container(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), false, UI.Dock.UpLeft, Color.White);
             miniMap = new UI.Controls.MiniMap(16, 16, G);
 
             GameUIContainer.Controls.Add(miniMap);
@@ -87,7 +87,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
         public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
-            if (KeyBoard.IsKeyUp(Config.Controls.ShowMenu) && PasteKeyboard.IsKeyDown(Config.Controls.ShowMenu))
+            if (KeyBoard.IsKeyUp(Engine.engineConfig.Input_ShowMenu) && PasteKeyboard.IsKeyDown(Engine.engineConfig.Input_ShowMenu))
             {
 
                 G.TogglePauseGame();
@@ -95,7 +95,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             }
 
 
-            if (KeyBoard.IsKeyUp(Config.Controls.ShowChat) && PasteKeyboard.IsKeyDown(Config.Controls.ShowChat))
+            if (KeyBoard.IsKeyUp(Engine.engineConfig.Input_ShowChat) && PasteKeyboard.IsKeyDown(Engine.engineConfig.Input_ShowChat))
             {
 
                 if (cManager.CurrentContainerKey == "GameUI") {

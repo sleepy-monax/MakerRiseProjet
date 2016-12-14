@@ -40,7 +40,7 @@ namespace Maker.RiseEngine.Core
             bitmap.SetPixel(1, 0, System.Drawing.Color.Black);
             bitmap.SetPixel(0, 1, System.Drawing.Color.Black);
 
-            return Core.Rendering.BitmapHelper.BitmapToTexture2D(Common.GraphicsDevice ,bitmap);
+            return Core.Rendering.BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice ,bitmap);
 
         }
 

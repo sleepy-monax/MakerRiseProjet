@@ -18,7 +18,7 @@ namespace Maker.RiseEngine.Core.Scene
             {
                 if (FirstFrame == false)
                 {
-                    Common.Initializer();
+                    Engine.Initializer();
 
                     OneTime = false;
 
@@ -45,17 +45,17 @@ namespace Maker.RiseEngine.Core.Scene
 
             if (EngineLogo)
             {
-                spriteBatch.Draw(ContentEngine.Texture2D("Engine", "MakerLogo"), new Rectangle(Common.graphics.PreferredBackBufferWidth / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Width / 2, Common.graphics.PreferredBackBufferHeight / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Height / 2, ContentEngine.Texture2D("Engine", "MakerLogo").Width, ContentEngine.Texture2D("Engine", "MakerLogo").Height), Color.White);
+                spriteBatch.Draw(ContentEngine.Texture2D("Engine", "MakerLogo"), new Rectangle(Engine.graphics.PreferredBackBufferWidth / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Width / 2, Engine.graphics.PreferredBackBufferHeight / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Height / 2, ContentEngine.Texture2D("Engine", "MakerLogo").Width, ContentEngine.Texture2D("Engine", "MakerLogo").Height), Color.White);
             }
             else
             {
-                spriteBatch.Draw(ContentEngine.Texture2D("Engine", "MonoGameLogo"), new Rectangle(Common.graphics.PreferredBackBufferWidth / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Width / 2, Common.graphics.PreferredBackBufferHeight / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Height / 2, ContentEngine.Texture2D("Engine", "MakerLogo").Width, ContentEngine.Texture2D("Engine", "MakerLogo").Height), Color.White);
+                spriteBatch.Draw(ContentEngine.Texture2D("Engine", "MonoGameLogo"), new Rectangle(Engine.graphics.PreferredBackBufferWidth / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Width / 2, Engine.graphics.PreferredBackBufferHeight / 2 - ContentEngine.Texture2D("Engine", "MakerLogo").Height / 2, ContentEngine.Texture2D("Engine", "MakerLogo").Width, ContentEngine.Texture2D("Engine", "MakerLogo").Height), Color.White);
             }
 
             if (FirstFrame)
             {
 
-                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Loading data...", new Rectangle(0, Common.graphics.PreferredBackBufferHeight - 64, Common.graphics.PreferredBackBufferWidth, 64), Alignment.Center, Style.DropShadow, Color.Black);
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Loading data...", new Rectangle(0, Engine.graphics.PreferredBackBufferHeight - 64, Engine.graphics.PreferredBackBufferWidth, 64), Alignment.Center, Style.DropShadow, Color.Black);
 
             }
 

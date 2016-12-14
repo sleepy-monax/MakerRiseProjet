@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Windows", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.uiLayoutEditor", "Maker.RiseEngine.uiLayoutEditor\Maker.RiseEngine.uiLayoutEditor.csproj", "{CBF767DC-D931-4830-94B7-2BC3DFA14B4A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{9ABA2B92-32CE-4814-9B4B-2E77645F2CC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.ConfigEditor", "Maker.RiseEngine.ConfigEditor\Maker.RiseEngine.ConfigEditor.csproj", "{3671E61A-94BA-4CFD-BD61-A31900A224E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,8 +84,28 @@ Global
 		{CBF767DC-D931-4830-94B7-2BC3DFA14B4A}.Release|x64.Build.0 = Release|Any CPU
 		{CBF767DC-D931-4830-94B7-2BC3DFA14B4A}.Release|x86.ActiveCfg = Release|Any CPU
 		{CBF767DC-D931-4830-94B7-2BC3DFA14B4A}.Release|x86.Build.0 = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|ARM.Build.0 = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|x64.Build.0 = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Debug|x86.Build.0 = Debug|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|ARM.Build.0 = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|x64.ActiveCfg = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|x64.Build.0 = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|x86.ActiveCfg = Release|Any CPU
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBF767DC-D931-4830-94B7-2BC3DFA14B4A} = {9ABA2B92-32CE-4814-9B4B-2E77645F2CC3}
+		{3671E61A-94BA-4CFD-BD61-A31900A224E2} = {9ABA2B92-32CE-4814-9B4B-2E77645F2CC3}
 	EndGlobalSection
 EndGlobal

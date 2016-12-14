@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16345.1233.645</AssemblyVersion>
+    <AssemblyVersion>0.16349.1933.656</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -58,18 +58,13 @@
   <ItemGroup>
     <Compile Include="AI\Action\Attack.cs" />
     <Compile Include="AI\Action\Move.cs" />
-    <Compile Include="AI\Entites\Player.cs" />
+    <Compile Include="AI\Entites\PlayerAI.cs" />
     <Compile Include="AI\IAction.cs" />
     <Compile Include="AI\Utils.cs" />
     <Compile Include="Audio\SongEngine.cs" />
     <Compile Include="Audio\SoundEffectEngine.cs" />
-    <Compile Include="Common.cs" />
-    <Compile Include="Config\Controls.cs" />
-    <Compile Include="Config\Debug.cs" />
-    <Compile Include="Config\Game.cs" />
-    <Compile Include="Config\Gfx.cs" />
-    <Compile Include="Config\Other.cs" />
-    <Compile Include="Config\Sound.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Config\EngineConfig.cs" />
     <Compile Include="EngineDebug\DebugScreen.cs" />
     <Compile Include="MathExt\Geometry.cs" />
     <Compile Include="GameObjectManager.cs" />
@@ -123,6 +118,7 @@
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
+    <Compile Include="Storage\SerializationHelper.cs" />
     <Compile Include="UI\Controls\ItemsGrid.cs" />
     <Compile Include="UI\Controls\MiniMap.cs" />
     <Compile Include="UI\Controls\CheckBox.cs" />

@@ -14,8 +14,8 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
         public WorldRender(GameScene _WorldScene)
         {
             G = _WorldScene;
-            tSpriteBatch = new SpriteBatch(Common.GraphicsDevice);
-            eSpriteBatch = new SpriteBatch(Common.GraphicsDevice);
+            tSpriteBatch = new SpriteBatch(Engine.GraphicsDevice);
+            eSpriteBatch = new SpriteBatch(Engine.GraphicsDevice);
         }
 
 
@@ -70,7 +70,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
                                 World.ObjEntity E = G.chunkManager.GetEntity(CurrentLocation);
                                 GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
 
-                                if (Config.Debug.WorldOverDraw && E.IsFocus)
+                                if (Engine.engineConfig.Debug_WorldOverDraw && E.IsFocus)
                                 {
 
                                     eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2, 2) + E.OnTileLocation, Color.Black);

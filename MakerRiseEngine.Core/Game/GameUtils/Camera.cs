@@ -27,7 +27,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             G = _WorldScene;
 
             Zoom = 64;
-            Size = new Point(Common.graphics.PreferredBackBufferWidth, Common.graphics.PreferredBackBufferHeight);
+            Size = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
 
             FocusLocation = Point.Zero;
             PreciseFocusLocation = Vector2.Zero;
@@ -63,11 +63,11 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
         public void Update()
         {
 
-            DrawStartX = FocusLocation.X - Config.Gfx.ViewDistance;
-            DrawStartY = FocusLocation.Y - Config.Gfx.ViewDistance;
+            DrawStartX = FocusLocation.X - Engine.engineConfig.GFX_ViewDistance;
+            DrawStartY = FocusLocation.Y - Engine.engineConfig.GFX_ViewDistance;
 
-            StartX = FocusLocation.X - Config.Gfx.ViewDistance;
-            StartY = FocusLocation.Y - Config.Gfx.ViewDistance;
+            StartX = FocusLocation.X - Engine.engineConfig.GFX_ViewDistance;
+            StartY = FocusLocation.Y - Engine.engineConfig.GFX_ViewDistance;
 
             if (DrawStartX <= 0)
             {
@@ -82,11 +82,11 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
             StartTile = new Point(StartX, StartY);
 
-            DrawEndX = FocusLocation.X + Config.Gfx.ViewDistance;
-            DrawEndY = FocusLocation.Y + Config.Gfx.ViewDistance;
+            DrawEndX = FocusLocation.X + Engine.engineConfig.GFX_ViewDistance;
+            DrawEndY = FocusLocation.Y + Engine.engineConfig.GFX_ViewDistance;
 
-            EndX = FocusLocation.X + Config.Gfx.ViewDistance;
-            EndY = FocusLocation.Y + Config.Gfx.ViewDistance;
+            EndX = FocusLocation.X + Engine.engineConfig.GFX_ViewDistance;
+            EndY = FocusLocation.Y + Engine.engineConfig.GFX_ViewDistance;
 
             if (DrawEndX > (G.worldProperty.Size * 16) - 1) DrawEndX = (G.worldProperty.Size * 16) - 1;
             if (DrawEndY > (G.worldProperty.Size * 16) - 1) DrawEndY = (G.worldProperty.Size * 16) - 1;
