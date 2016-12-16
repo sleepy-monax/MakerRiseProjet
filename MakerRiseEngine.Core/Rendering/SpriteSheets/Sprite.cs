@@ -40,9 +40,6 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 
         }
 
-
-
-
         public void Draw(SpriteBatch spritebatch, Rectangle DestinationRectangle, Color color, GameTime gameTime)
         {
 
@@ -118,6 +115,5 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 
             }
         }
-
     }
 }

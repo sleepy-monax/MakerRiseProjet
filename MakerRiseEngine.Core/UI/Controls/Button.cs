@@ -81,10 +81,6 @@ namespace Maker.RiseEngine.Core.UI.Controls
                 }
 
             }
-
-
-
-
             base.Draw(spriteBatch, gameTime, x, y);
         }
 

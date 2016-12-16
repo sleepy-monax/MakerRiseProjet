@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Maker.RiseEngine.Core.UI.Controls
 {
-    public enum MouseStats{Over, Down, None }
+    public enum MouseStats { Over, Down, None }
 
     public class Control
     {
