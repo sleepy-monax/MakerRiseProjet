@@ -121,7 +121,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
             spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(x + SizeBox.X + 16, y + SizeBox.Y + 4, SizeBox.Width - 32, SizeBox.Height), Alignment.Left, Style.Regular, Color.Black);
 
             // Draw selection.
-            if (this.MouseOver)
+            if (mouseStats == MouseStats.Over)
                 spriteBatch.FillRectangle(new Rectangle((int)ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + x + SizeBox.X + 16, y + SizeBox.Y + 20, 1, (int)CharSize.Y), Color.Black);
             
             base.Draw(spriteBatch, gameTime, x, y);

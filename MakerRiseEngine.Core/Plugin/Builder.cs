@@ -33,7 +33,7 @@ namespace Maker.RiseEngine.Core.Plugin
         /// <returns>Compilation sucess.</returns>
         public static BuildOutput Build(string SourcePath, string OutputPath)
         {
-            
+
             try
             {
                 //Check if the file existe. return false went does't existe.
@@ -52,9 +52,9 @@ namespace Maker.RiseEngine.Core.Plugin
                 CodeDomProvider Provider = CodeDomProvider.CreateProvider("CSharp");
 
                 //Setup compiler.
-                #pragma warning disable CS0618 // Le type ou le membre est obsolète
+#pragma warning disable CS0618 // Le type ou le membre est obsolète
                 ICodeCompiler Compiler = Provider.CreateCompiler();
-                #pragma warning restore CS0618 // Le type ou le membre est obsolète
+#pragma warning restore CS0618 // Le type ou le membre est obsolète
 
                 CompilerParameters Parameters = new CompilerParameters();
                 Parameters.GenerateExecutable = false;

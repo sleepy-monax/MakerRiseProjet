@@ -50,35 +50,41 @@ namespace Maker.RiseEngine.Core.UI.Controls
             if (Visible)
             {
 
-                if (this.MouseDown)
+                switch (mouseStats)
                 {
-                    ButMD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), ControlColor, gameTime);
-                    ButLD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
-                    ButRD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
+                    case MouseStats.Over:
+                        ButM.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), ControleHoverColor, gameTime);
+                        ButL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControleHoverColor, gameTime);
+                        ButR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControleHoverColor, gameTime);
 
-                    spriteBatch.DrawString( ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y + 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
-                }
-                else if (this.MouseOver)
-                {
-                    ButM.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), ControleHoverColor, gameTime);
-                    ButL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControleHoverColor, gameTime);
-                    ButR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControleHoverColor, gameTime);
+                        spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
 
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
-                }
-                else
-                {
-                    ButM.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), ControlColor, gameTime);
-                    ButL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
-                    ButR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
+                        break;
+                    case MouseStats.Down:
+                        ButMD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), ControlColor, gameTime);
+                        ButLD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
+                        ButRD.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
 
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
+                        spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y + 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
+
+                        break;
+                    case MouseStats.None:
+                        ButM.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), ControlColor, gameTime);
+                        ButL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
+                        ButR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), ControlColor, gameTime);
+
+                        spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(SizeBox.Location.X + x, SizeBox.Location.Y + y - 4, SizeBox.Width, SizeBox.Height), Alignment.Center, Style.Regular, Color.White);
+
+                        break;
+                    default:
+                        break;
                 }
+
             }
 
 
 
-            
+
             base.Draw(spriteBatch, gameTime, x, y);
         }
 

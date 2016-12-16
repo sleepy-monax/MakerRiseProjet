@@ -61,7 +61,6 @@ namespace Maker.RiseEngine.Core.Scene
         #endregion
 
         #region OptionPanel
-
         public UI.ContainerManager OptionMenuManager;
 
         private UI.Container GameOptionContainer;
@@ -85,10 +84,6 @@ namespace Maker.RiseEngine.Core.Scene
         private UI.Controls.CheckBox OtherOptionDebugWorldOverDraw;
         private UI.Controls.CheckBox OtherOptionDebugWorldFocusLocation;
         private UI.Controls.CheckBox OtherOptionDebugWaterMark;
-
-
-
-
         #endregion
 
 

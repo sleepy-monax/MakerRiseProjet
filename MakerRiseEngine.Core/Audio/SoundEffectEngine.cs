@@ -9,27 +9,27 @@ namespace Maker.RiseEngine.Core.Audio
     public static class SoundEffectEngine
     {
 
-        static List<SoundEffectInstance> SEI;
-        static Random rnd;
+        static List<SoundEffectInstance> soundEffectInstance;
+        static Random random;
 
         static SoundEffectEngine()
         {
 
-            SEI = new List<SoundEffectInstance>();
-            rnd = new Random();
+            soundEffectInstance = new List<SoundEffectInstance>();
+            random = new Random();
 
         }
 
-        public static void PlaySoundEffects(SoundEffectColection SE)
+        public static void PlaySoundEffect(SoundEffectColection soundEffectColection)
         {
 
-            int i = rnd.Next(SE.SE.Count);
-            SoundEffect se = SE.SE[i];
+            int i = random.Next(soundEffectColection.soundEffects.Count);
+            SoundEffect soundEffect = soundEffectColection.soundEffects[i];
 
-            SoundEffectInstance seI = se.CreateInstance();
-            SEI.Add(seI);
-            seI.Volume = (Engine.engineConfig.Sound_Master_Level * Engine.engineConfig.Sound_Effect_Level);
-            seI.Play();
+            SoundEffectInstance newSoundEffectInstance = soundEffect.CreateInstance();
+            soundEffectInstance.Add(newSoundEffectInstance);
+            newSoundEffectInstance.Volume = (Engine.engineConfig.Sound_Master_Level * Engine.engineConfig.Sound_Effect_Level);
+            newSoundEffectInstance.Play();
 
         }
 
@@ -37,12 +37,15 @@ namespace Maker.RiseEngine.Core.Audio
         {
             try
             {
-                foreach (SoundEffectInstance i in SEI)
+                foreach (SoundEffectInstance i in soundEffectInstance)
                 {
 
                     if (i.State == SoundState.Stopped)
                     {
-                        SEI.Remove(i);
+
+                        soundEffectInstance.Remove(i);
+                        i.Dispose();
+
                     }
                     else
                     {

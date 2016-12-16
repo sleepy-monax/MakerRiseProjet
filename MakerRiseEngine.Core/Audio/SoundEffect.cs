@@ -6,11 +6,11 @@ namespace Maker.RiseEngine.Core.Audio
 {
     public class SoundEffectColection
     {
-        public List<SoundEffect> SE;
+        public List<SoundEffect> soundEffects;
 
         public SoundEffectColection() {
 
-            SE = new List<SoundEffect>();
+            soundEffects = new List<SoundEffect>();
 
         }
     }
@@ -26,16 +26,16 @@ namespace Maker.RiseEngine.Core.Audio
             f = f.Replace(System.Environment.NewLine, "");
             string[] Ls = f.Split(',');
 
-            SoundEffectColection SE = new SoundEffectColection();
+            SoundEffectColection soundEffectColection = new SoundEffectColection();
 
             for (int i = 0; i < Ls.Length; i++)
             {
 
-                SE.SE.Add(ContentEngine.SoundEffect(_PluginName, Ls[i]));
+                soundEffectColection.soundEffects.Add(ContentEngine.SoundEffect(_PluginName, Ls[i]));
 
             }
 
-            return SE;
+            return soundEffectColection;
         }
 
     }

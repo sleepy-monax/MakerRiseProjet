@@ -19,7 +19,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
         Sprite SldOrb = CommonSheets.GUI.GetSprite("SldOrb");
 
         public Slider(int x, int y, int width) {
-            this.SizeBox = new Microsoft.Xna.Framework.Rectangle(x,y,width, 64);
+            this.SizeBox = new Rectangle(x,y,width, 64);
             Width = width;
         }
 

@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Maker.RiseEngine.Core.UI.Controls
 {
+    public enum MouseStats{Over, Down, None }
+
     public class Control
     {
         public MouseState lastMouseState, currentMouseState;
@@ -16,12 +18,11 @@ namespace Maker.RiseEngine.Core.UI.Controls
         public event ClickEventHandler OnMouseClick;
         
         // Mouse click sound effect.
-        SoundEffectColection SE = SoundEffectParser.Parse("Engine", "ButtonClick");
+        SoundEffectColection SoundEffect = SoundEffectParser.Parse("Engine", "ButtonClick");
 
         // Mouse stats.
-        public bool MouseOver = false;
-        public bool MouseDown = false;
-        
+        public MouseStats mouseStats = MouseStats.None;
+      
         public virtual void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime, int ContainerX, int ContainerY)
         {
             // Update mouse clic hitbox.
@@ -32,24 +33,25 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
             // Get the mouse state relevant for this frame
             currentMouseState = Mouse;
-            
+
             // Mouse is over the control?
-            MouseOver = ClickRect.Contains(Mouse.Position);
-            
+            if (ClickRect.Contains(Mouse.Position))
+                mouseStats = MouseStats.Over;
+            else
+                mouseStats = MouseStats.None;
+
             // Get if control containe the mouse pointer
-            if (MouseOver)
+            if (mouseStats == MouseStats.Over)
             {
-                MouseDown = (currentMouseState.LeftButton == ButtonState.Pressed);
+                mouseStats  = currentMouseState.LeftButton == ButtonState.Pressed ? MouseStats.Down : MouseStats.Over;
                 
                 // Recognize a single click of the left mouse button
                 if (lastMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released)
                 {
-                    Audio.SoundEffectEngine.PlaySoundEffects(SE);
+                    SoundEffectEngine.PlaySoundEffect(SoundEffect);
                     OnMouseClick?.Invoke();
                 }
             }
-            else
-                MouseDown = false;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime, int x, int y)

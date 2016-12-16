@@ -68,7 +68,7 @@ namespace Maker.RiseEngine.Core.GameObject.Tiles
             if (AsSoundEffect)
             {
 
-                SoundEffectEngine.PlaySoundEffects(SE);
+                SoundEffectEngine.PlaySoundEffect(SE);
 
             }
         }
