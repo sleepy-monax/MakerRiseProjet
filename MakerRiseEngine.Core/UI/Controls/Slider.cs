@@ -8,7 +8,6 @@ namespace Maker.RiseEngine.Core.UI.Controls
 {
     class Slider : Control
     {
-
         float Value;
         float Width;
 
@@ -27,13 +26,10 @@ namespace Maker.RiseEngine.Core.UI.Controls
         public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime, int X, int Y)
         {
             if (ClickRect.Contains(Mouse.Position) && Mouse.LeftButton == ButtonState.Pressed) {
-
-
                 int MousePos = Mouse.Position.X - ClickRect.X;
 
                 if (MousePos == 0) Value = 0;
                 else Value = MousePos / Width;
-
             }
 
             base.Update(Mouse, KeyBoard, gameTime, X, Y);
@@ -49,13 +45,9 @@ namespace Maker.RiseEngine.Core.UI.Controls
             SldBR.Draw(spriteBatch, new Rectangle(this.ClickRect.X + this.SizeBox.Width - 64, this.ClickRect.Y, 64, 64), Color.White, gameTime);
             SldBM.Draw(spriteBatch, new Rectangle(this.ClickRect.X + 64, this.ClickRect.Y, this.SizeBox.Width - 128, 64), Color.White, gameTime);
 
-
-
             SldL.Draw(spriteBatch, new Rectangle(this.ClickRect.X, this.ClickRect.Y, 64, 64), Color.White, gameTime);
             SldM.Draw(spriteBatch, new Rectangle(this.ClickRect.X + 16, this.ClickRect.Y, (int)(Value * Width) - 16, 64), Color.White, gameTime);
-
             
-
             SldOrb.Draw(spriteBatch, new Rectangle((int)(this.ClickRect.X + Value * Width) - 32, this.ClickRect.Y, 64, 64), Color.White, gameTime);
 
             base.Draw(spriteBatch, gameTime, x, y);
