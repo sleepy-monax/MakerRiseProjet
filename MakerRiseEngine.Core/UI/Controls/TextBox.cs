@@ -27,7 +27,6 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
         string VisibleText;
 
-
         public TextBox(string text, int maxChar, int X, int Y)
         {
             CharSize = ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString("0");
@@ -44,13 +43,12 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
         private void Window_TextInput(object sender, TextInputEventArgs e)
         {
+            // handel text input event.
             if (!(e.Character == System.Environment.NewLine.ToCharArray()[0]))
             {
                 CharInput = true;
                 LastInputChar = e.Character;
-
             }
-
         }
 
         public override void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime, int X, int Y)
@@ -87,35 +85,18 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
         public void InputChar(char chr)
         {
-
             if (Text.ToCharArray().Count() < MaxChar)
             {
                 string CharString = chr.ToString();
-
-
-
                 Text = Text.Insert(CharIndex, CharString);
                 CharIndex++;
             }
-
         }
 
         public void RefreshText()
         {
-
             if (Text.ToCharArray().Count() < MaxChar)
-            {
-                //Si le nombre de Char est inferieur a la taile de la boite
-
                 VisibleText = Text;
-
-            }
-            else
-            {
-
-
-            }
-
         }
 
         public void RemoveChar()
@@ -131,16 +112,19 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, int x, int y)
         {
+            // Draw textbox background.
             TxtM.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + 64 + x, SizeBox.Location.Y + y), new Point(SizeBox.Width - 128, 64)), Color.White, gameTime);
             TxtL.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x, SizeBox.Location.Y + y), new Point(64)), Color.White, gameTime);
             TxtR.Draw(spriteBatch, new Rectangle(new Point(SizeBox.Location.X + x + SizeBox.Width - 64, SizeBox.Location.Y + y), new Point(64)), Color.White, gameTime);
-
+            
+            // Draw text.
             spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(x + SizeBox.X + 16, y + SizeBox.Y + 4, SizeBox.Width - 32, SizeBox.Height), Alignment.Left, Style.Regular, Color.Black);
 
+            // Draw selection.
             if (this.MouseOver)
                 spriteBatch.FillRectangle(new Rectangle((int)ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + x + SizeBox.X + 16, y + SizeBox.Y + 20, 1, (int)CharSize.Y), Color.Black);
+            
             base.Draw(spriteBatch, gameTime, x, y);
         }
-
     }
 }
