@@ -13,25 +13,52 @@ namespace Maker.RiseEngine.Core.SceneManager
     {
 
         RiseGame Game;
-
         List<Scene> Scenes;
 
-        public SceneManager(RiseGame game) {
+        public SceneManager(RiseGame game)
+        {
+
             Game = game;
             Scenes = new List<Scene>();
+
         }
 
-        public void AddScene(Scene scene) {
+        public void AddScene(Scene scene)
+        {
+
+            try
+            {
+                scene.OnLoad();
+            }
+            catch (Exception ex)
+            {
+                EngineDebug.DebugLogs.WriteInLogs($"Error append during scene loading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
+            }
+
             Scenes.Add(scene);
         }
 
-        public void RemoveScene(Scene scene) {
+        public void RemoveScene(Scene scene)
+        {
+
+            try
+            {
+                scene.OnUnload();
+            }
+            catch (Exception ex)
+            {
+                EngineDebug.DebugLogs.WriteInLogs($"Error append during scene unloading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
+
+                throw;
+            }
+
             Scenes.Remove(scene);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            foreach (Scene s in Scenes) {
+            foreach (Scene s in Scenes)
+            {
                 s.sceneDraw(spriteBatch, gameTime);
             }
         }

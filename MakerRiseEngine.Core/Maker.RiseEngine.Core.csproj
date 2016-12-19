@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16351.2316.665</AssemblyVersion>
+    <AssemblyVersion>0.16353.2249.688</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -106,6 +106,12 @@
     <Compile Include="Rendering\SpriteFontDraw.cs" />
     <Compile Include="SceneManager\Scene.cs" />
     <Compile Include="SceneManager\SceneManager.cs" />
+    <Compile Include="SceneManager\Scenes\EngineLoading.cs" />
+    <Compile Include="SceneManager\Scenes\Menu\MenuMain.cs" />
+    <Compile Include="SceneManager\Scenes\Menu\MenuNewWorld.cs" />
+    <Compile Include="SceneManager\Scenes\Menu\MenuOpenWorld.cs" />
+    <Compile Include="SceneManager\Scenes\Menu\MenuOption.cs" />
+    <Compile Include="SceneManager\Scenes\UserInterfaceTest.cs" />
     <Compile Include="Scene\SplashScreen.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\Loader.cs" />
@@ -166,6 +172,8 @@
     </Compile>
     <Compile Include="Game\World\WorldObjectHelper.cs" />
     <Compile Include="UserInterface\Control.cs" />
+    <Compile Include="UserInterface\Controls\Button.cs" />
+    <Compile Include="UserInterface\Controls\Panel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -200,9 +208,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SceneManager\Scenes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

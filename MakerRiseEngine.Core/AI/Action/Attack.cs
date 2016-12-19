@@ -29,16 +29,15 @@ namespace Maker.RiseEngine.Core.AI.Action
 
                 if (e.ParrentEntity.ActionProgress == 100)
                 {
-                    e.ParrentEntity.ActionProgress = 0;
-                    e.ParrentEntity.OnTileLocation = Vector2.Zero;
 
+                    // Get entityies.
                     ObjEntity attackedEntity = e.World.chunkManager.GetEntity(CurrentLocation);
                     GameObjectEventArgs attackedEntityEventsArgs = e.World.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
 
                     float defense = attackedEntityEventsArgs.ParrentEntity.ToGameObject().GetDefence(attackedEntityEventsArgs);
                     float damages = e.ParrentEntity.ToGameObject().GetDamage(e);
 
-
+                    
                     float totalDamages = damages - defense;
                     if (totalDamages < 0)
                         totalDamages = 0;
@@ -53,13 +52,22 @@ namespace Maker.RiseEngine.Core.AI.Action
                         attackedEntityEventsArgs.ParrentEntity.ToGameObject().OnEntityKilled(attackedEntityEventsArgs, e.ParrentEntity);
                     }
 
+                    // remove the action.
                     e.ParrentEntity.Action = -1;
                     e.ParrentEntity.ActionProgress = 0;
+                    e.ParrentEntity.OnTileLocation = Vector2.Zero;
 
                 }
                 else
                 {
-                    e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress);
+                    if (e.ParrentEntity.ActionProgress > 75)
+                    {
+                        e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2((50 - e.ParrentEntity.ActionProgress) / 2);
+                    }
+                    else {
+                        e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress / 2);
+                    }
+                    
                 }
             }
             else {

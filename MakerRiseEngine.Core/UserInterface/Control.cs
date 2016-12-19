@@ -12,17 +12,50 @@ using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 namespace Maker.RiseEngine.Core.UserInterface
 {
     public enum MouseStats { Over, Down, None }
+    public enum Anchor { UpLeft, Up, UpRight, Left, Center, Right, DownLeft, Down, DownRight }
 
     public abstract class Control : Idrawable
     {
         // Properties
-        bool Visible { get; set; } = true;
-        bool enable { get; set; } = true;
-        string Text { get; set; } = "Controls";
-        public Rectangle ControlRectangle { get; set; } = new Rectangle(0, 0, 256, 64);
+        public bool Visible { get; set; } = true;
+        public bool Enable { get; set; } = true;
+        public string Text { get; set; } = "Controls";
+        public Color ControlColor { get; set; } = Color.White;
+        public Color TextColor { get; set; } = Color.White;
+
+        public Control ParrentControl = null;
+
+        // Style
+        Rectangle _ControlRectangle = new Rectangle(0, 0, 256, 64);
+        Point _Location;
+
+        Point AnchorPoint;
+
+        public Rectangle ControlRectangle
+        {
+            get { return _ControlRectangle; }
+            set
+            {
+                _Location = value.Location;
+                _ControlRectangle = value;
+            }
+        }
+        public Anchor ControlAnchor { get; set; } = Anchor.UpLeft;
 
         // Child controls list.
-        public List<Control> ChildControls = new List<Control>();
+        List<Control> ChildControls = new List<Control>();
+
+        public void AddChild(Control child)
+        {
+            child.ParrentControl = this;
+            ChildControls.Add(child);
+        }
+
+        public void RemoveChild(Control child)
+        {
+            child.ParrentControl = null;
+            ChildControls.Remove(child);
+        }
 
         // Mouse Stats.
         public MouseState lastMouseState, currentMouseState;
@@ -34,7 +67,7 @@ namespace Maker.RiseEngine.Core.UserInterface
             if (Visible)
             {
                 // Draw the controls.
-                onDraw(spriteBatch, gameTime);
+                OnDraw(spriteBatch, gameTime);
 
                 // Draw child controls.
                 foreach (Control c in ChildControls)
@@ -46,10 +79,78 @@ namespace Maker.RiseEngine.Core.UserInterface
 
         public void Update(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
-            if (enable)
+            // Update Enchore.
+            {
+                Rectangle parrentRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
+
+                // Get parrent controls rectangle.
+                if (ParrentControl != null)
+                {
+                    parrentRectangle = ParrentControl.ControlRectangle;
+                }
+
+                // refresh controls location by anchor.
+                Point newLocation = new Point(0, 0);
+
+                switch (ControlAnchor)
+                {
+                    case Anchor.UpLeft:
+
+                        newLocation = new Point(parrentRectangle.X + _Location.X, parrentRectangle.Y + _Location.Y);
+
+                        break;
+                    case Anchor.Up:
+
+                        newLocation = new Point(parrentRectangle.X + parrentRectangle.Width / 2 + _Location.X, parrentRectangle.Y + _Location.Y);
+
+                        break;
+                    case Anchor.UpRight:
+
+                        newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + _Location.Y);
+
+                        break;
+                    case Anchor.Left:
+
+                        newLocation = new Point(parrentRectangle.X + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
+
+                        break;
+                    case Anchor.Center:
+
+                        newLocation = new Point(parrentRectangle.X + parrentRectangle.Width / 2 + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
+
+                        break;
+                    case Anchor.Right:
+
+                        newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
+
+                        break;
+                    case Anchor.DownLeft:
+
+                        newLocation = new Point(parrentRectangle.X + _Location.X, parrentRectangle.Y + parrentRectangle.Height + _Location.Y);
+
+                        break;
+                    case Anchor.Down:
+
+                        newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
+
+                        break;
+                    case Anchor.DownRight:
+
+                        newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + parrentRectangle.Height + _Location.Y);
+
+                        break;
+                    default:
+                        break;
+                }
+
+                _ControlRectangle = new Rectangle(newLocation, new Point(_ControlRectangle.Width, _ControlRectangle.Height));
+
+            }
+
+            if (Enable)
             {
                 // Update the controls.
-                onUpdate(mouse, keyBoard, gameTime);
+                OnUpdate(mouse, keyBoard, gameTime);
 
                 // Update mouse.
                 {
@@ -73,14 +174,15 @@ namespace Maker.RiseEngine.Core.UserInterface
                         // Recognize a single click of the left mouse button
                         if (lastMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released)
                         {
-                            onMouseUp();
-                            onMouseClick();
+                            OnMouseUp();
+                            OnMouseClick();
+                            onMouseClick?.Invoke();
                         }
 
                         // Reconize mouse Down event.
                         if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Released)
                         {
-                            onMouseDown();
+                            OnMouseDown();
                         }
                     }
                 }
@@ -105,12 +207,16 @@ namespace Maker.RiseEngine.Core.UserInterface
         }
 
         // Events.
-        public abstract void onDraw(SpriteBatch spriteBatch, GameTime gameTime);
-        public abstract void onUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime);
+        public virtual void OnDraw(SpriteBatch spriteBatch, GameTime gameTime) { }
+        public virtual void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime) { }
 
         // Mouse Event.
-        public abstract void onMouseClick();
-        public abstract void onMouseDown();
-        public abstract void onMouseUp();
+        public virtual void OnMouseClick() { }
+        public virtual void OnMouseDown() { }
+        public virtual void OnMouseUp() { }
+
+        // Declare Envent Handeling
+        public delegate void ClickEventHandler();
+        public event ClickEventHandler onMouseClick;
     }
 }

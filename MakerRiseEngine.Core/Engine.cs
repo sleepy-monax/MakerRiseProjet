@@ -7,6 +7,7 @@ namespace Maker.RiseEngine.Core
 {
     public static class Engine
     {
+
         public static GraphicsDeviceManager graphics;
         public static Microsoft.Xna.Framework.Game MainGame;
         public static GraphicsDevice GraphicsDevice;
@@ -28,46 +29,50 @@ namespace Maker.RiseEngine.Core
             EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "Engine");
             ContentEngine.ReloadContent();
             GameObjectsManager.Reload();
-            Initializer();
+            Initialize();
 
         }
 
-        public static void Initializer()
+        public static void Initialize()
         {
 
             EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Engine");
 
+            // load binary config file.
             if (System.IO.File.Exists("Data\\config.bin"))
                 engineConfig = Storage.SerializationHelper.LoadFromBin<Config.EngineConfig>("Data\\config.bin");
             else
                 Storage.SerializationHelper.SaveToBin(engineConfig, "Data\\config.bin");
 
-
             MouseCursor = new UI.Cursor();
 
-            GameObjectsManager.InitializePlugin();
-
+            GameObjectsManager.LoadPlugins();
 
             if (GameObjectsManager.IsFullLoaded())
             {
+
                 EngineDebug.DebugLogs.WriteInLogs("Initializing Done !", EngineDebug.LogType.Info, "Engine");
             }
             else
             {
                 EngineDebug.DebugLogs.WriteInLogs("Initializing Failed !", EngineDebug.LogType.Info, "Engine");
 
+                // Get user input after fatal error :D.
                 switch (System.Windows.Forms.MessageBox.Show("Gosh !" + Environment.NewLine + "An error that occurred during initialization of the engine.", "MakerRiseEngine " + Version, System.Windows.Forms.MessageBoxButtons.AbortRetryIgnore, System.Windows.Forms.MessageBoxIcon.Error))
                 {
+                    // The user went to extit the game.
                     case System.Windows.Forms.DialogResult.Abort:
                         System.Windows.Forms.Application.Exit();
                         break;
+
+                    // The user went to restart the  game engine
                     case System.Windows.Forms.DialogResult.Retry:
                         System.Windows.Forms.Application.Restart();
                         break;
+                    
+                    // The user ignore the fatal error 😏.
                     case System.Windows.Forms.DialogResult.Ignore:
                         AsErrore = true;
-                        break;
-                    default:
                         break;
                 }
 

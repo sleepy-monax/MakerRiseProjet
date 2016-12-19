@@ -7,7 +7,7 @@ namespace Maker.RiseEngine.Core.Plugin
     public static class PluginLoader
     {
 
-        public static ICollection<IPlugin> LoadPlugin(Assembly assembly)
+        public static ICollection<IPlugin> LoadAssembly(Assembly assembly)
         {
                 EngineDebug.DebugLogs.WriteInLogs("load \'" + assembly.CodeBase + "\'", EngineDebug.LogType.Info, "Plugin.Loader");
 

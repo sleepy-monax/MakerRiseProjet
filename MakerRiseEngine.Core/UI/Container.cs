@@ -128,8 +128,6 @@ namespace Maker.RiseEngine.Core.UI
                     break;
                 default:
                     break;
-
-
             }
 
             ContainerRect = new Rectangle(ContainerDefaultRect.Location.X + DockPoint.X, ContainerDefaultRect.Location.Y + DockPoint.Y, ContainerDefaultRect.Width, ContainerDefaultRect.Height);

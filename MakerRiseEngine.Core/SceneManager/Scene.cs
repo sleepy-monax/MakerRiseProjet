@@ -32,21 +32,22 @@ namespace Maker.RiseEngine.Core.SceneManager
         {
             if (Visible)
             {
-                onDraw(spriteBatch, gameTime);
+                OnDraw(spriteBatch, gameTime);
             }
         }
         public void sceneUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
             if (!Pause)
             {
-                onUpdate(mouse, keyBoard, gameTime);
+                OnUpdate(mouse, keyBoard, gameTime);
             }
         }
 
         // Event.
-        public abstract void onDraw(SpriteBatch spriteBatch, GameTime gameTime);
-        public abstract void onUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime);
+        public abstract void OnDraw(SpriteBatch spriteBatch, GameTime gameTime);
+        public abstract void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime);
 
         public abstract void OnLoad();
+        public abstract void OnUnload();
     }
 }

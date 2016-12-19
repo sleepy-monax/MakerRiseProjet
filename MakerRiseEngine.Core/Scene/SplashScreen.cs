@@ -9,7 +9,6 @@ namespace Maker.RiseEngine.Core.Scene
     {
         bool OneTime = true;
         bool FirstFrame = true;
-
         bool EngineLogo = false;
 
         public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
@@ -18,7 +17,7 @@ namespace Maker.RiseEngine.Core.Scene
             {
                 if (FirstFrame == false)
                 {
-                    Engine.Initializer();
+                    Engine.Initialize();
 
                     OneTime = false;
 

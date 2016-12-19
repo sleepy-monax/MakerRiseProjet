@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace Maker.RiseEngine.Core.Game.GameUtils
 {
@@ -50,14 +51,14 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             pt = pt + _Point;
 
             WorldLocation NewWorldLocation = ToWorldLocation(pt);
-
+            
             return NewWorldLocation;
         }
 
     }
 
 
-
+    [Serializable]
     public class WorldLocation
     {
 

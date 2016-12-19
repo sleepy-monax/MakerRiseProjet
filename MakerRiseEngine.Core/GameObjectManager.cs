@@ -104,7 +104,7 @@ namespace Maker.RiseEngine.Core
         public static Dictionary<string, System.Reflection.Assembly> LoadedAssemblies = new Dictionary<string, System.Reflection.Assembly>();
         public static Dictionary<string, Plugin.IPlugin> Plugins = new Dictionary<string, Plugin.IPlugin>();
 
-        public static void InitializePlugin()
+        public static void LoadPlugins()
         {
             if (IsLoaded == false)
             {
@@ -120,7 +120,7 @@ namespace Maker.RiseEngine.Core
                         {
                             //Load Plugin
                             LoadedAssemblies.Add(Dir.Split('\\').Last(), builderOutput.Result.CompiledAssembly);
-                            ICollection<Plugin.IPlugin> PluginCollection = Plugin.PluginLoader.LoadPlugin(builderOutput.Result.CompiledAssembly);
+                            ICollection<Plugin.IPlugin> PluginCollection = PluginLoader.LoadAssembly(builderOutput.Result.CompiledAssembly);
 
                             if (PluginCollection.Count == 0)
                             {
