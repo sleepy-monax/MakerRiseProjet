@@ -52,7 +52,9 @@ namespace Maker.RiseEngine.DefaultPlugin
             this.AddGameObject("Plant", new Core.GameObject.Entities.Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
             this.AddGameObject("Player", new Core.GameObject.Entities.Creature(new Core.AI.Entites.PlayerAI(0, 1, 2, 3, 4, 5, 6, 7), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle_Up", "Player_Idle_Down", "Player_Idle_Left", "Player_Idle_Right" }, "Base.Tilesheet_Creatures", new Vector2(0, 0)));
 
-            this.AddGameObject("Cactus", new Core.GameObject.Entities.Entity(new string[] { "Cactus0", "Cactus1", "Cactus2" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("Cactus", new Core.GameObject.Entities.Entity(new string[] { "Cactus1", "Cactus2" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("TaleCactus", new Core.GameObject.Entities.Entity(new string[] { "Cactus0"}, "Base.Tilesheet_Entity", new Vector2(0, -1f)));
+
 
             //Biome
             this.AddGameObject("Plains", new Core.GameObject.Biome(0.1,
@@ -84,7 +86,7 @@ namespace Maker.RiseEngine.DefaultPlugin
             this.AddGameObject("River", new Core.GameObject.Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
             this.AddGameObject("Ocean", new Core.GameObject.Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
 
-            this.AddGameObject("Desert", new Core.GameObject.Biome(0.1, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Cactus"), 1) }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
+            this.AddGameObject("Desert", new Core.GameObject.Biome(0.1, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Cactus"), 0.75f), new KeyWeightPair<int>(this.GetGameObjectIndex("TaleCactus"), 0.25f) }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
 
         }
 

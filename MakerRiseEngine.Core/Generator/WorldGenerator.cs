@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading;
 
 namespace Maker.RiseEngine.Core.Generator
 {
@@ -25,26 +26,27 @@ namespace Maker.RiseEngine.Core.Generator
 
         public Game.GameScene Generate()
         {
-            Stopwatch stw = new Stopwatch();
-            stw.Start();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-            Game.GameScene NewGame = new Game.GameScene(WrldProps, Rnd);
-            int MaxWorldSize = WrldProps.Size * 16;
-            Bitmap minimap = new Bitmap(MaxWorldSize, MaxWorldSize);
-            int[,] regionGrid = new int[MaxWorldSize, MaxWorldSize];
+            Game.GameScene newGame = new Game.GameScene(WrldProps, Rnd);
+            int maxWorldSize = WrldProps.Size * 16;
+            Bitmap minimap = new Bitmap(maxWorldSize, maxWorldSize);
+            int[,] regionGrid = new int[maxWorldSize, maxWorldSize];
 
             // Adding randome Region
             EngineDebug.DebugLogs.WriteInLogs("Creating Random Point...", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Creating Random Point...";
+            Thread.Sleep(500);
 
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
             {
                 // Get Random Region location.
-                int x = FastRnd.Next(MaxWorldSize);
-                int y = FastRnd.Next(MaxWorldSize);
+                int x = FastRnd.Next(maxWorldSize);
+                int y = FastRnd.Next(maxWorldSize);
 
                 // Create the region.
-                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), NewGame, Rnd);
+                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), newGame, Rnd);
 
                 // Create the source tile.
                 regionGrid.SetTile(x, y, rID);
@@ -53,12 +55,13 @@ namespace Maker.RiseEngine.Core.Generator
             //expanding Region
             EngineDebug.DebugLogs.WriteInLogs("Expending Region...", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Expending Region...";
+            Thread.Sleep(500);
 
             for (int i = 0; i < WrldProps.RegionExpention; i++)
             {
-                for (int x = 0; x <= MaxWorldSize - 1; x++)
+                for (int x = 0; x <= maxWorldSize - 1; x++)
                 {
-                    for (int y = 0; y <= MaxWorldSize - 1; y++)
+                    for (int y = 0; y <= maxWorldSize - 1; y++)
                     {
 
                         if (!(regionGrid[x, y] == 0))
@@ -83,36 +86,33 @@ namespace Maker.RiseEngine.Core.Generator
                                 case 4:
                                     regionGrid.SetTile(x, y + 1, RegionID);
                                     break;
-                                default:
-                                    break;
                             }
 
                         }
 
                     }
                 }
-
-                Scene.SceneManager.WG.message = "Generating world " + WrldProps.RegionExpention + " iteration left..";
             }
 
             // Set loading message.
             EngineDebug.DebugLogs.WriteInLogs("Converting Chunk... ", EngineDebug.LogType.Info, "WorldGenerator");
             Scene.SceneManager.WG.message = "Converting Chunk...";
+            Thread.Sleep(500);
 
-            NewGame.world.chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
+            newGame.world.chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
 
             for (int cX = 0; cX <= WrldProps.Size - 1; cX++)
             {
                 for (int cY = 0; cY <= WrldProps.Size - 1; cY++)
                 {
-                    NewGame.world.chunks[cX, cY] = new ObjChunk();
+                    newGame.world.chunks[cX, cY] = new ObjChunk();
 
                     for (int tX = 0; tX <= 15; tX++)
                     {
                         for (int tY = 0; tY <= 15; tY++)
                         {
-                            NewGame.world.chunks[cX, cY].Tiles[tX, tY] = new Game.World.ObjTile();
-                            NewGame.world.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
+                            newGame.world.chunks[cX, cY].Tiles[tX, tY] = new Game.World.ObjTile();
+                            newGame.world.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
 
                         }
                     }
@@ -120,19 +120,19 @@ namespace Maker.RiseEngine.Core.Generator
                 }
             }
 
-            NewGame.miniMap.MiniMapBitmap = minimap;
-            NewGame.miniMap.RefreshMiniMap();
+            newGame.miniMap.MiniMapBitmap = minimap;
+            newGame.miniMap.RefreshMiniMap();
 
             // Raising onWorldGeneration event on plugin.
             foreach (KeyValuePair<string, Plugin.IPlugin> i in GameObjectsManager.Plugins)
             {
-                i.Value.OnWorldGeneration(NewGame);
+                i.Value.OnWorldGeneration(newGame);
             }
 
-            stw.Stop();
-            EngineDebug.DebugLogs.WriteInLogs("Generator elapsed time : " + stw.ElapsedMilliseconds, EngineDebug.LogType.Info, "WorldGenerator");
+            stopwatch.Stop();
+            EngineDebug.DebugLogs.WriteInLogs("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, EngineDebug.LogType.Info, "WorldGenerator");
 
-            return NewGame;
+            return newGame;
         }
 
     }

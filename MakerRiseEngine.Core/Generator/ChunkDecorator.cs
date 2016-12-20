@@ -41,7 +41,7 @@ namespace Maker.RiseEngine.Core.Generator
                         {
 
                             int ID = MathExt.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
-                            int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount);
+                            int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
 
                             Chunk.AddEntity(new Game.World.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 

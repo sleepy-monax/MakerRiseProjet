@@ -16,6 +16,7 @@ namespace Maker.RiseEngine.Core.Scene
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+
             SceneManager.MainMn.BackgroundSB.Begin();
             SceneManager.MainMn.Background.Draw(SceneManager.MainMn.BackgroundSB, gameTime);
             SceneManager.MainMn.BackgroundSB.End();

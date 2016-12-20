@@ -86,7 +86,7 @@ namespace Maker.RiseEngine.Core.Rendering
             System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\Textures2D\\Parallax\\" + _Name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
-
+            f = f.ToDosLineEnd();
             f = f.Replace(System.Environment.NewLine, "");
             string[] Ls = f.Split(';');
 

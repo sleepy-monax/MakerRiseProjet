@@ -112,14 +112,9 @@ namespace Maker.RiseEngine.Core.Scene
                     break;
             }
 
-
-
-            
-
             MainMenuManager = new UI.ContainerManager();
 
             //Main Menu
-
             MenuContainer = new UI.Container(-256, -120, 512, 240, false, UI.Dock.Center, Color.White);
 
             MenuButtonPlay = new UI.Controls.Button("Jouer", 480, 16, 16, Color.White);
@@ -135,15 +130,12 @@ namespace Maker.RiseEngine.Core.Scene
             MenuContainer.Controls.Add(MenuButtonQuit);
 
             //Option
-
             OptionContainer = new UI.Container(16, 16, 288, Engine.graphics.PreferredBackBufferHeight - 32, false, UI.Dock.UpLeft, Color.White)
             {
                 ShowTitle = true,
                 Title = "Option"
 
             };
-
-
 
             OptionGameButton = new UI.Controls.Button("Jeux", 256, 16, 96, Color.White);
             OptionSoundButton = new UI.Controls.Button("Sons", 256, 16, 160, Color.White);
@@ -172,8 +164,6 @@ namespace Maker.RiseEngine.Core.Scene
             #region OptionPanel
             //=======================================================================================================================================
             OptionMenuManager = new UI.ContainerManager();
-
-
 
             //=====Game=====
             GameOptionContainer = new UI.Container(new Rectangle(320, 16, Engine.graphics.PreferredBackBufferWidth - 336, Engine.graphics.PreferredBackBufferHeight - 32), true, UI.Dock.UpLeft, Color.White);
