@@ -20,7 +20,6 @@ namespace Maker.RiseEngine.Core.Rendering
             DestinationRectangle = _DistinationRectangle;
             Layers = _Layers;
             LayersPos = new float[_Layers.Length];
-            
 
         }
 
@@ -32,7 +31,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
                 LayersPos[i] = (LayersPos[i] + Layers[i].Speed);
 
-                double Factor =  (double)DestinationRectangle.Width / (double)Layers[i].Sprite.Bounds.Width;
+                double Factor = (double)DestinationRectangle.Width / (double)Layers[i].Sprite.Bounds.Width;
 
                 if (LayersPos[i] > Layers[i].Sprite.Bounds.Width * Factor)
                 {
@@ -60,6 +59,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
     public class ParallaxLayer
     {
+
         public float Speed;
         public Texture2D Sprite;
 
@@ -86,22 +86,22 @@ namespace Maker.RiseEngine.Core.Rendering
             System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\Textures2D\\Parallax\\" + _Name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
-            f = f.ToDosLineEnd();
             f = f.Replace(System.Environment.NewLine, "");
+            f = f.Replace("\n", "");
             string[] Ls = f.Split(';');
 
-            List<ParallaxLayer> Pl = new List<ParallaxLayer>();
+            List<ParallaxLayer> paralaxeLayerList = new List<ParallaxLayer>();
 
             for (int i = 0; i < Ls.Length; i++)
             {
 
                 string[] sub = Ls[i].Split(':');
                 if (sub.Length == 2)
-                    Pl.Add(new ParallaxLayer(ContentEngine.Texture2D(_PluginName, "Parallax\\" + _Name + "\\" + sub[0]), float.Parse(sub[1], culture)));
+                    paralaxeLayerList.Add(new ParallaxLayer(ContentEngine.Texture2D(_PluginName, "Parallax\\" + _Name + "\\" + sub[0]), float.Parse(sub[1], culture)));
 
             }
 
-            Parallax p = new Parallax(Pl.ToArray(), _DistinationRectangle);
+            Parallax p = new Parallax(paralaxeLayerList.ToArray(), _DistinationRectangle);
             return p;
         }
 

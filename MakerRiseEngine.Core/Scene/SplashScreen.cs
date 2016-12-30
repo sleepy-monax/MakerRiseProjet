@@ -17,7 +17,7 @@ namespace Maker.RiseEngine.Core.Scene
             {
                 if (FirstFrame == false)
                 {
-                    Engine.Initialize();
+                    //Engine.Initialize();
 
                     OneTime = false;
 

@@ -48,7 +48,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             DrawSprite(spriteBatch, panelMidRight, new Rectangle(ControlRectangle.Width - 64, 64, 64, ControlRectangle.Height - 128), ControlColor, gameTime);
 
             DrawSprite(spriteBatch, panelMidUp, new Rectangle(64, 0, ControlRectangle.Width - 128, 64), ControlColor, gameTime);
-            DrawSprite(spriteBatch, panelMidDown, new Rectangle(64, ControlRectangle.Height - 64, ControlRectangle.Width, 64), ControlColor, gameTime);
+            DrawSprite(spriteBatch, panelMidDown, new Rectangle(64, ControlRectangle.Height - 64, ControlRectangle.Width - 128, 64), ControlColor, gameTime);
         }
 
     }

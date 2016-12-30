@@ -28,6 +28,7 @@ namespace Maker.RiseEngine.Core.SceneManager
 
             try
             {
+                scene.Game = Game;
                 scene.OnLoad();
             }
             catch (Exception ex)

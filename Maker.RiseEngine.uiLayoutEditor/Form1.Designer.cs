@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 267);
             this.Name = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(10, 9, 8, 4);
             this.Text = "Maker Rise Engine Layout Enditor";
             this.ResumeLayout(false);
 

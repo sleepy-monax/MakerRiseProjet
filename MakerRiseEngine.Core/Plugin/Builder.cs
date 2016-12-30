@@ -31,7 +31,7 @@ namespace Maker.RiseEngine.Core.Plugin
         /// <param name="OutputPath">Path of the output assemblie.</param>
         /// <param name="References">Liste of all references.</param>
         /// <returns>Compilation sucess.</returns>
-        public static BuildOutput Build(string SourcePath, string OutputPath)
+        public static BuildOutput Build(string SourcePath, string OutputPath, string providerName = "CSharp")
         {
 
             try
@@ -49,7 +49,7 @@ namespace Maker.RiseEngine.Core.Plugin
                 sr.Close();
 
 
-                CodeDomProvider Provider = CodeDomProvider.CreateProvider("CSharp");
+                CodeDomProvider Provider = CodeDomProvider.CreateProvider(providerName);
 
                 //Setup compiler.
 #pragma warning disable CS0618 // Le type ou le membre est obsolète

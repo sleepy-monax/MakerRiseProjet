@@ -23,18 +23,22 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 switch (_Type)
                 {
                     case LogType.Error:
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         LogTypeText = "Error";
                         break;
 
                     case LogType.Info:
+                        Console.ForegroundColor = ConsoleColor.White;
                         LogTypeText = "Info";
                         break;
 
                     case LogType.Warning:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         LogTypeText = "Warning";
                         break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.White;
                         LogTypeText = "Info";
                         break;
                 }

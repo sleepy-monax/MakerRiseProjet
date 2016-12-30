@@ -1,12 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.SceneManager.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Reflection;
+using System.Threading;
 
 namespace Maker.RiseEngine.Core
 {
     public static class Engine
     {
+
+        
 
         public static GraphicsDeviceManager graphics;
         public static Microsoft.Xna.Framework.Game MainGame;
@@ -23,20 +27,12 @@ namespace Maker.RiseEngine.Core
 
         public static Config.EngineConfig engineConfig = new Config.EngineConfig();
 
-        public static void ReloadEngine()
-        {
-
-            EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "Engine");
-            ContentEngine.ReloadContent();
-            GameObjectsManager.Reload();
-            Initialize();
-
-        }
-
-        public static void Initialize()
+        public static void Initialize(EngineLoading LoadingScene)
         {
 
             EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Engine");
+
+            LoadingScene.Message = "Loading config...";
 
             // load binary config file.
             if (System.IO.File.Exists("Data\\config.bin"))
@@ -44,10 +40,15 @@ namespace Maker.RiseEngine.Core
             else
                 Storage.SerializationHelper.SaveToBin(engineConfig, "Data\\config.bin");
 
+            Thread.Sleep(200);
+
             MouseCursor = new UI.Cursor();
 
+            LoadingScene.Message = "Loading Plugins...";
             GameObjectsManager.LoadPlugins();
+            Thread.Sleep(200);
 
+            LoadingScene.Message = "Looking for initialization error...";
             if (GameObjectsManager.IsFullLoaded())
             {
 
@@ -78,7 +79,8 @@ namespace Maker.RiseEngine.Core
 
 
             }
-
+            Thread.Sleep(200);
+            LoadingScene.Message = "Starting game...";
             IsLoaded = true;
 
         }

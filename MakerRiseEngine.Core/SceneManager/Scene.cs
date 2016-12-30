@@ -14,6 +14,7 @@ namespace Maker.RiseEngine.Core.SceneManager
 
         public bool Pause { get; set; } = true;
         public bool Visible { get; set; } = false;
+        public RiseGame Game;
 
         public void hide()
         {

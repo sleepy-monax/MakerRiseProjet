@@ -8,14 +8,12 @@ namespace Maker.RiseEngine.Core.Rendering
     public static class Primitives2D
     {
 
-
         #region Private Members
 
         private static readonly Dictionary<String, List<Vector2>> circleCache = new Dictionary<string, List<Vector2>>();
         private static Texture2D pixel;
 
         #endregion
-
 
         #region Private Methods
 
@@ -24,7 +22,6 @@ namespace Maker.RiseEngine.Core.Rendering
             pixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             pixel.SetData(new[] { Color.White });
         }
-
 
         /// <summary>
         /// Draws a list of connecting points
@@ -54,6 +51,7 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <returns>A list of vectors that, if connected, will create a circle</returns>
         private static List<Vector2> CreateCircle(double radius, int sides)
         {
+
             // Look for a cached version of this circle
             String circleKey = radius + "x" + sides;
             if (circleCache.ContainsKey(circleKey))
@@ -78,8 +76,8 @@ namespace Maker.RiseEngine.Core.Rendering
             circleCache.Add(circleKey, vectors);
 
             return vectors;
-        }
 
+        }
 
         /// <summary>
         /// Creates a list of vectors that represents an arc
@@ -91,6 +89,7 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <returns>A list of vectors that, if connected, will create an arc</returns>
         private static List<Vector2> CreateArc(float radius, int sides, float startingAngle, float radians)
         {
+
             List<Vector2> points = new List<Vector2>();
             points.AddRange(CreateCircle(radius, sides));
             points.RemoveAt(points.Count - 1); // remove the last point because it's a duplicate of the first
@@ -117,10 +116,10 @@ namespace Maker.RiseEngine.Core.Rendering
             points.RemoveRange(sidesInArc + 1, points.Count - sidesInArc - 1);
 
             return points;
+
         }
 
         #endregion
-
 
         #region FillRectangle
 
@@ -132,6 +131,7 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to draw the rectangle in</param>
         public static void FillRectangle(this SpriteBatch spriteBatch, Rectangle rect, Color color)
         {
+
             if (pixel == null)
             {
                 CreateThePixel(spriteBatch);
@@ -139,6 +139,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
             // Simply use the function already there
             spriteBatch.Draw(pixel, rect, color);
+
         }
 
 
@@ -151,11 +152,14 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="angle">The angle in radians to draw the rectangle at</param>
         public static void FillRectangle(this SpriteBatch spriteBatch, Rectangle rect, Color color, float angle)
         {
+
             if (pixel == null)
             {
                 CreateThePixel(spriteBatch);
             }
+
             spriteBatch.Draw(pixel, rect, null, color, angle, Vector2.Zero, SpriteEffects.None, 0);
+
         }
 
 
@@ -168,7 +172,9 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to draw the rectangle in</param>
         public static void FillRectangle(this SpriteBatch spriteBatch, Vector2 location, Vector2 size, Color color)
         {
+
             FillRectangle(spriteBatch, location, size, color, 0.0f);
+
         }
 
 
@@ -182,9 +188,12 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to draw the rectangle in</param>
         public static void FillRectangle(this SpriteBatch spriteBatch, Vector2 location, Vector2 size, Color color, float angle)
         {
+
             if (pixel == null)
             {
+
                 CreateThePixel(spriteBatch);
+
             }
 
             // stretch the pixel between the two vectors
@@ -197,6 +206,7 @@ namespace Maker.RiseEngine.Core.Rendering
                              size,
                              SpriteEffects.None,
                              0);
+
         }
 
 
@@ -211,7 +221,9 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to draw the rectangle in</param>
         public static void FillRectangle(this SpriteBatch spriteBatch, float x, float y, float w, float h, Color color)
         {
+
             FillRectangle(spriteBatch, new Vector2(x, y), new Vector2(w, h), color, 0.0f);
+
         }
 
 
@@ -227,11 +239,12 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="angle">The angle of the rectangle in radians</param>
         public static void FillRectangle(this SpriteBatch spriteBatch, float x, float y, float w, float h, Color color, float angle)
         {
+
             FillRectangle(spriteBatch, new Vector2(x, y), new Vector2(w, h), color, angle);
+
         }
 
         #endregion
-
 
         #region DrawRectangle
 
@@ -243,7 +256,9 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to draw the rectangle in</param>
         public static void DrawRectangle(this SpriteBatch spriteBatch, Rectangle rect, Color color)
         {
+
             DrawRectangle(spriteBatch, rect, color, 1.0f);
+
         }
 
 
@@ -264,6 +279,7 @@ namespace Maker.RiseEngine.Core.Rendering
             DrawLine(spriteBatch, new Vector2(rect.X + 1f, rect.Y), new Vector2(rect.X + 1f, rect.Bottom + thickness), color, thickness); // left
             DrawLine(spriteBatch, new Vector2(rect.X, rect.Bottom), new Vector2(rect.Right, rect.Bottom), color, thickness); // bottom
             DrawLine(spriteBatch, new Vector2(rect.Right + 1f, rect.Y), new Vector2(rect.Right + 1f, rect.Bottom + thickness), color, thickness); // right
+
         }
 
 
@@ -276,7 +292,9 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to draw the rectangle in</param>
         public static void DrawRectangle(this SpriteBatch spriteBatch, Vector2 location, Vector2 size, Color color)
         {
+
             DrawRectangle(spriteBatch, new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y), color, 1.0f);
+
         }
 
 
@@ -290,11 +308,12 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="thickness">The thickness of the line</param>
         public static void DrawRectangle(this SpriteBatch spriteBatch, Vector2 location, Vector2 size, Color color, float thickness)
         {
+
             DrawRectangle(spriteBatch, new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y), color, thickness);
+
         }
 
         #endregion
-
 
         #region DrawLine
 
@@ -309,9 +328,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to use</param>
         public static void DrawLine(this SpriteBatch spriteBatch, float x1, float y1, float x2, float y2, Color color)
         {
-            DrawLine(spriteBatch, new Vector2(x1, y1), new Vector2(x2, y2), color, 1.0f);
-        }
 
+            DrawLine(spriteBatch, new Vector2(x1, y1), new Vector2(x2, y2), color, 1.0f);
+
+        }
 
         /// <summary>
         /// Draws a line from point1 to point2 with an offset
@@ -325,9 +345,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="thickness">The thickness of the line</param>
         public static void DrawLine(this SpriteBatch spriteBatch, float x1, float y1, float x2, float y2, Color color, float thickness)
         {
-            DrawLine(spriteBatch, new Vector2(x1, y1), new Vector2(x2, y2), color, thickness);
-        }
 
+            DrawLine(spriteBatch, new Vector2(x1, y1), new Vector2(x2, y2), color, thickness);
+
+        }
 
         /// <summary>
         /// Draws a line from point1 to point2 with an offset
@@ -338,9 +359,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to use</param>
         public static void DrawLine(this SpriteBatch spriteBatch, Vector2 point1, Vector2 point2, Color color)
         {
-            DrawLine(spriteBatch, point1, point2, color, 1.0f);
-        }
 
+            DrawLine(spriteBatch, point1, point2, color, 1.0f);
+
+        }
 
         /// <summary>
         /// Draws a line from point1 to point2 with an offset
@@ -352,6 +374,7 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="thickness">The thickness of the line</param>
         public static void DrawLine(this SpriteBatch spriteBatch, Vector2 point1, Vector2 point2, Color color, float thickness)
         {
+
             // calculate the distance between the two vectors
             float distance = Vector2.Distance(point1, point2);
 
@@ -359,8 +382,8 @@ namespace Maker.RiseEngine.Core.Rendering
             float angle = (float)System.Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
 
             DrawLine(spriteBatch, point1, distance, angle, color, thickness);
-        }
 
+        }
 
         /// <summary>
         /// Draws a line from point1 to point2 with an offset
@@ -372,9 +395,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color to use</param>
         public static void DrawLine(this SpriteBatch spriteBatch, Vector2 point, float length, float angle, Color color)
         {
-            DrawLine(spriteBatch, point, length, angle, color, 1.0f);
-        }
 
+            DrawLine(spriteBatch, point, length, angle, color, 1.0f);
+
+        }
 
         /// <summary>
         /// Draws a line from point1 to point2 with an offset
@@ -406,7 +430,6 @@ namespace Maker.RiseEngine.Core.Rendering
 
         #endregion
 
-
         #region PutPixel
 
         public static void PutPixel(this SpriteBatch spriteBatch, float x, float y, Color color)
@@ -414,19 +437,21 @@ namespace Maker.RiseEngine.Core.Rendering
             PutPixel(spriteBatch, new Vector2(x, y), color);
         }
 
-
         public static void PutPixel(this SpriteBatch spriteBatch, Vector2 position, Color color)
         {
+
             if (pixel == null)
             {
+
                 CreateThePixel(spriteBatch);
+
             }
 
             spriteBatch.Draw(pixel, position, color);
+
         }
 
         #endregion
-
 
         #region DrawCircle
 
@@ -440,9 +465,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color of the circle</param>
         public static void DrawCircle(this SpriteBatch spriteBatch, Vector2 center, float radius, int sides, Color color)
         {
-            DrawPoints(spriteBatch, center, CreateCircle(radius, sides), color, 1.0f);
-        }
 
+            DrawPoints(spriteBatch, center, CreateCircle(radius, sides), color, 1.0f);
+
+        }
 
         /// <summary>
         /// Draw a circle
@@ -458,7 +484,6 @@ namespace Maker.RiseEngine.Core.Rendering
             DrawPoints(spriteBatch, center, CreateCircle(radius, sides), color, thickness);
         }
 
-
         /// <summary>
         /// Draw a circle
         /// </summary>
@@ -470,9 +495,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color of the circle</param>
         public static void DrawCircle(this SpriteBatch spriteBatch, float x, float y, float radius, int sides, Color color)
         {
-            DrawPoints(spriteBatch, new Vector2(x, y), CreateCircle(radius, sides), color, 1.0f);
-        }
 
+            DrawPoints(spriteBatch, new Vector2(x, y), CreateCircle(radius, sides), color, 1.0f);
+
+        }
 
         /// <summary>
         /// Draw a circle
@@ -486,11 +512,12 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="thickness">The thickness of the lines used</param>
         public static void DrawCircle(this SpriteBatch spriteBatch, float x, float y, float radius, int sides, Color color, float thickness)
         {
+
             DrawPoints(spriteBatch, new Vector2(x, y), CreateCircle(radius, sides), color, thickness);
+
         }
 
         #endregion
-
 
         #region DrawArc
 
@@ -506,9 +533,10 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="color">The color of the arc</param>
         public static void DrawArc(this SpriteBatch spriteBatch, Vector2 center, float radius, int sides, float startingAngle, float radians, Color color)
         {
-            DrawArc(spriteBatch, center, radius, sides, startingAngle, radians, color, 1.0f);
-        }
 
+            DrawArc(spriteBatch, center, radius, sides, startingAngle, radians, color, 1.0f);
+
+        }
 
         /// <summary>
         /// Draw a arc
@@ -523,9 +551,11 @@ namespace Maker.RiseEngine.Core.Rendering
         /// <param name="thickness">The thickness of the arc</param>
         public static void DrawArc(this SpriteBatch spriteBatch, Vector2 center, float radius, int sides, float startingAngle, float radians, Color color, float thickness)
         {
+
             List<Vector2> arc = CreateArc(radius, sides, startingAngle, radians);
             //List<Vector2> arc = CreateArc2(radius, sides, startingAngle, degrees);
             DrawPoints(spriteBatch, center, arc, color, thickness);
+
         }
 
         #endregion

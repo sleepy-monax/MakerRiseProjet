@@ -29,6 +29,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             Text = text;
             ControlRectangle = rect;
             ControlColor = color;
+            TextColor = Color.Black;
 
         }
 
@@ -37,6 +38,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
             if (mouseStats == MouseStats.Over || mouseStats == MouseStats.None)
             {
+
                 // Draw button body.
                 DrawSprite(spriteBatch, ButtonLeft, new Rectangle(0, 0, 64, 64), ControlColor, gameTime);
                 DrawSprite(spriteBatch, ButtonMid, new Rectangle(64, 0, ControlRectangle.Width - 128, 64), ControlColor, gameTime);
@@ -45,13 +47,13 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                 // Over animation
                 if (mouseStats == MouseStats.Over)
                 {
-                    spriteBatch.FillRectangle(ControlRectangle, new Color(0,0,0,100));
+
                 }
 
                 // Draw text.
                 DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text,
                     // Placing.
-                    new Rectangle(0,-4, ControlRectangle.Width, ControlRectangle.Height),
+                    new Rectangle(0,0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.
                     TextColor, SpriteFontDraw.Alignment.Center, SpriteFontDraw.Style.Regular);
 
@@ -69,7 +71,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                 // Draw text.
                 DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text,
                     // Placing.
-                    new Rectangle(0, 4, ControlRectangle.Width, ControlRectangle.Height),
+                    new Rectangle(0, 0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.
                     TextColor, SpriteFontDraw.Alignment.Center, SpriteFontDraw.Style.Regular);
 
