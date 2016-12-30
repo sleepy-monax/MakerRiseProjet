@@ -1,13 +1,14 @@
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace Maker.RiseEngine.Core.UI.Controls
 {
+
     public class CheckBox : UI.Controls.Control
     {
+
         // Sprites.
         Sprite CheckV;
         Sprite CheckB;
@@ -33,7 +34,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
             SizeBox.Y = y;
 
             // Add mouse click handle.
-            this.OnMouseClick += new UI.Controls.Control.ClickEventHandler(this.CheckBox_MouseClick);
+            OnMouseClick += new ClickEventHandler(this.CheckBox_MouseClick);
         }
 
         private void CheckBox_MouseClick()

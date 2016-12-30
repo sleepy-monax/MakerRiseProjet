@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.Rendering;
+using System;
 using System.Windows.Forms;
 
 namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
@@ -77,7 +77,13 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         // Event handeling.
         private void ButtonPlay_onMouseClick()
         {
+            this.hide();
 
+            Scene scene = new MenuOpenWorld();
+            Game.sceneManager.AddScene(scene);
+            scene.show();
+
+            Game.sceneManager.RemoveScene(this);
         }
 
         private void ButtonOption_onMouseClick()

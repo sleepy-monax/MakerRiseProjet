@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.16365.1132.773</AssemblyVersion>
+    <AssemblyVersion>0.16365.1911.797</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -131,7 +131,6 @@
     <Compile Include="UI\Controls\MiniMap.cs" />
     <Compile Include="UI\Controls\CheckBox.cs" />
     <Compile Include="UI\Controls\Label.cs" />
-    <Compile Include="UI\Controls\ProgressBar.cs" />
     <Compile Include="UI\Controls\Slider.cs" />
     <Compile Include="UI\Cursor.cs" />
     <Compile Include="Scene\MainMenu.cs" />

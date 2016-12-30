@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-
+using System.Collections.Generic;
 
 namespace Maker.RiseEngine.Core.UserInterface
 {
 
     public enum MouseStats { Over, Down, None }
     public enum Anchor { UpLeft, Up, UpRight, Left, Center, Right, DownLeft, Down, DownRight }
-    public enum Dock { Up, Down, Left, Right, Fill, None}
+    public enum Dock { Up, Down, Left, Right, Fill, None }
 
-    public class ControlPadding {
+    public class ControlPadding
+    {
 
         public int Up, Down, Left, Right = 0;
 
-        public ControlPadding(int up, int down, int left ,int right) {
+        public ControlPadding(int up, int down, int left, int right)
+        {
 
             Up = up;
             Down = down;
@@ -29,15 +27,18 @@ namespace Maker.RiseEngine.Core.UserInterface
 
         }
 
-        public ControlPadding(int all) {
+        public ControlPadding(int all)
+        {
             Up = Down = Left = Right = all;
         }
 
-        public ControlPadding() {
+        public ControlPadding()
+        {
 
         }
 
-        public Rectangle ToRectangle(Rectangle sourceRectangle) {
+        public Rectangle ToRectangle(Rectangle sourceRectangle)
+        {
             return new Rectangle(sourceRectangle.X + Left, sourceRectangle.Y + Up,
                                  sourceRectangle.Width - Right - Left, sourceRectangle.Height - Down - Up);
         }
@@ -72,7 +73,7 @@ namespace Maker.RiseEngine.Core.UserInterface
             }
         }
         public Anchor ControlAnchor { get; set; } = Anchor.UpLeft;
-        public Dock ControlDock { get; set; } = Dock.None; 
+        public Dock ControlDock { get; set; } = Dock.None;
 
         // Child controls list.
         public List<Control> Childs = new List<Control>();
@@ -101,6 +102,16 @@ namespace Maker.RiseEngine.Core.UserInterface
                 // Draw the controls.
                 OnDraw(spriteBatch, gameTime);
 
+                // Draw debug.
+                if (Engine.engineConfig.Debug_GuiFrame)
+                {
+                    spriteBatch.DrawRectangle(ControlRectangle, Color.Black);
+                    if (Childs.Count > 0)
+                    {
+                        spriteBatch.FillRectangle(Padding.ToRectangle(ControlRectangle), new Color(Color.Blue, 0.0001f));
+                    }
+                }
+
                 // Draw child controls.
                 foreach (Control c in Childs)
                 {
@@ -112,7 +123,7 @@ namespace Maker.RiseEngine.Core.UserInterface
         public void Update(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
             Rectangle parrentRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
-            
+
             // Update Enchore.
             {
                 // Get parrent controls rectangle.
@@ -183,7 +194,8 @@ namespace Maker.RiseEngine.Core.UserInterface
             {
                 Rectangle childControlHost = Padding.ToRectangle(new Rectangle(new Point(0), _ControlRectangle.Size));
 
-                foreach(Control c in this.Childs) {
+                foreach (Control c in this.Childs)
+                {
 
                     switch (c.ControlDock)
                     {
@@ -195,7 +207,7 @@ namespace Maker.RiseEngine.Core.UserInterface
                             break;
                         case Dock.Down:
 
-                            c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height,childControlHost.Width, c.ControlRectangle.Height);
+                            c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height, childControlHost.Width, c.ControlRectangle.Height);
                             childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
 
                             break;
@@ -277,7 +289,8 @@ namespace Maker.RiseEngine.Core.UserInterface
             sprite.Draw(spritebatch, new Rectangle(ControlRectangle.X + rectangle.X, ControlRectangle.Y + rectangle.Y, rectangle.Size.X, rectangle.Size.Y), color, gameTime);
         }
 
-        public void DrawT2D(SpriteBatch spritebatch, Texture2D texture2D, Rectangle rectangle, Color color) {
+        public void DrawT2D(SpriteBatch spritebatch, Texture2D texture2D, Rectangle rectangle, Color color)
+        {
 
             spritebatch.Draw(texture2D, new Rectangle(ControlRectangle.X + rectangle.X, ControlRectangle.Y + rectangle.Y, rectangle.Size.X, rectangle.Size.Y), color);
 

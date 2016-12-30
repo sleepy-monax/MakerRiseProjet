@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.UserInterface.Controls;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,16 +9,17 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
     public class MenuOption : Scene
     {
 
+        Panel rootContainer;
+
+
         public override void OnLoad()
         {
-
 
 
         }
 
         public override void OnUnload()
         {
-
 
 
         }
@@ -37,5 +39,4 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         }
 
     }
-
 }
