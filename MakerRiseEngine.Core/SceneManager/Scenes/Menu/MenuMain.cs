@@ -19,7 +19,10 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         // Declaring user inteface elements.
         UserInterface.Controls.Panel panelMainMenu;
 
-        UserInterface.Controls.Button buttonPlay;
+        UserInterface.Controls.Button buttonPlayLastGame;
+        UserInterface.Controls.Button buttonNewGame;
+        UserInterface.Controls.Button buttonOpenGame;
+
         UserInterface.Controls.Button buttonOption;
         UserInterface.Controls.Button buttonQuitte;
 
@@ -53,17 +56,21 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             panelMainMenu.Padding = new UserInterface.ControlPadding(16);
 
             // Create button.
-            buttonPlay = new UserInterface.Controls.Button("Jouer", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonPlayLastGame = new UserInterface.Controls.Button("Reprendre", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonNewGame = new UserInterface.Controls.Button("Nouvelle Partie", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonOpenGame = new UserInterface.Controls.Button("Charger une partie", new Rectangle(0, 0, 480, 64), Color.White);
+
             buttonOption = new UserInterface.Controls.Button("Options", new Rectangle(0, 0, 480, 64), Color.White);
             buttonQuitte = new UserInterface.Controls.Button("Quitter le jeu", new Rectangle(0, 0, 480, 64), Color.White);
 
             // Create event handle.
-            buttonPlay.onMouseClick += ButtonPlay_onMouseClick;
-            buttonOption.onMouseClick += ButtonOption_onMouseClick;
+            buttonNewGame.onMouseClick += ButtonNewGame_onMouseClick;
             buttonQuitte.onMouseClick += ButtonQuitte_onMouseClick;
 
             // Add child control to root panel.
-            panelMainMenu.AddChild(buttonPlay);
+            panelMainMenu.AddChild(buttonPlayLastGame);
+            panelMainMenu.AddChild(buttonNewGame);
+            panelMainMenu.AddChild(buttonOpenGame);
             panelMainMenu.AddChild(buttonOption);
             panelMainMenu.AddChild(buttonQuitte);
 
@@ -74,8 +81,7 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
 
         }
 
-        // Event handeling.
-        private void ButtonPlay_onMouseClick()
+        private void ButtonNewGame_onMouseClick()
         {
             this.hide();
 
@@ -84,11 +90,6 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             scene.show();
 
             Game.sceneManager.RemoveScene(this);
-        }
-
-        private void ButtonOption_onMouseClick()
-        {
-
         }
 
         private void ButtonQuitte_onMouseClick()
