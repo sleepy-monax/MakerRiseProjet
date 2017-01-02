@@ -9,11 +9,6 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
 {
     public class MenuMain : Scene
     {
-
-        // BackGround.
-        SpriteBatch BackgroundSB;
-        Parallax Background;
-
         Texture2D Logo;
 
         // Declaring user inteface elements.
@@ -28,26 +23,6 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
 
         public override void OnLoad()
         {
-            //Back Ground.
-            BackgroundSB = new SpriteBatch(Engine.GraphicsDevice);
-            switch (new Random().Next(3))
-            {
-                case 0:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    Audio.SongEngine.SwitchSong("Engine", "A Title");
-                    break;
-                case 1:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    Audio.SongEngine.SwitchSong("Engine", "Look Up");
-                    break;
-                case 2:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    Audio.SongEngine.SwitchSong("Engine", "Clouds of Orange Juice");
-                    break;
-                default:
-                    break;
-            }
-
             Logo = ContentEngine.Texture2D("Engine", "Logo");
 
             // Panel.
@@ -85,7 +60,7 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         {
             this.hide();
 
-            Scene scene = new MenuOpenWorld();
+            Scene scene = new MenuNewWorld();
             Game.sceneManager.AddScene(scene);
             scene.show();
 
@@ -100,15 +75,9 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         // Scene event handling.
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            BackgroundSB.Begin();
-            Background.Draw(BackgroundSB, gameTime);
-            BackgroundSB.End();
-
-            spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 128));
 
             spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
             spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
-
 
             panelMainMenu.Draw(spriteBatch, gameTime);
 
@@ -118,7 +87,6 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
 
-            Background.Update(mouse, keyBoard, gameTime);
             panelMainMenu.Update(mouse, keyBoard, gameTime);
 
         }

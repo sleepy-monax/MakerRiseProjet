@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17001.1115.799</AssemblyVersion>
+    <AssemblyVersion>0.17002.0021.828</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -107,6 +107,7 @@
     <Compile Include="SceneManager\Scene.cs" />
     <Compile Include="SceneManager\SceneManager.cs" />
     <Compile Include="SceneManager\Scenes\EngineLoading.cs" />
+    <Compile Include="SceneManager\Scenes\Menu\MenuBackground.cs" />
     <Compile Include="SceneManager\Scenes\Menu\MenuMain.cs" />
     <Compile Include="SceneManager\Scenes\Menu\MenuNewWorld.cs" />
     <Compile Include="SceneManager\Scenes\Menu\MenuOpenWorld.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Game\World\WorldObjectHelper.cs" />
     <Compile Include="UserInterface\Control.cs" />
     <Compile Include="UserInterface\Controls\Button.cs" />
+    <Compile Include="UserInterface\Controls\Label.cs" />
     <Compile Include="UserInterface\Controls\Panel.cs" />
     <Compile Include="UserInterface\Controls\PictureBox.cs" />
     <Compile Include="UserInterface\Controls\TextBox.cs" />

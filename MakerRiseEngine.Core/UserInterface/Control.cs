@@ -219,7 +219,7 @@ namespace Maker.RiseEngine.Core.UserInterface
                             break;
                         case Dock.Right:
 
-                            c.ControlRectangle = new Rectangle(childControlHost.X - c.ControlRectangle.Width, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
+                            c.ControlRectangle = new Rectangle(childControlHost.X + childControlHost.Width - c.ControlRectangle.Width, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
                             childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height));
 
                             break;

@@ -1,3 +1,4 @@
+using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -82,6 +83,7 @@ namespace Maker.RiseEngine.Core
             //Scene.SceneManager.CurrentScene = 2;
 
             // Show the loading scene.
+            sceneManager.AddScene(new SceneManager.Scenes.Menu.MenuBackground());
             sceneManager.AddScene(new SceneManager.Scenes.EngineLoading());
         }
 
@@ -95,6 +97,8 @@ namespace Maker.RiseEngine.Core
 
             if (Engine.GameForm.Focused)
             {
+                IsMouseVisible = false;
+
 
                 //Geting Mouse and Keyboard stats
                 MouseState mouse = Mouse.GetState();
@@ -115,6 +119,12 @@ namespace Maker.RiseEngine.Core
                 // Update the sound engine.
                 Audio.SongEngine.Update(mouse, keyboard, gameTime);
                 Audio.SoundEffectEngine.Update(mouse, keyboard, gameTime);
+            }
+            else
+            {
+
+                IsMouseVisible = true;
+
             }
         }
 
@@ -142,7 +152,7 @@ namespace Maker.RiseEngine.Core
                 // Show error message if something append on engine initialization.
                 if (Core.Engine.AsErrore)
                 {
-                    spriteBatch.DrawString(Core.ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Error Mode !", new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Alignment.Bottom, Style.Bold, Color.Red);
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Error Mode !", new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Alignment.Bottom, Style.Bold, Color.Red);
                 }
 
                 // Draw debug info.
@@ -159,8 +169,18 @@ namespace Maker.RiseEngine.Core
                 // End the sprite batch.
                 spriteBatch.End();
 
-                base.Draw(gameTime);
             }
+            else {
+
+                spriteBatch.Begin();
+                string text = "Le jeux est en pause.";
+                Vector2 textSize = ContentEngine.SpriteFont("Engine", "segoeUI_16pt").MeasureString(text);
+                spriteBatch.FillRectangle(new Rectangle(12, 12, (int)textSize.X + 8, (int)textSize.Y + 8), Color.Black);
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), text, new Vector2(16), Color.White);
+                spriteBatch.End();
+
+            }
+                base.Draw(gameTime);
 
         }
     }
