@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17002.1534.918</AssemblyVersion>
+    <AssemblyVersion>0.17002.2212.944</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -117,6 +117,7 @@
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\Loader.cs" />
     <Compile Include="Rendering\Primitives2D.cs" />
+    <Compile Include="SceneManager\Scenes\WorldGenerating.cs" />
     <Compile Include="Scene\WorldGeneratorTest.cs" />
     <Compile Include="Storage\DataSheet.cs" />
     <Compile Include="Rendering\BitmapHelper.cs" />

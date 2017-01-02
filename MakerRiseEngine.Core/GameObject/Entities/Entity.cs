@@ -97,7 +97,7 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
 
         public void OnEntityKilled(GameObjectEventArgs e, DataEntity entityKills)
         {
-            e.World.entityManager.RemoveEntity(e.CurrentLocation);
+            e.World.EntityDataManager.RemoveEntityData(e.CurrentLocation);
         }
     }
 }

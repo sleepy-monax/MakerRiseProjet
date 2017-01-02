@@ -97,8 +97,8 @@ namespace Maker.RiseEngine.DefaultPlugin
             DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
             E.IsFocus = true;
 
-            world.entityManager.RemoveEntity(new WorldLocation(new Point(5, 5), new Point(5, 5)));
-            world.entityManager.AddEntity(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
+            world.EntityDataManager.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
+            world.EntityDataManager.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
             world.Camera.FocusLocation = new WorldLocation(new Point(5, 5), new Point(5, 5)).ToPoint();
             world.Camera.Update();
 

@@ -57,6 +57,8 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             }
 
             // Create event handle.
+            buttonPlayLastGame.onMouseClick += ButtonPlayLastGame_onMouseClick;
+            buttonQuitteGame.onMouseClick += ButtonQuitteGame_onMouseClick;
             buttonNewGame.onMouseClick += ButtonNewGame_onMouseClick;
             buttonQuitte.onMouseClick += ButtonQuitte_onMouseClick;
 
@@ -73,6 +75,25 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
                 i.ControlDock = UserInterface.Dock.Top;
             }
 
+        }
+
+        private void ButtonQuitteGame_onMouseClick()
+        {
+            CurrentGame.SaveWorld();
+
+            CurrentGame.GameUIScene.GoBackToGame();
+            Game.sceneManager.RemoveScene(CurrentGame.GameUIScene);
+            Game.sceneManager.RemoveScene(CurrentGame);
+
+            MenuMain m = new MenuMain();
+            m.show();
+            Game.sceneManager.AddScene(m);
+
+        }
+
+        private void ButtonPlayLastGame_onMouseClick()
+        {
+            CurrentGame.GameUIScene.GoBackToGame();
         }
 
         private void ButtonNewGame_onMouseClick()

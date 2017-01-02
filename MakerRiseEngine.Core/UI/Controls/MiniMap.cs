@@ -49,8 +49,8 @@ namespace Maker.RiseEngine.Core.UI.Controls
 
             foreach (KeyValuePair<int, Game.WorldDataStruct.DataRegion> Rg in G.world.regions) {
 
-                if (Focus.Contains(Location.ToPoint(Rg.Value.Origine)))
-                IconHouse.Draw(spriteBatch, new Rectangle(Location.ToPoint(Rg.Value.Origine).X - Focus.Location.X + SizeBox.Location.X + x, Location.ToPoint(Rg.Value.Origine).Y - Focus.Location.Y + SizeBox.Location.Y + y, 16,16), Rg.Value.Color, gameTime);
+                //if (Focus.Contains(Location.ToPoint(Rg.Value.Origine)))
+                //IconHouse.Draw(spriteBatch, new Rectangle(Location.ToPoint(Rg.Value.Origine).X - Focus.Location.X + SizeBox.Location.X + x, Location.ToPoint(Rg.Value.Origine).Y - Focus.Location.Y + SizeBox.Location.Y + y, 16,16), Rg.Value.Color, gameTime);
 
             }
 

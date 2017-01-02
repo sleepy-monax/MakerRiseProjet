@@ -24,11 +24,11 @@ namespace Maker.RiseEngine.Core.Game
         public GameUtils.ChunkManager chunkManager;
         public GameUtils.WorldProperty worldProperty;
         public GameUtils.EventsManager eventsManager;
-        public GameUtils.EntityManager entityManager;
+        public GameUtils.EntityDataManager EntityDataManager;
         public GameUtils.MiniMap miniMap;
         public GameUtils.SaveFile saveFile;
 
-        GameUIScene GameUIScene;
+        public GameUIScene GameUIScene;
         SpriteBatch BackgroundSB;
         Parallax Background;
 
@@ -47,7 +47,7 @@ namespace Maker.RiseEngine.Core.Game
             worldUpdater = new GameUtils.WorldUpdater(this);
             chunkManager = new GameUtils.ChunkManager(this);
             eventsManager = new GameUtils.EventsManager(this);
-            entityManager = new GameUtils.EntityManager(this);
+            EntityDataManager = new GameUtils.EntityDataManager(this);
             miniMap = new GameUtils.MiniMap(this);
 
             Camera = new GameUtils.GameCamera(this);
@@ -67,7 +67,7 @@ namespace Maker.RiseEngine.Core.Game
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
 
-            worldRender.Draw(gameTime, PauseSimulation);
+            worldRender.Draw(gameTime);
 
 
             if (PauseSimulation)
@@ -98,7 +98,11 @@ namespace Maker.RiseEngine.Core.Game
 
         public override void OnUnload()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void SaveWorld() {
+            Storage.SerializationHelper.SaveToBin(world, "wold.bin");
         }
     }
 }

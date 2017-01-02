@@ -17,9 +17,9 @@ namespace Maker.RiseEngine.Core.Game
         SceneManager.Scenes.Menu.MenuMain MainMenu;
         bool IsPause = false;
 
-        public GameUIScene(GameScene _gameScene) {
+        public GameUIScene(GameScene _gameScene)
+        {
             G = _gameScene;
-            MainMenu = new SceneManager.Scenes.Menu.MenuMain(G);
         }
 
         public override void OnLoad()
@@ -34,32 +34,37 @@ namespace Maker.RiseEngine.Core.Game
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            if (IsPause ) {
-                MainMenu.sceneDraw(spriteBatch, gameTime);
-            }
+
         }
 
         KeyboardState oldKeyBoard;
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
-            if (keyBoard.IsKeyDown(Keys.Escape) && oldKeyBoard.IsKeyUp(Keys.Escape)) {
-
-                PauseGame();
-
-            }
-
-            if (IsPause)
+            if (keyBoard.IsKeyDown(Engine.engineConfig.Input_ShowMenu) && oldKeyBoard.IsKeyUp(Engine.engineConfig.Input_ShowMenu))
             {
-                MainMenu.sceneUpdate(mouse, keyBoard, gameTime);
+                if (!IsPause)
+                    PauseGame();
+
             }
 
             oldKeyBoard = keyBoard;
         }
 
-        public void PauseGame() {
+        public void PauseGame()
+        {
             IsPause = true;
             G.PauseSimulation = true;
+            MainMenu = new SceneManager.Scenes.Menu.MenuMain(G);
+            Game.sceneManager.AddScene(MainMenu);
             MainMenu.show();
+        }
+
+        public void GoBackToGame() {
+
+            Game.sceneManager.RemoveScene(MainMenu);
+            G.PauseSimulation = false;
+            IsPause = false;
+
         }
     }
 }

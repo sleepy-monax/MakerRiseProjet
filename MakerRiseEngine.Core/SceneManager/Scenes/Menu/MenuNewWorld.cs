@@ -72,6 +72,7 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         {
             ThreadStart GenHandle = new ThreadStart(delegate
             {
+                Game.sceneManager.RemoveScene(this);
                 Game.GameUtils.WorldProperty wrldp = new Game.GameUtils.WorldProperty()
                 {
                     WorldName = worldNameTexBox.Text,

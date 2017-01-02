@@ -23,7 +23,7 @@ namespace Maker.RiseEngine.Core.Generator
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
             NewRegion.BiomeID =  GameObjectsManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
-            NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            //NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
 
             newGame.world.regions.Add(ID, NewRegion);

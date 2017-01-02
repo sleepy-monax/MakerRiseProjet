@@ -28,6 +28,10 @@ namespace Maker.RiseEngine.Core.Generator
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+            SceneManager.Scenes.WorldGenerating sceneGen = new SceneManager.Scenes.WorldGenerating();
+            var game = (RiseGame)Engine.MainGame;
+            game.sceneManager.AddScene(sceneGen);
+            sceneGen.show();
 
             Game.GameScene newGame = new Game.GameScene(WrldProps, Rnd);
             int maxWorldSize = WrldProps.Size * 16;
@@ -36,7 +40,7 @@ namespace Maker.RiseEngine.Core.Generator
 
             // Adding randome Region
             EngineDebug.DebugLogs.WriteInLogs("Creating Random Point...", EngineDebug.LogType.Info, "WorldGenerator");
-            //Scene.SceneManager.WG.message = "Creating Random Point...";
+            sceneGen.message = "Creation des régions...";
             Thread.Sleep(500);
 
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
@@ -50,11 +54,13 @@ namespace Maker.RiseEngine.Core.Generator
 
                 // Create the source tile.
                 regionGrid.SetTile(x, y, rID);
+
+                sceneGen.Progress = (int)((float)rID / WrldProps.regionCount * 100);
             }
 
             //expanding Region
             EngineDebug.DebugLogs.WriteInLogs("Expending Region...", EngineDebug.LogType.Info, "WorldGenerator");
-            //Scene.SceneManager.WG.message = "Expending Region...";
+            sceneGen.message = "Expansion des regions...";
             Thread.Sleep(500);
 
             for (int i = 0; i < WrldProps.RegionExpention; i++)
@@ -92,11 +98,15 @@ namespace Maker.RiseEngine.Core.Generator
 
                     }
                 }
+
+                sceneGen.Progress = (int)((float)i / WrldProps.RegionExpention * 100);
             }
+            Thread.Sleep(100);
+            sceneGen.Progress = 100;
 
             // Set loading message.
             EngineDebug.DebugLogs.WriteInLogs("Converting Chunk... ", EngineDebug.LogType.Info, "WorldGenerator");
-            //Scene.SceneManager.WG.message = "Converting Chunk...";
+            sceneGen.message = "Creation du Terrain...";
             Thread.Sleep(500);
 
             newGame.world.chunks = new DataChunk[WrldProps.Size, WrldProps.Size];
@@ -111,12 +121,14 @@ namespace Maker.RiseEngine.Core.Generator
                     {
                         for (int tY = 0; tY <= 15; tY++)
                         {
-                            newGame.world.chunks[cX, cY].Tiles[tX, tY] = new Game.WorldDataStruct.DataTile();
+                            newGame.world.chunks[cX, cY].Tiles[tX, tY] = new DataTile();
                             newGame.world.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
 
                         }
                     }
 
+
+                    sceneGen.Progress = (int)((float)(cX + cY)/ WrldProps.Size * 2 * 100); 
                 }
             }
 
@@ -131,6 +143,8 @@ namespace Maker.RiseEngine.Core.Generator
 
             stopwatch.Stop();
             EngineDebug.DebugLogs.WriteInLogs("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, EngineDebug.LogType.Info, "WorldGenerator");
+
+            game.sceneManager.RemoveScene(sceneGen);
 
             return newGame;
         }

@@ -22,7 +22,7 @@ namespace Maker.RiseEngine.Core.AI.Action
 
             Point CurrentLocation = e.CurrentLocation.ToPoint() + e.ParrentEntity.Facing.ToPoint();
 
-            if (!(e.World.entityManager.TileIsFree(CurrentLocation.ToWorldLocation())))
+            if (!(e.World.EntityDataManager.IsEntityFree(CurrentLocation.ToWorldLocation())))
             {
 
                 e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;

@@ -50,7 +50,6 @@ namespace Maker.RiseEngine.Core.UserInterface
     {
         // Properties
         public bool Visible { get; set; } = true;
-        public bool Enable { get; set; } = true;
         public string Text { get; set; } = "Control";
         public Color ControlColor { get; set; } = Color.White;
         public Color TextColor { get; set; } = Color.White;
@@ -232,17 +231,12 @@ namespace Maker.RiseEngine.Core.UserInterface
                                 c.ControlRectangle = new Rectangle(childControlHost.Location, childControlHost.Size);
 
                                 break;
-
                         }
-
-                    }
-
-                    
+                    }   
                 }
-
             }
 
-            if (Enable)
+            if (Visible)
             {
                 // Update the controls.
                 OnUpdate(mouse, keyBoard, gameTime);

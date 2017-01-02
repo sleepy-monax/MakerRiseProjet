@@ -2,17 +2,17 @@
 
 namespace Maker.RiseEngine.Core.Game.GameUtils
 {
-    public class EntityManager
+    public class EntityDataManager
     {
 
         GameScene G;
 
-        public EntityManager(GameScene _WorldScene)
+        public EntityDataManager(GameScene _WorldScene)
         {
             G = _WorldScene;
         }
 
-        public void AddEntity(WorldDataStruct.DataEntity _Entity, WorldLocation _WorldLocation)
+        public void AddEntityData(WorldDataStruct.DataEntity _Entity, WorldLocation _WorldLocation)
         {
             WorldDataStruct.DataChunk Chunk = G.chunkManager.GetChunk(_WorldLocation.GetChunkPoint());
             int EntityID = _WorldLocation.tileX + _WorldLocation.tileY * 16;
@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             Chunk.Tiles[_WorldLocation.tileX, _WorldLocation.tileY].Entity = EntityID;
         }
 
-        public void RemoveEntity(WorldLocation _WorldLocation)
+        public void RemoveEntityData(WorldLocation _WorldLocation)
         {
 
             DataTile Tile = G.chunkManager.GetTile(_WorldLocation);
@@ -51,7 +51,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
 
             //on verifie si le tile est libre
-            if (!(TileIsFree(_ToLocation)))
+            if (!(IsEntityFree(_ToLocation)))
             {
                 return false;
             }
@@ -59,14 +59,14 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             //et enfin on le deplace
             DataEntity EntityToMove = G.chunkManager.GetChunk(_FromLocation).Entities[Tile.Entity];
 
-            RemoveEntity(_FromLocation);
-            AddEntity(EntityToMove, _ToLocation);
+            RemoveEntityData(_FromLocation);
+            AddEntityData(EntityToMove, _ToLocation);
 
             EntityToMove.Location = _ToLocation;
             return true;
         }
 
-        public bool TileIsFree(WorldLocation _WorldLocation)
+        public bool IsEntityFree(WorldLocation _WorldLocation)
         {
 
             DataTile ThisTile = G.chunkManager.GetTile(_WorldLocation);

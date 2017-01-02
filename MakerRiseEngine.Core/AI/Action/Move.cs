@@ -29,7 +29,7 @@ namespace Maker.RiseEngine.Core.AI.Action
             e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
             WorldLocation FocusLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
 
-            if (!(e.World.entityManager.TileIsFree(FocusLocation)))
+            if (!(e.World.EntityDataManager.IsEntityFree(FocusLocation)))
             {
                 e.ParrentEntity.Action = -1;
                 e.ParrentEntity.ActionProgress = 0;
@@ -41,7 +41,7 @@ namespace Maker.RiseEngine.Core.AI.Action
                 {
                     e.ParrentEntity.ActionProgress = 0;
                     e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
-                    e.World.entityManager.MoveEntity(e.CurrentLocation, FocusLocation);
+                    e.World.EntityDataManager.MoveEntity(e.CurrentLocation, FocusLocation);
                     e.ParrentEntity.Action = -1;
 
                     GameObjectsManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);

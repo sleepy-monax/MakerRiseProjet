@@ -10,7 +10,7 @@ namespace Maker.RiseEngine.Core.Game.WorldDataStruct
         public string Name;
 
         public int BiomeID;
-        public Color Color = Color.White;
+        //public Color Color = Color.White;
         public GameUtils.WorldLocation Origine;
         
     }
