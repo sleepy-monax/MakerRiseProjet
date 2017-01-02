@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Maker.RiseEngine.Core.SceneManager
 {
@@ -30,7 +31,7 @@ namespace Maker.RiseEngine.Core.SceneManager
             try
             {
                 scene.Game = Game;
-                scene.OnLoad();
+                Engine.GameForm.Invoke(new MethodInvoker(() => scene.OnLoad()));
             }
             catch (Exception ex)
             {
@@ -45,7 +46,7 @@ namespace Maker.RiseEngine.Core.SceneManager
 
             try
             {
-                scene.OnUnload();
+                Engine.GameForm.Invoke(new MethodInvoker(() => scene.OnUnload()));
             }
             catch (Exception ex)
             {

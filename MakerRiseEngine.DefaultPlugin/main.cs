@@ -6,6 +6,7 @@ using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.RiseEngine.Core.Game;
 using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Maker.RiseEngine.Core.Game.GameUtils;
+using Maker.RiseEngine.Core.Content;
 
 namespace Maker.RiseEngine.DefaultPlugin
 {

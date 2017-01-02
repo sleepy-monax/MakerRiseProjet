@@ -1,4 +1,6 @@
-﻿namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
+﻿using Maker.RiseEngine.Core.Content;
+
+namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
     public static class CommonSheets
     {

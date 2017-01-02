@@ -1,3 +1,4 @@
+using Maker.RiseEngine.Core.Content;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

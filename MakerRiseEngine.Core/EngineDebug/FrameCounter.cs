@@ -9,13 +9,15 @@ namespace Maker.RiseEngine.Core.EngineDebug
         public static long TotalFrames { get; private set; }
         public static float TotalSeconds { get; private set; }
         public static float AverageFramesPerSecond { get; private set; }
+        public static float AverageFramesTime { get; set; }
         public static float CurrentFramesPerSecond { get; private set; }
 
-        public const int MAXIMUM_SAMPLES = 100;
+        public const int MAXIMUM_SAMPLES = 300;
 
-        private static Queue<float> _sampleBuffer = new Queue<float>();
+        public static Queue<float> _sampleBuffer = new Queue<float>();
+        public static Queue<float> _sampleFrameTimeBuffer = new Queue<float>();
 
-        public static bool Update(float deltaTime)
+        public static void Update(float deltaTime)
         {
             CurrentFramesPerSecond = 1.0f / deltaTime;
             _sampleBuffer.Enqueue(CurrentFramesPerSecond);
@@ -30,9 +32,10 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 AverageFramesPerSecond = CurrentFramesPerSecond;
             }
 
+
+
             TotalFrames++;
             TotalSeconds += deltaTime;
-            return true;
         }
     }
 }

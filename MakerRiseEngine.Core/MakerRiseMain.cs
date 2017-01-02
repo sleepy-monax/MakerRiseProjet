@@ -1,7 +1,10 @@
+using Maker.RiseEngine.Core.Content;
 using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
@@ -33,23 +36,6 @@ namespace Maker.RiseEngine.Core
         protected override void Initialize()
         {
             EngineDebug.DebugLogs.WriteInLogs("Initializing game engine...", EngineDebug.LogType.Info, "Core");
-
-            //setting up screen
-            if (Engine.engineConfig.GFX_FullScreen == true)
-            {
-                // Set full screen.
-                graphics.PreferredBackBufferWidth = Screen.PrimaryScreen.Bounds.Width;
-                graphics.PreferredBackBufferHeight = Screen.PrimaryScreen.Bounds.Height;
-                graphics.ToggleFullScreen();
-                graphics.ApplyChanges();
-            }
-            else
-            {
-                // Set window setting.
-                graphics.PreferredBackBufferWidth = 1366;
-                graphics.PreferredBackBufferHeight = 768;
-                graphics.ApplyChanges();
-            }
 
             // Set windows from property.
             Window.Title = "Rise : Le monde est votre seule limite";
@@ -130,6 +116,8 @@ namespace Maker.RiseEngine.Core
 
         protected override void Draw(GameTime gameTime)
         {
+            Stopwatch s = new Stopwatch();
+            s.Start();
 
             if (Engine.GameForm.Focused)
             {
@@ -171,7 +159,8 @@ namespace Maker.RiseEngine.Core
                 spriteBatch.End();
 
             }
-            else {
+            else
+            {
 
                 spriteBatch.Begin();
                 string text = "Le jeux est en pause.";
@@ -181,8 +170,22 @@ namespace Maker.RiseEngine.Core
                 spriteBatch.End();
 
             }
-                base.Draw(gameTime);
+            base.Draw(gameTime);
 
+            s.Stop();
+
+            EngineDebug.FrameCounter._sampleFrameTimeBuffer.Enqueue(s.ElapsedMilliseconds);
+            if (EngineDebug.FrameCounter._sampleFrameTimeBuffer.Count > EngineDebug.FrameCounter.MAXIMUM_SAMPLES)
+            {
+                EngineDebug.FrameCounter._sampleFrameTimeBuffer.Dequeue();
+                EngineDebug.FrameCounter.AverageFramesTime = EngineDebug.FrameCounter._sampleFrameTimeBuffer.Average(i => i);
+            }
+            else
+            {
+                EngineDebug.FrameCounter.AverageFramesTime = s.ElapsedMilliseconds;
+            }
+
+            
         }
     }
 }

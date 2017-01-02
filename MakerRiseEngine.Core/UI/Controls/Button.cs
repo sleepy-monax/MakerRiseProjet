@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;

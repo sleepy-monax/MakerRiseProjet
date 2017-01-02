@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Rendering;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

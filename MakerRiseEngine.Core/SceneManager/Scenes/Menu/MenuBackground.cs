@@ -59,6 +59,7 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
 
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
+            Background.DestinationRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
             Background.Update(mouse, keyBoard, gameTime);
         }
     }

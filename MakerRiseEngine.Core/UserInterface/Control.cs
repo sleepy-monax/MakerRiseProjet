@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Rendering;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,8 +10,8 @@ namespace Maker.RiseEngine.Core.UserInterface
 {
 
     public enum MouseStats { Over, Down, None }
-    public enum Anchor { UpLeft, Up, UpRight, Left, Center, Right, DownLeft, Down, DownRight }
-    public enum Dock { Up, Down, Left, Right, Fill, None }
+    public enum Anchor { TopLeft, TopCenter, TopRight, CenterLeft, Center, CenterRight, BottomLeft, BottomCenter, BottomRight }
+    public enum Dock { Top, Bottom, Left, Right, Fill, None }
 
     public class ControlPadding
     {
@@ -53,6 +54,7 @@ namespace Maker.RiseEngine.Core.UserInterface
         public string Text { get; set; } = "Control";
         public Color ControlColor { get; set; } = Color.White;
         public Color TextColor { get; set; } = Color.White;
+        public SpriteFont TextFont = ContentEngine.SpriteFont("Engine", "segoeUI_16pt");
         public ControlPadding Padding { get; set; } = new ControlPadding();
 
         public Control ParrentControl = null;
@@ -72,22 +74,22 @@ namespace Maker.RiseEngine.Core.UserInterface
                 _ControlRectangle = value;
             }
         }
-        public Anchor ControlAnchor { get; set; } = Anchor.UpLeft;
+        public Anchor ControlAnchor { get; set; } = Anchor.TopLeft;
         public Dock ControlDock { get; set; } = Dock.None;
 
         // Child controls list.
         public List<Control> Childs = new List<Control>();
 
-        public void AddChild(Control child)
+        public void AddChild(Control ChildControl)
         {
-            child.ParrentControl = this;
-            Childs.Add(child);
+            ChildControl.ParrentControl = this;
+            Childs.Add(ChildControl);
         }
 
-        public void RemoveChild(Control child)
+        public void RemoveChild(Control ChildControl)
         {
-            child.ParrentControl = null;
-            Childs.Remove(child);
+            ChildControl.ParrentControl = null;
+            Childs.Remove(ChildControl);
         }
 
         // Mouse Stats.
@@ -137,22 +139,22 @@ namespace Maker.RiseEngine.Core.UserInterface
 
                 switch (ControlAnchor)
                 {
-                    case Anchor.UpLeft:
+                    case Anchor.TopLeft:
 
                         newLocation = new Point(parrentRectangle.X + _Location.X, parrentRectangle.Y + _Location.Y);
 
                         break;
-                    case Anchor.Up:
+                    case Anchor.TopCenter:
 
                         newLocation = new Point(parrentRectangle.X + parrentRectangle.Width / 2 + _Location.X, parrentRectangle.Y + _Location.Y);
 
                         break;
-                    case Anchor.UpRight:
+                    case Anchor.TopRight:
 
                         newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + _Location.Y);
 
                         break;
-                    case Anchor.Left:
+                    case Anchor.CenterLeft:
 
                         newLocation = new Point(parrentRectangle.X + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
 
@@ -162,22 +164,22 @@ namespace Maker.RiseEngine.Core.UserInterface
                         newLocation = new Point(parrentRectangle.X + parrentRectangle.Width / 2 + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
 
                         break;
-                    case Anchor.Right:
+                    case Anchor.CenterRight:
 
                         newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
 
                         break;
-                    case Anchor.DownLeft:
+                    case Anchor.BottomLeft:
 
                         newLocation = new Point(parrentRectangle.X + _Location.X, parrentRectangle.Y + parrentRectangle.Height + _Location.Y);
 
                         break;
-                    case Anchor.Down:
+                    case Anchor.BottomCenter:
 
                         newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + parrentRectangle.Height / 2 + _Location.Y);
 
                         break;
-                    case Anchor.DownRight:
+                    case Anchor.BottomRight:
 
                         newLocation = new Point(parrentRectangle.X + parrentRectangle.Width + _Location.X, parrentRectangle.Y + parrentRectangle.Height + _Location.Y);
 
@@ -197,40 +199,45 @@ namespace Maker.RiseEngine.Core.UserInterface
                 foreach (Control c in this.Childs)
                 {
 
-                    switch (c.ControlDock)
-                    {
-                        case Dock.Up:
+                    if (c.Visible) {
 
-                            c.ControlRectangle = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, c.ControlRectangle.Height));
-                            childControlHost = new Rectangle(new Point(childControlHost.Location.X, childControlHost.Location.Y + c.ControlRectangle.Height), new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
+                        switch (c.ControlDock)
+                        {
+                            case Dock.Top:
 
-                            break;
-                        case Dock.Down:
+                                c.ControlRectangle = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, c.ControlRectangle.Height));
+                                childControlHost = new Rectangle(new Point(childControlHost.Location.X, childControlHost.Location.Y + c.ControlRectangle.Height), new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
 
-                            c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height, childControlHost.Width, c.ControlRectangle.Height);
-                            childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
+                                break;
+                            case Dock.Bottom:
 
-                            break;
-                        case Dock.Left:
+                                c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height, childControlHost.Width, c.ControlRectangle.Height);
+                                childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
 
-                            c.ControlRectangle = new Rectangle(childControlHost.X, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
-                            childControlHost = new Rectangle(childControlHost.X + c.ControlRectangle.Width, childControlHost.Y, childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height);
+                                break;
+                            case Dock.Left:
 
-                            break;
-                        case Dock.Right:
+                                c.ControlRectangle = new Rectangle(childControlHost.X, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
+                                childControlHost = new Rectangle(childControlHost.X + c.ControlRectangle.Width, childControlHost.Y, childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height);
 
-                            c.ControlRectangle = new Rectangle(childControlHost.X + childControlHost.Width - c.ControlRectangle.Width, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
-                            childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height));
+                                break;
+                            case Dock.Right:
 
-                            break;
-                        case Dock.Fill:
+                                c.ControlRectangle = new Rectangle(childControlHost.X + childControlHost.Width - c.ControlRectangle.Width, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
+                                childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height));
 
-                            c.ControlRectangle = new Rectangle(childControlHost.Location, childControlHost.Size);
+                                break;
+                            case Dock.Fill:
 
-                            break;
+                                c.ControlRectangle = new Rectangle(childControlHost.Location, childControlHost.Size);
+
+                                break;
+
+                        }
 
                     }
 
+                    
                 }
 
             }
@@ -296,9 +303,9 @@ namespace Maker.RiseEngine.Core.UserInterface
 
         }
 
-        public void DrawText(SpriteBatch spritebatch, SpriteFont font, string text, Rectangle rectangle, Color color, Rendering.SpriteFontDraw.Alignment align = Rendering.SpriteFontDraw.Alignment.Left, Rendering.SpriteFontDraw.Style style = Rendering.SpriteFontDraw.Style.Regular)
+        public void DrawText(SpriteBatch spritebatch, SpriteFont font, string text, Rectangle rectangle, Color color, SpriteFontDraw.Alignment align = Rendering.SpriteFontDraw.Alignment.Left, Rendering.SpriteFontDraw.Style style = Rendering.SpriteFontDraw.Style.Regular)
         {
-            Rendering.SpriteFontDraw.DrawString(spritebatch, font, text, new Rectangle(ControlRectangle.X + rectangle.X, ControlRectangle.Y + rectangle.Y, rectangle.Size.X, rectangle.Size.Y), align, style, color);
+            SpriteFontDraw.DrawString(spritebatch, font, text, new Rectangle(ControlRectangle.X + rectangle.X, ControlRectangle.Y + rectangle.Y, rectangle.Size.X, rectangle.Size.Y), align, style, color);
         }
 
         // Events.

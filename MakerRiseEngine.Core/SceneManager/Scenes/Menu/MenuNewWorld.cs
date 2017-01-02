@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.UserInterface.Controls;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.UserInterface.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -22,18 +23,16 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         Label nameLabel;
         Label seedLabel;
         
-
-
         public override void OnLoad()
         {
 
-            rootContainer = new Panel(new Rectangle(-350, -250, 700, 500), Color.White);
+            rootContainer = new Panel(new Rectangle(-350, -250, 700, 500), Color.Transparent);
             rootContainer.Padding = new UserInterface.ControlPadding(16);
             rootContainer.ControlAnchor = UserInterface.Anchor.Center;
 
             controlContainer = new Panel(new Rectangle(0, 0, 0, 96), Color.White);
             controlContainer.Padding = new UserInterface.ControlPadding(16);
-            controlContainer.ControlDock = UserInterface.Dock.Down;
+            controlContainer.ControlDock = UserInterface.Dock.Bottom;
 
             createNewWorldButton = new Button("Créer le nouveau monde", new Rectangle(0, 0, 400, 64), Color.White);
             createNewWorldButton.ControlDock = UserInterface.Dock.Right;
@@ -44,18 +43,19 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             goBackButton.onMouseClick += GoBackButton_onMouseClick;
 
             worldNameTexBox = new TextBox("Monde sans nom", new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
-            worldNameTexBox.ControlDock = UserInterface.Dock.Up;
+            worldNameTexBox.ControlDock = UserInterface.Dock.Top;
             worldSeedTextBox = new TextBox(new Random().Next().ToString(), new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
-            worldSeedTextBox.ControlDock = UserInterface.Dock.Up;
+            worldSeedTextBox.ControlDock = UserInterface.Dock.Top;
 
-            titleLabel = new Label("Créer un nouveau monde", new Rectangle(0, 0, 128, 64), Color.White);
-            titleLabel.ControlDock = UserInterface.Dock.Up;
+            titleLabel = new Label("Créer un nouveau monde", new Rectangle(0, 0, 128, 96), Color.White);
+            titleLabel.ControlDock = UserInterface.Dock.Top;
             titleLabel.TextStyle = Rendering.SpriteFontDraw.Style.rectangle;
+            titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             nameLabel = new Label("Nom du nouveau monde :", new Rectangle(0, 0, 128, 64), Color.White);
-            nameLabel.ControlDock = UserInterface.Dock.Up;
+            nameLabel.ControlDock = UserInterface.Dock.Top;
             seedLabel = new Label("Graine pour la génération du monde :", new Rectangle(0, 0, 128, 64), Color.White);
-            seedLabel.ControlDock = UserInterface.Dock.Up;
+            seedLabel.ControlDock = UserInterface.Dock.Top;
 
             rootContainer.AddChild(controlContainer);
             rootContainer.AddChild(titleLabel);

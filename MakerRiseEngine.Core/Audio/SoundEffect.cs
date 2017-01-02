@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Storage;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 

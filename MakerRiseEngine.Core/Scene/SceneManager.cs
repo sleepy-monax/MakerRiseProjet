@@ -10,17 +10,13 @@ namespace Maker.RiseEngine.Core.Scene
         public static int CurrentScene = -1;
         public static MainMenu MainMn;
 
-        static SplashScreen Splash;
-        static UItest uiTest;
         static WorldGeneratorTest w;
 
         static Point MouseXY = Point.Zero;
 
         public static void Initialize()
         {
-            Splash = new SplashScreen();
             MainMn = new MainMenu();
-            uiTest = new UItest();
             w = new WorldGeneratorTest();
         }
 
@@ -46,19 +42,6 @@ namespace Maker.RiseEngine.Core.Scene
 
                     break;
 ;
-
-                case 2:
-
-                    Splash.Update(Mouse, KeyBoard, gameTime);
-
-                    break;
-                case 3:
-                    uiTest.Update(Mouse, KeyBoard, gameTime);
-
-
-                    break;
-
-                    break;
                 case 5:
                     w.Update(Mouse, KeyBoard, gameTime);
                     break;
@@ -80,17 +63,6 @@ namespace Maker.RiseEngine.Core.Scene
                 case 0:
                     //Draw Main menu 
                     MainMn.Draw(spriteBatch, gameTime);
-
-                    break;
-
-                case 2:
-
-                    Splash.Draw(spriteBatch, gameTime);
-
-                    break;
-                case 3:
-
-                    uiTest.Draw(spriteBatch, gameTime);
 
                     break;
                 case 5:

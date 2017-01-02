@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.Content;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Threading;
+using System.Windows.Forms;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace Maker.RiseEngine.Core.SceneManager.Scenes
@@ -29,7 +31,22 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes
 
         public override void OnUnload()
         {
-
+            //setting up screen
+            if (Engine.engineConfig.GFX_FullScreen == true)
+            {
+                // Set full screen.
+                Engine.graphics.PreferredBackBufferWidth = Screen.PrimaryScreen.Bounds.Width;
+                Engine.graphics.PreferredBackBufferHeight = Screen.PrimaryScreen.Bounds.Height;
+                Engine.graphics.ToggleFullScreen();
+                Engine.graphics.ApplyChanges();
+            }
+            else
+            {
+                // Set window setting.
+                Engine.graphics.PreferredBackBufferWidth = 1366;
+                Engine.graphics.PreferredBackBufferHeight = 768;
+                Engine.graphics.ApplyChanges();
+            }
         }
 
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)

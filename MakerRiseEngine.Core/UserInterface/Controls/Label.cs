@@ -17,7 +17,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(0,0,ControlRectangle.Width, ControlRectangle.Height), TextColor, TextAlignment, TextStyle);
+            DrawText(spriteBatch, TextFont, Text, new Rectangle(0,0,ControlRectangle.Width, ControlRectangle.Height), TextColor, TextAlignment, TextStyle);
         }
 
     }

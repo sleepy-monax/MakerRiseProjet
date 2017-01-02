@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Reflection;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Maker.RiseEngine.Core
 {
@@ -39,6 +40,10 @@ namespace Maker.RiseEngine.Core
                 engineConfig = Storage.SerializationHelper.LoadFromBin<Config.EngineConfig>("Data\\config.bin");
             else
                 Storage.SerializationHelper.SaveToBin(engineConfig, "Data\\config.bin");
+
+            // Apply config
+
+
 
             Thread.Sleep(200);
 

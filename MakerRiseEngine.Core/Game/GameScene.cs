@@ -26,13 +26,13 @@ namespace Maker.RiseEngine.Core.Game
         public GameUtils.EventsManager eventsManager;
         public GameUtils.EntityManager entityManager;
         public GameUtils.MiniMap miniMap;
-        public GameUtils.GameUI gameUI;
         public GameUtils.SaveFile saveFile;
 
+        GameUIScene GameUIScene;
         SpriteBatch BackgroundSB;
         Parallax Background;
 
-        public bool Pause = false;
+        public bool PauseSimulation = false;
 
         public GameScene(GameUtils.WorldProperty _worldProperty, Random _Rnd)
         {
@@ -49,7 +49,6 @@ namespace Maker.RiseEngine.Core.Game
             eventsManager = new GameUtils.EventsManager(this);
             entityManager = new GameUtils.EntityManager(this);
             miniMap = new GameUtils.MiniMap(this);
-            gameUI = new GameUtils.GameUI(this);
 
             Camera = new GameUtils.GameCamera(this);
 
@@ -58,24 +57,7 @@ namespace Maker.RiseEngine.Core.Game
             BackgroundSB = new SpriteBatch(Engine.GraphicsDevice);
             Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
 
-        }
-
-
-
-        public void TogglePauseGame()
-        {
-
-            Pause = !Pause;
-
-            if (Pause)
-            {
-                gameUI.cManager.SwitchContainer("PauseMenu");
-            }
-            else
-            {
-                gameUI.cManager.SwitchContainer("GameUI");
-            }
-
+            GameUIScene = new GameUIScene(this);
         }
 
         // Implement interface.
@@ -85,33 +67,33 @@ namespace Maker.RiseEngine.Core.Game
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
 
-            worldRender.Draw(gameTime, Pause);
+            worldRender.Draw(gameTime, PauseSimulation);
 
 
-            if (Pause)
+            if (PauseSimulation)
             {
                 spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
 
             }
 
-            gameUI.Draw(spriteBatch, gameTime);
 
         }
 
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
         {
-            if (!Pause)
+            if (!PauseSimulation)
             {
                 Background.Update(mouse, keyBoard, gameTime);
                 worldUpdater.Update(mouse, keyBoard, gameTime);
             }
             Camera.Update();
-            gameUI.Update(mouse, keyBoard, gameTime);
         }
 
         public override void OnLoad()
         {
             Audio.SongEngine.SwitchSong("Engine", "A Title");
+            Game.sceneManager.AddScene(GameUIScene);
+            GameUIScene.show();
         }
 
         public override void OnUnload()

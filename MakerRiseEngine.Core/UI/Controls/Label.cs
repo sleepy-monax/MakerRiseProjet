@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.Content;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 

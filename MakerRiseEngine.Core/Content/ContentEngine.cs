@@ -2,10 +2,14 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core
+namespace Maker.RiseEngine.Core.Content
 {
     public struct ContentEngine
     {
@@ -29,18 +33,19 @@ namespace Maker.RiseEngine.Core
                 ColectionTexture2D.Add(contentname, Content.Load<Texture2D>(PluginName + "/Textures2D/" + contentname));
                 return ColectionTexture2D[contentname];
             }
-            
+
         }
 
-        public static Texture2D GetDefaultTexture2D() {
+        public static Texture2D GetDefaultTexture2D()
+        {
 
-            System.Drawing.Bitmap bitmap = new Bitmap(2, 2);
-            bitmap.SetPixel(0, 0, System.Drawing.Color.Fuchsia);
-            bitmap.SetPixel(1, 1, System.Drawing.Color.Fuchsia);
-            bitmap.SetPixel(1, 0, System.Drawing.Color.Black);
-            bitmap.SetPixel(0, 1, System.Drawing.Color.Black);
+            Bitmap bitmap = new Bitmap(2, 2);
+            bitmap.SetPixel(0, 0, Color.Fuchsia);
+            bitmap.SetPixel(1, 1, Color.Fuchsia);
+            bitmap.SetPixel(1, 0, Color.Black);
+            bitmap.SetPixel(0, 1, Color.Black);
 
-            return Core.Rendering.BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice ,bitmap);
+            return Rendering.BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, bitmap);
 
         }
 
@@ -86,7 +91,8 @@ namespace Maker.RiseEngine.Core
 
         }
 
-        public static void ReloadContent() {
+        public static void ReloadContent()
+        {
 
             EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "ContentEngine");
             ColectionTexture2D.Clear();
@@ -95,7 +101,7 @@ namespace Maker.RiseEngine.Core
             ColectionFont.Clear();
 
         }
-       
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Storage;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,7 +12,7 @@ namespace Maker.RiseEngine.Core.Rendering
     {
 
         ParallaxLayer[] Layers;
-        Rectangle DestinationRectangle;
+        public Rectangle DestinationRectangle;
         float[] LayersPos;
 
         public Parallax(ParallaxLayer[] _Layers, Rectangle _DistinationRectangle)

@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Rendering;
+﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,6 +11,8 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
     public class MenuMain : Scene
     {
         Texture2D Logo;
+        bool asGame = false;
+        Game.GameScene CurrentGame;
 
         // Declaring user inteface elements.
         UserInterface.Controls.Panel panelMainMenu;
@@ -19,7 +22,15 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
         UserInterface.Controls.Button buttonOpenGame;
 
         UserInterface.Controls.Button buttonOption;
+        UserInterface.Controls.Button buttonQuitteGame;
         UserInterface.Controls.Button buttonQuitte;
+
+        public MenuMain() { asGame = false; }
+
+        public MenuMain(Game.GameScene gameScene) {
+            CurrentGame = gameScene;
+            asGame = true;
+        }
 
         public override void OnLoad()
         {
@@ -36,7 +47,14 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             buttonOpenGame = new UserInterface.Controls.Button("Charger une partie", new Rectangle(0, 0, 480, 64), Color.White);
 
             buttonOption = new UserInterface.Controls.Button("Options", new Rectangle(0, 0, 480, 64), Color.White);
-            buttonQuitte = new UserInterface.Controls.Button("Quitter le jeu", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonQuitteGame = new UserInterface.Controls.Button("Quitter le jeu en cours", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonQuitte = new UserInterface.Controls.Button("Retour au bureau", new Rectangle(0, 0, 480, 64), Color.White);
+
+            if (!asGame)
+            {
+                buttonQuitteGame.Visible = false;
+                buttonPlayLastGame.Visible = false;
+            }
 
             // Create event handle.
             buttonNewGame.onMouseClick += ButtonNewGame_onMouseClick;
@@ -47,11 +65,12 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             panelMainMenu.AddChild(buttonNewGame);
             panelMainMenu.AddChild(buttonOpenGame);
             panelMainMenu.AddChild(buttonOption);
+            panelMainMenu.AddChild(buttonQuitteGame);
             panelMainMenu.AddChild(buttonQuitte);
 
             foreach (var i in panelMainMenu.Childs)
             {
-                i.ControlDock = UserInterface.Dock.Up;
+                i.ControlDock = UserInterface.Dock.Top;
             }
 
         }
