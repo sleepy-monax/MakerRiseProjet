@@ -118,11 +118,11 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
 
             // Draw text.
-            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(0, 0, ControlRectangle.Width, ControlRectangle.Height), TextColor, Rendering.SpriteFontDraw.Alignment.Left, Rendering.SpriteFontDraw.Style.DropShadow);
+            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(16, 0, ControlRectangle.Width, ControlRectangle.Height), TextColor, SpriteFontDraw.Alignment.Left, SpriteFontDraw.Style.Regular);
 
             // Draw selection.
             if (mouseStats == MouseStats.Over)
-                spriteBatch.FillRectangle(new Rectangle((int)ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + ControlRectangle.X + 16, CharIndex + ControlRectangle.X + 20, 1, (int)CharSize.Y), Color.Black);
+                spriteBatch.FillRectangle(new Rectangle((int)ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + ControlRectangle.X + 16, ControlRectangle.Y + 16, 1, (int)CharSize.Y), Color.Black);
 
         }
 

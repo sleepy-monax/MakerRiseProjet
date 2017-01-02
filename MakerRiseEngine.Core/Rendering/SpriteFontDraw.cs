@@ -44,7 +44,7 @@ namespace Maker.RiseEngine.Core.Rendering
             if (style.HasFlag(Style.rectangle))
             {
                 Vector2 textSize = ContentEngine.SpriteFont("Engine", "segoeUI_16pt").MeasureString(text);
-                spriteBatch.FillRectangle(new Rectangle((int)pos.X - 4, (int) pos.Y - 4, (int)textSize.X + 8, (int)textSize.Y + 8), Color.Black);
+                spriteBatch.FillRectangle(new Rectangle(-(int)origin.X + (int)pos.X - 4, -(int)origin.Y + (int)pos.Y  - 4, (int)textSize.X + 8, (int)textSize.Y + 8), Color.Black);
             }
 
             spriteBatch.DrawString(font, text, pos, color, 0, origin, 1, SpriteEffects.None, 0);

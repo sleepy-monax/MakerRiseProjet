@@ -60,7 +60,9 @@ namespace Maker.RiseEngine.Core.SceneManager
         {
             foreach (Scene s in Scenes)
             {
+                spriteBatch.Begin();
                 s.sceneDraw(spriteBatch, gameTime);
+                spriteBatch.End();
             }
         }
 

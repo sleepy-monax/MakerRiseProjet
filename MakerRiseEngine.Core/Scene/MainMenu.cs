@@ -381,24 +381,7 @@ namespace Maker.RiseEngine.Core.Scene
         private void CreateWorld()
         {
 
-            ThreadStart GenHandle = new ThreadStart(delegate
-            {
-                Game.GameUtils.WorldProperty wrldp = new Game.GameUtils.WorldProperty()
-                {
-                    WorldName = NewWrldNameTextBox.Text,
-                    Seed = int.Parse(NewWrldSeedTextBox.Text)
-                };
-
-                Generator.WorldGenerator Gen = new Generator.WorldGenerator(wrldp);
-                Game.GameScene wrldsc = Gen.Generate();
-
-                SceneManager.StartGame(wrldsc);
-            });
-
-            SceneManager.CurrentScene = 4;
-
-            Thread t = new Thread(GenHandle);
-            t.Start();
+            
 
         }
 

@@ -36,7 +36,7 @@ namespace Maker.RiseEngine.Core.Generator
 
             // Adding randome Region
             EngineDebug.DebugLogs.WriteInLogs("Creating Random Point...", EngineDebug.LogType.Info, "WorldGenerator");
-            Scene.SceneManager.WG.message = "Creating Random Point...";
+            //Scene.SceneManager.WG.message = "Creating Random Point...";
             Thread.Sleep(500);
 
             for (int rID = 1; rID <= WrldProps.regionCount; rID++)
@@ -54,7 +54,7 @@ namespace Maker.RiseEngine.Core.Generator
 
             //expanding Region
             EngineDebug.DebugLogs.WriteInLogs("Expending Region...", EngineDebug.LogType.Info, "WorldGenerator");
-            Scene.SceneManager.WG.message = "Expending Region...";
+            //Scene.SceneManager.WG.message = "Expending Region...";
             Thread.Sleep(500);
 
             for (int i = 0; i < WrldProps.RegionExpention; i++)
@@ -96,7 +96,7 @@ namespace Maker.RiseEngine.Core.Generator
 
             // Set loading message.
             EngineDebug.DebugLogs.WriteInLogs("Converting Chunk... ", EngineDebug.LogType.Info, "WorldGenerator");
-            Scene.SceneManager.WG.message = "Converting Chunk...";
+            //Scene.SceneManager.WG.message = "Converting Chunk...";
             Thread.Sleep(500);
 
             newGame.world.chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];

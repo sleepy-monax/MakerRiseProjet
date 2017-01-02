@@ -7,18 +7,17 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
     {
 
         public Rendering.SpriteFontDraw.Alignment TextAlignment { get; set; } = Rendering.SpriteFontDraw.Alignment.Center;
-        public Rendering.SpriteFontDraw.Style TextStyle { get; set; } = Rendering.SpriteFontDraw.Style.Regular;
+        public Rendering.SpriteFontDraw.Style TextStyle { get; set; } = Rendering.SpriteFontDraw.Style.DropShadow;
 
-        public Label(string text, Rectangle rect, Color color) {
+        public Label(string text, Rectangle rect, Color textColor) {
             Text = text;
             ControlRectangle = rect;
-            ControlColor = color;
-            TextColor = Color.Black;
+            TextColor = textColor;
         }
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(0,0,ControlRectangle.Width, ControlRectangle.Height), TextColor, Rendering.SpriteFontDraw.Alignment.Center, Rendering.SpriteFontDraw.Style.DropShadow);
+            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(0,0,ControlRectangle.Width, ControlRectangle.Height), TextColor, TextAlignment, TextStyle);
         }
 
     }

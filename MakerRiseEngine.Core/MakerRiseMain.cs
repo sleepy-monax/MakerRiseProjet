@@ -141,13 +141,14 @@ namespace Maker.RiseEngine.Core
                 var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 Core.EngineDebug.FrameCounter.Update(deltaTime);
 
-                // Prepare the spritebatch.
-                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
-
                 // Draw the scenemanager.
 
                 //Scene.SceneManager.Draw(spriteBatch, gameTime);
                 sceneManager.Draw(spriteBatch, gameTime);
+
+                // Prepare the spritebatch.
+                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
+
 
                 // Show error message if something append on engine initialization.
                 if (Core.Engine.AsErrore)

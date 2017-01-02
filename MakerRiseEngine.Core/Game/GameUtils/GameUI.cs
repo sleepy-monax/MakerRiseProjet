@@ -56,10 +56,10 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             PauseMenu.Controls.Add(PauseButOption);
             PauseMenu.Controls.Add(PauseButQuit);
 
-            //Option
-            cManager.AddContainer("Option", Scene.SceneManager.MainMn.OptionContainer);
-            OptionMenuManager = Scene.SceneManager.MainMn.OptionMenuManager;
-            Scene.SceneManager.MainMn.OptionBackButton.OnMouseClick += OptionBack;
+            ////Option
+            //cManager.AddContainer("Option", Scene.SceneManager.MainMn.OptionContainer);
+            //OptionMenuManager = Scene.SceneManager.MainMn.OptionMenuManager;
+            //Scene.SceneManager.MainMn.OptionBackButton.OnMouseClick += OptionBack;
 
             cManager.AddContainer("PauseMenu", PauseMenu);
 
@@ -154,7 +154,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
         private void PauseButQuit_OnMouseClick()
         {
-            G.StopGame();
+
         }
         #endregion
 

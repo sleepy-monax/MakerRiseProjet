@@ -7,7 +7,7 @@ using System;
 
 namespace Maker.RiseEngine.Core.Game
 {
-    public class GameScene : Idrawable
+    public class GameScene : SceneManager.Scene
     {
         public ObjWorld world;
         public Generator.ChunkDecorator chunkDecorator;
@@ -60,58 +60,7 @@ namespace Maker.RiseEngine.Core.Game
 
         }
 
-        public void Update(MouseState _Mouse, KeyboardState _KeyBoard, GameTime _GameTime)
-        {
 
-
-            if (!Pause)
-            {
-                Background.Update(_Mouse, _KeyBoard, _GameTime);
-                worldUpdater.Update(_Mouse, _KeyBoard, _GameTime);
-            }
-            Camera.Update();
-            gameUI.Update(_Mouse, _KeyBoard, _GameTime);
-
-
-
-        }
-
-
-
-        public void Draw(SpriteBatch _SpriteBatch, GameTime _GameTime)
-        {
-
-            BackgroundSB.Begin();
-            Background.Draw(BackgroundSB, _GameTime);
-            BackgroundSB.End();
-
-            worldRender.Draw(_GameTime, Pause);
-
-
-            if (Pause)
-            {
-                _SpriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
-
-            }
-
-            gameUI.Draw(_SpriteBatch, _GameTime);
-        }
-
-        public void startGame()
-        {
-
-
-
-        }
-
-        public void StopGame()
-        {
-
-            Scene.SceneManager.CurrentScene = 0;
-            Scene.SceneManager.Gm = null;
-            GC.Collect();
-
-        }
 
         public void TogglePauseGame()
         {
@@ -127,6 +76,47 @@ namespace Maker.RiseEngine.Core.Game
                 gameUI.cManager.SwitchContainer("GameUI");
             }
 
+        }
+
+        // Implement interface.
+        public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            BackgroundSB.Begin();
+            Background.Draw(BackgroundSB, gameTime);
+            BackgroundSB.End();
+
+            worldRender.Draw(gameTime, Pause);
+
+
+            if (Pause)
+            {
+                spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
+
+            }
+
+            gameUI.Draw(spriteBatch, gameTime);
+
+        }
+
+        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        {
+            if (!Pause)
+            {
+                Background.Update(mouse, keyBoard, gameTime);
+                worldUpdater.Update(mouse, keyBoard, gameTime);
+            }
+            Camera.Update();
+            gameUI.Update(mouse, keyBoard, gameTime);
+        }
+
+        public override void OnLoad()
+        {
+            Audio.SongEngine.SwitchSong("Engine", "A Title");
+        }
+
+        public override void OnUnload()
+        {
+            throw new NotImplementedException();
         }
     }
 }

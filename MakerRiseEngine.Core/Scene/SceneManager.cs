@@ -9,13 +9,12 @@ namespace Maker.RiseEngine.Core.Scene
 
         public static int CurrentScene = -1;
         public static MainMenu MainMn;
-        public static Game.GameScene Gm;
+
         static SplashScreen Splash;
         static UItest uiTest;
         static WorldGeneratorTest w;
 
         static Point MouseXY = Point.Zero;
-        public static WorldGenerating WG = new WorldGenerating();
 
         public static void Initialize()
         {
@@ -29,16 +28,6 @@ namespace Maker.RiseEngine.Core.Scene
         //1 = Option
         //2 = WorldManager
         //3 = loading
-
-        public static void StartGame(Game.GameScene game)
-        {
-
-            CurrentScene = -1;
-            Gm = game;
-            Audio.SongEngine.SwitchSong("Engine", "A Title");
-            CurrentScene = 1;
-
-        }
 
         
         public static void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
@@ -56,13 +45,7 @@ namespace Maker.RiseEngine.Core.Scene
                     MainMn.Update(Mouse, KeyBoard, gameTime);
 
                     break;
-
-                case 1:
-
-                    //Update Game
-                    Gm.Update(Mouse, KeyBoard, gameTime);
-
-                    break;
+;
 
                 case 2:
 
@@ -74,9 +57,6 @@ namespace Maker.RiseEngine.Core.Scene
 
 
                     break;
-                case 4:
-
-                    WG.Update(Mouse, KeyBoard, gameTime);
 
                     break;
                 case 5:
@@ -102,11 +82,6 @@ namespace Maker.RiseEngine.Core.Scene
                     MainMn.Draw(spriteBatch, gameTime);
 
                     break;
-                case 1:
-                    // Draw Game
-                    Gm.Draw(spriteBatch, gameTime);
-
-                    break;
 
                 case 2:
 
@@ -117,9 +92,6 @@ namespace Maker.RiseEngine.Core.Scene
 
                     uiTest.Draw(spriteBatch, gameTime);
 
-                    break;
-                case 4:
-                    WG.Draw(spriteBatch, gameTime);
                     break;
                 case 5:
                     w.Draw(spriteBatch, gameTime);
