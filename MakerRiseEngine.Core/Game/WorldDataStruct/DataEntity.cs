@@ -3,10 +3,10 @@ using Microsoft.Xna.Framework;
 using System;
 
 
-namespace Maker.RiseEngine.Core.Game.World
+namespace Maker.RiseEngine.Core.Game.WorldDataStruct
 {
     [Serializable]
-    public class ObjEntity
+    public class DataEntity
     {
 
         public int ID = 0;
@@ -25,16 +25,28 @@ namespace Maker.RiseEngine.Core.Game.World
         public int ActionProgress = 0;
 
         //entity Moving
-        public Vector2 OnTileLocation = Vector2.Zero;
+        public float OnTileLocationX = 0;
+        public float OnTileLocationY = 0;
+
+        public void SetOnTileLocation(Vector2 v) {
+            OnTileLocationX = v.X;
+            OnTileLocationY = v.Y;
+        }
+
+        public Vector2 GetOnTileLocation() {
+            return new Vector2(OnTileLocationX, OnTileLocationY);
+        }
+
 
         public bool IsFocus = false;
 
-        public ObjEntity(int _ID, int _Variant)
+        public DataEntity(int _ID, int _Variant)
         {
             ID = _ID;
             Variant = _Variant;
         }
 
+        
 
     }
 }

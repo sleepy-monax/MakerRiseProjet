@@ -4,7 +4,7 @@ using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.RiseEngine.Core.Game;
-using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Maker.RiseEngine.Core.Game.GameUtils;
 
 namespace Maker.RiseEngine.DefaultPlugin

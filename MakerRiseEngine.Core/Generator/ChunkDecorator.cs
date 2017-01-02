@@ -16,10 +16,10 @@ namespace Maker.RiseEngine.Core.Generator
 
         }
 
-        public void Decorated(int cX, int cY, Game.World.ObjChunk Chunk)
+        public void Decorated(int cX, int cY, Game.WorldDataStruct.DataChunk Chunk)
         {
 
-            Chunk.chunkStatut = Game.World.chunkStatutList.onDecoration;
+            Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.onDecoration;
 
 
             EngineDebug.DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", EngineDebug.LogType.Info);
@@ -43,7 +43,7 @@ namespace Maker.RiseEngine.Core.Generator
                             int ID = MathExt.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
                             int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
 
-                            Chunk.AddEntity(new Game.World.ObjEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
+                            Chunk.AddEntity(new Game.WorldDataStruct.DataEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 
 
                         }
@@ -53,7 +53,7 @@ namespace Maker.RiseEngine.Core.Generator
                 }
             }
 
-            Chunk.chunkStatut = Game.World.chunkStatutList.Done;
+            Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.Done;
             W.miniMap.RefreshMiniMap();
             W.saveFile.SaveChunk(cX, cY, Chunk);
 

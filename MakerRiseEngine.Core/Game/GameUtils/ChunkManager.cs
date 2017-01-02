@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Game.World;
+﻿using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;
 
 namespace Maker.RiseEngine.Core.Game.GameUtils
@@ -14,19 +14,19 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
         #region GetChunk
         //Get Chunk On location
-        public ObjChunk GetChunk(GameUtils.WorldLocation ChunkLocation)
+        public DataChunk GetChunk(GameUtils.WorldLocation ChunkLocation)
         {
-            return GetChunk(ChunkLocation.chunk.X, ChunkLocation.chunk.Y);
+            return GetChunk(ChunkLocation.chunkX, ChunkLocation.chunkY);
         }
 
-        public ObjChunk GetChunk(Point ChunkLocation)
+        public DataChunk GetChunk(Point ChunkLocation)
         {
             return GetChunk(ChunkLocation.X, ChunkLocation.Y);
         }
 
         public bool PrepareChunk(int x, int y) {
 
-            ObjChunk chunk = G.world.chunks[x, y];
+            DataChunk chunk = G.world.chunks[x, y];
 
             switch (chunk.chunkStatut)
             {
@@ -44,7 +44,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
             return false;
         }
 
-        public ObjChunk GetChunk(int x, int y)
+        public DataChunk GetChunk(int x, int y)
         {
                 return G.world.chunks[x, y];
         }
@@ -52,15 +52,15 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
         #region GetTile
 
-        public ObjTile GetTile(WorldLocation _WorldLocation)
+        public DataTile GetTile(WorldLocation _WorldLocation)
         {
 
-            World.ObjChunk Chunk = GetChunk(_WorldLocation.chunk);
-            return Chunk.Tiles[_WorldLocation.tile.X, _WorldLocation.tile.Y];
+            DataChunk Chunk = GetChunk(_WorldLocation.GetChunkPoint());
+            return Chunk.Tiles[_WorldLocation.tileX, _WorldLocation.tileY];
 
         }
 
-        public ObjTile GetTile(Point _Location)
+        public DataTile GetTile(Point _Location)
         {
 
             return GetTile(_Location.ToWorldLocation());
@@ -70,15 +70,15 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
         #region GetEntity
 
-        public ObjEntity GetEntity(WorldLocation _WorldLocation)
+        public DataEntity GetEntity(WorldLocation _WorldLocation)
         {
 
-            ObjChunk chk = GetChunk(_WorldLocation);
+            DataChunk chk = GetChunk(_WorldLocation);
             return chk.Entities[GetTile(_WorldLocation).Entity];
 
         }
 
-        public ObjEntity GetEntity(Point _Location)
+        public DataEntity GetEntity(Point _Location)
         {
 
             return GetEntity(_Location.ToWorldLocation());

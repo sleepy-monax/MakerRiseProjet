@@ -2,21 +2,21 @@
 using System;
 using System.Collections.Generic;
 
-namespace Maker.RiseEngine.Core.Game.World
+namespace Maker.RiseEngine.Core.Game.WorldDataStruct
 {
 
     public enum chunkStatutList { Done, onDecoration, needDecoration }
 
     [Serializable]
-    public class ObjChunk
+    public class DataChunk
     {
-        public Dictionary<int, ObjEntity> Entities = new Dictionary<int, ObjEntity>();
-        public ObjTile[,] Tiles = new ObjTile[16, 16];
+        public Dictionary<int, DataEntity> Entities = new Dictionary<int, DataEntity>();
+        public DataTile[,] Tiles = new DataTile[16, 16];
 
 
         public chunkStatutList chunkStatut = chunkStatutList.needDecoration; //cette valeur est passé à true quand le chunk a été décoré.
 
-        public void AddEntity(ObjEntity _Entity, Point Location)
+        public void AddEntity(DataEntity _Entity, Point Location)
         {
             int EntityID = (Location.Y * 16) + Location.X;
 

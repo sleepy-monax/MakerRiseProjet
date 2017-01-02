@@ -47,7 +47,7 @@ namespace Maker.RiseEngine.Core.UI.Controls
             spriteBatch.Draw(G.miniMap.MiniMapTexture2D, new Rectangle(7 + SizeBox.Location.X + x, 7 + SizeBox.Location.Y + y, 178, 178), Focus, Color.White);
             MiniMapSprite.Draw(spriteBatch, new Rectangle(0 + SizeBox.Location.X + x, 0 + SizeBox.Location.Y + y, 192, 192), Color.White, gameTime);
 
-            foreach (KeyValuePair<int, Game.World.ObjRegion> Rg in G.world.regions) {
+            foreach (KeyValuePair<int, Game.WorldDataStruct.DataRegion> Rg in G.world.regions) {
 
                 if (Focus.Contains(Location.ToPoint(Rg.Value.Origine)))
                 IconHouse.Draw(spriteBatch, new Rectangle(Location.ToPoint(Rg.Value.Origine).X - Focus.Location.X + SizeBox.Location.X + x, Location.ToPoint(Rg.Value.Origine).Y - Focus.Location.Y + SizeBox.Location.Y + y, 16,16), Rg.Value.Color, gameTime);

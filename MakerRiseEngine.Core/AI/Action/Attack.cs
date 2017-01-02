@@ -1,6 +1,6 @@
 ﻿
 using Maker.RiseEngine.Core.Game.GameUtils;
-using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Maker.RiseEngine.Core.GameObject;
 using Maker.RiseEngine.Core.GameObject.Event;
 using Microsoft.Xna.Framework;
@@ -31,7 +31,7 @@ namespace Maker.RiseEngine.Core.AI.Action
                 {
 
                     // Get entityies.
-                    ObjEntity attackedEntity = e.World.chunkManager.GetEntity(CurrentLocation);
+                    DataEntity attackedEntity = e.World.chunkManager.GetEntity(CurrentLocation);
                     GameObjectEventArgs attackedEntityEventsArgs = e.World.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
 
                     float defense = attackedEntityEventsArgs.ParrentEntity.ToGameObject().GetDefence(attackedEntityEventsArgs);
@@ -55,17 +55,17 @@ namespace Maker.RiseEngine.Core.AI.Action
                     // remove the action.
                     e.ParrentEntity.Action = -1;
                     e.ParrentEntity.ActionProgress = 0;
-                    e.ParrentEntity.OnTileLocation = Vector2.Zero;
+                    e.ParrentEntity.SetOnTileLocation(new Vector2(0));
 
                 }
                 else
                 {
                     if (e.ParrentEntity.ActionProgress > 75)
                     {
-                        e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2((50 - e.ParrentEntity.ActionProgress) / 2);
+                        e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2((50 - e.ParrentEntity.ActionProgress) / 2));
                     }
                     else {
-                        e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress / 2);
+                        e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress / 2));
                     }
                     
                 }

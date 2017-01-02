@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Game.World;
+﻿using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +9,7 @@ namespace Maker.RiseEngine.Core.Game
 {
     public class GameScene : SceneManager.Scene
     {
-        public ObjWorld world;
+        public DataWorld world;
         public Generator.ChunkDecorator chunkDecorator;
 
         public Random Rnd;
@@ -36,7 +36,7 @@ namespace Maker.RiseEngine.Core.Game
 
         public GameScene(GameUtils.WorldProperty _worldProperty, Random _Rnd)
         {
-            world = new ObjWorld();
+            world = new DataWorld();
 
             saveFile = new GameUtils.SaveFile(this);
             worldProperty = _worldProperty;

@@ -22,7 +22,7 @@ namespace Maker.RiseEngine.Core.SceneManager.Scenes.Menu
             BackgroundSB.Begin();
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
-            //spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 128));
+            spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 128));
 
         }
 

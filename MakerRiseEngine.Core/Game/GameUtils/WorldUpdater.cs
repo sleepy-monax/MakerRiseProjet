@@ -33,13 +33,13 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
                             (Tx - G.Camera.StartTile.X) * G.Camera.Zoom + G.Camera.ScreenOrigine.X,
                             (Ty - G.Camera.StartTile.Y) * G.Camera.Zoom + G.Camera.ScreenOrigine.Y);
 
-                        if (G.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunk.X, CurrentLocation.ToWorldLocation().chunk.Y))
+                        if (G.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
                         {
                             //recuperation des arguments
                             GameObject.Event.GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
                             //recuperation des objets
-                            World.ObjTile T = G.chunkManager.GetTile(CurrentLocation);
+                            WorldDataStruct.DataTile T = G.chunkManager.GetTile(CurrentLocation);
 
                             GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
                             GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
@@ -47,7 +47,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
                             if (!(T.Entity == -1))
                             {
                                 //On recuper l'entitée
-                                World.ObjEntity E = G.chunkManager.GetEntity(CurrentLocation);
+                                WorldDataStruct.DataEntity E = G.chunkManager.GetEntity(CurrentLocation);
                                 E.Location = CurrentLocation.ToWorldLocation();
 
                                 GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);

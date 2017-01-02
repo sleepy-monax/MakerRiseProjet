@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Game.World;
+﻿using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Maker.RiseEngine.Core.GameObject.Event;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
@@ -49,8 +49,8 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
         public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
             Variant[e.ParrentEntity.Variant].Draw(spritebatch, new Rectangle(
-                   e.OnScreenLocation.X + (int)(e.World.Camera.Zoom * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocation.X)),
-                   e.OnScreenLocation.Y + (int)(e.World.Camera.Zoom * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocation.Y)),
+                   e.OnScreenLocation.X + (int)(e.World.Camera.Zoom * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
+                   e.OnScreenLocation.Y + (int)(e.World.Camera.Zoom * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
                    this.DrawBox.Width * e.World.Camera.Zoom, this.DrawBox.Height * e.World.Camera.Zoom),Color.White, gametime);
         }
 
@@ -95,7 +95,7 @@ namespace Maker.RiseEngine.Core.GameObject.Entities
 
         }
 
-        public void OnEntityKilled(GameObjectEventArgs e, ObjEntity entityKills)
+        public void OnEntityKilled(GameObjectEventArgs e, DataEntity entityKills)
         {
             e.World.entityManager.RemoveEntity(e.CurrentLocation);
         }

@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17002.0115.855</AssemblyVersion>
+    <AssemblyVersion>0.17002.0145.861</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -75,7 +75,7 @@
     <Compile Include="MathExt\Noise\Simplex.cs" />
     <Compile Include="MathExt\RandomHelper.cs" />
     <Compile Include="GameObject\IWorldGameObject.cs" />
-    <Compile Include="Game\World\ObjWorld.cs" />
+    <Compile Include="Game\WorldDataStruct\DataWorld.cs" />
     <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="ContentEngine.cs" />
@@ -140,10 +140,10 @@
     <Compile Include="UI\Container.cs" />
     <Compile Include="UI\Controls\TextBox.cs" />
     <Compile Include="UI\ContainerManager.cs" />
-    <Compile Include="Game\World\ObjChunk.cs" />
-    <Compile Include="Game\World\ObjEntity.cs" />
-    <Compile Include="Game\World\ObjRegion.cs" />
-    <Compile Include="Game\World\ObjTile.cs" />
+    <Compile Include="Game\WorldDataStruct\DataChunk.cs" />
+    <Compile Include="Game\WorldDataStruct\DataEntity.cs" />
+    <Compile Include="Game\WorldDataStruct\DataRegion.cs" />
+    <Compile Include="Game\WorldDataStruct\DataTile.cs" />
     <Compile Include="Game\GameUtils\Camera.cs" />
     <Compile Include="Game\GameUtils\ChunkManager.cs" />
     <Compile Include="Game\GameUtils\CommandParse.cs" />
@@ -169,7 +169,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Game\World\WorldObjectHelper.cs" />
+    <Compile Include="Game\WorldDataStruct\WorldDataHelper.cs" />
     <Compile Include="UserInterface\Control.cs" />
     <Compile Include="UserInterface\Controls\Button.cs" />
     <Compile Include="UserInterface\Controls\Label.cs" />

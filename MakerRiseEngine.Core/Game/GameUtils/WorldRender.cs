@@ -49,13 +49,13 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
                             (Tx - G.Camera.StartTile.X) * G.Camera.Zoom + G.Camera.ScreenOrigine.X,
                              (Ty - G.Camera.StartTile.Y) * G.Camera.Zoom + G.Camera.ScreenOrigine.Y);
 
-                        if (G.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunk.X, CurrentLocation.ToWorldLocation().chunk.Y)) {
+                        if (G.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY)) {
 
                             //Recuperation des arguments
                             GameObject.Event.GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
                             //recuperation des objets
-                            World.ObjTile T = G.chunkManager.GetTile(CurrentLocation);
+                            WorldDataStruct.DataTile T = G.chunkManager.GetTile(CurrentLocation);
 
 
                             //desin des objets
@@ -67,14 +67,14 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
                             if (!(T.Entity == -1))
                             {
-                                World.ObjEntity E = G.chunkManager.GetEntity(CurrentLocation);
+                                WorldDataStruct.DataEntity E = G.chunkManager.GetEntity(CurrentLocation);
                                 GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
 
                                 if (Engine.engineConfig.Debug_WorldOverDraw && E.IsFocus)
                                 {
 
-                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2, 2) + E.OnTileLocation, Color.Black);
-                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.OnTileLocation, Color.White);
+                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2, 2) + E.GetOnTileLocation(), Color.Black);
+                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.GetOnTileLocation(), Color.White);
 
                                 }
 

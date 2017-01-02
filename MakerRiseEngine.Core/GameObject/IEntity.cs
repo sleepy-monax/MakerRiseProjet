@@ -31,7 +31,7 @@
         /// <param name="e"></param>
         /// <param name="entityInteracts"></param>
         void OnEntityInteract(Event.GameObjectEventArgs e, Event.GameObjectEventArgs entityInteracts);
-        void OnEntityKilled(Event.GameObjectEventArgs e, Game.World.ObjEntity entityKills);
+        void OnEntityKilled(Event.GameObjectEventArgs e, Game.WorldDataStruct.DataEntity entityKills);
 
     }
 }

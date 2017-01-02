@@ -16,7 +16,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
         }
 
-        public void SaveChunk(int x, int y, World.ObjChunk _Chunk)
+        public void SaveChunk(int x, int y, WorldDataStruct.DataChunk _Chunk)
         {
 
             EngineDebug.DebugLogs.WriteInLogs("Saving chunk " + x + "," + y, EngineDebug.LogType.Info, "IO");

@@ -33,14 +33,14 @@ namespace Maker.RiseEngine.Core.AI.Action
             {
                 e.ParrentEntity.Action = -1;
                 e.ParrentEntity.ActionProgress = 0;
-                e.ParrentEntity.OnTileLocation = Vector2.Zero;
+                e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
             }
             else
             {
                 if (e.ParrentEntity.ActionProgress >= 100)
                 {
                     e.ParrentEntity.ActionProgress = 0;
-                    e.ParrentEntity.OnTileLocation = Vector2.Zero;
+                    e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
                     e.World.entityManager.MoveEntity(e.CurrentLocation, FocusLocation);
                     e.ParrentEntity.Action = -1;
 
@@ -48,13 +48,13 @@ namespace Maker.RiseEngine.Core.AI.Action
                 }
                 else
                 {
-                    e.ParrentEntity.OnTileLocation = e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress);
+                    e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress));
                 }
 
                 if (e.ParrentEntity.IsFocus)
                 {
                     e.World.Camera.FocusLocation = e.ParrentEntity.Location.ToPoint();
-                    e.World.Camera.PreciseFocusLocation = e.ParrentEntity.OnTileLocation;
+                    e.World.Camera.PreciseFocusLocation = e.ParrentEntity.GetOnTileLocation();
                 }
             }
         }

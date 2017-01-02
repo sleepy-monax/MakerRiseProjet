@@ -4,7 +4,7 @@ using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.RiseEngine.Core.Game;
-using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using Maker.RiseEngine.Core.Game.GameUtils;
 
 namespace Maker.RiseEngine.DefaultPlugin
@@ -93,7 +93,7 @@ namespace Maker.RiseEngine.DefaultPlugin
         public void OnWorldGeneration(GameScene world)
         {
 
-            ObjEntity E = new ObjEntity(this.GetGameObjectIndex("Player"), 0);
+            DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
             E.IsFocus = true;
 
             world.entityManager.RemoveEntity(new WorldLocation(new Point(5, 5), new Point(5, 5)));

@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Game.GameUtils;
-using Maker.RiseEngine.Core.Game.World;
+using Maker.RiseEngine.Core.Game.WorldDataStruct;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -99,19 +99,19 @@ namespace Maker.RiseEngine.Core.Generator
             //Scene.SceneManager.WG.message = "Converting Chunk...";
             Thread.Sleep(500);
 
-            newGame.world.chunks = new ObjChunk[WrldProps.Size, WrldProps.Size];
+            newGame.world.chunks = new DataChunk[WrldProps.Size, WrldProps.Size];
 
             for (int cX = 0; cX <= WrldProps.Size - 1; cX++)
             {
                 for (int cY = 0; cY <= WrldProps.Size - 1; cY++)
                 {
-                    newGame.world.chunks[cX, cY] = new ObjChunk();
+                    newGame.world.chunks[cX, cY] = new DataChunk();
 
                     for (int tX = 0; tX <= 15; tX++)
                     {
                         for (int tY = 0; tY <= 15; tY++)
                         {
-                            newGame.world.chunks[cX, cY].Tiles[tX, tY] = new Game.World.ObjTile();
+                            newGame.world.chunks[cX, cY].Tiles[tX, tY] = new Game.WorldDataStruct.DataTile();
                             newGame.world.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
 
                         }

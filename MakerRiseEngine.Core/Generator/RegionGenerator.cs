@@ -19,7 +19,7 @@ namespace Maker.RiseEngine.Core.Generator
         public void GenerateRegion(int ID, WorldLocation Location, Game.GameScene newGame, Random rnd)
         {
 
-            Game.World.ObjRegion NewRegion = new Game.World.ObjRegion();
+            Game.WorldDataStruct.DataRegion NewRegion = new Game.WorldDataStruct.DataRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
             NewRegion.BiomeID =  GameObjectsManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);

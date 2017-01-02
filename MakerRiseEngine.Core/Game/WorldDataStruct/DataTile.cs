@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Maker.RiseEngine.Core.Game.World
+namespace Maker.RiseEngine.Core.Game.WorldDataStruct
 {
     [Serializable]
-    public class ObjTile
+    public class DataTile
     {
         public int ID = -1;
         public int Variant = 0;

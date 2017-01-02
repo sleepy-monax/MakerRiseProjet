@@ -6,8 +6,8 @@ namespace Maker.RiseEngine.Core.GameObject.Event
     public class GameObjectEventArgs
     {
 
-        public Game.World.ObjEntity ParrentEntity;
-        public Game.World.ObjTile ParrentTile;
+        public Game.WorldDataStruct.DataEntity ParrentEntity;
+        public Game.WorldDataStruct.DataTile ParrentTile;
 
         public WorldLocation CurrentLocation;
         public Game.GameScene World;

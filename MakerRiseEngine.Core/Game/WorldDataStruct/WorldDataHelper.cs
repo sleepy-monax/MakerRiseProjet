@@ -1,18 +1,18 @@
 ﻿using Maker.RiseEngine.Core.GameObject;
 
-namespace Maker.RiseEngine.Core.Game.World
+namespace Maker.RiseEngine.Core.Game.WorldDataStruct
 {
-    public static class WorldObjectHelper
+    public static class WorldDataHelper
     {
 
-        public static IEntity ToGameObject(this ObjEntity Entity)
+        public static IEntity ToGameObject(this DataEntity Entity)
         {
 
             return GameObjectsManager.GetGameObject<IEntity>(Entity.ID);
 
         }
 
-        public static ITile ToGameObject(this ObjTile Tile)
+        public static ITile ToGameObject(this DataTile Tile)
         {
 
             return GameObjectsManager.GetGameObject<ITile>(Tile.ID);

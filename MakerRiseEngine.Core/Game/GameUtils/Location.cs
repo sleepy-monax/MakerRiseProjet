@@ -30,8 +30,8 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
                 TileXY.Y = 0;
             }
 
-            WipLocation.tile = TileXY;
-            WipLocation.chunk = ChunkXY;
+            WipLocation.SetTilePoint(TileXY);
+            WipLocation.SetChunkPoint(ChunkXY);
 
             return WipLocation;
 
@@ -40,7 +40,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
         //Converti une worldLocation en un point
         public static Point ToPoint(this WorldLocation WorldLocation)
         {
-            return new Point(WorldLocation.chunk.X * 16 + WorldLocation.tile.X, WorldLocation.chunk.Y * 16 + WorldLocation.tile.Y);
+            return new Point(WorldLocation.chunkX * 16 + WorldLocation.tileX, WorldLocation.chunkY * 16 + WorldLocation.tileY);
         }
 
         //ajoute les cooordonné d'un point a une worldLOcation
@@ -63,12 +63,39 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
     {
 
         public WorldLocation() { }
-        public WorldLocation(Point _Chunk, Point _Tile)
+        public WorldLocation(Point chunk, Point tile)
         {
-            chunk = _Chunk;
-            tile = _Tile;
+            SetChunkPoint(chunk);
+            SetTilePoint(tile);
         }
-        public Point chunk = Point.Zero;
-        public Point tile = Point.Zero;
+
+        public Point GetChunkPoint() {
+            return new Point(chunkX, chunkY);
+        }
+
+        public Point GetTilePoint() {
+            return new Point(tileX, tileY);
+        }
+
+        public void SetChunkPoint(Point p)
+        {
+
+            chunkX = p.X;
+            chunkY = p.Y;
+
+        }
+
+        public void SetTilePoint(Point p) {
+
+            tileX = p.X;
+            tileY = p.Y;
+
+        }
+
+        public int chunkX = 0;
+        public int chunkY = 0;
+
+        public int tileX = 0;
+        public int tileY = 0;
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace Maker.RiseEngine.Core.Game.World
+namespace Maker.RiseEngine.Core.Game.WorldDataStruct
 {
     [Serializable]
-    public class ObjRegion
+    public class DataRegion
     {
 
         public string Name;

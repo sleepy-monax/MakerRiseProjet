@@ -22,7 +22,7 @@ namespace Maker.RiseEngine.Core.Game.GameUtils
 
             if (args.ParrentTile.Entity == -1) {
 
-                args.ParrentEntity = new World.ObjEntity( -1 , -1);
+                args.ParrentEntity = new WorldDataStruct.DataEntity( -1 , -1);
 
             } else {
 
