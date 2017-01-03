@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17002.2212.944</AssemblyVersion>
+    <AssemblyVersion>0.17003.1526.946</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -67,7 +67,6 @@
     <Compile Include="Engine.cs" />
     <Compile Include="Config\EngineConfig.cs" />
     <Compile Include="EngineDebug\DebugScreen.cs" />
-    <Compile Include="Game\GameUIScene.cs" />
     <Compile Include="MathExt\Geometry.cs" />
     <Compile Include="GameObjectManager.cs" />
     <Compile Include="MathExt\FastRandom.cs" />
@@ -76,49 +75,31 @@
     <Compile Include="MathExt\Noise\Perlin.cs" />
     <Compile Include="MathExt\Noise\Simplex.cs" />
     <Compile Include="MathExt\RandomHelper.cs" />
-    <Compile Include="GameObject\IWorldGameObject.cs" />
-    <Compile Include="Game\WorldDataStruct\DataWorld.cs" />
-    <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
     <Compile Include="Idrawable.cs" />
     <Compile Include="EngineDebug\FrameCounter.cs" />
     <Compile Include="EngineDebug\DebugLogs.cs" />
     <Compile Include="MathExt\Utils.cs" />
-    <Compile Include="GameObject\Biome.cs" />
-    <Compile Include="GameObject\Entities\Creature.cs" />
-    <Compile Include="GameObject\Entities\Entity.cs" />
-    <Compile Include="GameObject\Event\GameObjectEventArgs.cs" />
-    <Compile Include="GameObject\IEntity.cs" />
-    <Compile Include="GameObject\IGameObject.cs" />
-    <Compile Include="GameObject\IItem.cs" />
-    <Compile Include="GameObject\Items\Item.cs" />
-    <Compile Include="GameObject\ITile.cs" />
     <Compile Include="Audio\SoundEffect.cs" />
-    <Compile Include="GameObject\Tiles\Tile.cs" />
-    <Compile Include="Generator\ChunkDecorator.cs" />
-    <Compile Include="Generator\RegionGenerator.cs" />
-    <Compile Include="Generator\WorldEdit.cs" />
-    <Compile Include="Generator\WorldGenerator.cs" />
     <Compile Include="AI\AIbase.cs" />
     <Compile Include="Inventory\ObjInventory.cs" />
     <Compile Include="Inventory\ObjSlot.cs" />
     <Compile Include="Network\HTTPServer.cs" />
     <Compile Include="Plugin\Builder.cs" />
+    <Compile Include="Plugin\IRiseGame.cs" />
     <Compile Include="Rendering\Parallax.cs" />
     <Compile Include="Rendering\SpriteFontDraw.cs" />
-    <Compile Include="SceneManager\Scene.cs" />
-    <Compile Include="SceneManager\SceneManager.cs" />
-    <Compile Include="SceneManager\Scenes\EngineLoading.cs" />
-    <Compile Include="SceneManager\Scenes\Menu\MenuBackground.cs" />
-    <Compile Include="SceneManager\Scenes\Menu\MenuMain.cs" />
-    <Compile Include="SceneManager\Scenes\Menu\MenuNewWorld.cs" />
-    <Compile Include="SceneManager\Scenes\Menu\MenuOpenWorld.cs" />
-    <Compile Include="SceneManager\Scenes\Menu\MenuOption.cs" />
-    <Compile Include="SceneManager\Scenes\UserInterfaceTest.cs" />
-    <Compile Include="Plugin\IPlugin.cs" />
+    <Compile Include="Scenes\Scene.cs" />
+    <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Scenes\Scenes\EngineLoading.cs" />
+    <Compile Include="Scenes\Scenes\Menu\MenuBackground.cs" />
+    <Compile Include="Scenes\Scenes\Menu\MenuMain.cs" />
+    <Compile Include="Scenes\Scenes\Menu\MenuNewWorld.cs" />
+    <Compile Include="Scenes\Scenes\Menu\MenuOpenWorld.cs" />
+    <Compile Include="Scenes\Scenes\Menu\MenuOption.cs" />
+    <Compile Include="Scenes\Scenes\UserInterfaceTest.cs" />
     <Compile Include="Plugin\Loader.cs" />
     <Compile Include="Rendering\Primitives2D.cs" />
-    <Compile Include="SceneManager\Scenes\WorldGenerating.cs" />
-    <Compile Include="Scene\WorldGeneratorTest.cs" />
+    <Compile Include="Scenes\Scenes\WorldGenerating.cs" />
     <Compile Include="Storage\DataSheet.cs" />
     <Compile Include="Rendering\BitmapHelper.cs" />
     <Compile Include="Rendering\SpriteSheets\CommonSheets.cs" />
@@ -132,29 +113,11 @@
     <Compile Include="UI\Controls\Label.cs" />
     <Compile Include="UI\Controls\Slider.cs" />
     <Compile Include="UI\Cursor.cs" />
-    <Compile Include="Scene\MainMenu.cs" />
-    <Compile Include="Scene\SceneManager.cs" />
     <Compile Include="UI\Controls\Control.cs" />
     <Compile Include="UI\Controls\Button.cs" />
     <Compile Include="UI\Container.cs" />
     <Compile Include="UI\Controls\TextBox.cs" />
     <Compile Include="UI\ContainerManager.cs" />
-    <Compile Include="Game\WorldDataStruct\DataChunk.cs" />
-    <Compile Include="Game\WorldDataStruct\DataEntity.cs" />
-    <Compile Include="Game\WorldDataStruct\DataRegion.cs" />
-    <Compile Include="Game\WorldDataStruct\DataTile.cs" />
-    <Compile Include="Game\GameUtils\Camera.cs" />
-    <Compile Include="Game\GameUtils\ChunkManager.cs" />
-    <Compile Include="Game\GameUtils\CommandParse.cs" />
-    <Compile Include="Game\GameUtils\EntityManager.cs" />
-    <Compile Include="Game\GameUtils\EventsManager.cs" />
-    <Compile Include="Game\GameUtils\Location.cs" />
-    <Compile Include="Game\GameUtils\MiniMap.cs" />
-    <Compile Include="Game\GameUtils\SaveFile.cs" />
-    <Compile Include="Game\GameUtils\WorldProperty.cs" />
-    <Compile Include="Game\GameUtils\WorldRender.cs" />
-    <Compile Include="Game\GameUtils\WorldUpdater.cs" />
-    <Compile Include="Game\GameScene.cs" />
     <Compile Include="MakerRiseMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -167,7 +130,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Game\WorldDataStruct\WorldDataHelper.cs" />
     <Compile Include="UserInterface\Control.cs" />
     <Compile Include="UserInterface\Controls\Button.cs" />
     <Compile Include="UserInterface\Controls\Graph.cs" />

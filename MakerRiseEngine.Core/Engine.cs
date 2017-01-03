@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.SceneManager.Scenes;
+﻿using Maker.RiseEngine.Core.Scenes.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

@@ -17,7 +17,7 @@ namespace Maker.RiseEngine.Core
         Core.EngineDebug.DebugScreen DbgScr;
         bool GLmode = false;
 
-        public SceneManager.SceneManager sceneManager;
+        public Scenes.SceneManager sceneManager;
 
         public RiseGame(bool _Glmode)
         {
@@ -28,7 +28,7 @@ namespace Maker.RiseEngine.Core
             Engine.Window = Window;
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
 
-            sceneManager = new SceneManager.SceneManager(this);
+            sceneManager = new Scenes.SceneManager(this);
 
             GLmode = _Glmode;
         }
@@ -69,8 +69,8 @@ namespace Maker.RiseEngine.Core
             //Scene.SceneManager.CurrentScene = 2;
 
             // Show the loading scene.
-            sceneManager.AddScene(new SceneManager.Scenes.Menu.MenuBackground());
-            sceneManager.AddScene(new SceneManager.Scenes.EngineLoading());
+            sceneManager.AddScene(new Scenes.Scenes.Menu.MenuBackground());
+            sceneManager.AddScene(new Scenes.Scenes.EngineLoading());
         }
 
         protected override void UnloadContent()

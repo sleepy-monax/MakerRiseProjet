@@ -7,11 +7,11 @@ namespace Maker.RiseEngine.Core.Plugin
     public static class PluginLoader
     {
 
-        public static ICollection<IPlugin> LoadAssembly(Assembly assembly)
+        public static ICollection<T> LoadAssembly<T>(Assembly assembly)
         {
                 EngineDebug.DebugLogs.WriteInLogs("load \'" + assembly.CodeBase + "\'", EngineDebug.LogType.Info, "Plugin.Loader");
 
-                Type pluginType = typeof(IPlugin);
+                Type pluginType = typeof(T);
                 ICollection<Type> pluginTypes = new List<Type>();
 
                 if (assembly != null)
@@ -34,10 +34,10 @@ namespace Maker.RiseEngine.Core.Plugin
                     }
                 }
 
-                ICollection<IPlugin> plugins = new List<IPlugin>(pluginTypes.Count);
+                ICollection<T> plugins = new List<T>(pluginTypes.Count);
                 foreach (Type type in pluginTypes)
                 {
-                    IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
+                    T plugin = (T)Activator.CreateInstance(type);
                     plugins.Add(plugin);
                 }
 
