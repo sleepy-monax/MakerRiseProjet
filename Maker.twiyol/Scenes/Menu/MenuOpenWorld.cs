@@ -1,9 +1,12 @@
-﻿using Maker.RiseEngine.Core.UserInterface.Controls;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Scenes;
+using Maker.RiseEngine.Core.UserInterface;
+using Maker.RiseEngine.Core.UserInterface.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
+namespace Maker.twiyol.Scenes.Menu
 {
     public class MenuOpenWorld : Scene
     {
@@ -12,9 +15,9 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
         public override void OnLoad()
         {
 
-            rootContainer = new Panel(new Rectangle(-350, - (Engine.graphics.PreferredBackBufferHeight / 2), 700, Engine.graphics.PreferredBackBufferHeight), Color.White);
-            rootContainer.Padding = new UserInterface.ControlPadding(16);
-            rootContainer.ControlAnchor = UserInterface.Anchor.Center;
+            rootContainer = new Panel(new Rectangle(-350, -(Engine.graphics.PreferredBackBufferHeight / 2), 700, Engine.graphics.PreferredBackBufferHeight), Color.White);
+            rootContainer.Padding = new ControlPadding(16);
+            rootContainer.ControlAnchor = Anchor.Center;
 
         }
 
@@ -26,7 +29,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
 
         public override void OnUnload()
         {
-            
+
         }
 
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)

@@ -1,6 +1,6 @@
-﻿using Maker.RiseEngine.Core.Game.WorldDataStruct;
-using Maker.RiseEngine.Core.GameObject.Event;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -35,11 +35,11 @@ namespace Maker.twiyol.GameObject.Entities
 
         public Entity(string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation)
         {
-            Variant = new List<Rendering.SpriteSheets.Sprite>();
+            Variant = new List<Sprite>();
 
             foreach (string str in _SpriteVariant)
             {
-                Variant.Add(GameObjectsManager.GetGameObject<Rendering.SpriteSheets.SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameObjectsManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
             }
             SpriteLocation = _SpriteLocation;
             DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));
@@ -51,12 +51,12 @@ namespace Maker.twiyol.GameObject.Entities
             Variant[e.ParrentEntity.Variant].Draw(spritebatch, new Rectangle(
                    e.OnScreenLocation.X + (int)(e.World.Camera.Zoom * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
                    e.OnScreenLocation.Y + (int)(e.World.Camera.Zoom * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
-                   this.DrawBox.Width * e.World.Camera.Zoom, this.DrawBox.Height * e.World.Camera.Zoom),Color.White, gametime);
+                   this.DrawBox.Width * e.World.Camera.Zoom, this.DrawBox.Height * e.World.Camera.Zoom), Color.White, gametime);
         }
 
         public virtual void OnTick(GameObjectEventArgs e, GameTime gametime)
         {
-            
+
         }
 
         public virtual void OnUpdate(GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime)
@@ -66,7 +66,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         public void OnEntityInteract(GameObjectEventArgs eThisEntity, GameObjectEventArgs eInteratingEntity)
         {
-            
+
         }
 
         public void OnGameObjectAdded()

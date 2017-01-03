@@ -7,8 +7,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Scenes;
+using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Audio;
 
-namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
+namespace Maker.twiyol.Scenes.Menu
 {
     public class MenuBackground : Scene
     {
@@ -34,16 +37,16 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
             switch (new Random().Next(3))
             {
                 case 0:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    Audio.SongEngine.SwitchSong("Engine", "A Title");
+                    Background = ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
+                    SongEngine.SwitchSong("Engine", "A Title");
                     break;
                 case 1:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    Audio.SongEngine.SwitchSong("Engine", "Look Up");
+                    Background = ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
+                    SongEngine.SwitchSong("Engine", "Look Up");
                     break;
                 case 2:
-                    Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    Audio.SongEngine.SwitchSong("Engine", "Clouds of Orange Juice");
+                    Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
+                    SongEngine.SwitchSong("Engine", "Clouds of Orange Juice");
                     break;
                 default:
                     break;
@@ -54,7 +57,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
 
         public override void OnUnload()
         {
-            
+
         }
 
         public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)

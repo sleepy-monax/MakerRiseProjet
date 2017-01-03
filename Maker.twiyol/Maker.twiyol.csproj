@@ -36,6 +36,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,12 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\Action\Attack.cs" />
+    <Compile Include="AI\Action\Move.cs" />
+    <Compile Include="AI\AIbase.cs" />
+    <Compile Include="AI\Entites\PlayerAI.cs" />
+    <Compile Include="AI\IAction.cs" />
+    <Compile Include="AI\Utils.cs" />
+    <Compile Include="GameObjectManager.cs" />
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />
     <Compile Include="GameObject\Entities\Entity.cs" />
     <Compile Include="GameObject\Event\GameObjectEventArgs.cs" />
     <Compile Include="GameObject\IEntity.cs" />
-    <Compile Include="GameObject\iGameObject.cs" />
     <Compile Include="GameObject\IItem.cs" />
     <Compile Include="GameObject\Items\Item.cs" />
     <Compile Include="GameObject\ITile.cs" />
@@ -81,7 +89,14 @@
     <Compile Include="Generator\WorldGenerator.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Menu\MenuBackground.cs" />
+    <Compile Include="Scenes\Menu\MenuMain.cs" />
+    <Compile Include="Scenes\Menu\MenuNewWorld.cs" />
+    <Compile Include="Scenes\Menu\MenuOpenWorld.cs" />
+    <Compile Include="Scenes\Menu\MenuOption.cs" />
+    <Compile Include="Scenes\WorldGenerating.cs" />
     <Compile Include="twiyolGame.cs" />
+    <Compile Include="UI\MiniMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj">

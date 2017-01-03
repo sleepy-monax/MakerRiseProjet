@@ -28,7 +28,7 @@ namespace Maker.twiyol.Game.WorldDataStruct
             else
             {
 
-                EngineDebug.DebugLogs.WriteInLogs("Illegal placing at " + EntityID, EngineDebug.LogType.Warning, "ObjChunk");
+                RiseEngine.Core.EngineDebug.DebugLogs.WriteInLogs("Illegal placing at " + EntityID, RiseEngine.Core.EngineDebug.LogType.Warning, "ObjChunk");
 
             }
 

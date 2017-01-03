@@ -1,9 +1,10 @@
-﻿using Maker.RiseEngine.Core.Game.GameUtils;
-using Maker.RiseEngine.Core.GameObject;
-using Maker.RiseEngine.Core.GameObject.Event;
+﻿
+using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.GameObject;
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 
-namespace Maker.RiseEngine.Core.AI.Action
+namespace Maker.twiyol.AI.Action
 {
     public class Move : IAction
     {
@@ -21,7 +22,7 @@ namespace Maker.RiseEngine.Core.AI.Action
 
         public void OnGameObjectAdded()
         {
-            
+
         }
 
         public void Performe(GameObjectEventArgs e, GameTime gametime)

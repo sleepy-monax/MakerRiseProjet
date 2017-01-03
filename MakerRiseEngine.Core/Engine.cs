@@ -14,11 +14,11 @@ namespace Maker.RiseEngine.Core
         
 
         public static GraphicsDeviceManager graphics;
-        public static Microsoft.Xna.Framework.Game MainGame;
+        public static Game MainGame;
         public static GraphicsDevice GraphicsDevice;
         public static string SaveLocation = "Save";
         public static GameWindow Window;
-        public static System.Windows.Forms.Form GameForm;
+        public static Form GameForm;
 
         public static Version Version = Assembly.GetExecutingAssembly().GetName().Version;
         public static bool AsErrore = false;

@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Game.GameUtils;
+﻿using Maker.twiyol.Game.GameUtils;
 using Microsoft.Xna.Framework;
 
 namespace Maker.twiyol.GameObject.Event

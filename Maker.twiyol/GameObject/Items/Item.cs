@@ -15,11 +15,11 @@ namespace Maker.twiyol.GameObject.Items
         {
             Type = _Type;
 
-            Variant = new List<Rendering.SpriteSheets.Sprite>();
+            Variant = new List<Sprite>();
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectsManager.GetGameObject<Rendering.SpriteSheets.SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameObjectsManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
 
             }
 

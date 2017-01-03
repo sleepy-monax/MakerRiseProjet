@@ -1,9 +1,10 @@
-﻿using Maker.RiseEngine.Core.UserInterface.Controls;
+﻿using Maker.RiseEngine.Core.Scenes;
+using Maker.RiseEngine.Core.UserInterface.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
+namespace Maker.twiyol.Scenes.Menu
 {
 
     public class MenuOption : Scene

@@ -1,4 +1,4 @@
-﻿namespace Maker.twiyol.GameObject
+﻿namespace Maker.RiseEngine.Core
 {
     public interface IGameObject
     {

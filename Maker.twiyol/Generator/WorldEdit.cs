@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maker.RiseEngine.Core.Generator
+namespace Maker.twiyol.Generator
 {
     public static class WorldEdit
     {
@@ -22,7 +22,7 @@ namespace Maker.RiseEngine.Core.Generator
 
         public static void plotLineWidth(this int[,] regionGrid, int x0, int y0, int x1, int y1, float wd, int value)
         {
-            
+
             int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
             int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
             int err = dx - dy, e2, x2, y2;                          /* error value e_xy */

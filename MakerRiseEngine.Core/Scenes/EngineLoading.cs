@@ -20,9 +20,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
             {
                 Engine.Initialize(this);
 
-                Scene menu = new Menu.MenuMain();
-                Game.sceneManager.AddScene(menu);
-                menu.show();
+                // TODO : MainScene of the game.
                 Game.sceneManager.RemoveScene(this);
             });
             Thread t = new Thread(GenHandle);

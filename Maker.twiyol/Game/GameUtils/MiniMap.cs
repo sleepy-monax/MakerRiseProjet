@@ -1,4 +1,9 @@
-﻿namespace Maker.twiyol.Core.Game.GameUtils
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Rendering;
+using Maker.twiyol.Game;
+using System.Drawing;
+
+namespace Maker.twiyol.Game.GameUtils
 {
     public class MiniMap
     {
@@ -10,12 +15,13 @@
             G = _WorldScene;
         }
 
-        public System.Drawing.Bitmap MiniMapBitmap;
+        public Bitmap MiniMapBitmap;
         public Microsoft.Xna.Framework.Graphics.Texture2D MiniMapTexture2D;
 
-        public void RefreshMiniMap() {
+        public void RefreshMiniMap()
+        {
 
-            MiniMapTexture2D = Rendering.BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, MiniMapBitmap);
+            MiniMapTexture2D = BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, MiniMapBitmap);
 
         }
     }

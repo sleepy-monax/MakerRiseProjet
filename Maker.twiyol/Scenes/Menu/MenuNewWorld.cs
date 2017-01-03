@@ -1,12 +1,17 @@
 ﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Scenes;
+using Maker.RiseEngine.Core.UserInterface;
 using Maker.RiseEngine.Core.UserInterface.Controls;
+using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.Generator;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Threading;
 
-namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
+namespace Maker.twiyol.Scenes.Menu
 {
     public class MenuNewWorld : Scene
     {
@@ -22,40 +27,40 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
         Label titleLabel;
         Label nameLabel;
         Label seedLabel;
-        
+
         public override void OnLoad()
         {
 
             rootContainer = new Panel(new Rectangle(-350, -250, 700, 500), Color.Transparent);
-            rootContainer.Padding = new UserInterface.ControlPadding(16);
-            rootContainer.ControlAnchor = UserInterface.Anchor.Center;
+            rootContainer.Padding = new ControlPadding(16);
+            rootContainer.ControlAnchor = Anchor.Center;
 
             controlContainer = new Panel(new Rectangle(0, 0, 0, 96), Color.White);
-            controlContainer.Padding = new UserInterface.ControlPadding(16);
-            controlContainer.ControlDock = UserInterface.Dock.Bottom;
+            controlContainer.Padding = new ControlPadding(16);
+            controlContainer.ControlDock = Dock.Bottom;
 
             createNewWorldButton = new Button("Créer le nouveau monde", new Rectangle(0, 0, 400, 64), Color.White);
-            createNewWorldButton.ControlDock = UserInterface.Dock.Right;
+            createNewWorldButton.ControlDock = Dock.Right;
             createNewWorldButton.onMouseClick += CreateNewWorldButton_onMouseClick;
 
             goBackButton = new Button("Retour", new Rectangle(0, 0, 200, 64), Color.White);
-            goBackButton.ControlDock = UserInterface.Dock.Left;
+            goBackButton.ControlDock = Dock.Left;
             goBackButton.onMouseClick += GoBackButton_onMouseClick;
 
             worldNameTexBox = new TextBox("Monde sans nom", new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
-            worldNameTexBox.ControlDock = UserInterface.Dock.Top;
+            worldNameTexBox.ControlDock = Dock.Top;
             worldSeedTextBox = new TextBox(new Random().Next().ToString(), new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
-            worldSeedTextBox.ControlDock = UserInterface.Dock.Top;
+            worldSeedTextBox.ControlDock = Dock.Top;
 
             titleLabel = new Label("Créer un nouveau monde", new Rectangle(0, 0, 128, 96), Color.White);
-            titleLabel.ControlDock = UserInterface.Dock.Top;
-            titleLabel.TextStyle = Rendering.SpriteFontDraw.Style.rectangle;
+            titleLabel.ControlDock = Dock.Top;
+            titleLabel.TextStyle = SpriteFontDraw.Style.rectangle;
             titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             nameLabel = new Label("Nom du nouveau monde :", new Rectangle(0, 0, 128, 64), Color.White);
-            nameLabel.ControlDock = UserInterface.Dock.Top;
+            nameLabel.ControlDock = Dock.Top;
             seedLabel = new Label("Graine pour la génération du monde :", new Rectangle(0, 0, 128, 64), Color.White);
-            seedLabel.ControlDock = UserInterface.Dock.Top;
+            seedLabel.ControlDock = Dock.Top;
 
             rootContainer.AddChild(controlContainer);
             rootContainer.AddChild(titleLabel);
@@ -73,13 +78,13 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes.Menu
             ThreadStart GenHandle = new ThreadStart(delegate
             {
                 Game.sceneManager.RemoveScene(this);
-                Game.GameUtils.WorldProperty wrldp = new Game.GameUtils.WorldProperty()
+                WorldProperty wrldp = new WorldProperty()
                 {
                     WorldName = worldNameTexBox.Text,
                     Seed = int.Parse(worldSeedTextBox.Text)
                 };
 
-                Generator.WorldGenerator Gen = new Generator.WorldGenerator(wrldp);
+                WorldGenerator Gen = new WorldGenerator(wrldp);
                 Game.GameScene wrldsc = Gen.Generate();
 
                 Game.sceneManager.AddScene(wrldsc);

@@ -1,11 +1,10 @@
-﻿
-using Maker.RiseEngine.Core.Game.GameUtils;
-using Maker.RiseEngine.Core.Game.WorldDataStruct;
-using Maker.RiseEngine.Core.GameObject;
-using Maker.RiseEngine.Core.GameObject.Event;
+﻿using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.GameObject;
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 
-namespace Maker.RiseEngine.Core.AI.Action
+namespace Maker.twiyol.AI.Action
 {
     public class Attack : IAction
     {
@@ -37,7 +36,7 @@ namespace Maker.RiseEngine.Core.AI.Action
                     float defense = attackedEntityEventsArgs.ParrentEntity.ToGameObject().GetDefence(attackedEntityEventsArgs);
                     float damages = e.ParrentEntity.ToGameObject().GetDamage(e);
 
-                    
+
                     float totalDamages = damages - defense;
                     if (totalDamages < 0)
                         totalDamages = 0;
@@ -64,13 +63,15 @@ namespace Maker.RiseEngine.Core.AI.Action
                     {
                         e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2((50 - e.ParrentEntity.ActionProgress) / 2));
                     }
-                    else {
+                    else
+                    {
                         e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress / 2));
                     }
-                    
+
                 }
             }
-            else {
+            else
+            {
 
                 e.ParrentEntity.Action = -1;
                 e.ParrentEntity.ActionProgress = 0;

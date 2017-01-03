@@ -1,10 +1,12 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.EngineDebug;
 using Maker.RiseEngine.Core.Plugin;
+using Maker.twiyol.GameObject;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Maker.RiseEngine.Core
+namespace Maker.twiyol
 {
 
 
@@ -91,7 +93,7 @@ namespace Maker.RiseEngine.Core
 
         public static void Reload()
         {
-            EngineDebug.DebugLogs.WriteInLogs("Reloading...", EngineDebug.LogType.Info, "Plugin");
+            DebugLogs.WriteInLogs("Reloading...", LogType.Info, "Plugin");
 
             IsLoaded = false;
 
@@ -102,7 +104,7 @@ namespace Maker.RiseEngine.Core
         #region Plugin
 
         public static Dictionary<string, System.Reflection.Assembly> LoadedAssemblies = new Dictionary<string, System.Reflection.Assembly>();
-        public static Dictionary<string, Plugin.IPlugin> Plugins = new Dictionary<string, Plugin.IPlugin>();
+        public static Dictionary<string, IPlugin> Plugins = new Dictionary<string, IPlugin>();
 
         public static void LoadPlugins()
         {
@@ -120,21 +122,21 @@ namespace Maker.RiseEngine.Core
                         {
                             //Load Plugin
                             LoadedAssemblies.Add(Dir.Split('\\').Last(), builderOutput.Result.CompiledAssembly);
-                            ICollection<Plugin.IPlugin> PluginCollection = PluginLoader.LoadAssembly(builderOutput.Result.CompiledAssembly);
+                            ICollection<IPlugin> PluginCollection = PluginLoader.LoadAssembly<IPlugin>(builderOutput.Result.CompiledAssembly);
 
                             if (PluginCollection.Count == 0)
                             {
 
-                                EngineDebug.DebugLogs.WriteInLogs(Dir.Split('\\')[1] + " is not a plugin !", EngineDebug.LogType.Warning, "Plugin");
+                                DebugLogs.WriteInLogs(Dir.Split('\\')[1] + " is not a plugin !", LogType.Warning, "Plugin");
 
                             }
                             else
                             {
 
-                                foreach (Plugin.IPlugin i in PluginCollection)
+                                foreach (IPlugin i in PluginCollection)
                                 {
                                     Plugins.Add(i.Name, i);
-                                    EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Plugin." + i.Name);
+                                    DebugLogs.WriteInLogs("Initializing...", LogType.Info, "Plugin." + i.Name);
                                     Plugins[i.Name].Initialize();
                                 }
                             }

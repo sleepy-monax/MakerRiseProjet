@@ -4,6 +4,6 @@
     {
         string Name { get; }
         void Initialize();
-        void OnWorldGeneration(Game.GameScene world);
+        void OnWorldGeneration(twiyol.Game.GameScene world);
     }
 }

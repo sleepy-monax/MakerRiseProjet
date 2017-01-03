@@ -1,8 +1,10 @@
-﻿using Maker.RiseEngine.Core.GameObject.Event;
+﻿
+using Maker.RiseEngine.Core;
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.AI.Entites
+namespace Maker.twiyol.AI.Entites
 {
     public class PlayerAI : AIbase
     {

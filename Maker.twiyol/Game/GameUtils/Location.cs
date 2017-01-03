@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace Maker.twiyol.Core.Game.GameUtils
+namespace Maker.twiyol.Game.GameUtils
 {
     public static class Location
     {

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.MathExt;
+using System.Collections.Generic;
 
 namespace Maker.twiyol.GameObject
 {
@@ -7,13 +9,13 @@ namespace Maker.twiyol.GameObject
         public string gameObjectName { get; set; }
         public string pluginName { get; set; }
 
-        public MathExt.KeyWeightPair<int>[] RandomEntity;
-        public MathExt.KeyWeightPair<int>[] RandomTile;
+        public KeyWeightPair<int>[] RandomEntity;
+        public KeyWeightPair<int>[] RandomTile;
         public double EntityDensity { get; set; }
 
         public static List<string> Biomes = new List<string>();
 
-        public Biome(double _EntityDensity, MathExt.KeyWeightPair<int>[] _RandomEntity, MathExt.KeyWeightPair<int>[] _RandomTile)
+        public Biome(double _EntityDensity, KeyWeightPair<int>[] _RandomEntity, KeyWeightPair<int>[] _RandomTile)
         {
 
             EntityDensity = _EntityDensity;

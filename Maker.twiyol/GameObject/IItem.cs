@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using System.Collections.Generic;
 
 namespace Maker.twiyol.GameObject
 {
@@ -22,7 +24,7 @@ namespace Maker.twiyol.GameObject
 
         
         ItemType Type { get; set; }
-        List<Rendering.SpriteSheets.Sprite> Variant { get; set; }
+        List<Sprite> Variant { get; set; }
 
     }
 }

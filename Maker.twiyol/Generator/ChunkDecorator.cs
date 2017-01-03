@@ -1,7 +1,9 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.EngineDebug;
+using Maker.RiseEngine.Core.MathExt;
+using Maker.twiyol.GameObject;
 using System;
 
-namespace Maker.RiseEngine.Core.Generator
+namespace Maker.twiyol.Generator
 {
     public class ChunkDecorator
     {
@@ -22,7 +24,7 @@ namespace Maker.RiseEngine.Core.Generator
             Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.onDecoration;
 
 
-            EngineDebug.DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", EngineDebug.LogType.Info);
+            DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", LogType.Info);
 
             for (int tX = 0; tX <= 15; tX++)
             {
@@ -31,8 +33,8 @@ namespace Maker.RiseEngine.Core.Generator
 
                     if (Chunk.Tiles[tX, tY].ID == -1)
                     {
-                        
-                        Chunk.Tiles[tX, tY].ID = MathExt.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
+
+                        Chunk.Tiles[tX, tY].ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
                         Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 
                         W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectsManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
@@ -40,7 +42,7 @@ namespace Maker.RiseEngine.Core.Generator
                         if (Rnd.NextDouble() < GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
                         {
 
-                            int ID = MathExt.RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
+                            int ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectsManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
                             int Variant = Rnd.Next(0, GameObjectsManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
 
                             Chunk.AddEntity(new Game.WorldDataStruct.DataEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
@@ -55,9 +57,6 @@ namespace Maker.RiseEngine.Core.Generator
 
             Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.Done;
             W.miniMap.RefreshMiniMap();
-            W.saveFile.SaveChunk(cX, cY, Chunk);
-
-
         }
 
 

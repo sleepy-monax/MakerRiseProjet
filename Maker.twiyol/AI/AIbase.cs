@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.RiseEngine.Core.AI
+namespace Maker.twiyol.AI
 {
     public class AIbase
     {

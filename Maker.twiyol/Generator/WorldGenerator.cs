@@ -1,26 +1,30 @@
-﻿using Maker.RiseEngine.Core.Game.GameUtils;
-using Maker.RiseEngine.Core.Game.WorldDataStruct;
-using System;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.EngineDebug;
+using Maker.RiseEngine.Core.MathExt;
+using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.Scenes;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 
-namespace Maker.RiseEngine.Core.Generator
+namespace Maker.twiyol.Generator
 {
     public class WorldGenerator
     {
 
         WorldProperty WrldProps;
         RegionGenerator regionGenerator;
-        Random Rnd;
-        MathExt.FastRandom FastRnd;
+        System.Random Rnd;
+        FastRandom FastRnd;
 
         public WorldGenerator(WorldProperty _WrldProps)
         {
             WrldProps = _WrldProps;
-            Rnd = new Random(_WrldProps.Seed);
-            FastRnd = new MathExt.FastRandom(_WrldProps.Seed);
+            Rnd = new System.Random(_WrldProps.Seed);
+            FastRnd = new FastRandom(_WrldProps.Seed);
             regionGenerator = new RegionGenerator(this);
         }
 
@@ -28,7 +32,7 @@ namespace Maker.RiseEngine.Core.Generator
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Scenes.Scenes.WorldGenerating sceneGen = new Scenes.Scenes.WorldGenerating();
+            WorldGenerating sceneGen = new WorldGenerating();
             var game = (RiseGame)Engine.MainGame;
             game.sceneManager.AddScene(sceneGen);
             sceneGen.show();
@@ -39,7 +43,7 @@ namespace Maker.RiseEngine.Core.Generator
             int[,] regionGrid = new int[maxWorldSize, maxWorldSize];
 
             // Adding randome Region
-            EngineDebug.DebugLogs.WriteInLogs("Creating Random Point...", EngineDebug.LogType.Info, "WorldGenerator");
+            DebugLogs.WriteInLogs("Creating Random Point...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation des régions...";
             Thread.Sleep(500);
 
@@ -59,7 +63,7 @@ namespace Maker.RiseEngine.Core.Generator
             }
 
             //expanding Region
-            EngineDebug.DebugLogs.WriteInLogs("Expending Region...", EngineDebug.LogType.Info, "WorldGenerator");
+            DebugLogs.WriteInLogs("Expending Region...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Expansion des regions...";
             Thread.Sleep(500);
 
@@ -105,7 +109,7 @@ namespace Maker.RiseEngine.Core.Generator
             sceneGen.Progress = 100;
 
             // Set loading message.
-            EngineDebug.DebugLogs.WriteInLogs("Converting Chunk... ", EngineDebug.LogType.Info, "WorldGenerator");
+            DebugLogs.WriteInLogs("Converting Chunk... ", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation du Terrain...";
             Thread.Sleep(500);
 
@@ -128,7 +132,7 @@ namespace Maker.RiseEngine.Core.Generator
                     }
 
 
-                    sceneGen.Progress = (int)((float)(cX + cY)/ WrldProps.Size * 2 * 100); 
+                    sceneGen.Progress = (int)((float)(cX + cY) / WrldProps.Size * 2 * 100);
                 }
             }
 
@@ -136,13 +140,13 @@ namespace Maker.RiseEngine.Core.Generator
             newGame.miniMap.RefreshMiniMap();
 
             // Raising onWorldGeneration event on plugin.
-            foreach (KeyValuePair<string, Plugin.IPlugin> i in GameObjectsManager.Plugins)
+            foreach (KeyValuePair<string, RiseEngine.Core.Plugin.IPlugin> i in GameObjectsManager.Plugins)
             {
                 i.Value.OnWorldGeneration(newGame);
             }
 
             stopwatch.Stop();
-            EngineDebug.DebugLogs.WriteInLogs("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, EngineDebug.LogType.Info, "WorldGenerator");
+            DebugLogs.WriteInLogs("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
 
             game.sceneManager.RemoveScene(sceneGen);
 

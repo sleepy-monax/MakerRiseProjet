@@ -4,16 +4,19 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using Maker.RiseEngine.Core.Scenes;
+using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.Storage;
 
 namespace Maker.twiyol.Game
 {
-    public class GameScene : SceneManager.Scene
+    public class GameScene : Scene
     {
         public DataWorld world;
         public Generator.ChunkDecorator chunkDecorator;
 
         public Random Rnd;
-        public MathExt.Noise.PerlinNoise Noise;
 
         public GameUtils.GameCamera Camera;
         public Rectangle SelectionRect;
@@ -42,7 +45,6 @@ namespace Maker.twiyol.Game
             worldProperty = _worldProperty;
             Rnd = _Rnd;
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
-            Noise = new MathExt.Noise.PerlinNoise(worldProperty.Seed);
 
             worldUpdater = new GameUtils.WorldUpdater(this);
             chunkManager = new GameUtils.ChunkManager(this);
@@ -55,7 +57,7 @@ namespace Maker.twiyol.Game
             worldRender = new GameUtils.WorldRender(this);
 
             BackgroundSB = new SpriteBatch(Engine.GraphicsDevice);
-            Background = Rendering.ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
+            Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
 
             GameUIScene = new GameUIScene(this);
         }
@@ -91,7 +93,7 @@ namespace Maker.twiyol.Game
 
         public override void OnLoad()
         {
-            Audio.SongEngine.SwitchSong("Engine", "A Title");
+            SongEngine.SwitchSong("Engine", "A Title");
             Game.sceneManager.AddScene(GameUIScene);
             GameUIScene.show();
         }
@@ -101,8 +103,9 @@ namespace Maker.twiyol.Game
 
         }
 
-        public void SaveWorld() {
-            Storage.SerializationHelper.SaveToBin(world, "wold.bin");
+        public void SaveWorld()
+        {
+            SerializationHelper.SaveToBin(world, "world.bin");
         }
     }
 }

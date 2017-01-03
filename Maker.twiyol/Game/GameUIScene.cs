@@ -1,15 +1,16 @@
-﻿using Maker.RiseEngine.Core.Scenes;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Maker.twiyol.Game
 {
-    public class GameUIScene : Maker.RiseEngine.Core.SceneManager.Scene
+    public class GameUIScene : Scene
     {
 
         GameScene G;
-        SceneManager.Scenes.Menu.MenuMain MainMenu;
+        Scenes.Menu.MenuMain MainMenu;
         bool IsPause = false;
 
         public GameUIScene(GameScene _gameScene)
@@ -19,7 +20,7 @@ namespace Maker.twiyol.Game
 
         public override void OnLoad()
         {
-            
+
         }
 
         public override void OnUnload()
@@ -49,12 +50,13 @@ namespace Maker.twiyol.Game
         {
             IsPause = true;
             G.PauseSimulation = true;
-            MainMenu = new SceneManager.Scenes.Menu.MenuMain(G);
+            MainMenu = new Scenes.Menu.MenuMain(G);
             Game.sceneManager.AddScene(MainMenu);
             MainMenu.show();
         }
 
-        public void GoBackToGame() {
+        public void GoBackToGame()
+        {
 
             Game.sceneManager.RemoveScene(MainMenu);
             G.PauseSimulation = false;

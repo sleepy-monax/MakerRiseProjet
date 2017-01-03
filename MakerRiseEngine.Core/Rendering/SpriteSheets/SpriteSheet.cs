@@ -1,5 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObject;
-using Maker.RiseEngine.Core.Storage;
+﻿using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

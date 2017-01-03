@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.GameObject.Event;
+﻿
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -13,7 +14,7 @@ namespace Maker.twiyol.GameObject.Entities
             IA = _IA;
         }
 
-        public override void OnTick(GameObjectEventArgs e, GameTime gametime){}
+        public override void OnTick(GameObjectEventArgs e, GameTime gametime) { }
 
         public override void OnUpdate(GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime)
         {

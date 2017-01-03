@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17003.1526.946</AssemblyVersion>
+    <AssemblyVersion>0.17003.1716.959</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -56,19 +56,16 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AI\Action\Attack.cs" />
-    <Compile Include="AI\Action\Move.cs" />
-    <Compile Include="AI\Entites\PlayerAI.cs" />
-    <Compile Include="AI\IAction.cs" />
-    <Compile Include="AI\Utils.cs" />
     <Compile Include="Audio\SongEngine.cs" />
     <Compile Include="Audio\SoundEffectEngine.cs" />
     <Compile Include="Content\ContentEngine.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Config\EngineConfig.cs" />
     <Compile Include="EngineDebug\DebugScreen.cs" />
+    <Compile Include="GameLoader.cs" />
+    <Compile Include="IGameObject.cs" />
+    <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="MathExt\Geometry.cs" />
-    <Compile Include="GameObjectManager.cs" />
     <Compile Include="MathExt\FastRandom.cs" />
     <Compile Include="MathExt\KeyWeightPair.cs" />
     <Compile Include="MathExt\MinMax.cs" />
@@ -80,7 +77,6 @@
     <Compile Include="EngineDebug\DebugLogs.cs" />
     <Compile Include="MathExt\Utils.cs" />
     <Compile Include="Audio\SoundEffect.cs" />
-    <Compile Include="AI\AIbase.cs" />
     <Compile Include="Inventory\ObjInventory.cs" />
     <Compile Include="Inventory\ObjSlot.cs" />
     <Compile Include="Network\HTTPServer.cs" />
@@ -90,16 +86,9 @@
     <Compile Include="Rendering\SpriteFontDraw.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Scenes\Scenes\EngineLoading.cs" />
-    <Compile Include="Scenes\Scenes\Menu\MenuBackground.cs" />
-    <Compile Include="Scenes\Scenes\Menu\MenuMain.cs" />
-    <Compile Include="Scenes\Scenes\Menu\MenuNewWorld.cs" />
-    <Compile Include="Scenes\Scenes\Menu\MenuOpenWorld.cs" />
-    <Compile Include="Scenes\Scenes\Menu\MenuOption.cs" />
-    <Compile Include="Scenes\Scenes\UserInterfaceTest.cs" />
+    <Compile Include="Scenes\EngineLoading.cs" />
     <Compile Include="Plugin\Loader.cs" />
     <Compile Include="Rendering\Primitives2D.cs" />
-    <Compile Include="Scenes\Scenes\WorldGenerating.cs" />
     <Compile Include="Storage\DataSheet.cs" />
     <Compile Include="Rendering\BitmapHelper.cs" />
     <Compile Include="Rendering\SpriteSheets\CommonSheets.cs" />
@@ -108,7 +97,6 @@
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
     <Compile Include="Storage\SerializationHelper.cs" />
-    <Compile Include="UI\Controls\MiniMap.cs" />
     <Compile Include="UI\Controls\CheckBox.cs" />
     <Compile Include="UI\Controls\Label.cs" />
     <Compile Include="UI\Controls\Slider.cs" />

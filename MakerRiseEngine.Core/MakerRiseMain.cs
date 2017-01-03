@@ -69,7 +69,6 @@ namespace Maker.RiseEngine.Core
             //Scene.SceneManager.CurrentScene = 2;
 
             // Show the loading scene.
-            sceneManager.AddScene(new Scenes.Scenes.Menu.MenuBackground());
             sceneManager.AddScene(new Scenes.Scenes.EngineLoading());
         }
 
@@ -153,7 +152,7 @@ namespace Maker.RiseEngine.Core
 
                 // Draw engine build info.
                 if (Engine.engineConfig.Debug_DebugWaterMark)
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision + "\nLoaded plugin : " + Core.GameObjectsManager.LoadedAssemblies.Count, new Rectangle(16, 0, 256, 64), Alignment.Left, Style.DropShadow, Color.White);
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision, new Rectangle(16, 0, 256, 64), Alignment.Left, Style.DropShadow, Color.White);
 
                 // End the sprite batch.
                 spriteBatch.End();

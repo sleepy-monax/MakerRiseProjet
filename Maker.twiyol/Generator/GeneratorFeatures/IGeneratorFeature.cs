@@ -1,6 +1,8 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿
 
-namespace Maker.RiseEngine.Core.Generator.GeneratorFeatures
+using Maker.RiseEngine.Core;
+
+namespace Maker.twiyol.Generator.GeneratorFeatures
 {
     interface IGeneratorFeature : IGameObject
     {

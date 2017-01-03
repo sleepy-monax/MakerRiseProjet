@@ -1,5 +1,4 @@
-﻿using Maker.twiyol.Core.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
+﻿using Maker.twiyol.Game.WorldDataStruct;
 
 namespace Maker.twiyol.Game.GameUtils
 {

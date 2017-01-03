@@ -1,4 +1,6 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿
+
+using Maker.twiyol.GameObject;
 
 namespace Maker.twiyol.Game.WorldDataStruct
 {

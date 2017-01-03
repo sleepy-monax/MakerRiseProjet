@@ -1,5 +1,4 @@
-﻿using Maker.twiyol.Core.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
+﻿using Maker.twiyol.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;
 
 namespace Maker.twiyol.Game.GameUtils
@@ -25,7 +24,8 @@ namespace Maker.twiyol.Game.GameUtils
             return GetChunk(ChunkLocation.X, ChunkLocation.Y);
         }
 
-        public bool PrepareChunk(int x, int y) {
+        public bool PrepareChunk(int x, int y)
+        {
 
             DataChunk chunk = G.world.chunks[x, y];
 
@@ -47,7 +47,7 @@ namespace Maker.twiyol.Game.GameUtils
 
         public DataChunk GetChunk(int x, int y)
         {
-                return G.world.chunks[x, y];
+            return G.world.chunks[x, y];
         }
         #endregion
 

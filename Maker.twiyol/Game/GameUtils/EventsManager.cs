@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.twiyol.GameObject.Event;
+using Microsoft.Xna.Framework;
 
 namespace Maker.twiyol.Game.GameUtils
 {
