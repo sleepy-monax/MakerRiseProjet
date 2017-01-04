@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Windows.GameLoader;
+using System;
 using System.Windows.Forms;
 
 namespace Maker.RiseEngine.Windows
@@ -21,7 +23,13 @@ namespace Maker.RiseEngine.Windows
             Console.WriteLine("Number Of Logical Processors: {0}", Environment.ProcessorCount);
 
 
-            using (var game = new Core.RiseGame(false))
+
+            if (new LoadGameForm().ShowDialog() == DialogResult.OK) {
+
+
+            }
+
+            using (var game = new Core.RiseEngine())
             {
 
                 game.Run();

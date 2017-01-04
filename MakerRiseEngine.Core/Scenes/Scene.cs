@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -9,7 +10,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
         public bool Pause { get; set; } = true;
         public bool Visible { get; set; } = false;
-        public RiseGame Game;
+        public RiseEngine RiseEngine;
 
         public void hide()
         {
@@ -31,17 +32,17 @@ namespace Maker.RiseEngine.Core.Scenes
                 OnDraw(spriteBatch, gameTime);
             }
         }
-        public void sceneUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public void sceneUpdate(PlayerInput playerInput, GameTime gameTime)
         {
             if (!Pause)
             {
-                OnUpdate(mouse, keyBoard, gameTime);
+                OnUpdate(playerInput, gameTime);
             }
         }
 
         // Event.
         public abstract void OnDraw(SpriteBatch spriteBatch, GameTime gameTime);
-        public abstract void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime);
+        public abstract void OnUpdate(PlayerInput playerInput, GameTime gameTime);
 
         public abstract void OnLoad();
         public abstract void OnUnload();

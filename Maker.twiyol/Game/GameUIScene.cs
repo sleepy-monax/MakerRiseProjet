@@ -51,14 +51,14 @@ namespace Maker.twiyol.Game
             IsPause = true;
             G.PauseSimulation = true;
             MainMenu = new Scenes.Menu.MenuMain(G);
-            Game.sceneManager.AddScene(MainMenu);
+            RiseEngine.sceneManager.AddScene(MainMenu);
             MainMenu.show();
         }
 
         public void GoBackToGame()
         {
 
-            Game.sceneManager.RemoveScene(MainMenu);
+            RiseEngine.sceneManager.RemoveScene(MainMenu);
             G.PauseSimulation = false;
             IsPause = false;
 

@@ -1,4 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +9,7 @@ using System.Globalization;
 
 namespace Maker.RiseEngine.Core.Rendering
 {
-    public class Parallax : Idrawable
+    public class Parallax : IDrawable
     {
 
         ParallaxLayer[] Layers;
@@ -24,7 +25,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
         }
 
-        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(PlayerInput playerInput, GameTime gameTime)
         {
 
             for (int i = 0; i < Layers.Length; i++)
@@ -32,7 +33,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
                 LayersPos[i] = (LayersPos[i] + Layers[i].Speed);
 
-                double Factor = (double)DestinationRectangle.Width / (double)Layers[i].Sprite.Bounds.Width;
+                double Factor = (double)DestinationRectangle.Width / Layers[i].Sprite.Bounds.Width;
 
                 if (LayersPos[i] > Layers[i].Sprite.Bounds.Width * Factor)
                 {
@@ -47,7 +48,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
             for (int i = 0; i < Layers.Length; i++)
             {
-                double Factor = (double)DestinationRectangle.Width / (double)Layers[i].Sprite.Bounds.Width;
+                double Factor = (double)DestinationRectangle.Width / Layers[i].Sprite.Bounds.Width;
                 spriteBatch.Draw(Layers[i].Sprite, new Rectangle(DestinationRectangle.X + (int)LayersPos[i] - (int)(Layers[i].Sprite.Bounds.Width * Factor), DestinationRectangle.Y, DestinationRectangle.Width, DestinationRectangle.Height), Color.White);
                 spriteBatch.Draw(Layers[i].Sprite, new Rectangle(DestinationRectangle.X + (int)LayersPos[i], DestinationRectangle.Y, DestinationRectangle.Width, DestinationRectangle.Height), Color.White);
 

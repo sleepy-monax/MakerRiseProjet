@@ -1,18 +1,17 @@
 ﻿using Maker.RiseEngine.Core.Content;
-using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace Maker.RiseEngine.Core.EngineDebug
 {
-    class DebugScreen : Idrawable
+    class DebugScreen : IDrawable
     {
         double FPS;
         SpriteFont NormalFont = ContentEngine.SpriteFont("Engine", "segoeUI_16pt");
 
-        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(PlayerInput playerInput, GameTime gameTime)
         {
             //Get FPS value
             FPS = Math.Round(FrameCounter.CurrentFramesPerSecond, MidpointRounding.AwayFromZero);

@@ -94,7 +94,7 @@ namespace Maker.twiyol.Game
         public override void OnLoad()
         {
             SongEngine.SwitchSong("Engine", "A Title");
-            Game.sceneManager.AddScene(GameUIScene);
+            RiseEngine.sceneManager.AddScene(GameUIScene);
             GameUIScene.show();
         }
 

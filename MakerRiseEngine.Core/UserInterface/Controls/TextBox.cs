@@ -1,7 +1,7 @@
 ﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-using Maker.RiseEngine.Core.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,7 +13,6 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
     {
         public int MaxChar = 0;
         public int CharIndex = 0;
-        KeyboardState PasteKeyState = new KeyboardState();
 
         Sprite TxtM;
         Sprite TxtL;
@@ -52,15 +51,15 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             }
         }
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
 
             if (this.mouseStats == MouseStats.Over)
             {
 
                 //Char Index
-                if (keyBoard.IsKeyDown(Keys.Left)) { if (PasteKeyState.IsKeyDown(Keys.Left)) { } else { CharIndex--; } }
-                if (keyBoard.IsKeyDown(Keys.Right)) { if (PasteKeyState.IsKeyDown(Keys.Right)) { } else { CharIndex++; } }
+                if (playerInput.IsKeyBoardKeyReleased(Keys.Left)) { CharIndex--;  }
+                if (playerInput.IsKeyBoardKeyReleased(Keys.Right)) { CharIndex++;  }
                 if (CharIndex < 0) { CharIndex = 0; }
                 if (CharIndex > Text.ToCharArray().Count()) { CharIndex = Text.ToCharArray().Count(); }
 
@@ -75,9 +74,9 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                         InputChar(LastInputChar);
                 }
 
-                PasteKeyState = keyBoard;
 
-                Engine.MouseCursor.Type = CursorType.Ibeam;
+
+
             }
             else CharInput = false;
         }
@@ -119,7 +118,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
 
             // Draw text.
-            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(16, 0, ControlRectangle.Width, ControlRectangle.Height), TextColor, SpriteFontDraw.Alignment.Left, SpriteFontDraw.Style.Regular);
+            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(16, 0, ControlRectangle.Width, ControlRectangle.Height), TextColor, Alignment.Left, Style.Regular);
 
             // Draw selection.
             if (mouseStats == MouseStats.Over)

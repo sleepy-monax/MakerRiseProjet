@@ -1,4 +1,4 @@
-﻿namespace Maker.RiseEngine.Core
+﻿namespace Maker.RiseEngine.Core.GameObject
 {
     public interface IGameObject
     {

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core
+namespace Maker.TestGame
 {
-    public class GameLoader
+    public class Class1
     {
-
-        
-
     }
 }

@@ -87,12 +87,12 @@ namespace Maker.twiyol.Scenes.Menu
             CurrentGame.SaveWorld();
 
             CurrentGame.GameUIScene.GoBackToGame();
-            Game.sceneManager.RemoveScene(CurrentGame.GameUIScene);
-            Game.sceneManager.RemoveScene(CurrentGame);
+            RiseEngine.sceneManager.RemoveScene(CurrentGame.GameUIScene);
+            RiseEngine.sceneManager.RemoveScene(CurrentGame);
 
             MenuMain m = new MenuMain();
             m.show();
-            Game.sceneManager.AddScene(m);
+            RiseEngine.sceneManager.AddScene(m);
 
         }
 
@@ -106,10 +106,10 @@ namespace Maker.twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuNewWorld();
-            Game.sceneManager.AddScene(scene);
+            RiseEngine.sceneManager.AddScene(scene);
             scene.show();
 
-            Game.sceneManager.RemoveScene(this);
+            RiseEngine.sceneManager.RemoveScene(this);
         }
 
         private void ButtonQuitte_onMouseClick()

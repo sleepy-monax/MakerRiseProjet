@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.Core.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -7,15 +8,15 @@ using System.Windows.Forms;
 
 namespace Maker.RiseEngine.Core.Scenes
 {
-    public class SceneManager : Idrawable
+    public class SceneManager : IDrawable
     {
 
-        RiseGame Game;
+        RiseEngine Game;
         List<Scene> Scenes;
         List<Scene> ScenesToRemove;
         List<Scene> ScenesToAdd;
 
-        public SceneManager(RiseGame game)
+        public SceneManager(RiseEngine game)
         {
 
             Game = game;
@@ -30,7 +31,7 @@ namespace Maker.RiseEngine.Core.Scenes
             EngineDebug.DebugLogs.WriteInLogs($"Switching to {scene.GetType().Name}", EngineDebug.LogType.Info, nameof(SceneManager));
             try
             {
-                scene.Game = Game;
+                scene.RiseEngine = Game;
                 Engine.GameForm.Invoke(new MethodInvoker(() => scene.OnLoad()));
             }
             catch (Exception ex)
@@ -67,7 +68,7 @@ namespace Maker.RiseEngine.Core.Scenes
             }
         }
 
-        public void Update(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public void Update(PlayerInput playerInput, GameTime gameTime)
         {
             foreach (Scene s in ScenesToAdd) {
                 Scenes.Add(s);
@@ -78,7 +79,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
             foreach (Scene s in Scenes)
             {
-                s.sceneUpdate(mouse, keyBoard, gameTime);
+                s.sceneUpdate(playerInput, gameTime);
             }
 
             foreach (Scene s in ScenesToRemove) {

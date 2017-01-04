@@ -52,6 +52,7 @@
     <Compile Include="AI\Entites\PlayerAI.cs" />
     <Compile Include="AI\IAction.cs" />
     <Compile Include="AI\Utils.cs" />
+    <Compile Include="GameEventHandle.cs" />
     <Compile Include="GameObjectManager.cs" />
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Generator\RegionGenerator.cs" />
     <Compile Include="Generator\WorldEdit.cs" />
     <Compile Include="Generator\WorldGenerator.cs" />
-    <Compile Include="IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\Menu\MenuBackground.cs" />
     <Compile Include="Scenes\Menu\MenuMain.cs" />

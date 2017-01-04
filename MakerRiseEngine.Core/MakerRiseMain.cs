@@ -1,4 +1,7 @@
 using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.EngineDebug;
+using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Core.Plugin;
 using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,20 +9,20 @@ using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
-using static Maker.RiseEngine.Core.Rendering.SpriteFontDraw;
 
 namespace Maker.RiseEngine.Core
 {
-    public class RiseGame : Microsoft.Xna.Framework.Game
+    public class RiseEngine : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Core.EngineDebug.DebugScreen DbgScr;
-        bool GLmode = false;
+        DebugScreen DbgScr;
+        private IRiseGame CurrentGame;
+
 
         public Scenes.SceneManager sceneManager;
 
-        public RiseGame(bool _Glmode)
+        public RiseEngine(IRiseGame riseGame)
         {
             graphics = new GraphicsDeviceManager(this);
             Engine.graphics = graphics;
@@ -29,13 +32,13 @@ namespace Maker.RiseEngine.Core
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
 
             sceneManager = new Scenes.SceneManager(this);
+            CurrentGame = riseGame;
 
-            GLmode = _Glmode;
         }
 
         protected override void Initialize()
         {
-            EngineDebug.DebugLogs.WriteInLogs("Initializing game engine...", EngineDebug.LogType.Info, "Core");
+            DebugLogs.WriteInLogs("Initializing game engine...", LogType.Info, "Core");
 
             // Set windows from property.
             Window.Title = "Rise : Le monde est votre seule limite";
@@ -47,7 +50,7 @@ namespace Maker.RiseEngine.Core
             System.Console.Title = "Maker Rise Engine Debug Tool - " + Engine.Version.ToString();
 
             // Hide the systeme mouse cursor.
-            this.IsMouseVisible = false;
+            IsMouseVisible = false;
 
             base.Initialize();
         }
@@ -56,17 +59,15 @@ namespace Maker.RiseEngine.Core
 
         protected override void LoadContent()
         {
-            EngineDebug.DebugLogs.WriteInLogs("LoadContent...", Core.EngineDebug.LogType.Info, "Core");
+            DebugLogs.WriteInLogs("LoadContent...", LogType.Info, "Core");
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Engine.GraphicsDevice = this.GraphicsDevice;
-            ContentEngine.Content = this.Content;
+            Engine.GraphicsDevice = GraphicsDevice;
+            ContentEngine.Content = Content;
             Rendering.SpriteSheets.CommonSheets.Load();
 
-            DbgScr = new Core.EngineDebug.DebugScreen();
-            //Scene.SceneManager.Initialize();
-            //Scene.SceneManager.CurrentScene = 2;
+            DbgScr = new DebugScreen();
 
             // Show the loading scene.
             sceneManager.AddScene(new Scenes.Scenes.EngineLoading());
@@ -77,40 +78,34 @@ namespace Maker.RiseEngine.Core
             Content.Unload();
         }
 
+        MouseState oldMouseState = Mouse.GetState();
+        KeyboardState oldKeyBoardState = Keyboard.GetState();
+
         protected override void Update(GameTime gameTime)
         {
+            //Geting Mouse and Keyboard stats
+            MouseState mouseState = Mouse.GetState();
+            KeyboardState keyboardState = Keyboard.GetState();
 
             if (Engine.GameForm.Focused)
             {
-                IsMouseVisible = false;
-
-
-                //Geting Mouse and Keyboard stats
-                MouseState mouse = Mouse.GetState();
-                KeyboardState keyboard = Keyboard.GetState();
-
-                // Update the mouse cursor.
-                if (Engine.IsLoaded)
-                    Engine.MouseCursor.Update(mouse, keyboard, gameTime);
-
+                // Creating player input data structure.
+                PlayerInput playerinput = new PlayerInput(mouseState, oldMouseState, keyboardState, oldKeyBoardState);
+                
                 //Update scenemanager.
+                sceneManager.Update(playerinput, gameTime);
 
-                //Scene.SceneManager.Update(mouseState, keyboardState, gameTime);
-                sceneManager.Update(mouse, keyboard, gameTime);
-
-                DbgScr.Update(mouse, keyboard, gameTime);
+                DbgScr.Update(playerinput, gameTime);
                 base.Update(gameTime);
 
                 // Update the sound engine.
-                Audio.SongEngine.Update(mouse, keyboard, gameTime);
-                Audio.SoundEffectEngine.Update(mouse, keyboard, gameTime);
+                Audio.SongEngine.Update(mouseState, keyboardState, gameTime);
+                Audio.SoundEffectEngine.Update(mouseState, keyboardState, gameTime);
             }
-            else
-            {
 
-                IsMouseVisible = true;
-
-            }
+            // Set old inputStats.
+            oldMouseState = mouseState;
+            oldKeyBoardState = keyboardState;
         }
 
         protected override void Draw(GameTime gameTime)
@@ -126,11 +121,9 @@ namespace Maker.RiseEngine.Core
 
                 // Update the debug frame counter.
                 var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                Core.EngineDebug.FrameCounter.Update(deltaTime);
+                FrameCounter.Update(deltaTime);
 
                 // Draw the scenemanager.
-
-                //Scene.SceneManager.Draw(spriteBatch, gameTime);
                 sceneManager.Draw(spriteBatch, gameTime);
 
                 // Prepare the spritebatch.
@@ -146,10 +139,6 @@ namespace Maker.RiseEngine.Core
                 // Draw debug info.
                 DbgScr.Draw(spriteBatch, gameTime);
 
-                // Draw mouse cursor.
-                if (Engine.IsLoaded)
-                    Engine.MouseCursor.Draw(spriteBatch, gameTime);
-
                 // Draw engine build info.
                 if (Engine.engineConfig.Debug_DebugWaterMark)
                     spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision, new Rectangle(16, 0, 256, 64), Alignment.Left, Style.DropShadow, Color.White);
@@ -161,11 +150,10 @@ namespace Maker.RiseEngine.Core
             else
             {
 
+                // Draw pause indicator.
                 spriteBatch.Begin();
                 string text = "Le jeux est en pause.";
-                Vector2 textSize = ContentEngine.SpriteFont("Engine", "segoeUI_16pt").MeasureString(text);
-                spriteBatch.FillRectangle(new Rectangle(12, 12, (int)textSize.X + 8, (int)textSize.Y + 8), Color.Black);
-                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), text, new Vector2(16), Color.White);
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), text, new Rectangle(16, 16, 256, 64), Alignment.Center, Style.rectangle, Color.White);
                 spriteBatch.End();
 
             }
@@ -173,15 +161,15 @@ namespace Maker.RiseEngine.Core
 
             s.Stop();
 
-            EngineDebug.FrameCounter._sampleFrameTimeBuffer.Enqueue(s.ElapsedMilliseconds);
-            if (EngineDebug.FrameCounter._sampleFrameTimeBuffer.Count > EngineDebug.FrameCounter.MAXIMUM_SAMPLES)
+            FrameCounter._sampleFrameTimeBuffer.Enqueue(s.ElapsedMilliseconds);
+            if (FrameCounter._sampleFrameTimeBuffer.Count > FrameCounter.MAXIMUM_SAMPLES)
             {
-                EngineDebug.FrameCounter._sampleFrameTimeBuffer.Dequeue();
-                EngineDebug.FrameCounter.AverageFramesTime = EngineDebug.FrameCounter._sampleFrameTimeBuffer.Average(i => i);
+                FrameCounter._sampleFrameTimeBuffer.Dequeue();
+                FrameCounter.AverageFramesTime = FrameCounter._sampleFrameTimeBuffer.Average(i => i);
             }
             else
             {
-                EngineDebug.FrameCounter.AverageFramesTime = s.ElapsedMilliseconds;
+                FrameCounter.AverageFramesTime = s.ElapsedMilliseconds;
             }
 
             

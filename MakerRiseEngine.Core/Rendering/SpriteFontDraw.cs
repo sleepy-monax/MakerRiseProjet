@@ -4,12 +4,14 @@ using System;
 
 namespace Maker.RiseEngine.Core.Rendering
 {
+
+
+    public enum Alignment { Center = 0, Left = 1, Right = 2, Top = 4, Bottom = 8 }
+
+    public enum Style { Regular = 0, Bold = 1, DropShadow = 2, rectangle = 3 }
+
     public static class SpriteFontDraw
     {
-
-        public enum Alignment { Center = 0, Left = 1, Right = 2, Top = 4, Bottom = 8 }
-
-        public enum Style { Regular = 0, Bold = 1, DropShadow = 2, rectangle = 3}
 
         public static void DrawString(this SpriteBatch spriteBatch, SpriteFont font, string text, Rectangle bounds, Alignment align, Style style, Color color)
         {

@@ -65,7 +65,7 @@ namespace Maker.RiseEngine.Core.Storage
             sw.Close();
         }
 
-        public string GetData(string Key, string DefaultValue)
+        public string GetData(string Key, string DefaultValue = "null")
         {
             if (Data.ContainsKey(Key))
             {

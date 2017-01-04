@@ -6,8 +6,8 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
     public class Label : Control
     {
 
-        public Rendering.SpriteFontDraw.Alignment TextAlignment { get; set; } = Rendering.SpriteFontDraw.Alignment.Center;
-        public Rendering.SpriteFontDraw.Style TextStyle { get; set; } = Rendering.SpriteFontDraw.Style.DropShadow;
+        public Rendering.Alignment TextAlignment { get; set; } = Rendering.Alignment.Center;
+        public Rendering.Style TextStyle { get; set; } = Rendering.Style.DropShadow;
 
         public Label(string text, Rectangle rect, Color textColor) {
             Text = text;

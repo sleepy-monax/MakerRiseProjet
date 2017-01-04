@@ -51,7 +51,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                     // Placing.
                     new Rectangle(0,0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.
-                    TextColor, SpriteFontDraw.Alignment.Center, SpriteFontDraw.Style.Regular);
+                    TextColor, Alignment.Center, Style.Regular);
 
             }
             else {
@@ -69,7 +69,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                     // Placing.
                     new Rectangle(0, 0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.
-                    TextColor, SpriteFontDraw.Alignment.Center, SpriteFontDraw.Style.Regular);
+                    TextColor, Alignment.Center, Style.Regular);
 
             }
 

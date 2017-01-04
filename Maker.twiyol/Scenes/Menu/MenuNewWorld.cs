@@ -77,7 +77,7 @@ namespace Maker.twiyol.Scenes.Menu
         {
             ThreadStart GenHandle = new ThreadStart(delegate
             {
-                Game.sceneManager.RemoveScene(this);
+                RiseEngine.sceneManager.RemoveScene(this);
                 WorldProperty wrldp = new WorldProperty()
                 {
                     WorldName = worldNameTexBox.Text,
@@ -87,10 +87,10 @@ namespace Maker.twiyol.Scenes.Menu
                 WorldGenerator Gen = new WorldGenerator(wrldp);
                 Game.GameScene wrldsc = Gen.Generate();
 
-                Game.sceneManager.AddScene(wrldsc);
+                RiseEngine.sceneManager.AddScene(wrldsc);
 
                 wrldsc.show();
-                Game.sceneManager.RemoveScene(this);
+                RiseEngine.sceneManager.RemoveScene(this);
             });
 
             Thread t = new Thread(GenHandle);
@@ -100,9 +100,9 @@ namespace Maker.twiyol.Scenes.Menu
         private void GoBackButton_onMouseClick()
         {
             Scene menu = new Menu.MenuMain();
-            Game.sceneManager.AddScene(menu);
+            RiseEngine.sceneManager.AddScene(menu);
             menu.show();
-            Game.sceneManager.RemoveScene(this);
+            RiseEngine.sceneManager.RemoveScene(this);
         }
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)

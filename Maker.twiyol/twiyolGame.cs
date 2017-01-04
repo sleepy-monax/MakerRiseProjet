@@ -1,22 +1,15 @@
 ﻿using Maker.RiseEngine.Core.Plugin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Input;
 
 namespace Maker.twiyol
 {
     class twiyolGame : IRiseGame
     {
-        public void OnDraw(SpriteBatch spritebatch, GameTime gametime)
-        {
 
-        }
-
-        public void OnEngineInitialization()
+        public void OnEngineInitialization(RiseEngine.Core.RiseEngine Game)
         {
 
         }
@@ -26,7 +19,12 @@ namespace Maker.twiyol
 
         }
 
-        public void OnUpdate()
+        public void OnDraw(SpriteBatch spritebatch, GameTime gametime)
+        {
+
+        }
+
+        public void OnUpdate(PlayerInput playerInput)
         {
 
         }

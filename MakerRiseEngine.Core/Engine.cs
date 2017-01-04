@@ -24,7 +24,7 @@ namespace Maker.RiseEngine.Core
         public static bool AsErrore = false;
         public static bool IsLoaded = false;
         public static int CurrentFrame = 0;
-        public static UI.Cursor MouseCursor;
+
 
         public static Config.EngineConfig engineConfig = new Config.EngineConfig();
 
@@ -47,43 +47,41 @@ namespace Maker.RiseEngine.Core
 
             Thread.Sleep(200);
 
-            MouseCursor = new UI.Cursor();
-
             LoadingScene.Message = "Loading Plugins...";
-            GameObjectsManager.LoadPlugins();
+            //GameObjectsManager.LoadPlugins();
             Thread.Sleep(200);
 
             LoadingScene.Message = "Looking for initialization error...";
-            if (GameObjectsManager.IsFullLoaded())
-            {
+            //if (GameObjectsManager.IsFullLoaded())
+            //{
 
-                EngineDebug.DebugLogs.WriteInLogs("Initializing Done !", EngineDebug.LogType.Info, "Engine");
-            }
-            else
-            {
-                EngineDebug.DebugLogs.WriteInLogs("Initializing Failed !", EngineDebug.LogType.Info, "Engine");
+            //    EngineDebug.DebugLogs.WriteInLogs("Initializing Done !", EngineDebug.LogType.Info, "Engine");
+            //}
+            //else
+            //{
+            //    EngineDebug.DebugLogs.WriteInLogs("Initializing Failed !", EngineDebug.LogType.Info, "Engine");
 
-                // Get user input after fatal error :D.
-                switch (System.Windows.Forms.MessageBox.Show("Gosh !" + Environment.NewLine + "An error that occurred during initialization of the engine.", "MakerRiseEngine " + Version, System.Windows.Forms.MessageBoxButtons.AbortRetryIgnore, System.Windows.Forms.MessageBoxIcon.Error))
-                {
-                    // The user went to extit the game.
-                    case System.Windows.Forms.DialogResult.Abort:
-                        System.Windows.Forms.Application.Exit();
-                        break;
+            //    // Get user input after fatal error :D.
+            //    switch (System.Windows.Forms.MessageBox.Show("Gosh !" + Environment.NewLine + "An error that occurred during initialization of the engine.", "MakerRiseEngine " + Version, System.Windows.Forms.MessageBoxButtons.AbortRetryIgnore, System.Windows.Forms.MessageBoxIcon.Error))
+            //    {
+            //        // The user went to extit the game.
+            //        case System.Windows.Forms.DialogResult.Abort:
+            //            System.Windows.Forms.Application.Exit();
+            //            break;
 
-                    // The user went to restart the  game engine
-                    case System.Windows.Forms.DialogResult.Retry:
-                        System.Windows.Forms.Application.Restart();
-                        break;
+            //        // The user went to restart the  game engine
+            //        case System.Windows.Forms.DialogResult.Retry:
+            //            System.Windows.Forms.Application.Restart();
+            //            break;
                     
-                    // The user ignore the fatal error 😏.
-                    case System.Windows.Forms.DialogResult.Ignore:
-                        AsErrore = true;
-                        break;
-                }
+            //        // The user ignore the fatal error 😏.
+            //        case System.Windows.Forms.DialogResult.Ignore:
+            //            AsErrore = true;
+            //            break;
+            //    }
 
 
-            }
+            //}
             Thread.Sleep(200);
             LoadingScene.Message = "Starting game...";
             IsLoaded = true;

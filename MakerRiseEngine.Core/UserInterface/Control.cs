@@ -1,4 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
@@ -46,7 +47,7 @@ namespace Maker.RiseEngine.Core.UserInterface
 
     }
 
-    public abstract class Control : Idrawable
+    public abstract class Control : IDrawable
     {
         // Properties
         public bool Visible { get; set; } = true;
@@ -92,7 +93,6 @@ namespace Maker.RiseEngine.Core.UserInterface
         }
 
         // Mouse Stats.
-        public MouseState lastMouseState, currentMouseState;
         public MouseStats mouseStats = MouseStats.None;
 
         // Interfacing.
@@ -121,7 +121,7 @@ namespace Maker.RiseEngine.Core.UserInterface
             }
         }
 
-        public void Update(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public void Update(PlayerInput playerInput, GameTime gameTime)
         {
             Rectangle parrentRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
 
@@ -239,18 +239,14 @@ namespace Maker.RiseEngine.Core.UserInterface
             if (Visible)
             {
                 // Update the controls.
-                OnUpdate(mouse, keyBoard, gameTime);
+                OnUpdate(playerInput, gameTime);
 
                 // Update mouse.
                 {
-                    // The active state from the last frame is now old
-                    lastMouseState = currentMouseState;
 
-                    // Get the mouse state relevant for this frame
-                    currentMouseState = mouse;
 
                     // Mouse is over the control?
-                    if (ControlRectangle.Contains(mouse.Position))
+                    if (ControlRectangle.Contains(playerInput.MousePosition))
                         mouseStats = MouseStats.Over;
                     else
                         mouseStats = MouseStats.None;
@@ -258,28 +254,22 @@ namespace Maker.RiseEngine.Core.UserInterface
                     // Get if control containe the mouse pointer
                     if (mouseStats == MouseStats.Over)
                     {
-                        mouseStats = currentMouseState.LeftButton == ButtonState.Pressed ? MouseStats.Down : MouseStats.Over;
+                        mouseStats = playerInput.IsMouseKeyDown(MouseButton.Left) ? MouseStats.Down : MouseStats.Over;
 
                         // Recognize a single click of the left mouse button
-                        if (lastMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released)
+                        if (playerInput.IsMouseClick(MouseButton.Left))
                         {
-                            OnMouseUp();
                             OnMouseClick();
                             onMouseClick?.Invoke();
                         }
 
-                        // Reconize mouse Down event.
-                        if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Released)
-                        {
-                            OnMouseDown();
-                        }
                     }
                 }
 
                 // Update child controls.
                 foreach (Control c in Childs)
                 {
-                    c.Update(mouse, keyBoard, gameTime);
+                    c.Update(playerInput, gameTime);
                 }
             }
         }
@@ -297,19 +287,17 @@ namespace Maker.RiseEngine.Core.UserInterface
 
         }
 
-        public void DrawText(SpriteBatch spritebatch, SpriteFont font, string text, Rectangle rectangle, Color color, SpriteFontDraw.Alignment align = Rendering.SpriteFontDraw.Alignment.Left, Rendering.SpriteFontDraw.Style style = Rendering.SpriteFontDraw.Style.Regular)
+        public void DrawText(SpriteBatch spritebatch, SpriteFont font, string text, Rectangle rectangle, Color color, Alignment align = Alignment.Left, Style style = Style.Regular)
         {
             SpriteFontDraw.DrawString(spritebatch, font, text, new Rectangle(ControlRectangle.X + rectangle.X, ControlRectangle.Y + rectangle.Y, rectangle.Size.X, rectangle.Size.Y), align, style, color);
         }
 
         // Events.
         public virtual void OnDraw(SpriteBatch spriteBatch, GameTime gameTime) { }
-        public virtual void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime) { }
+        public virtual void OnUpdate(PlayerInput playerInput, GameTime gameTime) { }
 
         // Mouse Event.
         public virtual void OnMouseClick() { }
-        public virtual void OnMouseDown() { }
-        public virtual void OnMouseUp() { }
 
         // Declare Envent Handeling
         public delegate void ClickEventHandler();

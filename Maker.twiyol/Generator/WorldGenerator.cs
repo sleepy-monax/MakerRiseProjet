@@ -33,7 +33,7 @@ namespace Maker.twiyol.Generator
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             WorldGenerating sceneGen = new WorldGenerating();
-            var game = (RiseGame)Engine.MainGame;
+            var game = (RiseEngine.Core.RiseEngine)Engine.MainGame;
             game.sceneManager.AddScene(sceneGen);
             sceneGen.show();
 

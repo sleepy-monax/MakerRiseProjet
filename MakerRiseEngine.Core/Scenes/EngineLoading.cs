@@ -1,4 +1,6 @@
 ﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -21,7 +23,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
                 Engine.Initialize(this);
 
                 // TODO : MainScene of the game.
-                Game.sceneManager.RemoveScene(this);
+                RiseEngine.sceneManager.RemoveScene(this);
             });
             Thread t = new Thread(GenHandle);
             t.Start();
@@ -47,7 +49,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
             }
         }
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
 
         }

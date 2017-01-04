@@ -6,7 +6,7 @@ using System;
 
 namespace Maker.twiyol.Game.GameUtils
 {
-    public class WorldUpdater : Idrawable
+    public class WorldUpdater : RiseEngine.Core.IDrawable
     {
         GameScene G;
 
