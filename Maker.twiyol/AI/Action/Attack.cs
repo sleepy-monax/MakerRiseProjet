@@ -1,4 +1,5 @@
-﻿using Maker.twiyol.Game.GameUtils;
+﻿using Maker.RiseEngine.Core.GameObject;
+using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject;
 using Maker.twiyol.GameObject.Event;
@@ -24,7 +25,7 @@ namespace Maker.twiyol.AI.Action
             if (!(e.World.EntityDataManager.IsEntityFree(CurrentLocation.ToWorldLocation())))
             {
 
-                e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
+                e.ParrentEntity.ActionProgress += GameObjectManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
 
                 if (e.ParrentEntity.ActionProgress == 100)
                 {

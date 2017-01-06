@@ -1,6 +1,8 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.EngineDebug;
+using Maker.RiseEngine.Core.GameObject;
 using Maker.RiseEngine.Core.MathExt;
+using Maker.RiseEngine.Core.Plugin;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.Scenes;
@@ -140,7 +142,7 @@ namespace Maker.twiyol.Generator
             newGame.miniMap.RefreshMiniMap();
 
             // Raising onWorldGeneration event on plugin.
-            foreach (KeyValuePair<string, RiseEngine.Core.Plugin.IPlugin> i in GameObjectsManager.Plugins)
+            foreach (KeyValuePair<string, IPlugin> i in GameObjectManager.Plugins)
             {
                 i.Value.OnWorldGeneration(newGame);
             }

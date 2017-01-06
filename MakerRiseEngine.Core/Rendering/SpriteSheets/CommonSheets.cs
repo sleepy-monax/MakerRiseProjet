@@ -5,7 +5,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
     public static class CommonSheets
     {
 
-        //Gardé pour compatibilité avec l'encien code
+        //Gardé pour compatibilité avec l'encien code.
 
         public static SpriteSheet GUI;
         public static SpriteSheet Map;

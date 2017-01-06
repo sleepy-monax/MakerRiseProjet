@@ -1,103 +1,120 @@
-﻿//using Microsoft.Xna.Framework;
-//using Maker.RiseEngine.Core.Audio;
-//using Maker.RiseEngine.Core.MathExt;
-//using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-//using Maker.RiseEngine.Core.Content;
+﻿using Microsoft.Xna.Framework;
+using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.MathExt;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Plugin;
+using System;
+using Maker.twiyol.AI.Action;
+using Maker.twiyol.GameObject.Items;
+using Maker.twiyol.GameObject;
+using Maker.twiyol.GameObject.Tiles;
+using Maker.RiseEngine.Core.GameObject;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.Game;
+using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.GameObject.Entities;
+using Maker.twiyol.AI.Entites;
 
-//namespace Maker.RiseEngine.DefaultPlugin
-//{
-//    class Plugin : IPlugin
-//    {
-//        public string Name
-//        {
-//            get
-//            {
-//                return "Base";
-//            }
-//        }
+namespace Maker.RiseEngine.DefaultPlugin
+{
+    class Plugin : IPlugin
+    {
+        public string Name
+        {
+            get
+            {
+                return "Base";
+            }
+        }
 
-//        public void Initialize()
-//        {
-//            this.AddGameObject("Move", new Core.AI.Action.Move());
-//            this.AddGameObject("Attack", new Core.AI.Action.Attack());
+        public void Initialize()
+        {
 
-//            //TileSheet
-//            this.AddGameObject("Tilesheet_Terrain", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
-//            this.AddGameObject("Tilesheet_Entity", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
-//            this.AddGameObject("Tilesheet_Item", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
-//            this.AddGameObject("Tilesheet_Creatures", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
-//            this.AddGameObject("Tilesheet_Water", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
+        }
 
-//            //Items
-//            this.AddGameObject("Stick", new Core.GameObject.Items.Item(Core.GameObject.ItemType.Crafting, new string[] { "Stick" }, "Base.Tilesheet_Item"));
-//            this.AddGameObject("Apple", new Core.GameObject.Items.Item(Core.GameObject.ItemType.Food, new string[] { "AppleRed", "AppleGreen", "AppleYellow" }, "Base.Tilesheet_Item"));
+        public void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader) where PluginType : IPlugin
+        {
+            this.AddGameObject("Move", new Move());
+            this.AddGameObject("Attack", new Attack());
 
-//            //Tiles
-//            Core.GameObject.Tiles.Tile Grass = new Core.GameObject.Tiles.Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11));
-//            Grass.SetSoundEffect(SoundEffectParser.Parse(this.Name, "dirtfootstep"));
-//            this.AddGameObject("Grass", Grass);
-//            this.AddGameObject("FlowerOnGrass", new Core.GameObject.Tiles.Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11)) { });
-//            this.AddGameObject("Sand", new Core.GameObject.Tiles.Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.Yellow));
-//            this.AddGameObject("Water", new Core.GameObject.Tiles.Tile(new string[] { "Water" }, "Base.Tilesheet_Water", System.Drawing.Color.Blue));
+            //TileSheet
+            this.AddGameObject("Tilesheet_Terrain", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
+            this.AddGameObject("Tilesheet_Entity", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
+            this.AddGameObject("Tilesheet_Item", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
+            this.AddGameObject("Tilesheet_Creatures", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
+            this.AddGameObject("Tilesheet_Water", new SpriteSheet("Base", ContentEngine.Texture2D("Base", "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
 
-//            //Entity
+            //Items
+            this.AddGameObject("Stick", new Item(ItemType.Crafting, new string[] { "Stick" }, "Base.Tilesheet_Item"));
+            this.AddGameObject("Apple", new Item(ItemType.Food, new string[] { "AppleRed", "AppleGreen", "AppleYellow" }, "Base.Tilesheet_Item"));
 
-//            this.AddGameObject("BigTree", new Core.GameObject.Entities.Entity(new string[] { "BigTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
-//            this.AddGameObject("PinTree", new Core.GameObject.Entities.Entity(new string[] { "PinTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
-//            this.AddGameObject("LargeTree", new Core.GameObject.Entities.Entity(new string[] { "LargeTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -1f)));
-//            this.AddGameObject("Rock", new Core.GameObject.Entities.Entity(new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
-//            this.AddGameObject("Plant", new Core.GameObject.Entities.Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
-//            this.AddGameObject("Player", new Core.GameObject.Entities.Creature(new Core.AI.Entites.PlayerAI(0, 1, 2, 3, 4, 5, 6, 7), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle_Up", "Player_Idle_Down", "Player_Idle_Left", "Player_Idle_Right" }, "Base.Tilesheet_Creatures", new Vector2(0, 0)));
+            //Tiles
+            Tile Grass = new Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11));
+            Grass.SetSoundEffect(SoundEffectParser.Parse(this.Name, "dirtfootstep"));
+            this.AddGameObject("Grass", Grass);
+            this.AddGameObject("FlowerOnGrass", new Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, "Base.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11)) { });
+            this.AddGameObject("Sand", new Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, "Base.Tilesheet_Terrain", System.Drawing.Color.Yellow));
+            this.AddGameObject("Water", new Tile(new string[] { "Water" }, "Base.Tilesheet_Water", System.Drawing.Color.Blue));
 
-//            this.AddGameObject("Cactus", new Core.GameObject.Entities.Entity(new string[] { "Cactus1", "Cactus2" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
-//            this.AddGameObject("TaleCactus", new Core.GameObject.Entities.Entity(new string[] { "Cactus0" }, "Base.Tilesheet_Entity", new Vector2(0, -1f)));
+            //Entity
 
+            this.AddGameObject("BigTree", new Entity(new string[] { "BigTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
+            this.AddGameObject("PinTree", new Entity(new string[] { "PinTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -3f)));
+            this.AddGameObject("LargeTree", new Entity(new string[] { "LargeTree0" }, "Base.Tilesheet_Entity", new Vector2(-0.5f, -1f)));
+            this.AddGameObject("Rock", new Entity(new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("Plant", new Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("Player", new Creature(new PlayerAI(0, 1, 2, 3, 4, 5, 6, 7), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle_Up", "Player_Idle_Down", "Player_Idle_Left", "Player_Idle_Right" }, "Base.Tilesheet_Creatures", new Vector2(0, 0)));
 
-//            //Biome
-//            this.AddGameObject("Plains", new Core.GameObject.Biome(0.1,
-//                 new KeyWeightPair<int>[] {
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("Rock"), 0.5),
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("Plant"), 0.5)
-//                 },
-//                 new KeyWeightPair<int>[] {
-
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("Grass"), 0.9),
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("FlowerOnGrass"), 0.1)
-//                 }));
+            this.AddGameObject("Cactus", new Entity(new string[] { "Cactus1", "Cactus2" }, "Base.Tilesheet_Entity", new Vector2(0, 0)));
+            this.AddGameObject("TaleCactus", new Entity(new string[] { "Cactus0" }, "Base.Tilesheet_Entity", new Vector2(0, -1f)));
 
 
+            //Biome
+            this.AddGameObject("Plains", new Biome(0.1,
+                 new KeyWeightPair<int>[] {
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("Rock"), 0.5),
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("Plant"), 0.5)
+                 },
+                 new KeyWeightPair<int>[] {
 
-//            this.AddGameObject("Forest", new Core.GameObject.Biome(0.3,
-//                new KeyWeightPair<int>[] {
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("BigTree"), 0.3),
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("PinTree"), 0.3),
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("LargeTree"), 0.2),
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("Rock"), 0.1),
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("Plant"), 0.1),
-//                },
-//                new KeyWeightPair<int>[] {
-//                    new KeyWeightPair<int>(this.GetGameObjectIndex("Grass"), 1)
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("Grass"), 0.9),
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("FlowerOnGrass"), 0.1)
+                 }));
 
-//                }));
 
-//            this.AddGameObject("River", new Core.GameObject.Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
-//            this.AddGameObject("Ocean", new Core.GameObject.Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
 
-//            this.AddGameObject("Desert", new Core.GameObject.Biome(0.1, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Cactus"), 0.75f), new KeyWeightPair<int>(this.GetGameObjectIndex("TaleCactus"), 0.25f) }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
+            this.AddGameObject("Forest", new Biome(0.3,
+                new KeyWeightPair<int>[] {
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("BigTree"), 0.3),
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("PinTree"), 0.3),
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("LargeTree"), 0.2),
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("Rock"), 0.1),
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("Plant"), 0.1),
+                },
+                new KeyWeightPair<int>[] {
+                    new KeyWeightPair<int>(this.GetGameObjectIndex("Grass"), 1)
 
-//        }
+                }));
 
-//        public void OnWorldGeneration(GameScene world)
-//        {
+            this.AddGameObject("River", new Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
+            this.AddGameObject("Ocean", new Biome(0, new KeyWeightPair<int>[] { }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Water"), 1) }));
 
-//            DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
-//            E.IsFocus = true;
+            this.AddGameObject("Desert", new Biome(0.1, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Cactus"), 0.75f), new KeyWeightPair<int>(this.GetGameObjectIndex("TaleCactus"), 0.25f) }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
 
-//            world.EntityDataManager.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
-//            world.EntityDataManager.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
-//            world.Camera.FocusLocation = new WorldLocation(new Point(5, 5), new Point(5, 5)).ToPoint();
-//            world.Camera.Update();
+        }
 
-//        }
-//    }
-//}
+        public void OnWorldGeneration(GameScene world)
+        {
+
+            DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
+            E.IsFocus = true;
+
+            world.EntityDataManager.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
+            world.EntityDataManager.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
+            world.Camera.FocusLocation = new WorldLocation(new Point(5, 5), new Point(5, 5)).ToPoint();
+            world.Camera.Update();
+
+        }
+    }
+}

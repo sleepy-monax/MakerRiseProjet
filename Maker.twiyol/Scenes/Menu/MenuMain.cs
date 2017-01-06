@@ -1,5 +1,6 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.UserInterface;
@@ -129,10 +130,10 @@ namespace Maker.twiyol.Scenes.Menu
         }
 
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
 
-            panelMainMenu.Update(mouse, keyBoard, gameTime);
+            panelMainMenu.Update(playerInput, gameTime);
 
         }
 

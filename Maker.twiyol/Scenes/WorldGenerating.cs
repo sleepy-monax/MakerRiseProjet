@@ -5,6 +5,8 @@ using Maker.RiseEngine.Core.Content;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Input;
+using System;
 
 namespace Maker.twiyol.Scenes
 {
@@ -16,8 +18,8 @@ namespace Maker.twiyol.Scenes
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            SpriteFontDraw.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt"), message, new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), SpriteFontDraw.Alignment.Center, SpriteFontDraw.Style.rectangle, Color.White);
-            SpriteFontDraw.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Progress + "%", new Rectangle(0, 128, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), SpriteFontDraw.Alignment.Center, SpriteFontDraw.Style.DropShadow, Color.White);
+            SpriteFontDraw.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt"), message, new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), Alignment.Center, Style.rectangle, Color.White);
+            SpriteFontDraw.DrawString(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Progress + "%", new Rectangle(0, 128, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), Alignment.Center, Style.DropShadow, Color.White);
         }
 
         public override void OnLoad()
@@ -30,9 +32,11 @@ namespace Maker.twiyol.Scenes
 
         }
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
-
+            
         }
+
+
     }
 }

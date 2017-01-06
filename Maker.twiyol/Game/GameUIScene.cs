@@ -1,4 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -33,17 +34,16 @@ namespace Maker.twiyol.Game
 
         }
 
-        KeyboardState oldKeyBoard;
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
-            if (keyBoard.IsKeyDown(Engine.engineConfig.Input_ShowMenu) && oldKeyBoard.IsKeyUp(Engine.engineConfig.Input_ShowMenu))
+            if (playerInput.IsKeyBoardKeyReleased(Engine.engineConfig.Input_ShowMenu))
             {
                 if (!IsPause)
                     PauseGame();
 
             }
 
-            oldKeyBoard = keyBoard;
+
         }
 
         public void PauseGame()

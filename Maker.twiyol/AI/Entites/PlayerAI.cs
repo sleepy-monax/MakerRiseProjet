@@ -1,5 +1,7 @@
 ﻿
 using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.Input;
 using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -35,33 +37,33 @@ namespace Maker.twiyol.AI.Entites
 
         }
 
-        public override void Tick(GameObjectEventArgs e, KeyboardState KeyBoard, MouseState Mouse, GameTime gameTime)
+        public override void Tick(GameObjectEventArgs e, PlayerInput playerInput, GameTime gameTime)
         {
-
-            int moveActionIndex = GameObjectsManager.GetGameObjectIndex("Base.Move");
-            int attckActionIndex = GameObjectsManager.GetGameObjectIndex("Base.Attack");
+           
+            int moveActionIndex = GameObjectManager.GetGameObjectIndex("Base.Move");
+            int attckActionIndex = GameObjectManager.GetGameObjectIndex("Base.Attack");
 
             if (e.ParrentEntity.Action == -1)
             {
-                if (KeyBoard.IsKeyDown(Engine.engineConfig.Input_MoveUp))
+                if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveUp))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Up;
                     e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveUpVariante;
                 }
-                else if (KeyBoard.IsKeyDown(Engine.engineConfig.Input_MoveDown))
+                else if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveDown))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Down;
                     e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveDownVariante;
                 }
-                else if (KeyBoard.IsKeyDown(Engine.engineConfig.Input_MoveLeft))
+                else if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveLeft))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Left;
                     e.ParrentEntity.Action = moveActionIndex;
                     e.ParrentEntity.Variant = MoveLeftVariante;
                 }
-                else if (KeyBoard.IsKeyDown(Engine.engineConfig.Input_MoveRight))
+                else if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveRight))
                 {
                     e.ParrentEntity.Facing = Utils.Facing.Right;
                     e.ParrentEntity.Action = moveActionIndex;
@@ -70,7 +72,7 @@ namespace Maker.twiyol.AI.Entites
                 else
                 {
 
-                    if (KeyBoard.IsKeyDown(Engine.engineConfig.Input_Attack))
+                    if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_Attack))
                     {
                         e.ParrentEntity.Action = attckActionIndex;
                     }

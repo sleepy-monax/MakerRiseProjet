@@ -40,7 +40,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
             string SheetMapString = srMap.ReadToEnd().ToDosLineEnd().Replace(System.Environment.NewLine, "");
             srMap.Close();
 
-            // Create new instance of TilesColection
+            // Create new instance of TilesColection.
             SpriteColection = new Dictionary<string, TilesheetColectionItem>();
 
             string[] Lines = SheetMapString.Split(';');

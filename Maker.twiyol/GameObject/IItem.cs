@@ -1,4 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.GameObject;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
 

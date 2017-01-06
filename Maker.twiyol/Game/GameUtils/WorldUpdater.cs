@@ -1,7 +1,8 @@
 ﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace Maker.twiyol.Game.GameUtils
@@ -17,7 +18,7 @@ namespace Maker.twiyol.Game.GameUtils
 
         #region Update
 
-        public void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public void Update(PlayerInput playerInput, GameTime gameTime)
         {
 
             for (int Tx = G.Camera.StartTile.X; Tx <= G.Camera.EndTile.X; Tx++)
@@ -42,8 +43,8 @@ namespace Maker.twiyol.Game.GameUtils
                             //recuperation des objets
                             WorldDataStruct.DataTile T = G.chunkManager.GetTile(CurrentLocation);
 
-                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
-                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
+                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
+                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, playerInput, gameTime);
 
                             if (!(T.Entity == -1))
                             {
@@ -51,8 +52,8 @@ namespace Maker.twiyol.Game.GameUtils
                                 WorldDataStruct.DataEntity E = G.chunkManager.GetEntity(CurrentLocation);
                                 E.Location = CurrentLocation.ToWorldLocation();
 
-                                GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
-                                GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, KeyBoard, Mouse, gameTime);
+                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
+                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, playerInput, gameTime);
                             }
                         }
                     }

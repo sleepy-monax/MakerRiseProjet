@@ -8,6 +8,7 @@ using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.Storage;
+using Maker.RiseEngine.Core.Input;
 
 namespace Maker.twiyol.Game
 {
@@ -81,12 +82,12 @@ namespace Maker.twiyol.Game
 
         }
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
             if (!PauseSimulation)
             {
-                Background.Update(mouse, keyBoard, gameTime);
-                worldUpdater.Update(mouse, keyBoard, gameTime);
+                Background.Update(playerInput, gameTime);
+                worldUpdater.Update(playerInput, gameTime);
             }
             Camera.Update();
         }

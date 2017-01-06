@@ -1,4 +1,5 @@
 ﻿
+using Maker.RiseEngine.Core.GameObject;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.GameObject;
 using Maker.twiyol.GameObject.Event;
@@ -27,7 +28,7 @@ namespace Maker.twiyol.AI.Action
 
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
-            e.ParrentEntity.ActionProgress += GameObjectsManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
+            e.ParrentEntity.ActionProgress += GameObjectManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
             WorldLocation FocusLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
 
             if (!(e.World.EntityDataManager.IsEntityFree(FocusLocation)))
@@ -44,8 +45,7 @@ namespace Maker.twiyol.AI.Action
                     e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
                     e.World.EntityDataManager.MoveEntity(e.CurrentLocation, FocusLocation);
                     e.ParrentEntity.Action = -1;
-
-                    GameObjectsManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);
+                    GameObjectManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);
                 }
                 else
                 {

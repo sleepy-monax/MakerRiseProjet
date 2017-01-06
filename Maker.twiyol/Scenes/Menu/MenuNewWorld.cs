@@ -1,4 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.UserInterface;
@@ -54,7 +55,7 @@ namespace Maker.twiyol.Scenes.Menu
 
             titleLabel = new Label("Créer un nouveau monde", new Rectangle(0, 0, 128, 96), Color.White);
             titleLabel.ControlDock = Dock.Top;
-            titleLabel.TextStyle = SpriteFontDraw.Style.rectangle;
+            titleLabel.TextStyle = Style.rectangle;
             titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             nameLabel = new Label("Nom du nouveau monde :", new Rectangle(0, 0, 128, 64), Color.White);
@@ -119,10 +120,10 @@ namespace Maker.twiyol.Scenes.Menu
 
         }
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
 
-            rootContainer.Update(mouse, keyBoard, gameTime);
+            rootContainer.Update(playerInput, gameTime);
 
         }
 

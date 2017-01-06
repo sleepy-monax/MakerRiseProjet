@@ -1,5 +1,6 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.GameObject;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -55,14 +56,14 @@ namespace Maker.twiyol.Game.GameUtils
                             //desin des objets
 
 
-                            GameObjectsManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, tSpriteBatch, gameTime);
+                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, tSpriteBatch, gameTime);
 
 
 
                             if (!(T.Entity == -1))
                             {
                                 WorldDataStruct.DataEntity E = G.chunkManager.GetEntity(CurrentLocation);
-                                GameObjectsManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
+                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
 
                                 if (Engine.engineConfig.Debug_WorldOverDraw && E.IsFocus)
                                 {

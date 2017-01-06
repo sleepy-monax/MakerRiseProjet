@@ -1,4 +1,5 @@
-﻿using Maker.twiyol.Game.GameUtils;
+﻿using Maker.RiseEngine.Core.GameObject;
+using Maker.twiyol.Game.GameUtils;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -22,7 +23,7 @@ namespace Maker.twiyol.Generator
             Game.WorldDataStruct.DataRegion NewRegion = new Game.WorldDataStruct.DataRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
-            NewRegion.BiomeID = GameObjectsManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
+            NewRegion.BiomeID = GameObjectManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
             //NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
 

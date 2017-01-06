@@ -1,4 +1,6 @@
-﻿using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
@@ -39,7 +41,7 @@ namespace Maker.twiyol.GameObject.Entities
 
             foreach (string str in _SpriteVariant)
             {
-                Variant.Add(GameObjectsManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameObjectManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
             }
             SpriteLocation = _SpriteLocation;
             DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));
@@ -59,7 +61,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         }
 
-        public virtual void OnUpdate(GameObjectEventArgs e, KeyboardState keyboard, MouseState mouse, GameTime gametime)
+        public virtual void OnUpdate(GameObjectEventArgs e, PlayerInput playerInput, GameTime gametime)
         {
 
         }
@@ -71,6 +73,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         public void OnGameObjectAdded()
         {
+
         }
 
         public float damage = 5;

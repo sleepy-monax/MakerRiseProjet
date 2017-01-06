@@ -10,6 +10,7 @@ using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.Input;
 
 namespace Maker.twiyol.Scenes.Menu
 {
@@ -60,10 +61,10 @@ namespace Maker.twiyol.Scenes.Menu
 
         }
 
-        public override void OnUpdate(MouseState mouse, KeyboardState keyBoard, GameTime gameTime)
+        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
             Background.DestinationRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
-            Background.Update(mouse, keyBoard, gameTime);
+            Background.Update(playerInput, gameTime);
         }
     }
 }

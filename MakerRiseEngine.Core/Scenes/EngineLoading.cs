@@ -1,6 +1,7 @@
 ﻿using Maker.RiseEngine.Core.Config;
 using Maker.RiseEngine.Core.Content;
 using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Core.Plugin;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
@@ -39,6 +40,9 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
                 Thread.Sleep(200);
 
                 this.Message = "Loading Plugins...";
+
+                PluginLoader<IPlugin> p = new PluginLoader<IPlugin>("Data");
+
                 //GameObjectsManager.LoadPlugins();
                 Thread.Sleep(200);
 

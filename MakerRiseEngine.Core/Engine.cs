@@ -1,15 +1,15 @@
-﻿using Maker.RiseEngine.Core.Scenes.Scenes;
+﻿using Maker.RiseEngine.Core.Config;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Maker.RiseEngine.Core
 {
     public static class Engine
     {
+
         public static GraphicsDeviceManager graphics;
         public static Game MainGame;
         public static GraphicsDevice GraphicsDevice;
@@ -21,7 +21,15 @@ namespace Maker.RiseEngine.Core
         public static bool IsLoaded = false;
         public static int CurrentFrame = 0;
 
+        public static EngineConfig engineConfig = new EngineConfig();
 
-        public static Config.EngineConfig engineConfig = new Config.EngineConfig();
+
+
+        public static void STOP()
+        {
+
+            Application.Exit();
+
+        }
     }
 }

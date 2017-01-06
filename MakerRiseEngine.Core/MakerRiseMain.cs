@@ -30,26 +30,37 @@ namespace Maker.RiseEngine.Core
             Engine.MainGame = this;
             Engine.Window = Window;
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
+            Engine.GameForm.ResizeEnd += GameForm_ResizeEnd;
 
             sceneManager = new Scenes.SceneManager(this);
 
         }
 
+        private void GameForm_ResizeEnd(object sender, System.EventArgs e)
+        {
+            // Set window setting.
+            Engine.graphics.PreferredBackBufferWidth = Engine.Window.ClientBounds.Width;
+            Engine.graphics.PreferredBackBufferHeight = Engine.Window.ClientBounds.Height;
+            Engine.graphics.ApplyChanges();
+        }
+
         protected override void Initialize()
         {
-            DebugLogs.WriteInLogs("Initializing game engine...", LogType.Info, "Core");
+            DebugLogs.WriteInLogs("Initializing 'Rise!Engine'", LogType.Info, "Core");
 
             // Set windows from property.
             Window.Title = "Rise : Le monde est votre seule limite";
-            Window.AllowAltF4 = false;
-            Window.AllowUserResizing = false;
+            Window.AllowAltF4 = true;
+            Window.AllowUserResizing = true;
             Window.IsBorderless = false;
 
             // Setup debug console.
-            System.Console.Title = "Maker Rise Engine Debug Tool - " + Engine.Version.ToString();
+            System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString();
 
             // Hide the systeme mouse cursor.
             IsMouseVisible = false;
+
+            
 
             base.Initialize();
         }

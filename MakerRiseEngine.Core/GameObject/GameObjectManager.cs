@@ -26,7 +26,7 @@ namespace Maker.RiseEngine.Core.GameObject
             _gameObject.OnGameObjectAdded();
         }
 
-        internal static int GetGameObjectIndex(string gameObjectID)
+        public static int GetGameObjectIndex(string gameObjectID)
         {
             string[] Names = gameObjectID.Split('.');
             return GetGameObjectIndex(Names[0], Names[1]);

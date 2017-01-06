@@ -5,7 +5,6 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
     public class Sprite
     {
-
         SpriteSheet ParrentSpriteSheet;
         public TilesheetColectionItem MainSprite;
         public TilesheetColectionItem[] sprites;
@@ -15,9 +14,6 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 
         int LasteFrame = 0;
 
-
-
-
         public Sprite(SpriteSheet _ParrentMapedSheet, TilesheetColectionItem _sprites)
         {
 
@@ -25,7 +21,6 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
             MainSprite = _sprites;
             sprites = new TilesheetColectionItem[1];
             sprites[0] = _sprites;
-
 
         }
 
@@ -43,19 +38,15 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
         public void Draw(SpriteBatch spritebatch, Rectangle DestinationRectangle, Color color, GameTime gameTime)
         {
 
-
             if (MainSprite.Animated == false)
             {
                 spritebatch.Draw(ParrentSpriteSheet.SpriteSheetTexture2D, DestinationRectangle, new Rectangle(MainSprite.X * ParrentSpriteSheet.SpriteSize.X, MainSprite.Y * ParrentSpriteSheet.SpriteSize.Y, MainSprite.Width * ParrentSpriteSheet.SpriteSize.X, MainSprite.Height * ParrentSpriteSheet.SpriteSize.Y), color);
-
             }
             else
             {
-
                 UpdateAnimation(gameTime);
                 spritebatch.Draw(ParrentSpriteSheet.SpriteSheetTexture2D, DestinationRectangle, new Rectangle(sprites[CurrentFrame].X * ParrentSpriteSheet.SpriteSize.X, sprites[CurrentFrame].Y * ParrentSpriteSheet.SpriteSize.Y, sprites[CurrentFrame].Width * ParrentSpriteSheet.SpriteSize.X, sprites[CurrentFrame].Height * ParrentSpriteSheet.SpriteSize.Y), color);
             }
-
 
         }
 
@@ -96,12 +87,14 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
                                 }
                                 else
                                 {
+
                                     CurrentFrame--;
                                     if (CurrentFrame == -1)
                                     {
                                         CurrentFrame += 2;
                                         Forward = true;
                                     }
+
                                 }
 
                                 break;
