@@ -10,11 +10,67 @@ using System.Threading.Tasks;
 
 namespace Maker.RiseEngine.Core.Plugin
 {
-    public class PluginLoader<PluginType>
+    public class PluginLoader<PluginType> where PluginType : IPlugin
     {
+        Dictionary<string, PluginType> Plugins;
+        List<string> LoadedPlugins;
+        List<string> OnIntializationPlugin;
+
+        public PluginLoader(string pluginPath) {
+            // setup list.
+            Plugins = new Dictionary<string, PluginType>();
+            LoadedPlugins = new List<string>();
+            OnIntializationPlugin = new List<string>();
+
+            // Load plugins.
+            var pl = LoadPluginFrom(pluginPath);
+
+            foreach (var p in pl) {
+
+                Plugins.Add(p.Name, p);
+
+            }
+        }
+        
+
+        public void Include(object Parent, string pluginName) {
+
+            var plug = Plugins[pluginName];
+
+            if (OnIntializationPlugin.Contains(pluginName))
+            {
+
+                DebugLogs.WriteInLogs($"A circular dependency has been detected! {Parent.GetType().Name} refers to {pluginName} which makes itself reference to {Parent.GetType().Name}.");
+
+            }
+            else {
+
+                if (!LoadedPlugins.Contains(pluginName)) {
+                    DebugLogs.WriteInLogs("Load pluging :" + plug.GetType().Name, LogType.Info, GetType().Name);
+                    OnIntializationPlugin.Add(pluginName);
+                    plug.Initialize(this);
+                    OnIntializationPlugin.Remove(pluginName);
+
+                    LoadedPlugins.Add(pluginName);
+                }
 
 
-        public List<PluginType> LoadPluginFrom(string Path) {
+            }
+
+
+        }
+
+        public void initializePlugin() {
+
+            foreach (var plug in Plugins) {
+
+                Include(this,plug.Key);
+
+            }
+
+        }
+
+        private List<PluginType> LoadPluginFrom(string Path) {
 
             if (Directory.Exists(Path))
             {
@@ -108,8 +164,7 @@ namespace Maker.RiseEngine.Core.Plugin
                 return new List<PluginType>();
             }
         }
-
-        public List<PluginType> LoadAssembly(Assembly assembly)
+        private List<PluginType> LoadAssembly(Assembly assembly)
         {
             DebugLogs.WriteInLogs("load \'" + assembly.FullName + "\'", LogType.Info, GetType().Name);
 

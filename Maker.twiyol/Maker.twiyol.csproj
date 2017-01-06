@@ -53,7 +53,6 @@
     <Compile Include="AI\IAction.cs" />
     <Compile Include="AI\Utils.cs" />
     <Compile Include="GameEventHandle.cs" />
-    <Compile Include="GameObjectManager.cs" />
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />
     <Compile Include="GameObject\Entities\Entity.cs" />

@@ -20,14 +20,10 @@ namespace Maker.RiseEngine.Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Console.WriteLine("Number Of Logical Processors: {0}", Environment.ProcessorCount);
+            Console.WriteLine("Number of logical processors: {0}", Environment.ProcessorCount);
 
 
 
-            if (new LoadGameForm().ShowDialog() == DialogResult.OK) {
-
-
-            }
 
             using (var game = new Core.RiseEngine())
             {
@@ -35,6 +31,7 @@ namespace Maker.RiseEngine.Windows
                 game.Run();
 
             }
+
         }
 
 

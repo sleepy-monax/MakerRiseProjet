@@ -31,6 +31,7 @@ namespace Maker.RiseEngine.Windows.GameLoader
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Location = new System.Drawing.Point(251, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 24);

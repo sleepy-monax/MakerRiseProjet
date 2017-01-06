@@ -1,6 +1,8 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Config;
+using Maker.RiseEngine.Core.Content;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,10 +19,34 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
 
         public override void OnLoad()
         {
-            this.show();
+            show();
             ThreadStart GenHandle = new ThreadStart(delegate
             {
-                Engine.Initialize(this);
+                EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Engine");
+
+                Message = "Loading config...";
+
+                // load binary config file.
+                if (System.IO.File.Exists("Data\\config.bin"))
+                    Engine.engineConfig = SerializationHelper.LoadFromBin<EngineConfig>("Data\\config.bin");
+                else
+                    SerializationHelper.SaveToBin(Engine.engineConfig, "Data\\config.bin");
+
+                // Apply config
+
+
+
+                Thread.Sleep(200);
+
+                this.Message = "Loading Plugins...";
+                //GameObjectsManager.LoadPlugins();
+                Thread.Sleep(200);
+
+                this.Message = "Looking for initialization error...";
+
+                Thread.Sleep(200);
+                Message = "Starting game...";
+                Engine.IsLoaded = true;
 
                 // TODO : MainScene of the game.
                 RiseEngine.sceneManager.RemoveScene(this);

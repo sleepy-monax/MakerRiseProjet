@@ -22,7 +22,7 @@ namespace Maker.RiseEngine.Core
 
         public Scenes.SceneManager sceneManager;
 
-        public RiseEngine(IRiseGame riseGame)
+        public RiseEngine()
         {
             graphics = new GraphicsDeviceManager(this);
             Engine.graphics = graphics;
@@ -32,7 +32,6 @@ namespace Maker.RiseEngine.Core
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
 
             sceneManager = new Scenes.SceneManager(this);
-            CurrentGame = riseGame;
 
         }
 

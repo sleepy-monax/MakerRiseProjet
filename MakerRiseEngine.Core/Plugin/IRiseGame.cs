@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Maker.RiseEngine.Core.Plugin
 {
-    public interface IRiseGame
+    public interface IRiseGame : IPlugin
     {
 
         void OnEngineInitialization(RiseEngine Game);

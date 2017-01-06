@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Maker.RiseEngine.Core.GameObject
 {
-    public class GameObjectManager
+    public static class GameObjectManager
     {
 
         static List<IGameObject> gameObject = new List<IGameObject>();
         static Dictionary<string, int> gameObjectDict = new Dictionary<string, int>();
 
-        public static void AddGameObject(IPlugin plugin, string gameObjectName, IGameObject _gameObject)
+        public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject _gameObject)
         {
             int gameObjectID = gameObject.Count;
 
@@ -44,7 +44,7 @@ namespace Maker.RiseEngine.Core.GameObject
             }
         }
 
-        public static T GetGameObject<T>(IPlugin plugin, string gameObjectName) where T : IGameObject
+        public static T GetGameObject<T>(this IPlugin plugin, string gameObjectName) where T : IGameObject
         {
             return GetGameObject<T>(plugin.Name, gameObjectName);
         }
@@ -53,7 +53,7 @@ namespace Maker.RiseEngine.Core.GameObject
             return GetGameObject<T>(GetGameObjectIndex(pluginName, gameObjectName));
         }
 
-        public static int GetGameObjectIndex(IPlugin plugin, string gameObjectName)
+        public static int GetGameObjectIndex(this IPlugin plugin, string gameObjectName)
         {
 
             return GetGameObjectIndex(plugin.Name, gameObjectName);
