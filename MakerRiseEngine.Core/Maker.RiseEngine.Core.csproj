@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17006.1626.977</AssemblyVersion>
+    <AssemblyVersion>0.17008.1148.999</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -81,9 +81,11 @@
     <Compile Include="Inventory\ObjInventory.cs" />
     <Compile Include="Inventory\ObjSlot.cs" />
     <Compile Include="Network\HTTPServer.cs" />
+    <Compile Include="Physic\PhysicManager.cs" />
+    <Compile Include="Physic\PhysicObject.cs" />
+    <Compile Include="Physic\PhysicProperty.cs" />
     <Compile Include="Plugin\Builder.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
-    <Compile Include="Plugin\IRiseGame.cs" />
     <Compile Include="Plugin\PluginLoader.cs" />
     <Compile Include="Rendering\Parallax.cs" />
     <Compile Include="Rendering\SpriteFontDraw.cs" />

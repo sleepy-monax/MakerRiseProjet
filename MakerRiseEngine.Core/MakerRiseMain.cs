@@ -17,7 +17,6 @@ namespace Maker.RiseEngine.Core
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         DebugScreen DbgScr;
-        private IRiseGame CurrentGame;
 
 
         public Scenes.SceneManager sceneManager;
@@ -58,7 +57,7 @@ namespace Maker.RiseEngine.Core
             System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString();
 
             // Hide the systeme mouse cursor.
-            IsMouseVisible = false;
+            IsMouseVisible = true;
 
             
 
@@ -88,8 +87,8 @@ namespace Maker.RiseEngine.Core
             Content.Unload();
         }
 
-        MouseState oldMouseState = Mouse.GetState();
-        KeyboardState oldKeyBoardState = Keyboard.GetState();
+        MouseState oldMouseState = new MouseState();
+        KeyboardState oldKeyBoardState = new KeyboardState();
 
         protected override void Update(GameTime gameTime)
         {

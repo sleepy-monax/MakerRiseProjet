@@ -42,6 +42,8 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
                 this.Message = "Loading Plugins...";
 
                 PluginLoader<IPlugin> p = new PluginLoader<IPlugin>("Data");
+                p.initializePlugin();
+                
 
                 //GameObjectsManager.LoadPlugins();
                 Thread.Sleep(200);

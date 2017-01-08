@@ -35,6 +35,8 @@ namespace Maker.RiseEngine.DefaultPlugin
 
         public void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader) where PluginType : IPlugin
         {
+            pluginLoader.Include(this, "TWIYOL");
+
             this.AddGameObject("Move", new Move());
             this.AddGameObject("Attack", new Attack());
 
@@ -104,17 +106,5 @@ namespace Maker.RiseEngine.DefaultPlugin
 
         }
 
-        public void OnWorldGeneration(GameScene world)
-        {
-
-            DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
-            E.IsFocus = true;
-
-            world.EntityDataManager.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
-            world.EntityDataManager.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
-            world.Camera.FocusLocation = new WorldLocation(new Point(5, 5), new Point(5, 5)).ToPoint();
-            world.Camera.Update();
-
-        }
     }
 }

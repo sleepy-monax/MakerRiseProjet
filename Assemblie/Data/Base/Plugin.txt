@@ -1,3 +1,0 @@
-﻿Name:Base;
-Version:0.1;
-References:MakerRiseEngine.dll;

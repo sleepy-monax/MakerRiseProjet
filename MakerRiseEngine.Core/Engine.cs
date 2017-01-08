@@ -11,7 +11,7 @@ namespace Maker.RiseEngine.Core
     {
 
         public static GraphicsDeviceManager graphics;
-        public static Game MainGame;
+        public static RiseEngine MainGame;
         public static GraphicsDevice GraphicsDevice;
         public static GameWindow Window;
         public static Form GameForm;
@@ -23,13 +23,9 @@ namespace Maker.RiseEngine.Core
 
         public static EngineConfig engineConfig = new EngineConfig();
 
-
-
         public static void STOP()
         {
-
-            Application.Exit();
-
+            Environment.Exit(0);
         }
     }
 }

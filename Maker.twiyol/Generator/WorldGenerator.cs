@@ -142,10 +142,10 @@ namespace Maker.twiyol.Generator
             newGame.miniMap.RefreshMiniMap();
 
             // Raising onWorldGeneration event on plugin.
-            foreach (KeyValuePair<string, IPlugin> i in GameObjectManager.Plugins)
-            {
-                i.Value.OnWorldGeneration(newGame);
-            }
+            //foreach (KeyValuePair<string, IPlugin> i in GameObjectManager.Plugins)
+            //{
+            //    i.Value.OnWorldGeneration(newGame);
+            //}
 
             stopwatch.Stop();
             DebugLogs.WriteInLogs("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");

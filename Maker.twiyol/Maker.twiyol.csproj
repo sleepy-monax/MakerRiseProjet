@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Assemblie\Data\twiyol\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,6 +33,7 @@
     <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Assemblie\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,14 +95,20 @@
     <Compile Include="Scenes\Menu\MenuOpenWorld.cs" />
     <Compile Include="Scenes\Menu\MenuOption.cs" />
     <Compile Include="Scenes\WorldGenerating.cs" />
-    <Compile Include="twiyolGame.cs" />
+    <Compile Include="twiyolGamePlugin.cs" />
     <Compile Include="UI\MiniMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj">
       <Project>{0b1ae74f-0e04-4402-9c99-d03175c9aa03}</Project>
       <Name>Maker.RiseEngine.Core</Name>
+      <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plugin.risemeta">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

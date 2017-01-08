@@ -72,7 +72,6 @@ namespace Maker.RiseEngine.Core.Input
 
             return false;
 
-
         }
 
         public bool IsMouseClick(MouseButton Button = MouseButton.Left) {
@@ -84,15 +83,15 @@ namespace Maker.RiseEngine.Core.Input
             {
                 case MouseButton.Right:
                     ButtonStats = _mouseState.RightButton;
-                    ButtonStats = _oldMouseState.RightButton;
+                    OldButtonStats = _oldMouseState.RightButton;
                     break;
                 case MouseButton.Left:
                     ButtonStats = _mouseState.LeftButton;
-                    ButtonStats = _oldMouseState.LeftButton;
+                    OldButtonStats = _oldMouseState.LeftButton;
                     break;
                 case MouseButton.Middle:
                     ButtonStats = _mouseState.MiddleButton;
-                    ButtonStats = _oldMouseState.MiddleButton;
+                    OldButtonStats = _oldMouseState.MiddleButton;
                     break;
                 default:
                     break;

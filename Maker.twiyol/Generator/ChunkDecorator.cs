@@ -25,7 +25,7 @@ namespace Maker.twiyol.Generator
             Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.onDecoration;
 
 
-            DebugLogs.WriteInLogs("Generating " + cX + " : " + cY + " ...", LogType.Info);
+            DebugLogs.WriteInLogs("Generating " + cX + ":" + cY + "...", LogType.Info);
 
             for (int tX = 0; tX <= 15; tX++)
             {

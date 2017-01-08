@@ -22,10 +22,7 @@ namespace Maker.RiseEngine.Core.Plugin
             LoadedPlugins = new List<string>();
             OnIntializationPlugin = new List<string>();
 
-            // Load plugins.
-            var pl = LoadPluginFrom(pluginPath);
-
-            foreach (var p in pl) {
+            foreach (PluginType p in LoadPluginFrom(pluginPath)) {
 
                 Plugins.Add(p.Name, p);
 
@@ -64,6 +61,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
             foreach (var plug in Plugins) {
 
+                DebugLogs.WriteInLogs("Initializing " + plug.Key, EngineDebug.LogType.Info, "Engine");
                 Include(this,plug.Key);
 
             }
@@ -80,13 +78,14 @@ namespace Maker.RiseEngine.Core.Plugin
                 foreach (var dir in Directory.GetDirectories(Path))
                 {
 
-                    string metaFilePath = dir + "plugin.risemeta";
+                    string metaFilePath = dir + "\\plugin.risemeta";
 
                     if (File.Exists(metaFilePath))
                     {
 
                         // Load meta file.
                         DataSheet riseMetaData = new DataSheet(metaFilePath);
+                        riseMetaData.Load();
 
                         // Getting metaData.
                         string plugin_Name = riseMetaData.GetData("Name");
@@ -98,7 +97,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
                             if (plugin_NeedBuild == "true" || plugin_NeedBuild == "false") {
 
-                                string assemblie_path = dir + plugin_Path;
+                                string assemblie_path = dir + '\\' + plugin_Path;
 
                                 if (File.Exists(assemblie_path))
                                 {
@@ -107,11 +106,11 @@ namespace Maker.RiseEngine.Core.Plugin
                                     if (plugin_NeedBuild == "true") {
 
                                         DebugLogs.WriteInLogs("Building plugin..." + metaFilePath, LogType.Info, GetType().Name);
-                                        BuildOutput buildout = Builder.Build(assemblie_path, dir + "plugin_build.dll");
+                                        BuildOutput buildout = Builder.Build(assemblie_path, dir + "\\plugin_build.dll");
 
                                         if (buildout.Sucess) {
 
-                                            assemblie_path = dir + "plugin_build.dll";
+                                            assemblie_path = dir + "\\plugin_build.dll";
 
                                         }
 
@@ -120,8 +119,10 @@ namespace Maker.RiseEngine.Core.Plugin
                                     if (File.Exists(assemblie_path))
                                     {
 
-                                        Assembly pluginAsm = Assembly.LoadFile(assemblie_path);
+                                        Assembly pluginAsm = Assembly.LoadFrom(Environment.CurrentDirectory + '\\' + assemblie_path);
+                                        
                                         PluginList.AddRange(LoadAssembly(pluginAsm));
+                                        
 
                                     }
                                     else {
