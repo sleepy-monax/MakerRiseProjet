@@ -12,7 +12,7 @@ namespace Maker.RiseEngine.Core.Plugin
 {
     public class PluginLoader<PluginType> where PluginType : IPlugin
     {
-        Dictionary<string, PluginType> Plugins;
+        public Dictionary<string, PluginType> Plugins;
         List<string> LoadedPlugins;
         List<string> OnIntializationPlugin;
 

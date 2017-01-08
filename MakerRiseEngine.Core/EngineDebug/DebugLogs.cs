@@ -5,7 +5,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
     public static class DebugLogs
     {
 
-        static string LasteDebugText = "";
+        static string LastDebugText = "";
 
         /// <summary>
         /// Write something in application logs.
@@ -50,7 +50,8 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 Console.WriteLine(t);
 
                 //writing in logs file.
-                LasteDebugText = $"{LasteDebugText}{t}{Environment.NewLine}";
+                LastDebugText = $"{LastDebugText}{t}{Environment.NewLine}";
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
     }

@@ -43,9 +43,8 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
 
                 PluginLoader<IPlugin> p = new PluginLoader<IPlugin>("Data");
                 p.initializePlugin();
-                
-
-                //GameObjectsManager.LoadPlugins();
+                Engine.Plugins = p.Plugins;
+               
                 Thread.Sleep(200);
 
                 this.Message = "Looking for initialization error...";
@@ -54,7 +53,6 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
                 Message = "Starting game...";
                 Engine.IsLoaded = true;
 
-                // TODO : MainScene of the game.
                 RiseEngine.sceneManager.RemoveScene(this);
             });
             Thread t = new Thread(GenHandle);

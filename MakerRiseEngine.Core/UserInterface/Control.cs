@@ -56,6 +56,7 @@ namespace Maker.RiseEngine.Core.UserInterface
         public Color TextColor { get; set; } = Color.White;
         public SpriteFont TextFont = ContentEngine.SpriteFont("Engine", "segoeUI_16pt");
         public ControlPadding Padding { get; set; } = new ControlPadding();
+        public ControlPadding ChildMargin { get; set; } = new ControlPadding();
 
         public Control ParrentControl = null;
 
@@ -205,25 +206,25 @@ namespace Maker.RiseEngine.Core.UserInterface
                             case Dock.Top:
 
                                 c.ControlRectangle = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, c.ControlRectangle.Height));
-                                childControlHost = new Rectangle(new Point(childControlHost.Location.X, childControlHost.Location.Y + c.ControlRectangle.Height), new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
+                                childControlHost = new Rectangle(new Point(childControlHost.Location.X, childControlHost.Location.Y + c.ControlRectangle.Height + ChildMargin.Up), new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height - ChildMargin.Up));
 
                                 break;
                             case Dock.Bottom:
 
-                                c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height, childControlHost.Width, c.ControlRectangle.Height);
-                                childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height));
+                                c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height , childControlHost.Width, c.ControlRectangle.Height);
+                                childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height - ChildMargin.Down));
 
                                 break;
                             case Dock.Left:
 
                                 c.ControlRectangle = new Rectangle(childControlHost.X, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
-                                childControlHost = new Rectangle(childControlHost.X + c.ControlRectangle.Width, childControlHost.Y, childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height);
+                                childControlHost = new Rectangle(childControlHost.X + c.ControlRectangle.Width + ChildMargin.Left, childControlHost.Y, childControlHost.Width - c.ControlRectangle.Width - ChildMargin.Left, childControlHost.Height);
 
                                 break;
                             case Dock.Right:
 
                                 c.ControlRectangle = new Rectangle(childControlHost.X + childControlHost.Width - c.ControlRectangle.Width, childControlHost.Y, c.ControlRectangle.Width, childControlHost.Height);
-                                childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width - c.ControlRectangle.Width, childControlHost.Height));
+                                childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width - c.ControlRectangle.Width - ChildMargin.Right, childControlHost.Height));
 
                                 break;
                             case Dock.Fill:

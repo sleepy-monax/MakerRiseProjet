@@ -46,6 +46,7 @@ namespace Maker.twiyol.Scenes.Menu
             panelMainMenu = new Panel(new Rectangle(-256, -112, 512, 224), new Color(new Vector4(0f)));
             panelMainMenu.ControlAnchor = Anchor.Center;
             panelMainMenu.Padding = new ControlPadding(16);
+            panelMainMenu.ChildMargin = new ControlPadding(16);
 
             // Create button.
             buttonPlayLastGame = new Button("Reprendre", new Rectangle(0, 0, 480, 64), Color.White);
@@ -115,10 +116,10 @@ namespace Maker.twiyol.Scenes.Menu
 
         private void ButtonQuitte_onMouseClick()
         {
-
+            Engine.STOP();
         }
 
-        // Scene event handling.
+
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 

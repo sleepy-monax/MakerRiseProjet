@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameEventHandler.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,7 +53,7 @@
     <ProjectReference Include="..\Maker.twiyol\Maker.twiyol.csproj">
       <Project>{409b76cf-7d0c-4d67-9e90-840ee45f3c84}</Project>
       <Name>Maker.twiyol</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj">
       <Project>{0b1ae74f-0e04-4402-9c99-d03175c9aa03}</Project>

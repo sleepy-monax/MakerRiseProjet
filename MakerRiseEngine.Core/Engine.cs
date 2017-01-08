@@ -1,7 +1,9 @@
 ﻿using Maker.RiseEngine.Core.Config;
+using Maker.RiseEngine.Core.Plugin;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -10,6 +12,7 @@ namespace Maker.RiseEngine.Core
     public static class Engine
     {
 
+        public static Dictionary<string, IPlugin> Plugins;
         public static GraphicsDeviceManager graphics;
         public static RiseEngine MainGame;
         public static GraphicsDevice GraphicsDevice;
