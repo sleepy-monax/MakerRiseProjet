@@ -1,1 +1,1 @@
-gource
+gource --hide filenames,bloom --disable-auto-rotate --title MakerRiseProject --file-extensions --key

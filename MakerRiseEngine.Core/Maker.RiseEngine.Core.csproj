@@ -88,6 +88,7 @@
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\PluginLoader.cs" />
     <Compile Include="Rendering\Parallax.cs" />
+    <Compile Include="Rendering\RichTextDraw.cs" />
     <Compile Include="Rendering\SpriteFontDraw.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
@@ -100,6 +101,12 @@
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
+    <Compile Include="Storage\MarkdownParser\DataStructure\mdDocuments.cs" />
+    <Compile Include="Storage\MarkdownParser\DataStructure\mdLine.cs" />
+    <Compile Include="Storage\MarkdownParser\DataStructure\mdParagraph.cs" />
+    <Compile Include="Storage\MarkdownParser\DataStructure\mdSyntaxe.cs" />
+    <Compile Include="Storage\MarkdownParser\DataStructure\mdWord.cs" />
+    <Compile Include="Storage\MarkdownParser\mdParser.cs" />
     <Compile Include="Storage\SerializationHelper.cs" />
     <Compile Include="MakerRiseMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="UserInterface\Controls\Label.cs" />
     <Compile Include="UserInterface\Controls\Panel.cs" />
     <Compile Include="UserInterface\Controls\PictureBox.cs" />
+    <Compile Include="UserInterface\Controls\RichLabel.cs" />
     <Compile Include="UserInterface\Controls\TextBox.cs" />
   </ItemGroup>
   <ItemGroup>
