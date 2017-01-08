@@ -13,7 +13,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
         /// <param name="_Text">Text to write in logs.</param>
         /// <param name="_Type">Style of the text.</param>
         /// <param name="_SenderName">Name of the sender modules.</param>
-        public static void WriteInLogs(string _Text, LogType _Type = LogType.Info, string _SenderName = "Debug")
+        public static void WriteLog(string _Text, LogType _Type = LogType.Info, string _SenderName = "Debug")
         {
             if (Engine.engineConfig.Debug_EnableLogs)
             {
@@ -24,27 +24,27 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 {
                     case LogType.Error:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        LogTypeText = "Error";
+                        LogTypeText = "E!";
                         break;
 
                     case LogType.Info:
                         Console.ForegroundColor = ConsoleColor.White;
-                        LogTypeText = "Info";
+                        LogTypeText = "I:";
                         break;
 
                     case LogType.Warning:
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        LogTypeText = "Warning";
+                        LogTypeText = "W?";
                         break;
 
                     default:
                         Console.ForegroundColor = ConsoleColor.White;
-                        LogTypeText = "Info";
+                        LogTypeText = "I:";
                         break;
                 }
 
                 //formating text.
-                string t = $"{_SenderName} {LogTypeText} {_Text}";
+                string t = $"{LogTypeText} {_SenderName} {_Text}";
 
                 //write in console.
                 Console.WriteLine(t);

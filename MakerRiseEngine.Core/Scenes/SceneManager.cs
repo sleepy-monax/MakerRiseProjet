@@ -28,7 +28,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
         public void AddScene(Scene scene)
         {
-            EngineDebug.DebugLogs.WriteInLogs($"Switching to {scene.GetType().Name}", EngineDebug.LogType.Info, nameof(SceneManager));
+            EngineDebug.DebugLogs.WriteLog($"Switching to {scene.GetType().Name}", EngineDebug.LogType.Info, nameof(SceneManager));
             try
             {
                 scene.RiseEngine = Game;
@@ -36,7 +36,7 @@ namespace Maker.RiseEngine.Core.Scenes
             }
             catch (Exception ex)
             {
-                EngineDebug.DebugLogs.WriteInLogs($"Error append during scene loading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
+                EngineDebug.DebugLogs.WriteLog($"Error append during scene loading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
             }
 
             ScenesToAdd.Add(scene);
@@ -51,7 +51,7 @@ namespace Maker.RiseEngine.Core.Scenes
             }
             catch (Exception ex)
             {
-                EngineDebug.DebugLogs.WriteInLogs($"Error append during scene unloading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
+                EngineDebug.DebugLogs.WriteLog($"Error append during scene unloading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
 
                 throw;
             }

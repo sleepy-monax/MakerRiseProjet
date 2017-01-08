@@ -73,7 +73,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
                     else
                     {
 
-                        EngineDebug.DebugLogs.WriteInLogs("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), EngineDebug.LogType.Warning, "SpriteSheetParse");
+                        EngineDebug.DebugLogs.WriteLog("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), EngineDebug.LogType.Warning, "SpriteSheetParse");
 
                     }
 
@@ -119,7 +119,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
                     else
                     {
 
-                        EngineDebug.DebugLogs.WriteInLogs("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), EngineDebug.LogType.Warning, "SpriteSheetParse ");
+                        EngineDebug.DebugLogs.WriteLog("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), EngineDebug.LogType.Warning, "SpriteSheetParse ");
 
                     }
 
@@ -160,7 +160,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
             }
             else
             {
-                EngineDebug.DebugLogs.WriteInLogs("Missing Sprite '" + _SpriteName + "'", EngineDebug.LogType.Warning, "SpriteSheetParse");
+                EngineDebug.DebugLogs.WriteLog("Missing Sprite '" + _SpriteName + "'", EngineDebug.LogType.Warning, "SpriteSheetParse");
                 return null;
             }
 

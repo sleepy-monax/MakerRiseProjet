@@ -6,7 +6,7 @@ using System;
 
 namespace Maker.RiseEngine.Core.EngineDebug
 {
-    class DebugScreen : IDrawable
+    class debugScreen : IDrawable
     {
         double FPS;
         SpriteFont NormalFont = ContentEngine.SpriteFont("Engine", "segoeUI_16pt");

@@ -28,11 +28,6 @@ namespace Maker.RiseEngine.DefaultPlugin
             }
         }
 
-        public void Initialize()
-        {
-
-        }
-
         public void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader) where PluginType : IPlugin
         {
             pluginLoader.Include(this, "TWIYOL");

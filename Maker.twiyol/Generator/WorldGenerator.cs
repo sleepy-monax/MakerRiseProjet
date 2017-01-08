@@ -45,7 +45,7 @@ namespace Maker.twiyol.Generator
             int[,] regionGrid = new int[maxWorldSize, maxWorldSize];
 
             // Adding randome Region
-            DebugLogs.WriteInLogs("Creating Random Point...", LogType.Info, "WorldGenerator");
+            DebugLogs.WriteLog("Creating Random Point...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation des régions...";
             Thread.Sleep(500);
 
@@ -65,7 +65,7 @@ namespace Maker.twiyol.Generator
             }
 
             //expanding Region
-            DebugLogs.WriteInLogs("Expending Region...", LogType.Info, "WorldGenerator");
+            DebugLogs.WriteLog("Expending Region...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Expansion des regions...";
             Thread.Sleep(500);
 
@@ -111,7 +111,7 @@ namespace Maker.twiyol.Generator
             sceneGen.Progress = 100;
 
             // Set loading message.
-            DebugLogs.WriteInLogs("Converting Chunk... ", LogType.Info, "WorldGenerator");
+            DebugLogs.WriteLog("Converting Chunk... ", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation du Terrain...";
             Thread.Sleep(500);
 
@@ -148,7 +148,7 @@ namespace Maker.twiyol.Generator
             //}
 
             stopwatch.Stop();
-            DebugLogs.WriteInLogs("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
+            DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
 
             game.sceneManager.RemoveScene(sceneGen);
 

@@ -16,7 +16,7 @@ namespace Maker.RiseEngine.Core
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        DebugScreen DbgScr;
+        debugScreen DbgScr;
 
 
         public Scenes.SceneManager sceneManager;
@@ -45,7 +45,7 @@ namespace Maker.RiseEngine.Core
 
         protected override void Initialize()
         {
-            DebugLogs.WriteInLogs("Initializing 'Rise!Engine'", LogType.Info, "Core");
+            DebugLogs.WriteLog("Initializing 'Rise!Engine'", LogType.Info, "Core");
 
             // Set windows from property.
             Window.Title = "Rise : Le monde est votre seule limite";
@@ -68,7 +68,7 @@ namespace Maker.RiseEngine.Core
 
         protected override void LoadContent()
         {
-            DebugLogs.WriteInLogs("LoadContent...", LogType.Info, "Core");
+            DebugLogs.WriteLog("LoadContent...", LogType.Info, "Core");
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -76,7 +76,7 @@ namespace Maker.RiseEngine.Core
             ContentEngine.Content = Content;
             Rendering.SpriteSheets.CommonSheets.Load();
 
-            DbgScr = new DebugScreen();
+            DbgScr = new debugScreen();
 
             // Show the loading scene.
             sceneManager.AddScene(new Scenes.Scenes.EngineLoading());

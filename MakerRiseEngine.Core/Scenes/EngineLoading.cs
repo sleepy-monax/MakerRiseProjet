@@ -23,7 +23,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
             show();
             ThreadStart GenHandle = new ThreadStart(delegate
             {
-                EngineDebug.DebugLogs.WriteInLogs("Initializing...", EngineDebug.LogType.Info, "Engine");
+                EngineDebug.DebugLogs.WriteLog("Initializing...", EngineDebug.LogType.Info, "Engine");
 
                 Message = "Loading config...";
 

@@ -10,7 +10,7 @@ namespace Maker.RiseEngine.Core.Storage.MarkdownParser
     public static class mdParser
     {
 
-        public mdDocuments ParseString(string s) {
+        public static mdDocuments ParseString(string s) {
             mdDocuments doc = new mdDocuments();
 
 

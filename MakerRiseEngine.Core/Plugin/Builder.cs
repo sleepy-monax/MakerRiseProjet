@@ -73,25 +73,25 @@ namespace Maker.RiseEngine.Core.Plugin
                 if (result.Errors.Count == 0)
                 {
                     //compilation sucess do nothing.
-                    EngineDebug.DebugLogs.WriteInLogs("Compilation success! '" + OutputPath + "'", EngineDebug.LogType.Info, "Plugin.Builder");
+                    EngineDebug.DebugLogs.WriteLog("Compilation success! '" + OutputPath + "'", EngineDebug.LogType.Info, "Plugin.Builder");
                     return new BuildOutput(true, result);
                 }
                 else
                 {
                     //Compilation failled. Catch and trow error to the user.
-                    EngineDebug.DebugLogs.WriteInLogs("Compilation failled! '" + OutputPath + "' with (" + result.Errors.Count + " ERROR!)", EngineDebug.LogType.Error, "Plugin.Builder");
+                    EngineDebug.DebugLogs.WriteLog("Compilation failled! '" + OutputPath + "' with (" + result.Errors.Count + " ERROR!)", EngineDebug.LogType.Error, "Plugin.Builder");
 
                     foreach (CompilerError Error in result.Errors)
                     {
                         if (Error.IsWarning)
                         {
 
-                            EngineDebug.DebugLogs.WriteInLogs("   Ln" + Error.Line + " '" + Error.ErrorText + "'", EngineDebug.LogType.Warning, "Plugin.Builder");
+                            EngineDebug.DebugLogs.WriteLog("   Ln" + Error.Line + " '" + Error.ErrorText + "'", EngineDebug.LogType.Warning, "Plugin.Builder");
                         }
                         else
                         {
 
-                            EngineDebug.DebugLogs.WriteInLogs("    Ln" + Error.Line + " '" + Error.ErrorText + "'", EngineDebug.LogType.Error, "Plugin.Builder");
+                            EngineDebug.DebugLogs.WriteLog("    Ln" + Error.Line + " '" + Error.ErrorText + "'", EngineDebug.LogType.Error, "Plugin.Builder");
                         }
 
 
@@ -104,8 +104,8 @@ namespace Maker.RiseEngine.Core.Plugin
             {
 
                 //Catch exeption, write in logs.
-                EngineDebug.DebugLogs.WriteInLogs("Compilation failled!", EngineDebug.LogType.Error, "Plugin.Builder");
-                EngineDebug.DebugLogs.WriteInLogs(ex.ToString(), EngineDebug.LogType.Info, "Plugin.Builder");
+                EngineDebug.DebugLogs.WriteLog("Compilation failled!", EngineDebug.LogType.Error, "Plugin.Builder");
+                EngineDebug.DebugLogs.WriteLog(ex.ToString(), EngineDebug.LogType.Info, "Plugin.Builder");
 
                 return new BuildOutput(false, null);
             }

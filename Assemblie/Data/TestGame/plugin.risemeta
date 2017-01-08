@@ -1,3 +1,2 @@
-﻿Name:TestPlugin;
-NeedBuild:false;
+﻿NeedBuild:false;
 Path:Maker.TestGame.dll;

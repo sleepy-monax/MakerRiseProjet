@@ -1,4 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.EngineDebug;
 using System;
 using System.Windows.Forms;
 
@@ -22,8 +23,8 @@ namespace Maker.RiseEngine.Windows
             Console.WriteLine("Number of logical processors: {0}", Environment.ProcessorCount);
 
 
-
-
+            debugTerminal t = new debugTerminal();
+            t.start();
             using (var game = new Core.RiseEngine())
             {
 

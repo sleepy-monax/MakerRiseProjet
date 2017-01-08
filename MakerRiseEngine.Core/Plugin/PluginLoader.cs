@@ -37,13 +37,13 @@ namespace Maker.RiseEngine.Core.Plugin
             if (OnIntializationPlugin.Contains(pluginName))
             {
 
-                DebugLogs.WriteInLogs($"A circular dependency has been detected! {Parent.GetType().Name} refers to {pluginName} which makes itself reference to {Parent.GetType().Name}.");
+                DebugLogs.WriteLog($"A circular dependency has been detected! {Parent.GetType().Name} refers to {pluginName} which makes itself reference to {Parent.GetType().Name}.");
 
             }
             else {
 
                 if (!LoadedPlugins.Contains(pluginName)) {
-                    DebugLogs.WriteInLogs("Load pluging :" + plug.GetType().Name, LogType.Info, GetType().Name);
+                    DebugLogs.WriteLog("Load pluging :" + plug.GetType().Name, LogType.Info, GetType().Name);
                     OnIntializationPlugin.Add(pluginName);
                     plug.Initialize(this);
                     OnIntializationPlugin.Remove(pluginName);
@@ -61,7 +61,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
             foreach (var plug in Plugins) {
 
-                DebugLogs.WriteInLogs("Initializing " + plug.Key, EngineDebug.LogType.Info, "Engine");
+                DebugLogs.WriteLog("Initializing " + plug.Key, EngineDebug.LogType.Info, "Engine");
                 Include(this,plug.Key);
 
             }
@@ -88,11 +88,10 @@ namespace Maker.RiseEngine.Core.Plugin
                         riseMetaData.Load();
 
                         // Getting metaData.
-                        string plugin_Name = riseMetaData.GetData("Name");
                         string plugin_NeedBuild = riseMetaData.GetData("NeedBuild");
                         string plugin_Path = riseMetaData.GetData("Path");
 
-                        if (plugin_Name != "null" && plugin_NeedBuild != "null" && plugin_Path != "null")
+                        if (plugin_NeedBuild != "null" && plugin_Path != "null")
                         {
 
                             if (plugin_NeedBuild == "true" || plugin_NeedBuild == "false") {
@@ -105,7 +104,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
                                     if (plugin_NeedBuild == "true") {
 
-                                        DebugLogs.WriteInLogs("Building plugin..." + metaFilePath, LogType.Info, GetType().Name);
+                                        DebugLogs.WriteLog("Building plugin..." + metaFilePath, LogType.Info, GetType().Name);
                                         BuildOutput buildout = Builder.Build(assemblie_path, dir + "\\plugin_build.dll");
 
                                         if (buildout.Sucess) {
@@ -127,7 +126,7 @@ namespace Maker.RiseEngine.Core.Plugin
                                     }
                                     else {
 
-                                        DebugLogs.WriteInLogs("Plugin assembly not found !", LogType.Warning, GetType().Name);
+                                        DebugLogs.WriteLog("Plugin assembly not found !", LogType.Warning, GetType().Name);
 
                                     }
 
@@ -136,7 +135,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
                             } else {
 
-                                DebugLogs.WriteInLogs("Invalide value for 'NeedBuild' in " + metaFilePath , LogType.Warning, GetType().Name);
+                                DebugLogs.WriteLog("Invalide value for 'NeedBuild' in " + metaFilePath , LogType.Warning, GetType().Name);
 
                             }
 
@@ -144,14 +143,14 @@ namespace Maker.RiseEngine.Core.Plugin
                         else
                         {
 
-                            DebugLogs.WriteInLogs("Invalide Plugin metadata : " + metaFilePath, LogType.Warning, GetType().Name);
+                            DebugLogs.WriteLog("Invalide Plugin metadata : " + metaFilePath, LogType.Warning, GetType().Name);
 
                         }
 
                     }
                     else {
 
-                        DebugLogs.WriteInLogs("No plugin metadata found : " + dir, LogType.Warning, GetType().Name);
+                        DebugLogs.WriteLog("No plugin metadata found : " + dir, LogType.Warning, GetType().Name);
 
                     }
 
@@ -167,7 +166,7 @@ namespace Maker.RiseEngine.Core.Plugin
         }
         private List<PluginType> LoadAssembly(Assembly assembly)
         {
-            DebugLogs.WriteInLogs("load \'" + assembly.FullName + "\'", LogType.Info, GetType().Name);
+            DebugLogs.WriteLog("load \'" + assembly.FullName + "\'", LogType.Info, GetType().Name);
 
             Type pluginType = typeof(PluginType);
             List<Type> pluginTypes = new List<Type>();

@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17008.1148.999</AssemblyVersion>
+    <AssemblyVersion>0.17008.1645.1007</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -61,7 +61,8 @@
     <Compile Include="Content\ContentEngine.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Config\EngineConfig.cs" />
-    <Compile Include="EngineDebug\DebugScreen.cs" />
+    <Compile Include="EngineDebug\debugScreen.cs" />
+    <Compile Include="EngineDebug\debugTerminal.cs" />
     <Compile Include="GameObject\GameObjectManager.cs" />
     <Compile Include="GameObject\IDrawableGameObject.cs" />
     <Compile Include="GameObject\IGameObject.cs" />
