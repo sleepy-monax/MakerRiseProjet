@@ -9,7 +9,7 @@ namespace Maker.twiyol.AI.Action
 {
     public class Move : IAction
     {
-        public string gameObjectName
+        public string GameObjectName
         {
             get;
             set;

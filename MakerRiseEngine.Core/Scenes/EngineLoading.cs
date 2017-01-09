@@ -32,24 +32,12 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
                     Engine.engineConfig = SerializationHelper.LoadFromBin<EngineConfig>("Data\\config.bin");
                 else
                     SerializationHelper.SaveToBin(Engine.engineConfig, "Data\\config.bin");
-
-                // Apply config
-
-
-
-                Thread.Sleep(200);
-
                 this.Message = "Loading Plugins...";
 
                 PluginLoader<IPlugin> p = new PluginLoader<IPlugin>("Data");
                 p.initializePlugin();
                 Engine.Plugins = p.Plugins;
-               
-                Thread.Sleep(200);
-
-                this.Message = "Looking for initialization error...";
-
-                Thread.Sleep(200);
+  
                 Message = "Starting game...";
                 Engine.IsLoaded = true;
 

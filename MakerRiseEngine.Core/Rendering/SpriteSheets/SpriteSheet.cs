@@ -14,7 +14,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
         public Texture2D SpriteSheetTexture2D;
         public Point SpriteSize;
 
-        public string gameObjectName{get;set;}
+        public string GameObjectName { get; set; }
 
         public string pluginName
         {
@@ -36,38 +36,38 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
         {
 
             //Creating and read the tilemap file.
-            System.IO.StreamReader srMap = new System.IO.StreamReader("Data\\" + PluginName + "\\SpriteSheet\\" + _TileMapName + ".rise");
-            string SheetMapString = srMap.ReadToEnd().ToDosLineEnd().Replace(System.Environment.NewLine, "");
-            srMap.Close();
+            System.IO.StreamReader spriteMapFile = new System.IO.StreamReader("Data\\" + PluginName + "\\SpriteSheet\\" + _TileMapName + ".rise");
+            string SheetMapString = spriteMapFile.ReadToEnd().ToDosLineEnd().Replace(System.Environment.NewLine, "");
+            spriteMapFile.Close();
 
             // Create new instance of TilesColection.
             SpriteColection = new Dictionary<string, TilesheetColectionItem>();
 
-            string[] Lines = SheetMapString.Split(';');
-            for (int i = 0; i < Lines.Length; i++)
+            string[] fileLines = SheetMapString.Split(';');
+            for (int i = 0; i < fileLines.Length; i++)
             {
                 //animated Sprite
-                string[] str = Lines[i].Split(':');
+                string[] line = fileLines[i].Split(':');
 
-                if (Lines[i].StartsWith("@"))
+                if (fileLines[i].StartsWith("@"))
                 {
 
-                    if (str.Count() == 2)
+                    if (line.Count() == 2)
                     {
 
-                        string[] SubArgs = str[1].Split(',');
-                        string SpriteName = str[0];
-                        int SpriteCount = int.Parse(SubArgs[0]);
+                        string[] spriteDescription = line[1].Split(',');
+                        string spriteName = line[0];
+                        int SpriteCount = int.Parse(spriteDescription[0]);
                         string[] Sprites = new string[SpriteCount];
 
                         for (int s = 0; s < SpriteCount; s++)
                         {
 
-                            Sprites[s] = SpriteName.Remove(0, 1) + s;
+                            Sprites[s] = spriteName.Remove(0, 1) + s;
 
                         }
 
-                        SpriteColection.Add(SpriteName.Remove(0, 1), new TilesheetColectionItem(Sprites, (AnimationMode)int.Parse(SubArgs[2]), int.Parse(SubArgs[1])));
+                        SpriteColection.Add(spriteName.Remove(0, 1), new TilesheetColectionItem(Sprites, (AnimationMode)int.Parse(spriteDescription[2]), int.Parse(spriteDescription[1])));
 
                     }
                     else
@@ -78,37 +78,36 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
                     }
 
                 }
-                else if (Lines[i].StartsWith("//"))
+                else if (fileLines[i].StartsWith("//"))
                 {
-                    //Do Nothing 
-
+                    //Is comment line.
                 }
                 else
                 {
 
 
                     //Check for syntaxe.
-                    if (str.Count() == 3)
+                    if (line.Count() == 3)
                     {
 
-                        SpriteColection.Add(str[0], new TilesheetColectionItem(
+                        SpriteColection.Add(line[0], new TilesheetColectionItem(
                             //Tile Location
-                            int.Parse(str[1].Split(',')[0]),
-                            int.Parse(str[1].Split(',')[1]),
+                            int.Parse(line[1].Split(',')[0]),
+                            int.Parse(line[1].Split(',')[1]),
 
                             //Tile Size
-                            int.Parse(str[2].Split(',')[0]),
-                            int.Parse(str[2].Split(',')[1])
+                            int.Parse(line[2].Split(',')[0]),
+                            int.Parse(line[2].Split(',')[1])
                             ));
 
                     }
-                    else if (str.Count() == 2)
+                    else if (line.Count() == 2)
                     {
 
-                        SpriteColection.Add(str[0], new TilesheetColectionItem(
+                        SpriteColection.Add(line[0], new TilesheetColectionItem(
                             //Tile Location
-                            int.Parse(str[1].Split(',')[0]),
-                            int.Parse(str[1].Split(',')[1]),
+                            int.Parse(line[1].Split(',')[0]),
+                            int.Parse(line[1].Split(',')[1]),
 
                             //Tile Size
                             1,
@@ -130,37 +129,37 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 
         }
 
-        public Sprite GetSprite(string _SpriteName)
+        public Sprite GetSprite(string spriteName)
         {
-            if (SpriteColection.ContainsKey(_SpriteName))
+            if (SpriteColection.ContainsKey(spriteName))
             {
-                TilesheetColectionItem sI = SpriteColection[_SpriteName];
+                TilesheetColectionItem tileSheetColectionItem = SpriteColection[spriteName];
 
-                if (sI.Animated == true)
+                if (tileSheetColectionItem.Animated == true)
                 {
 
-                    TilesheetColectionItem[] Frames = new TilesheetColectionItem[sI.Frames.Count()];
+                    TilesheetColectionItem[] animationFrames = new TilesheetColectionItem[tileSheetColectionItem.Frames.Count()];
 
-                    for (int I = 0; I < sI.Frames.Length; I++)
+                    for (int I = 0; I < tileSheetColectionItem.Frames.Length; I++)
                     {
 
-                        Frames[I] = SpriteColection[sI.Frames[I]];
+                        animationFrames[I] = SpriteColection[tileSheetColectionItem.Frames[I]];
 
                     }
 
-                    return new Sprite(this, sI, Frames);
+                    return new Sprite(this, tileSheetColectionItem, animationFrames);
 
                 }
                 else
                 {
-                    return new Sprite(this, sI);
+                    return new Sprite(this, tileSheetColectionItem);
                 }
 
 
             }
             else
             {
-                EngineDebug.DebugLogs.WriteLog("Missing Sprite '" + _SpriteName + "'", EngineDebug.LogType.Warning, "SpriteSheetParse");
+                EngineDebug.DebugLogs.WriteLog($"Missing Sprite '{spriteName}'", EngineDebug.LogType.Warning, "SpriteSheetParse");
                 return null;
             }
 

@@ -6,9 +6,8 @@ namespace Maker.RiseEngine.Core.MathExt
 {
     public class RandomHelper
     {
-        public static string RandomString(int length)
+        public static string RandomString(int length, string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
@@ -34,7 +33,7 @@ namespace Maker.RiseEngine.Core.MathExt
             {
                 // need to use 64-bit to support big ranges (negative min, positive max)
                 throw new ArgumentOutOfRangeException("Range " + min + " to " + max +
-                        " (" + ((Int64)max - (Int64)min) + " values), or count " + count + " is illegal");
+                        " (" + ((int)max - (int)min) + " values), or count " + count + " is illegal");
             }
 
             // generate count random values.

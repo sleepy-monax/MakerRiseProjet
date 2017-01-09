@@ -2,7 +2,7 @@
 {
     public interface IGameObject
     {
-        string gameObjectName { get; set; }
+        string GameObjectName { get; set; }
         string pluginName { get; set; }
 
         void OnGameObjectAdded();

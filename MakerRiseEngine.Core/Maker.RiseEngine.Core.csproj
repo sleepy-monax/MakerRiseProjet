@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17008.2222.1029</AssemblyVersion>
+    <AssemblyVersion>0.17009.1457.1033</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -72,6 +72,7 @@
     <Compile Include="MathExt\KeyWeightPair.cs" />
     <Compile Include="MathExt\MinMax.cs" />
     <Compile Include="MathExt\Noise\Perlin.cs" />
+    <Compile Include="MathExt\Noise\PerlinOctave.cs" />
     <Compile Include="MathExt\Noise\Simplex.cs" />
     <Compile Include="MathExt\RandomHelper.cs" />
     <Compile Include="IDrawable.cs" />

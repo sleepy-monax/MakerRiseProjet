@@ -12,7 +12,7 @@ namespace Maker.twiyol.GameObject.Tiles
 {
     public class Tile : ITile
     {
-        public string gameObjectName { get; set; }
+        public string GameObjectName { get; set; }
         public string pluginName { get; set; }
 
 

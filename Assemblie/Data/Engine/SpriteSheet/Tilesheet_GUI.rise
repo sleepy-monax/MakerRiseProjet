@@ -1,7 +1,9 @@
+//Gui box Host;
 BoxUL:0,0:1,1;
 BoxDL:0,2:1,1;
 BoxTUL:0,6:1,1;
 BoxTUC:1,6:1,1;
+
 BoxTUR:2,6:1,1;
 BoxUR:2,0:1,1;
 BoxDR:2,2:1,1;
@@ -13,32 +15,17 @@ BoxMR:2,1:1,1;
 
 BoxC:1,1:1,1;
 
+//Button;
 ButL:3,0:1,1;
 ButM:4,0:1,1;
 ButR:5,0:1,1;
 
-ButLD:3,4:1,1;
-ButMD:4,4:1,1;
-ButRD:5,4:1,1;
+//Button down;
+ButLD:3,2:1,1;
+ButMD:4,2:1,1;
+ButRD:5,2:1,1;
 
+//TextBox;
 TxtL:3,1:1,1;
 TxtM:4,1:1,1;
 TxtR:5,1:1,1;
-
-SldL:3,2:1,1;
-SldM:4,2:1,1;
-
-SldOrb:5,2:1,1;
-
-SldBL:3,3:1,1;
-SldBM:4,3:1,1;
-SldBR:5,3:1,1;
-
-Slot:6,1:1,1;
-
-CheckV:6,0:1,1;
-CheckB:7,0:1,1;
-
-Cursor:7,1:1,1;
-
-MiniMap:0,3:3,3;

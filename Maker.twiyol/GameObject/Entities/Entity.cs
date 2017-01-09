@@ -13,7 +13,7 @@ namespace Maker.twiyol.GameObject.Entities
     public class Entity : IEntity
     {
 
-        public string gameObjectName { get; set; }
+        public string GameObjectName { get; set; }
         public string pluginName { get; set; }
 
         //Drawing Property

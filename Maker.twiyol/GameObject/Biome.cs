@@ -7,7 +7,7 @@ namespace Maker.twiyol.GameObject
 {
     public class Biome : IGameObject
     {
-        public string gameObjectName { get; set; }
+        public string GameObjectName { get; set; }
         public string pluginName { get; set; }
 
         public KeyWeightPair<int>[] RandomEntity;
@@ -29,7 +29,7 @@ namespace Maker.twiyol.GameObject
 
         public void OnGameObjectAdded()
         {
-            Biomes.Add(pluginName + '.' + gameObjectName);
+            Biomes.Add(pluginName + '.' + GameObjectName);
         }
     }
 }
