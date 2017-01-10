@@ -101,7 +101,7 @@ namespace Maker.RiseEngine.DefaultPlugin
             this.AddGameObject("Desert", new Biome(0.1, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Cactus"), 0.75f), new KeyWeightPair<int>(this.GetGameObjectIndex("TaleCactus"), 0.25f) }, new KeyWeightPair<int>[] { new KeyWeightPair<int>(this.GetGameObjectIndex("Sand"), 1) }));
 
             // Add event handle.
-            GameEventHandler.OnWorldGenerating += GameEventHandler_OnWorldGenerating;
+            GameEventHandler.OnWorldGeneratingEnd += GameEventHandler_OnWorldGenerating;
         }
 
         private void GameEventHandler_OnWorldGenerating(object sender, EventArgs e)
@@ -111,10 +111,9 @@ namespace Maker.RiseEngine.DefaultPlugin
             DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
             E.IsFocus = true;
 
-            w.World.EntityDataManager.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
-            w.World.EntityDataManager.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
-            w.World.Camera.FocusLocation = new WorldLocation(new Point(5, 5), new Point(5, 5)).ToPoint();
-            w.World.Camera.Update();
+            w.World.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
+            w.World.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));
+            w.World.Camera.FocusLocation = new WorldLocation(new Point(5, 5), new Point(5, 5));
         }
     }
 }

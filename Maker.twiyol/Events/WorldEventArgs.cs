@@ -1,4 +1,6 @@
 ﻿using Maker.twiyol.Game;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.Generator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,12 @@ namespace Maker.twiyol.Events
 {
     public class WorldEventArgs : EventArgs
     {
-        public GameScene World;
+        public DataWorld World;
+        public WorldGenerator WorldGenerator;
 
-        public WorldEventArgs(GameScene world) {
+        public WorldEventArgs(DataWorld world, WorldGenerator worldGenerator) {
             World = world;
+            WorldGenerator = worldGenerator;
         }
 
     }

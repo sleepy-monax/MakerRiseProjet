@@ -19,7 +19,7 @@ namespace Maker.twiyol.Game.GameUtils
 
             args.CurrentLocation = Location;
 
-            args.ParrentTile = G.chunkManager.GetTile(Location);
+            args.ParrentTile = G.World.GetTile(Location);
 
             if (args.ParrentTile.Entity == -1) {
 
@@ -27,11 +27,11 @@ namespace Maker.twiyol.Game.GameUtils
 
             } else {
 
-            args.ParrentEntity = G.chunkManager.GetEntity(Location);
+            args.ParrentEntity = G.World.GetEntity(Location);
 
             }
 
-            args.World = G;
+            args.Game = G;
             args.OnScreenLocation = _OnScreenLocation;
 
             return args;

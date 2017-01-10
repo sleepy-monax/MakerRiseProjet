@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4D2C3C25-14F7-4555-9692-331897F1F3CA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Maker.RiseEngine.Windows</RootNamespace>
     <AssemblyName>MakerRiseEngine.Windows</AssemblyName>

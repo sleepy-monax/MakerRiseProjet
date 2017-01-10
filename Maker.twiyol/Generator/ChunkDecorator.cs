@@ -1,6 +1,7 @@
 ﻿using Maker.RiseEngine.Core.EngineDebug;
 using Maker.RiseEngine.Core.GameObject;
 using Maker.RiseEngine.Core.MathExt;
+using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject;
 using System;
 
@@ -9,20 +10,41 @@ namespace Maker.twiyol.Generator
     public class ChunkDecorator
     {
 
-        Game.GameScene W;
-        Random Rnd;
-        public ChunkDecorator(Game.GameScene _World, Random _Rnd)
+        Game.GameScene G;
+        Random Random;
+        public ChunkDecorator(Game.GameScene game, Random random)
         {
 
-            W = _World;
-            Rnd = _Rnd;
+            G = game;
+            Random = random;
 
         }
 
-        public void Decorated(int cX, int cY, Game.WorldDataStruct.DataChunk Chunk)
+        public bool PrepareChunk( int x, int y)
         {
 
-            Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.onDecoration;
+            DataChunk chunk = G.World.chunks[x, y];
+
+            switch (chunk.chunkStatut)
+            {
+                case chunkStatutList.Done:
+                    return true;
+                case chunkStatutList.onDecoration:
+                    return false;
+                case chunkStatutList.needDecoration:
+                    Decorated(x, y, G.World.chunks[x, y]);
+                    return false;
+                default:
+                    break;
+            }
+
+            return false;
+        }
+
+        public void Decorated(int cX, int cY, DataChunk Chunk)
+        {
+
+            Chunk.chunkStatut = chunkStatutList.onDecoration;
 
 
             DebugLogs.WriteLog("Generating " + cX + ":" + cY + "...", LogType.Info);
@@ -35,18 +57,18 @@ namespace Maker.twiyol.Generator
                     if (Chunk.Tiles[tX, tY].ID == -1)
                     {
 
-                        Chunk.Tiles[tX, tY].ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Rnd);
-                        Chunk.Tiles[tX, tY].Variant = Rnd.Next(0, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
+                        Chunk.Tiles[tX, tY].ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Random);
+                        Chunk.Tiles[tX, tY].Variant = Random.Next(0, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 
-                        W.miniMap.MiniMapBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
+                        G.World.WorldBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
 
-                        if (Rnd.NextDouble() < GameObjectManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
+                        if (Random.NextDouble() < GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
                         {
 
-                            int ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(W.world.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Rnd);
-                            int Variant = Rnd.Next(0, GameObjectManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
+                            int ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Random);
+                            int Variant = Random.Next(0, GameObjectManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
 
-                            Chunk.AddEntity(new Game.WorldDataStruct.DataEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
+                            Chunk.AddEntity(new DataEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 
 
                         }
@@ -56,8 +78,8 @@ namespace Maker.twiyol.Generator
                 }
             }
 
-            Chunk.chunkStatut = Game.WorldDataStruct.chunkStatutList.Done;
-            W.miniMap.RefreshMiniMap();
+            Chunk.chunkStatut = chunkStatutList.Done;
+            G.miniMap.RefreshMiniMap();
         }
 
 

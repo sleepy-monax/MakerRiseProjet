@@ -25,7 +25,7 @@ namespace Maker.twiyol.Game.GameUtils
             {
                 for (int Ty = G.Camera.StartTile.Y; Ty <= G.Camera.EndTile.Y; Ty++)
                 {
-                    if (Tx >= 0 && Ty >= 0 && Tx < G.worldProperty.Size * 16 - 1 && Ty < G.worldProperty.Size * 16 - 1)
+                    if (Tx >= 0 && Ty >= 0 && Tx < G.World.Size * 16 - 1 && Ty < G.World.Size * 16 - 1)
                     {
 
 
@@ -35,13 +35,13 @@ namespace Maker.twiyol.Game.GameUtils
                             (Tx - G.Camera.StartTile.X) * G.Camera.Zoom + G.Camera.ScreenOrigine.X,
                             (Ty - G.Camera.StartTile.Y) * G.Camera.Zoom + G.Camera.ScreenOrigine.Y);
 
-                        if (G.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
+                        if (G.chunkDecorator.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
                         {
                             //recuperation des arguments
                             GameObject.Event.GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
                             //recuperation des objets
-                            WorldDataStruct.DataTile T = G.chunkManager.GetTile(CurrentLocation);
+                            WorldDataStruct.DataTile T = G.World.GetTile(CurrentLocation);
 
                             GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
                             GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, playerInput, gameTime);
@@ -49,7 +49,7 @@ namespace Maker.twiyol.Game.GameUtils
                             if (!(T.Entity == -1))
                             {
                                 //On recuper l'entitée
-                                WorldDataStruct.DataEntity E = G.chunkManager.GetEntity(CurrentLocation);
+                                WorldDataStruct.DataEntity E = G.World.GetEntity(CurrentLocation);
                                 E.Location = CurrentLocation.ToWorldLocation();
 
                                 GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);

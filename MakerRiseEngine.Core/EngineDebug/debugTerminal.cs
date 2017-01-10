@@ -18,10 +18,16 @@ namespace Maker.RiseEngine.Core.EngineDebug
             ThreadStart GenHandle = new ThreadStart(delegate
             {
 
+                DebugLogs.WriteLog("Debug thread stated !", LogType.Info, "DEBUG");
+
                 do
                 {
 
                     var text = Console.ReadLine();
+
+                    if (text == null) {
+                        break;
+                    }
 
                     switch (text.ToLower())
                     {
@@ -62,6 +68,26 @@ namespace Maker.RiseEngine.Core.EngineDebug
                             else {
 
                                 DebugLogs.WriteLog("No plugin named : " + pName, LogType.Error, "$");
+                            }
+                            break;
+
+                        case "content -list":
+
+                            foreach (var item in Content.ContentEngine.ColectionTexture2D)
+                            {
+                                DebugLogs.WriteLog("Tx2D: " + item.Key, LogType.Info, "$");
+                            }
+                            foreach (var item in Content.ContentEngine.ColectionFont)
+                            {
+                                DebugLogs.WriteLog("Font: " + item.Key, LogType.Info, "$");
+                            }
+                            foreach (var item in Content.ContentEngine.ColectionSong)
+                            {
+                                DebugLogs.WriteLog("Song: " + item.Key, LogType.Info, "$");
+                            }
+                            foreach (var item in Content.ContentEngine.ColectionSoundEffect)
+                            {
+                                DebugLogs.WriteLog("Sound Effect: " + item.Key, LogType.Info, "$");
                             }
                             break;
 

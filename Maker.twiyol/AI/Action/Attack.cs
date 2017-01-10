@@ -22,7 +22,7 @@ namespace Maker.twiyol.AI.Action
 
             Point CurrentLocation = e.CurrentLocation.ToPoint() + e.ParrentEntity.Facing.ToPoint();
 
-            if (!(e.World.EntityDataManager.IsEntityFree(CurrentLocation.ToWorldLocation())))
+            if (!(e.Game.World.IsEntityFree(CurrentLocation.ToWorldLocation())))
             {
 
                 e.ParrentEntity.ActionProgress += GameObjectManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
@@ -31,8 +31,8 @@ namespace Maker.twiyol.AI.Action
                 {
 
                     // Get entityies.
-                    DataEntity attackedEntity = e.World.chunkManager.GetEntity(CurrentLocation);
-                    GameObjectEventArgs attackedEntityEventsArgs = e.World.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
+                    DataEntity attackedEntity = e.Game.World.GetEntity(CurrentLocation);
+                    GameObjectEventArgs attackedEntityEventsArgs = e.Game.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
 
                     float defense = attackedEntityEventsArgs.ParrentEntity.ToGameObject().GetDefence(attackedEntityEventsArgs);
                     float damages = e.ParrentEntity.ToGameObject().GetDamage(e);

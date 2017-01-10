@@ -116,6 +116,7 @@ namespace Maker.twiyol.Scenes.Menu
 
         private void ButtonQuitte_onMouseClick()
         {
+            CurrentGame?.SaveWorld();
             Engine.STOP();
         }
 

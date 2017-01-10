@@ -10,7 +10,7 @@ namespace Maker.twiyol.GameObject.Event
         public Game.WorldDataStruct.DataTile ParrentTile;
 
         public WorldLocation CurrentLocation;
-        public Game.GameScene World;
+        public Game.GameScene Game;
 
         public Point OnScreenLocation;
 

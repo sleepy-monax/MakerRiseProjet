@@ -1,5 +1,6 @@
 ﻿using Maker.RiseEngine.Core.GameObject;
 using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -17,17 +18,17 @@ namespace Maker.twiyol.Generator
 
         }
 
-        public void GenerateRegion(int ID, WorldLocation Location, Game.GameScene newGame, Random rnd)
+        public void GenerateRegion(int ID, WorldLocation Location, DataWorld world, Random rnd)
         {
 
-            Game.WorldDataStruct.DataRegion NewRegion = new Game.WorldDataStruct.DataRegion();
+            DataRegion NewRegion = new DataRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
             NewRegion.BiomeID = GameObjectManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
             //NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
 
-            newGame.world.regions.Add(ID, NewRegion);
+            world.regions.Add(ID, NewRegion);
 
         }
 

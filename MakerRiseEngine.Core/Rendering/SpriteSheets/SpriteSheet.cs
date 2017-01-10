@@ -85,12 +85,12 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
                 else
                 {
 
-
                     //Check for syntaxe.
                     if (line.Count() == 3)
                     {
 
                         SpriteColection.Add(line[0], new TilesheetColectionItem(
+                 
                             //Tile Location
                             int.Parse(line[1].Split(',')[0]),
                             int.Parse(line[1].Split(',')[1]),
@@ -117,16 +117,10 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
                     }
                     else
                     {
-
                         EngineDebug.DebugLogs.WriteLog("Syntaxe error on '" + PluginName + "." + _TileMapName + "' Ln" + (i + 1), EngineDebug.LogType.Warning, "SpriteSheetParse ");
-
                     }
-
                 }
-
-
             }
-
         }
 
         public Sprite GetSprite(string spriteName)

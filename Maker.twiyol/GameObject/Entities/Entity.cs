@@ -1,6 +1,7 @@
 ﻿using Maker.RiseEngine.Core.GameObject;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
@@ -51,9 +52,9 @@ namespace Maker.twiyol.GameObject.Entities
         public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
             Variant[e.ParrentEntity.Variant].Draw(spritebatch, new Rectangle(
-                   e.OnScreenLocation.X + (int)(e.World.Camera.Zoom * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
-                   e.OnScreenLocation.Y + (int)(e.World.Camera.Zoom * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
-                   this.DrawBox.Width * e.World.Camera.Zoom, this.DrawBox.Height * e.World.Camera.Zoom), Color.White, gametime);
+                   e.OnScreenLocation.X + (int)(e.Game.Camera.Zoom * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
+                   e.OnScreenLocation.Y + (int)(e.Game.Camera.Zoom * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
+                   this.DrawBox.Width * e.Game.Camera.Zoom, this.DrawBox.Height * e.Game.Camera.Zoom), Color.White, gametime);
         }
 
         public virtual void OnTick(GameObjectEventArgs e, GameTime gametime)
@@ -100,7 +101,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         public void OnEntityKilled(GameObjectEventArgs e, DataEntity entityKills)
         {
-            e.World.EntityDataManager.RemoveEntityData(e.CurrentLocation);
+            e.Game.World.RemoveEntityData(e.CurrentLocation);
         }
     }
 }

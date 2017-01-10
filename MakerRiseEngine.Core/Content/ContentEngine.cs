@@ -16,10 +16,10 @@ namespace Maker.RiseEngine.Core.Content
 
         public static ContentManager Content;
 
-        static Dictionary<string, Texture2D> ColectionTexture2D = new Dictionary<string, Texture2D>();
-        static Dictionary<string, SoundEffect> ColectionSoundEffect = new Dictionary<string, SoundEffect>();
-        static Dictionary<string, Song> ColectionSong = new Dictionary<string, Song>();
-        static Dictionary<string, SpriteFont> ColectionFont = new Dictionary<string, SpriteFont>();
+        public static Dictionary<string, Texture2D> ColectionTexture2D = new Dictionary<string, Texture2D>();
+        public static Dictionary<string, SoundEffect> ColectionSoundEffect = new Dictionary<string, SoundEffect>();
+        public static Dictionary<string, Song> ColectionSong = new Dictionary<string, Song>();
+        public static Dictionary<string, SpriteFont> ColectionFont = new Dictionary<string, SpriteFont>();
 
 
         public static Texture2D Texture2D(string PluginName, string contentname)

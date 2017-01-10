@@ -6,6 +6,7 @@ using Maker.RiseEngine.Core.Plugin;
 using Maker.twiyol.Events;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.Generator.GeneratorFeatures;
 using Maker.twiyol.Scenes;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -18,31 +19,48 @@ namespace Maker.twiyol.Generator
     public class WorldGenerator
     {
 
-        WorldProperty WrldProps;
+        GeneratorProperty GeneratorProperty;
         RegionGenerator regionGenerator;
         System.Random Rnd;
         FastRandom FastRnd;
 
-        public WorldGenerator(WorldProperty _WrldProps)
+        private List<int> GeneratorFeatures;
+
+        public WorldGenerator(GeneratorProperty generatorProperty)
         {
-            WrldProps = _WrldProps;
-            Rnd = new System.Random(_WrldProps.Seed);
-            FastRnd = new FastRandom(_WrldProps.Seed);
+            GeneratorProperty = generatorProperty;
+            Rnd = new System.Random(generatorProperty.Seed);
+            FastRnd = new FastRandom(generatorProperty.Seed);
             regionGenerator = new RegionGenerator(this);
+            GeneratorFeatures = new List<int>();
         }
 
-        public Game.GameScene Generate()
+        public void AddGeneratorFeatures(string gameObjectID)
         {
+
+
+
+        }
+
+        public DataWorld Generate()
+        {
+            // Start the stop watch to count generation delta time.
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+
+            // Create the World instance.
+            DataWorld newWorld = new DataWorld(GeneratorProperty.WorldName, GeneratorProperty.Seed, GeneratorProperty.WorldSize);
+
+            // Raise OnWorldGneratingBegin.
+            GameEventHandler.RaiseOnWorldGeneratingBegin(this, newWorld, this);
+
+            // Show the loading scene.
             WorldGenerating sceneGen = new WorldGenerating();
-            var game = (RiseEngine.Core.RiseEngine)Engine.MainGame;
+            var game = Engine.MainGame;
             game.sceneManager.AddScene(sceneGen);
             sceneGen.show();
 
-            Game.GameScene newGame = new Game.GameScene(WrldProps, Rnd);
-            int maxWorldSize = WrldProps.Size * 16;
-            Bitmap minimap = new Bitmap(maxWorldSize, maxWorldSize);
+            int maxWorldSize = GeneratorProperty.WorldSize * 16;
             int[,] regionGrid = new int[maxWorldSize, maxWorldSize];
 
             // Adding randome Region
@@ -50,19 +68,19 @@ namespace Maker.twiyol.Generator
             sceneGen.message = "Creation des régions...";
             Thread.Sleep(500);
 
-            for (int rID = 1; rID <= WrldProps.regionCount; rID++)
+            for (int rID = 1; rID <= GeneratorProperty.MaxRegionCount; rID++)
             {
                 // Get Random Region location.
                 int x = FastRnd.Next(maxWorldSize);
                 int y = FastRnd.Next(maxWorldSize);
 
                 // Create the region.
-                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), newGame, Rnd);
+                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), newWorld, Rnd);
 
                 // Create the source tile.
                 regionGrid.SetTile(x, y, rID);
 
-                sceneGen.Progress = (int)((float)rID / WrldProps.regionCount * 100);
+                sceneGen.Progress = (int)((float)rID / GeneratorProperty.MaxRegionCount * 100);
             }
 
             //expanding Region
@@ -70,7 +88,7 @@ namespace Maker.twiyol.Generator
             sceneGen.message = "Expansion des regions...";
             Thread.Sleep(500);
 
-            for (int i = 0; i < WrldProps.RegionExpention; i++)
+            for (int i = 0; i < GeneratorProperty.RegionExpention; i++)
             {
                 for (int x = 0; x <= maxWorldSize - 1; x++)
                 {
@@ -106,50 +124,62 @@ namespace Maker.twiyol.Generator
                     }
                 }
 
-                sceneGen.Progress = (int)((float)i / WrldProps.RegionExpention * 100);
+                sceneGen.Progress = (int)((float)i / GeneratorProperty.RegionExpention * 100);
             }
             Thread.Sleep(100);
             sceneGen.Progress = 100;
+
+
+
+            // Apply generator features.
+            DebugLogs.WriteLog("Apply features...", LogType.Info, "WorldGenerator");
+            sceneGen.message = "Apply features...";
+
+            foreach (int id in GeneratorFeatures)
+            {
+                GameObjectManager.GetGameObject<IGeneratorFeature>(id).OnRegionCreation(regionGrid);
+            }
 
             // Set loading message.
             DebugLogs.WriteLog("Converting Chunk... ", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation du Terrain...";
             Thread.Sleep(500);
 
-            newGame.world.chunks = new DataChunk[WrldProps.Size, WrldProps.Size];
+            newWorld.chunks = new DataChunk[GeneratorProperty.WorldSize, GeneratorProperty.WorldSize];
 
-            for (int cX = 0; cX <= WrldProps.Size - 1; cX++)
+            for (int cX = 0; cX <= GeneratorProperty.WorldSize - 1; cX++)
             {
-                for (int cY = 0; cY <= WrldProps.Size - 1; cY++)
+                for (int cY = 0; cY <= GeneratorProperty.WorldSize - 1; cY++)
                 {
-                    newGame.world.chunks[cX, cY] = new DataChunk();
+                    newWorld.chunks[cX, cY] = new DataChunk();
 
                     for (int tX = 0; tX <= 15; tX++)
                     {
                         for (int tY = 0; tY <= 15; tY++)
                         {
-                            newGame.world.chunks[cX, cY].Tiles[tX, tY] = new DataTile();
-                            newGame.world.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
+                            newWorld.chunks[cX, cY].Tiles[tX, tY] = new DataTile();
+                            newWorld.chunks[cX, cY].Tiles[tX, tY].Region = regionGrid[cX * 16 + tX, cY * 16 + tY];
 
                         }
                     }
 
 
-                    sceneGen.Progress = (int)((float)(cX + cY) / WrldProps.Size * 2 * 100);
+                    sceneGen.Progress = (int)((float)(cX + cY) / GeneratorProperty.WorldSize * 2 * 100);
                 }
             }
 
-            newGame.miniMap.MiniMapBitmap = minimap;
-            newGame.miniMap.RefreshMiniMap();
+            // Creating world bitmap.
+            Bitmap minimap = new Bitmap(maxWorldSize, maxWorldSize);
+            newWorld.WorldBitmap = minimap;
 
-            GameEventHandler.RaiseOnWorldGenerating(this, newGame);
+            GameEventHandler.RaiseOnWorldGeneratingEnd(this, newWorld, this);
 
             stopwatch.Stop();
             DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
 
             game.sceneManager.RemoveScene(sceneGen);
 
-            return newGame;
+            return newWorld;
         }
 
     }

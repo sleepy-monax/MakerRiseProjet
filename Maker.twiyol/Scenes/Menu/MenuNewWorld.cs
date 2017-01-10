@@ -79,14 +79,12 @@ namespace Maker.twiyol.Scenes.Menu
             ThreadStart GenHandle = new ThreadStart(delegate
             {
                 RiseEngine.sceneManager.RemoveScene(this);
-                WorldProperty wrldp = new WorldProperty()
-                {
-                    WorldName = worldNameTexBox.Text,
-                    Seed = int.Parse(worldSeedTextBox.Text)
-                };
 
-                WorldGenerator Gen = new WorldGenerator(wrldp);
-                Game.GameScene wrldsc = Gen.Generate();
+                GeneratorProperty generatorProperty = new GeneratorProperty(worldNameTexBox.Text, int.Parse(worldSeedTextBox.Text));
+
+                WorldGenerator Gen = new WorldGenerator(generatorProperty);
+                var world = Gen.Generate();
+                Game.GameScene wrldsc = new Game.GameScene(world);
 
                 RiseEngine.sceneManager.AddScene(wrldsc);
 

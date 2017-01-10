@@ -12,15 +12,11 @@ namespace Maker.twiyol.Game.GameUtils
         public Point Size;
 
         public Vector2 PreciseFocusLocation;
-        public Point FocusLocation;
 
         public Point ScreenOrigine; //Draw Orgine
 
         public Point StartTile;
         public Point EndTile;
-
-
-
 
         public GameCamera(GameScene _WorldScene)
         {
@@ -30,7 +26,6 @@ namespace Maker.twiyol.Game.GameUtils
             Zoom = 64;
             Size = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
 
-            FocusLocation = Point.Zero;
             PreciseFocusLocation = Vector2.Zero;
 
             StartTile = Point.Zero;
@@ -40,7 +35,7 @@ namespace Maker.twiyol.Game.GameUtils
 
         }
 
-        int DrawStartX; //DrawStartX
+        int DrawStartX;
         int DrawStartY;
 
         int StartX;
@@ -63,7 +58,9 @@ namespace Maker.twiyol.Game.GameUtils
 
         public void Update()
         {
+            Point FocusLocation = G.World.Camera.FocusLocation.ToPoint();
 
+            Size = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
             DrawStartX = FocusLocation.X - Engine.engineConfig.GFX_ViewDistance;
             DrawStartY = FocusLocation.Y - Engine.engineConfig.GFX_ViewDistance;
 
@@ -89,8 +86,8 @@ namespace Maker.twiyol.Game.GameUtils
             EndX = FocusLocation.X + Engine.engineConfig.GFX_ViewDistance;
             EndY = FocusLocation.Y + Engine.engineConfig.GFX_ViewDistance;
 
-            if (DrawEndX > (G.worldProperty.Size * 16) - 1) DrawEndX = (G.worldProperty.Size * 16) - 1;
-            if (DrawEndY > (G.worldProperty.Size * 16) - 1) DrawEndY = (G.worldProperty.Size * 16) - 1;
+            if (DrawEndX > (G.World.Size * 16) - 1) DrawEndX = (G.World.Size * 16) - 1;
+            if (DrawEndY > (G.World.Size * 16) - 1) DrawEndY = (G.World.Size * 16) - 1;
 
             EndTile = new Point(EndX, EndY);
 

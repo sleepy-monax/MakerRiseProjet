@@ -15,13 +15,12 @@ namespace Maker.twiyol.Game.GameUtils
             G = _WorldScene;
         }
 
-        public Bitmap MiniMapBitmap;
         public Microsoft.Xna.Framework.Graphics.Texture2D MiniMapTexture2D;
 
         public void RefreshMiniMap()
         {
 
-            MiniMapTexture2D = BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, MiniMapBitmap);
+            MiniMapTexture2D = BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, G.World.WorldBitmap);
 
         }
     }

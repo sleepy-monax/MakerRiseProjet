@@ -31,7 +31,7 @@ namespace Maker.twiyol.AI.Action
             e.ParrentEntity.ActionProgress += GameObjectManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
             WorldLocation FocusLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
 
-            if (!(e.World.EntityDataManager.IsEntityFree(FocusLocation)))
+            if (!(e.Game.World.IsEntityFree(FocusLocation)))
             {
                 e.ParrentEntity.Action = -1;
                 e.ParrentEntity.ActionProgress = 0;
@@ -43,7 +43,7 @@ namespace Maker.twiyol.AI.Action
                 {
                     e.ParrentEntity.ActionProgress = 0;
                     e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
-                    e.World.EntityDataManager.MoveEntity(e.CurrentLocation, FocusLocation);
+                    e.Game.World.MoveEntity(e.CurrentLocation, FocusLocation);
                     e.ParrentEntity.Action = -1;
                     GameObjectManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);
                 }
@@ -54,8 +54,8 @@ namespace Maker.twiyol.AI.Action
 
                 if (e.ParrentEntity.IsFocus)
                 {
-                    e.World.Camera.FocusLocation = e.ParrentEntity.Location.ToPoint();
-                    e.World.Camera.PreciseFocusLocation = e.ParrentEntity.GetOnTileLocation();
+                    e.Game.World.Camera.FocusLocation = e.ParrentEntity.Location;
+                    e.Game.Camera.PreciseFocusLocation = e.ParrentEntity.GetOnTileLocation();
                 }
             }
         }

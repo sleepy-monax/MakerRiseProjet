@@ -68,16 +68,16 @@
     <Compile Include="Game\GameScene.cs" />
     <Compile Include="Game\GameUIScene.cs" />
     <Compile Include="Game\GameUtils\Camera.cs" />
-    <Compile Include="Game\GameUtils\ChunkManager.cs" />
+    <Compile Include="Game\WorldDataStruct\ChunkDataHelper.cs" />
     <Compile Include="Game\GameUtils\CommandParse.cs" />
-    <Compile Include="Game\GameUtils\EntityManager.cs" />
+    <Compile Include="Game\WorldDataStruct\EntityDataHelper.cs" />
     <Compile Include="Game\GameUtils\EventsManager.cs" />
     <Compile Include="Game\GameUtils\Location.cs" />
     <Compile Include="Game\GameUtils\MiniMap.cs" />
     <Compile Include="Game\GameUtils\SaveFile.cs" />
-    <Compile Include="Game\GameUtils\WorldProperty.cs" />
     <Compile Include="Game\GameUtils\WorldRender.cs" />
     <Compile Include="Game\GameUtils\WorldUpdater.cs" />
+    <Compile Include="Game\WorldDataStruct\DataCamera.cs" />
     <Compile Include="Game\WorldDataStruct\DataChunk.cs" />
     <Compile Include="Game\WorldDataStruct\DataEntity.cs" />
     <Compile Include="Game\WorldDataStruct\DataRegion.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Game\WorldDataStruct\WorldDataHelper.cs" />
     <Compile Include="Generator\ChunkDecorator.cs" />
     <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
+    <Compile Include="Generator\GeneratorProperty.cs" />
     <Compile Include="Generator\RegionGenerator.cs" />
     <Compile Include="Generator\WorldEdit.cs" />
     <Compile Include="Generator\WorldGenerator.cs" />

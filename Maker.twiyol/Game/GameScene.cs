@@ -9,12 +9,14 @@ using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.Storage;
 using Maker.RiseEngine.Core.Input;
+using System.IO;
+using Maker.RiseEngine.Core.MathExt;
 
 namespace Maker.twiyol.Game
 {
     public class GameScene : Scene
     {
-        public DataWorld world;
+        public DataWorld World;
         public Generator.ChunkDecorator chunkDecorator;
 
         public Random Rnd;
@@ -25,10 +27,7 @@ namespace Maker.twiyol.Game
         public GameUtils.WorldRender worldRender;
 
         public GameUtils.WorldUpdater worldUpdater;
-        public GameUtils.ChunkManager chunkManager;
-        public GameUtils.WorldProperty worldProperty;
         public GameUtils.EventsManager eventsManager;
-        public GameUtils.EntityDataManager EntityDataManager;
         public GameUtils.MiniMap miniMap;
         public GameUtils.SaveFile saveFile;
 
@@ -38,19 +37,17 @@ namespace Maker.twiyol.Game
 
         public bool PauseSimulation = false;
 
-        public GameScene(GameUtils.WorldProperty _worldProperty, Random _Rnd)
-        {
-            world = new DataWorld();
+        RenderTarget2D WorldRenderTarget;
 
+        public GameScene(DataWorld world)
+        {
+            World = world;
             saveFile = new GameUtils.SaveFile(this);
-            worldProperty = _worldProperty;
-            Rnd = _Rnd;
+            Rnd = new Random(World.Seed);
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
 
             worldUpdater = new GameUtils.WorldUpdater(this);
-            chunkManager = new GameUtils.ChunkManager(this);
             eventsManager = new GameUtils.EventsManager(this);
-            EntityDataManager = new GameUtils.EntityDataManager(this);
             miniMap = new GameUtils.MiniMap(this);
 
             Camera = new GameUtils.GameCamera(this);
@@ -61,6 +58,14 @@ namespace Maker.twiyol.Game
             Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
 
             GameUIScene = new GameUIScene(this);
+
+            WorldRenderTarget = new RenderTarget2D(
+                Engine.GraphicsDevice,
+                Engine.GraphicsDevice.PresentationParameters.BackBufferWidth,
+                Engine.GraphicsDevice.PresentationParameters.BackBufferHeight,
+                false,
+                Engine.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                DepthFormat.Depth24);
         }
 
         // Implement interface.
@@ -70,7 +75,8 @@ namespace Maker.twiyol.Game
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
 
-            worldRender.Draw(gameTime);
+            worldRender.Draw(WorldRenderTarget,gameTime);
+            spriteBatch.Draw(WorldRenderTarget, new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), Color.White);
 
 
             if (PauseSimulation)
@@ -78,17 +84,28 @@ namespace Maker.twiyol.Game
                 spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
 
             }
-
-
         }
 
         public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
         {
+            // Update game.
             if (!PauseSimulation)
             {
                 Background.Update(playerInput, gameTime);
                 worldUpdater.Update(playerInput, gameTime);
+
             }
+
+            // Take screenshots.
+            if (playerInput.IsKeyBoardKeyReleased(Engine.engineConfig.Input_Take_Screenshot)) {
+                
+                string path = $"Screenshots\\{RandomHelper.RandomString(16).ToLower()}.png";
+                FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
+                WorldRenderTarget.SaveAsPng(fs, WorldRenderTarget.Width, WorldRenderTarget.Height);
+                fs.Close();
+            }
+
+
             Camera.Update();
         }
 
@@ -106,7 +123,7 @@ namespace Maker.twiyol.Game
 
         public void SaveWorld()
         {
-            SerializationHelper.SaveToBin(world, "world.bin");
+            SerializationHelper.SaveToBin(World, $"Saves/{World.Name}.bin");
         }
     }
 }

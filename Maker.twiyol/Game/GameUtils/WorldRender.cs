@@ -12,7 +12,7 @@ namespace Maker.twiyol.Game.GameUtils
         GameScene G;
         SpriteBatch tSpriteBatch;
         SpriteBatch eSpriteBatch;
-
+        
 
         public WorldRender(GameScene _WorldScene)
         {
@@ -23,8 +23,10 @@ namespace Maker.twiyol.Game.GameUtils
 
 
 
-        public void Draw(GameTime gameTime)
+        public void Draw(RenderTarget2D r,GameTime gameTime)
         {
+            Engine.GraphicsDevice.SetRenderTarget(r);
+            Engine.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
 
             tSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
             eSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
@@ -34,7 +36,7 @@ namespace Maker.twiyol.Game.GameUtils
             {
                 for (int Tx = G.Camera.StartTile.X; Tx <= G.Camera.EndTile.X; Tx++)
                 {
-                    if (Tx >= 0 && Ty >= 0 && Tx < G.worldProperty.Size * 16 - 1 && Ty < G.worldProperty.Size * 16 - 1)
+                    if (Tx >= 0 && Ty >= 0 && Tx < G.World.Size * 16 - 1 && Ty < G.World.Size * 16 - 1)
                     {
 
                         //Calcule des emplacements
@@ -43,14 +45,14 @@ namespace Maker.twiyol.Game.GameUtils
                             (Tx - G.Camera.StartTile.X) * G.Camera.Zoom + G.Camera.ScreenOrigine.X,
                              (Ty - G.Camera.StartTile.Y) * G.Camera.Zoom + G.Camera.ScreenOrigine.Y);
 
-                        if (G.chunkManager.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
+                        if (G.chunkDecorator.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
                         {
 
                             //Recuperation des arguments
                             GameObject.Event.GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
                             //recuperation des objets
-                            WorldDataStruct.DataTile T = G.chunkManager.GetTile(CurrentLocation);
+                            WorldDataStruct.DataTile T = G.World.GetTile(CurrentLocation);
 
 
                             //desin des objets
@@ -62,7 +64,7 @@ namespace Maker.twiyol.Game.GameUtils
 
                             if (!(T.Entity == -1))
                             {
-                                WorldDataStruct.DataEntity E = G.chunkManager.GetEntity(CurrentLocation);
+                                WorldDataStruct.DataEntity E = G.World.GetEntity(CurrentLocation);
                                 GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
 
                                 if (Engine.engineConfig.Debug_WorldOverDraw && E.IsFocus)
@@ -72,24 +74,17 @@ namespace Maker.twiyol.Game.GameUtils
                                     eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.GetOnTileLocation(), Color.White);
 
                                 }
-
                             }
-
-
                         }
-
-
-
                     }
-
-
-
-
                 }
             }
+
+            // Terminate SpriteBatch.
             tSpriteBatch.End();
             eSpriteBatch.End();
 
+            Engine.GraphicsDevice.SetRenderTarget(null);
         }
     }
 }

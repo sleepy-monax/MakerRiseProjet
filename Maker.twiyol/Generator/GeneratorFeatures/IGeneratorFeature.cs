@@ -8,8 +8,9 @@ namespace Maker.twiyol.Generator.GeneratorFeatures
     interface IGeneratorFeature : IGameObject
     {
 
-        void onRegionCreation();
-        void onChunkDecoration();
+        void OnRegionCreation(int[,] regionGrid);
+        void OnTerrainCreation();
+        void OnChunkDecoration();
 
     }
 }

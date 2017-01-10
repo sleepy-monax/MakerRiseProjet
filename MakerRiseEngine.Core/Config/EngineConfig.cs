@@ -34,5 +34,7 @@ namespace Maker.RiseEngine.Core.Config
         public Keys Input_MoveRight { get; set; } = Keys.D;
 
         public Keys Input_Attack { get; set; } = Keys.A;
+
+        public Keys Input_Take_Screenshot { get; set; } = Keys.F2;
     }
 }

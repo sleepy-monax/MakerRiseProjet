@@ -31,6 +31,7 @@ namespace Maker.RiseEngine.Core
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
             Engine.GameForm.ResizeEnd += GameForm_ResizeEnd;
 
+
             sceneManager = new Scenes.SceneManager(this);
 
         }
@@ -47,6 +48,16 @@ namespace Maker.RiseEngine.Core
         {
             DebugLogs.WriteLog("Initializing 'Rise!Engine'", LogType.Info, "Core");
 
+            DebugLogs.WriteLog("  ____  _          _ _____             _            ", LogType.Info, "Core");
+            DebugLogs.WriteLog(" |  _ \\(_)___  ___| | ____|_ __   __ _(_)_ __   ___ ", LogType.Info, "Core");
+            DebugLogs.WriteLog(" | |_) | / __|/ _ \\ |  _| | '_ \\ / _` | | '_ \\ / _ \\", LogType.Info, "Core");
+            DebugLogs.WriteLog(" |  _ <| \\__ \\  __/_| |___| | | | (_| | | | | |  __/", LogType.Info, "Core");
+            DebugLogs.WriteLog(" |_| \\_\\_|___/\\___(_)_____|_| |_|\\__, |_|_| |_|\\___|", LogType.Info, "Core");
+            DebugLogs.WriteLog("                                 |___/              ", LogType.Info, "Core");
+
+            DebugLogs.WriteLog(" ===================================================", LogType.Info, "Core");
+
+            DebugLogs.WriteLog("Rise!Engine version:" + Engine.Version.ToString(), LogType.Info, "Core");
             // Set windows from property.
             Window.Title = "Rise : Le monde est votre seule limite";
             Window.AllowAltF4 = true;
@@ -54,8 +65,8 @@ namespace Maker.RiseEngine.Core
             Window.IsBorderless = false;
 
             // Setup debug console.
-            System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString();
-
+            //System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString();
+            
             // Hide the systeme mouse cursor.
             IsMouseVisible = true;
 
@@ -92,6 +103,7 @@ namespace Maker.RiseEngine.Core
 
         protected override void Update(GameTime gameTime)
         {
+
             //Geting Mouse and Keyboard stats
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyboardState = Keyboard.GetState();
