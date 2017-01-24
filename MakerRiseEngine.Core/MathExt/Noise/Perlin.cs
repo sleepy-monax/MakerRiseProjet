@@ -7,10 +7,13 @@ namespace Maker.RiseEngine.Core.MathExt.Noise
         private const int GradientSizeTable = 256;
         private readonly Random _random;
         private readonly double[] _gradients = new double[GradientSizeTable * 3];
-        /* Borrowed from Darwyn Peachey (see references above).
-           The gradient table is indexed with an XYZ triplet, which is first turned
-           into a single random index using a lookup in this table. The table simply
-           contains all numbers in [0..255] in random order. */
+        
+        /*
+         * Borrowed from Darwyn Peachey (see references above).
+         * The gradient table is indexed with an XYZ triplet, which is first turned
+         * into a single random index using a lookup in this table. The table simply
+         * contains all numbers in [0..255] in random order. 
+         */
         private readonly byte[] _perm = new byte[] {
               225,155,210,108,175,199,221,144,203,116, 70,213, 69,158, 33,252,
                 5, 82,173,133,222,139,174, 27,  9, 71, 90,246, 75,130, 91,191,
@@ -37,9 +40,11 @@ namespace Maker.RiseEngine.Core.MathExt.Noise
 
         public double Noise(double x, double y, double z)
         {
-            /* The main noise function. Looks up the pseudorandom gradients at the nearest
-               lattice points, dots them with the input vector, and interpolates the
-               results to produce a single output value in [0, 1] range. */
+            /* 
+             * The main noise function. Looks up the pseudorandom gradients at the nearest
+             * lattice points, dots them with the input vector, and interpolates the
+             * results to produce a single output value in [0, 1] range. 
+             */
 
             int ix = (int)Math.Floor(x);
             double fx0 = x - ix;

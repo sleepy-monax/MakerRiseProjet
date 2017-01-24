@@ -7,7 +7,7 @@ namespace Maker.RiseEngine.Core.GameObject
     interface IDrawableGameObject : IGameObject
     {
 
-        void OnUpdate(PlayerInput playerInput, GameTime gametime);
+        void OnUpdate(GameInput playerInput, GameTime gametime);
         void OnDraw(SpriteBatch spritebatch, GameTime gametime);
 
     }

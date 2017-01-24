@@ -32,7 +32,7 @@ namespace Maker.RiseEngine.Core.Scenes
                 OnDraw(spriteBatch, gameTime);
             }
         }
-        public void sceneUpdate(PlayerInput playerInput, GameTime gameTime)
+        public void sceneUpdate(GameInput playerInput, GameTime gameTime)
         {
             if (!Pause)
             {
@@ -42,7 +42,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
         // Event.
         public abstract void OnDraw(SpriteBatch spriteBatch, GameTime gameTime);
-        public abstract void OnUpdate(PlayerInput playerInput, GameTime gameTime);
+        public abstract void OnUpdate(GameInput playerInput, GameTime gameTime);
 
         public abstract void OnLoad();
         public abstract void OnUnload();

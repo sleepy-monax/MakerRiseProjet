@@ -61,7 +61,7 @@ namespace Maker.twiyol.Scenes.Menu
 
         }
 
-        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
+        public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
             Background.DestinationRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
             Background.Update(playerInput, gameTime);

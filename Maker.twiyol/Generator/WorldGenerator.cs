@@ -68,7 +68,7 @@ namespace Maker.twiyol.Generator
             sceneGen.message = "Creation des régions...";
             Thread.Sleep(500);
 
-            for (int rID = 1; rID <= GeneratorProperty.MaxRegionCount; rID++)
+            for (int rID = 0; rID <= GeneratorProperty.MaxRegionCount; rID++)
             {
                 // Get Random Region location.
                 int x = FastRnd.Next(maxWorldSize);

@@ -122,7 +122,7 @@ namespace Maker.RiseEngine.Core.UserInterface
             }
         }
 
-        public void Update(PlayerInput playerInput, GameTime gameTime)
+        public void Update(GameInput playerInput, GameTime gameTime)
         {
             Rectangle parrentRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
 
@@ -295,7 +295,7 @@ namespace Maker.RiseEngine.Core.UserInterface
 
         // Events.
         public virtual void OnDraw(SpriteBatch spriteBatch, GameTime gameTime) { }
-        public virtual void OnUpdate(PlayerInput playerInput, GameTime gameTime) { }
+        public virtual void OnUpdate(GameInput playerInput, GameTime gameTime) { }
 
         // Mouse Event.
         public virtual void OnMouseClick() { }

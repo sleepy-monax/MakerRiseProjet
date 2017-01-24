@@ -1,20 +1,23 @@
-Grass0:0,0:1,1;
-Grass1:0,1:1,1;
-Grass2:0,2:1,1;
-Grass3:0,3:1,1;
-
-Sand0:1,0:1,1;
-Sand1:1,1:1,1;
-Sand2:1,2:1,1;
-Sand3:1,3:1,1;
-
-@Water:4,500,0;
-
-Water0:2,0:1,1;
-Water1:2,1:1,1;
-Water2:2,2:1,1;
-Water3:2,3:1,1;
-
+//Grass textures;
+Grass0:0,0;
+Grass1:0,1;
+Grass2:0,2;
+Grass3:0,3;
+//Sand textures;
+Sand0:1,0;
+Sand1:1,1;
+Sand2:1,2;
+Sand3:1,3;
+//Stone textures;
+Stone0:2,0;
+Stone1:2,1;
+Stone2:2,2;
+Stone3:2,3;
+//Dirt textures;
+Dirt0:3,0;
+Dirt1:3,1;
+Dirt2:3,2;
+Dirt3:3,3;
+//Flowers textures;
 YellowFlowerGrass:0,4:1,1;
 PurpleFlowerGrass:0,5:1,1;
-

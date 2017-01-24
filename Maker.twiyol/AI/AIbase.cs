@@ -7,7 +7,7 @@ namespace Maker.twiyol.AI
 {
     public class AIbase
     {
-        public virtual void Tick(GameObject.Event.GameObjectEventArgs e, PlayerInput playerInput, GameTime _GameTime)
+        public virtual void Tick(GameObject.Event.GameObjectEventArgs e, GameInput playerInput, GameTime _GameTime)
         {
             //do nothing
 

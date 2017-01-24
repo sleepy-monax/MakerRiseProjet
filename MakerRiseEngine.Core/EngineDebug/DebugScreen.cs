@@ -11,7 +11,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
         double FPS;
         SpriteFont NormalFont = ContentEngine.SpriteFont("Engine", "segoeUI_16pt");
 
-        public void Update(PlayerInput playerInput, GameTime gameTime)
+        public void Update(GameInput playerInput, GameTime gameTime)
         {
             //Get FPS value
             FPS = Math.Round(FrameCounter.CurrentFramesPerSecond, MidpointRounding.AwayFromZero);

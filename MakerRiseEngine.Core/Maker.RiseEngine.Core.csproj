@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17010.1018.1056</AssemblyVersion>
+    <AssemblyVersion>0.17017.1455.1071</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -66,7 +66,7 @@
     <Compile Include="GameObject\GameObjectManager.cs" />
     <Compile Include="GameObject\IDrawableGameObject.cs" />
     <Compile Include="GameObject\IGameObject.cs" />
-    <Compile Include="Input\PlayerInput.cs" />
+    <Compile Include="Input\GameInput.cs" />
     <Compile Include="MathExt\Geometry.cs" />
     <Compile Include="MathExt\FastRandom.cs" />
     <Compile Include="MathExt\KeyWeightPair.cs" />
@@ -83,9 +83,6 @@
     <Compile Include="Inventory\ObjInventory.cs" />
     <Compile Include="Inventory\ObjSlot.cs" />
     <Compile Include="Network\HTTPServer.cs" />
-    <Compile Include="Physic\PhysicManager.cs" />
-    <Compile Include="Physic\PhysicObject.cs" />
-    <Compile Include="Physic\PhysicProperty.cs" />
     <Compile Include="Plugin\Builder.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\PluginLoader.cs" />
@@ -103,12 +100,6 @@
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
-    <Compile Include="Storage\MarkdownParser\DataStructure\mdDocuments.cs" />
-    <Compile Include="Storage\MarkdownParser\DataStructure\mdLine.cs" />
-    <Compile Include="Storage\MarkdownParser\DataStructure\mdParagraph.cs" />
-    <Compile Include="Storage\MarkdownParser\DataStructure\mdSyntaxe.cs" />
-    <Compile Include="Storage\MarkdownParser\DataStructure\mdWord.cs" />
-    <Compile Include="Storage\MarkdownParser\mdParser.cs" />
     <Compile Include="Storage\SerializationHelper.cs" />
     <Compile Include="MakerRiseMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,6 +113,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Text\RichTextParser.cs" />
+    <Compile Include="Text\TextBlock.cs" />
     <Compile Include="UserInterface\Control.cs" />
     <Compile Include="UserInterface\Controls\Button.cs" />
     <Compile Include="UserInterface\Controls\Graph.cs" />
@@ -137,10 +130,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MakerRiseEngine.Windows\bin\DesktopGL\x86\Debug\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

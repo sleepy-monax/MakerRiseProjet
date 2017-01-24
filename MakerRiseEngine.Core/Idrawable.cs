@@ -8,7 +8,7 @@ namespace Maker.RiseEngine.Core
 
     public interface IDrawable
     {
-        void Update(PlayerInput playerInput,GameTime gameTime);
+        void Update(GameInput playerInput,GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, GameTime gameTime);
     }
 }

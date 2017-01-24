@@ -18,7 +18,7 @@ namespace Maker.twiyol.Game.GameUtils
 
         #region Update
 
-        public void Update(PlayerInput playerInput, GameTime gameTime)
+        public void Update(GameInput playerInput, GameTime gameTime)
         {
 
             for (int Tx = G.Camera.StartTile.X; Tx <= G.Camera.EndTile.X; Tx++)
@@ -32,8 +32,8 @@ namespace Maker.twiyol.Game.GameUtils
                         //Calcule des emplacements
                         Point CurrentLocation = new Point(Tx, Ty);
                         Point OnScreenLocation = new Point(
-                            (Tx - G.Camera.StartTile.X) * G.Camera.Zoom + G.Camera.ScreenOrigine.X,
-                            (Ty - G.Camera.StartTile.Y) * G.Camera.Zoom + G.Camera.ScreenOrigine.Y);
+                            (Tx - G.Camera.StartTile.X) * G.Camera.TileUnit + G.Camera.ScreenOrigine.X,
+                            (Ty - G.Camera.StartTile.Y) * G.Camera.TileUnit + G.Camera.ScreenOrigine.Y);
 
                         if (G.chunkDecorator.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
                         {

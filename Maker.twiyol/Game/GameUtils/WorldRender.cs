@@ -42,8 +42,8 @@ namespace Maker.twiyol.Game.GameUtils
                         //Calcule des emplacements
                         Point CurrentLocation = new Point(Tx, Ty);
                         Point OnScreenLocation = new Point(
-                            (Tx - G.Camera.StartTile.X) * G.Camera.Zoom + G.Camera.ScreenOrigine.X,
-                             (Ty - G.Camera.StartTile.Y) * G.Camera.Zoom + G.Camera.ScreenOrigine.Y);
+                            (Tx - G.Camera.StartTile.X) * G.Camera.TileUnit + G.Camera.ScreenOrigine.X,
+                             (Ty - G.Camera.StartTile.Y) * G.Camera.TileUnit + G.Camera.ScreenOrigine.Y);
 
                         if (G.chunkDecorator.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
                         {

@@ -52,9 +52,9 @@ namespace Maker.twiyol.GameObject.Entities
         public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
             Variant[e.ParrentEntity.Variant].Draw(spritebatch, new Rectangle(
-                   e.OnScreenLocation.X + (int)(e.Game.Camera.Zoom * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
-                   e.OnScreenLocation.Y + (int)(e.Game.Camera.Zoom * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
-                   this.DrawBox.Width * e.Game.Camera.Zoom, this.DrawBox.Height * e.Game.Camera.Zoom), Color.White, gametime);
+                   e.OnScreenLocation.X + (int)(e.Game.Camera.TileUnit * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
+                   e.OnScreenLocation.Y + (int)(e.Game.Camera.TileUnit * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
+                   this.DrawBox.Width * e.Game.Camera.TileUnit, this.DrawBox.Height * e.Game.Camera.TileUnit), Color.White, gametime);
         }
 
         public virtual void OnTick(GameObjectEventArgs e, GameTime gametime)
@@ -62,7 +62,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         }
 
-        public virtual void OnUpdate(GameObjectEventArgs e, PlayerInput playerInput, GameTime gametime)
+        public virtual void OnUpdate(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
         {
 
         }

@@ -51,7 +51,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             }
         }
 
-        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
+        public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
 
             if (this.mouseStats == MouseStats.Over)

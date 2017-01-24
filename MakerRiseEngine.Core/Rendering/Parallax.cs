@@ -25,7 +25,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
         }
 
-        public void Update(PlayerInput playerInput, GameTime gameTime)
+        public void Update(GameInput playerInput, GameTime gameTime)
         {
 
             for (int i = 0; i < Layers.Length; i++)

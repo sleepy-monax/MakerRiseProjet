@@ -68,8 +68,10 @@
     <Compile Include="Game\GameScene.cs" />
     <Compile Include="Game\GameUIScene.cs" />
     <Compile Include="Game\GameUtils\Camera.cs" />
+    <Compile Include="Game\GameUtils\Player.cs" />
     <Compile Include="Game\WorldDataStruct\ChunkDataHelper.cs" />
     <Compile Include="Game\GameUtils\CommandParse.cs" />
+    <Compile Include="Game\WorldDataStruct\DataPlayer.cs" />
     <Compile Include="Game\WorldDataStruct\EntityDataHelper.cs" />
     <Compile Include="Game\GameUtils\EventsManager.cs" />
     <Compile Include="Game\GameUtils\Location.cs" />
@@ -85,6 +87,9 @@
     <Compile Include="Game\WorldDataStruct\DataWorld.cs" />
     <Compile Include="Game\WorldDataStruct\WorldDataHelper.cs" />
     <Compile Include="Generator\ChunkDecorator.cs" />
+    <Compile Include="Generator\EntitiesDistribution\FlatDistribution.cs" />
+    <Compile Include="Generator\EntitiesDistribution\IEntitiesDistributionRule.cs" />
+    <Compile Include="Generator\EntitiesDistribution\PerlinDistribution.cs" />
     <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
     <Compile Include="Generator\GeneratorProperty.cs" />
     <Compile Include="Generator\RegionGenerator.cs" />

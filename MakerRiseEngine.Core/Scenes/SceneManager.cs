@@ -68,7 +68,7 @@ namespace Maker.RiseEngine.Core.Scenes
             }
         }
 
-        public void Update(PlayerInput playerInput, GameTime gameTime)
+        public void Update(GameInput playerInput, GameTime gameTime)
         {
             foreach (Scene s in ScenesToAdd) {
                 Scenes.Add(s);

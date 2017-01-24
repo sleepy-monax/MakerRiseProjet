@@ -16,6 +16,7 @@ namespace Maker.twiyol.Generator
 
         public GeneratorProperty(string worldName, int seed = 0, int worldSize=24, int regioncount = 30, int regionExpention = 300) {
 
+            WorldName = worldName;
             WorldSize = worldSize;
             Seed = seed;
             MaxRegionCount = regioncount;
@@ -23,5 +24,5 @@ namespace Maker.twiyol.Generator
             WorldSize = worldSize;
 
         }
-    }
+    } 
 }

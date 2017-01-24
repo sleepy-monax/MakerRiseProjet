@@ -32,7 +32,7 @@ namespace Maker.twiyol.Scenes
 
         }
 
-        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
+        public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
             
         }

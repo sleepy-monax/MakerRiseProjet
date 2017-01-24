@@ -1,5 +1,6 @@
 ﻿using Maker.RiseEngine.Core;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Maker.twiyol.Game.GameUtils
 {
@@ -8,7 +9,7 @@ namespace Maker.twiyol.Game.GameUtils
 
         GameScene G;
 
-        public int Zoom;
+        public int TileUnit;
         public Point Size;
 
         public Vector2 PreciseFocusLocation;
@@ -23,7 +24,7 @@ namespace Maker.twiyol.Game.GameUtils
 
             G = _WorldScene;
 
-            Zoom = 64;
+            TileUnit = 64;
             Size = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
 
             PreciseFocusLocation = Vector2.Zero;
@@ -94,10 +95,10 @@ namespace Maker.twiyol.Game.GameUtils
             DeltaX = EndX - StartX;
             DeltaY = EndY - StartY;
 
-            OrigineX = (int)((Size.X / 2) - (DeltaX * Zoom) / 2 - (PreciseFocusLocation.X * Zoom));
-            OrigineY = (int)((Size.Y / 2) - (DeltaY * Zoom) / 2 - (PreciseFocusLocation.Y * Zoom));
+            OrigineX = (int)((Size.X / 2) - (DeltaX * TileUnit) / 2 - (PreciseFocusLocation.X * TileUnit));
+            OrigineY = (int)((Size.Y / 2) - (DeltaY * TileUnit) / 2 - (PreciseFocusLocation.Y * TileUnit));
 
-            ScreenOrigine = new Point(OrigineX - Zoom / 2, OrigineY - Zoom / 2);
+            ScreenOrigine = new Point(OrigineX - TileUnit / 2, OrigineY - TileUnit / 2);
 
 
         }

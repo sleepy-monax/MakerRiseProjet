@@ -17,7 +17,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         public override void OnTick(GameObjectEventArgs e, GameTime gametime) { }
 
-        public override void OnUpdate(GameObjectEventArgs e, PlayerInput playerInput, GameTime gametime)
+        public override void OnUpdate(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
         {
             IA.Tick(e, playerInput, gametime);
             IA.ExecuteAction(e, gametime);

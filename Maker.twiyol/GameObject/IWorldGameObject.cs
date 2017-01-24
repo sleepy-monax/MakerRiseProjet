@@ -13,7 +13,7 @@ namespace Maker.twiyol.GameObject
         int MaxVariantCount { get; set; }
 
         void OnTick(Event.GameObjectEventArgs e, GameTime gametime);
-        void OnUpdate(Event.GameObjectEventArgs e, PlayerInput playerInput, GameTime gametime);
+        void OnUpdate(Event.GameObjectEventArgs e, GameInput playerInput, GameTime gametime);
         void OnDraw(Event.GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime);
 
 

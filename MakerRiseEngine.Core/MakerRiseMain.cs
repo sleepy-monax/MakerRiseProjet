@@ -103,7 +103,6 @@ namespace Maker.RiseEngine.Core
 
         protected override void Update(GameTime gameTime)
         {
-
             //Geting Mouse and Keyboard stats
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyboardState = Keyboard.GetState();
@@ -111,7 +110,7 @@ namespace Maker.RiseEngine.Core
             if (Engine.GameForm.Focused)
             {
                 // Creating player input data structure.
-                PlayerInput playerinput = new PlayerInput(mouseState, oldMouseState, keyboardState, oldKeyBoardState);
+                GameInput playerinput = new GameInput(mouseState, oldMouseState, keyboardState, oldKeyBoardState);
                 
                 //Update scenemanager.
                 sceneManager.Update(playerinput, gameTime);

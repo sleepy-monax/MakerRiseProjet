@@ -53,8 +53,8 @@ namespace Maker.twiyol.GameObject.Tiles
         {
             Variant[e.ParrentTile.Variant].Draw(spritebatch,
                 new Rectangle(
-                new Point(e.OnScreenLocation.X - e.Game.Camera.Zoom / 2, e.OnScreenLocation.Y - e.Game.Camera.Zoom / 2),
-                new Point(e.Game.Camera.Zoom * 2, e.Game.Camera.Zoom * 2)),
+                new Point(e.OnScreenLocation.X - e.Game.Camera.TileUnit / 2, e.OnScreenLocation.Y - e.Game.Camera.TileUnit / 2),
+                new Point(e.Game.Camera.TileUnit * 2, e.Game.Camera.TileUnit * 2)),
                 Color.White, gametime);
 
         }
@@ -72,7 +72,7 @@ namespace Maker.twiyol.GameObject.Tiles
 
         }
 
-        public void OnUpdate(GameObjectEventArgs e, PlayerInput playerInput, GameTime gametime)
+        public void OnUpdate(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
         {
 
         }

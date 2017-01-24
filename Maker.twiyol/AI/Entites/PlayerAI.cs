@@ -37,7 +37,7 @@ namespace Maker.twiyol.AI.Entites
 
         }
 
-        public override void Tick(GameObjectEventArgs e, PlayerInput playerInput, GameTime gameTime)
+        public override void Tick(GameObjectEventArgs e, GameInput playerInput, GameTime gameTime)
         {
            
             int moveActionIndex = GameObjectManager.GetGameObjectIndex("Base.Move");

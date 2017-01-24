@@ -6,6 +6,8 @@ namespace Maker.RiseEngine.Core.Config
     [Serializable]
     public class EngineConfig
     {
+        //Engine.
+        public int Engine_SplashTime { get; set; } = 2000;
 
         // Sound Config.
         public float Sound_Master_Level { get; set; } = 1f;

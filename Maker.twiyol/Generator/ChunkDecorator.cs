@@ -62,7 +62,7 @@ namespace Maker.twiyol.Generator
 
                         G.World.WorldBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
 
-                        if (Random.NextDouble() < GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).EntityDensity)
+                        if (Random.NextDouble() < GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).Rule.GetValue(cX*16 + tX, cY*16 + tY))
                         {
 
                             int ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Random);

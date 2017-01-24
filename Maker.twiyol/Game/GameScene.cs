@@ -1,16 +1,19 @@
-﻿using Maker.twiyol.Game.WorldDataStruct;
+﻿using Maker.RiseEngine.Core;
+using Maker.RiseEngine.Core.Audio;
+using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Scenes;
+using Maker.RiseEngine.Core.Storage;
+
+using Maker.twiyol.Game.WorldDataStruct;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
 using System;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Audio;
-using Maker.RiseEngine.Core.Storage;
-using Maker.RiseEngine.Core.Input;
 using System.IO;
-using Maker.RiseEngine.Core.MathExt;
 
 namespace Maker.twiyol.Game
 {
@@ -86,8 +89,9 @@ namespace Maker.twiyol.Game
             }
         }
 
-        public override void OnUpdate(PlayerInput playerInput, GameTime gameTime)
+        public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
+
             // Update game.
             if (!PauseSimulation)
             {
