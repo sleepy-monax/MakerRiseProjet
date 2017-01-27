@@ -3,6 +3,7 @@ using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
@@ -16,7 +17,7 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 
         public string GameObjectName { get; set; }
 
-        public string pluginName
+        public string PluginName
         {
             get;
             set;
@@ -34,9 +35,13 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
         //This Function read map file and make a tile colection.
         public void ParseSpriteMap(string PluginName, string _TileMapName)
         {
+            string spriteSheetFilePath = "Plugins\\" + PluginName + "\\Data\\" + _TileMapName + ".rise";
+            if (!File.Exists(spriteSheetFilePath)) {
+                EngineDebug.DebugLogs.WriteLog("SpriteSheet file not found :" + spriteSheetFilePath, EngineDebug.LogType.Error, "SpriteSheetParse");
+            }
 
             //Creating and read the tilemap file.
-            System.IO.StreamReader spriteMapFile = new System.IO.StreamReader("Data\\" + PluginName + "\\SpriteSheet\\" + _TileMapName + ".rise");
+            StreamReader spriteMapFile = new System.IO.StreamReader(spriteSheetFilePath);
             string SheetMapString = spriteMapFile.ReadToEnd().ToDosLineEnd().Replace(System.Environment.NewLine, "");
             spriteMapFile.Close();
 

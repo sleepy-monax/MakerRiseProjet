@@ -29,12 +29,12 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
                 Message = "Loading config...";
 
                 // load binary config file.
-                if (System.IO.File.Exists("Data\\config.bin"))
-                    Engine.engineConfig = SerializationHelper.LoadFromBin<EngineConfig>("Data\\config.bin");
+                if (System.IO.File.Exists("config.bin"))
+                    Engine.engineConfig = SerializationHelper.LoadFromBin<EngineConfig>("config.bin");
                 else
-                    SerializationHelper.SaveToBin(Engine.engineConfig, "Data\\config.bin");
+                    SerializationHelper.SaveToBin(Engine.engineConfig, "config.bin");
                 this.Message = "Loading Plugins...";
-                PluginLoader<IPlugin> p = new PluginLoader<IPlugin>("Data");
+                PluginLoader<IPlugin> p = new PluginLoader<IPlugin>("Plugins");
                 p.initializePlugin();
                 Engine.Plugins = p.Plugins;
   

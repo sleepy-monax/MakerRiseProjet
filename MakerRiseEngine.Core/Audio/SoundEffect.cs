@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Core.Audio
 
         public static SoundEffectColection Parse(string _PluginName, string _Name) {
 
-            System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\SoundsEffects\\" + _Name + ".rise");
+            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + _PluginName + "\\SoundsEffects\\" + _Name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
 

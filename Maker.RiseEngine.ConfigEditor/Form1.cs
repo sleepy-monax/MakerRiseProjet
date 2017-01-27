@@ -18,7 +18,7 @@ namespace Maker.RiseEngine.ConfigEditor
         }
 
         string file;
-        Core.Config.EngineConfig c;
+        object c;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace Maker.RiseEngine.ConfigEditor
                 {
                     
                     file = od.FileNames[0];
-                    c    = Core.Storage.SerializationHelper.LoadFromBin<Core.Config.EngineConfig>(file);
+                    c    = Core.Storage.SerializationHelper.LoadFromBin<Object>(file);
 
                     propertyGrid1.Enabled = true;
                     button2.Enabled = true;

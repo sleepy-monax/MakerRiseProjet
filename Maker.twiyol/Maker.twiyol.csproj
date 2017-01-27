@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Assemblie\Data\twiyol\</OutputPath>
+    <OutputPath>..\Assemblie\Plugins\twiyol\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -58,6 +58,7 @@
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />
     <Compile Include="GameObject\Entities\Entity.cs" />
+    <Compile Include="GameObject\Entities\NPC.cs" />
     <Compile Include="GameObject\Event\GameObjectEventArgs.cs" />
     <Compile Include="GameObject\IEntity.cs" />
     <Compile Include="GameObject\IItem.cs" />
@@ -103,7 +104,6 @@
     <Compile Include="Scenes\Menu\MenuOption.cs" />
     <Compile Include="Scenes\WorldGenerating.cs" />
     <Compile Include="twiyolGamePlugin.cs" />
-    <Compile Include="UI\MiniMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj">
@@ -111,6 +111,9 @@
       <Name>Maker.RiseEngine.Core</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Inventory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

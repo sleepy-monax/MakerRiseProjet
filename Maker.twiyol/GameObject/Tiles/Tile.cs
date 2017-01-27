@@ -13,7 +13,7 @@ namespace Maker.twiyol.GameObject.Tiles
     public class Tile : ITile
     {
         public string GameObjectName { get; set; }
-        public string pluginName { get; set; }
+        public string PluginName { get; set; }
 
 
         public System.Drawing.Color MapColor { get; set; }

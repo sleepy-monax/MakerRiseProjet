@@ -7,7 +7,7 @@ namespace Maker.twiyol.GameObject.Items
     public class Item : IItem
     {
         public string GameObjectName { get; set; }
-        public string pluginName { get; set; }
+        public string PluginName { get; set; }
 
         public ItemType Type { get; set; }
         public List<Sprite> Variant { get; set; }

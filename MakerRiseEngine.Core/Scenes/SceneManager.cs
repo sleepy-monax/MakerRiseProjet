@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Content;
 
 namespace Maker.RiseEngine.Core.Scenes
 {
@@ -64,15 +66,36 @@ namespace Maker.RiseEngine.Core.Scenes
             {
                 spriteBatch.Begin();
                 s.sceneDraw(spriteBatch, gameTime);
+
+
+                spriteBatch.End();
+            }
+            if (Engine.engineConfig.Debug_SceneManager)
+            {
+                spriteBatch.Begin();
+
+                spriteBatch.FillRectangle(new Rectangle(16, 48, 256, 16 + 32 * (Scenes.Count + 1)), new Color(Color.Black, 0.4f));
+                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), "Loaded scenes :", new Rectangle(24, 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
+
+                int i = 1;
+                foreach (Scene s in Scenes)
+                {
+
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), s.GetType().Name, new Rectangle(24, (32 * i) + 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
+
+                    i++;
+                }
+
                 spriteBatch.End();
             }
         }
 
         public void Update(GameInput playerInput, GameTime gameTime)
         {
-            foreach (Scene s in ScenesToAdd) {
+            foreach (Scene s in ScenesToAdd)
+            {
                 Scenes.Add(s);
-                
+
             }
 
             ScenesToAdd.Clear();
@@ -82,7 +105,8 @@ namespace Maker.RiseEngine.Core.Scenes
                 s.sceneUpdate(playerInput, gameTime);
             }
 
-            foreach (Scene s in ScenesToRemove) {
+            foreach (Scene s in ScenesToRemove)
+            {
                 Scenes.Remove(s);
             }
 

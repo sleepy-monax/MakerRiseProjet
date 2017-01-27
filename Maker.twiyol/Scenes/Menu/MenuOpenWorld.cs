@@ -12,6 +12,7 @@ namespace Maker.twiyol.Scenes.Menu
     public class MenuOpenWorld : Scene
     {
         Panel rootContainer;
+        
 
         public override void OnLoad()
         {
@@ -19,6 +20,9 @@ namespace Maker.twiyol.Scenes.Menu
             rootContainer = new Panel(new Rectangle(-350, -(Engine.graphics.PreferredBackBufferHeight / 2), 700, Engine.graphics.PreferredBackBufferHeight), Color.White);
             rootContainer.Padding = new ControlPadding(16);
             rootContainer.ControlAnchor = Anchor.Center;
+            rootContainer.ChildMargin = new ControlPadding(16);
+
+            
 
         }
 

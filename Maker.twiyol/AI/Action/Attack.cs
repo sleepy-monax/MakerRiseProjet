@@ -10,7 +10,7 @@ namespace Maker.twiyol.AI.Action
     public class Attack : IAction
     {
         public string GameObjectName { get; set; }
-        public string pluginName { get; set; }
+        public string PluginName { get; set; }
 
         public void OnGameObjectAdded()
         {

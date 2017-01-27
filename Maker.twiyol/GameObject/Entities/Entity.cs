@@ -15,7 +15,7 @@ namespace Maker.twiyol.GameObject.Entities
     {
 
         public string GameObjectName { get; set; }
-        public string pluginName { get; set; }
+        public string PluginName { get; set; }
 
         //Drawing Property
         public Rectangle DrawBox;
@@ -32,9 +32,9 @@ namespace Maker.twiyol.GameObject.Entities
 
         public int MoveRunSpeed { get; set; } = 10;
 
-        public bool canTakeDamage { get; set; } = false;
+        public bool CanTakeDamage { get; set; } = false;
 
-        public bool canBeKilled { get; set; } = false;
+        public bool CanBeKilled { get; set; } = false;
 
         public Entity(string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation)
         {

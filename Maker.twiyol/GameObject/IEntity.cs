@@ -7,8 +7,8 @@
         int MoveSpeed { get; set; }
         int MoveRunSpeed { get; set; }
 
-        bool canTakeDamage { get; set; }
-        bool canBeKilled { get; set; }
+        bool CanTakeDamage { get; set; }
+        bool CanBeKilled { get; set; }
 
         float GetDamage(Event.GameObjectEventArgs e);
         float GetDefence(Event.GameObjectEventArgs e);

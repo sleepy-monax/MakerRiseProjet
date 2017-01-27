@@ -28,6 +28,7 @@ namespace Maker.RiseEngine.Core
 
         public static void STOP()
         {
+            Content.ContentEngine.Content.Unload();
             Environment.Exit(0);
         }
     }

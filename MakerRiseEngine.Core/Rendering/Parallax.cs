@@ -85,7 +85,7 @@ namespace Maker.RiseEngine.Core.Rendering
             var culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             culture.NumberFormat.NumberDecimalSeparator = ".";
 
-            System.IO.StreamReader sr = new System.IO.StreamReader("Data\\" + _PluginName + "\\Textures2D\\Parallax\\" + _Name + ".rise");
+            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + _PluginName + "\\Textures2D\\Parallax\\" + _Name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
             f = f.Replace(System.Environment.NewLine, "");

@@ -18,7 +18,7 @@ namespace Maker.twiyol.Scenes.Menu
         Texture2D Logo;
         bool asGame = false;
         Game.GameScene CurrentGame;
-
+        
         // Declaring user inteface elements.
         Panel panelMainMenu;
 
@@ -62,12 +62,19 @@ namespace Maker.twiyol.Scenes.Menu
                 buttonQuitteGame.Visible = false;
                 buttonPlayLastGame.Visible = false;
             }
+            else {
+
+                buttonNewGame.Visible = false;
+                buttonOpenGame.Visible = false;
+            }
+
 
             // Create event handle.
             buttonPlayLastGame.onMouseClick += ButtonPlayLastGame_onMouseClick;
             buttonQuitteGame.onMouseClick += ButtonQuitteGame_onMouseClick;
             buttonNewGame.onMouseClick += ButtonNewGame_onMouseClick;
             buttonQuitte.onMouseClick += ButtonQuitte_onMouseClick;
+            buttonOpenGame.onMouseClick += ButtonOpenGame_onMouseClick;
 
             // Add child control to root panel.
             panelMainMenu.AddChild(buttonPlayLastGame);
@@ -81,6 +88,19 @@ namespace Maker.twiyol.Scenes.Menu
             {
                 i.ControlDock = Dock.Top;
             }
+
+        }
+
+        private void ButtonOpenGame_onMouseClick()
+        {
+
+            this.hide();
+
+            Scene scene = new MenuOpenWorld();
+            RiseEngine.sceneManager.AddScene(scene);
+            scene.show();
+
+            RiseEngine.sceneManager.RemoveScene(this);
 
         }
 

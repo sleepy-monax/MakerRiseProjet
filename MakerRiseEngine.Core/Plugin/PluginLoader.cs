@@ -91,6 +91,7 @@ namespace Maker.RiseEngine.Core.Plugin
                         string plugin_NeedBuild = riseMetaData.GetData("NeedBuild");
                         string plugin_Path = riseMetaData.GetData("Path");
 
+
                         if (plugin_NeedBuild != "null" && plugin_Path != "null")
                         {
 

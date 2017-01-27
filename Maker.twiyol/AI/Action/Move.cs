@@ -15,7 +15,7 @@ namespace Maker.twiyol.AI.Action
             set;
         }
 
-        public string pluginName
+        public string PluginName
         {
             get;
             set;

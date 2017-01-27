@@ -25,7 +25,7 @@ namespace Maker.RiseEngine.Core
         {
             graphics = new GraphicsDeviceManager(this);
             Engine.graphics = graphics;
-            Content.RootDirectory = "Data";
+            Content.RootDirectory = "Plugins";
             Engine.MainGame = this;
             Engine.Window = Window;
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
@@ -161,7 +161,7 @@ namespace Maker.RiseEngine.Core
 
                 // Draw engine build info.
                 if (Engine.engineConfig.Debug_DebugWaterMark)
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision, new Rectangle(16, 0, 256, 64), Alignment.Left, Style.DropShadow, Color.White);
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision, new Rectangle(24, 16, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
 
                 // End the sprite batch.
                 spriteBatch.End();

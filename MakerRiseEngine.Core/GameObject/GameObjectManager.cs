@@ -18,7 +18,7 @@ namespace Maker.RiseEngine.Core.GameObject
             int gameObjectID = gameObject.Count;
 
             _gameObject.GameObjectName = gameObjectName;
-            _gameObject.pluginName = plugin.Name;
+            _gameObject.PluginName = plugin.Name;
 
             gameObject.Add(_gameObject);
             gameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);

@@ -40,8 +40,8 @@ namespace Maker.twiyol.AI.Entites
         public override void Tick(GameObjectEventArgs e, GameInput playerInput, GameTime gameTime)
         {
            
-            int moveActionIndex = GameObjectManager.GetGameObjectIndex("Base.Move");
-            int attckActionIndex = GameObjectManager.GetGameObjectIndex("Base.Attack");
+            int moveActionIndex = GameObjectManager.GetGameObjectIndex("twiyol_Base.Move");
+            int attckActionIndex = GameObjectManager.GetGameObjectIndex("twiyol_Base.Attack");
 
             if (e.ParrentEntity.Action == -1)
             {
