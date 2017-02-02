@@ -17,23 +17,22 @@ namespace Maker.RiseEngine.Core
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         debugScreen DbgScr;
-
-
+        
         public Scenes.SceneManager sceneManager;
 
         public RiseEngine()
         {
             graphics = new GraphicsDeviceManager(this);
-            Engine.graphics = graphics;
             Content.RootDirectory = "Plugins";
+            
+            // setup game engine.
+            Engine.graphics = graphics;
             Engine.MainGame = this;
             Engine.Window = Window;
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
             Engine.GameForm.ResizeEnd += GameForm_ResizeEnd;
-
-
+            
             sceneManager = new Scenes.SceneManager(this);
-
         }
 
         private void GameForm_ResizeEnd(object sender, System.EventArgs e)
@@ -48,16 +47,17 @@ namespace Maker.RiseEngine.Core
         {
             DebugLogs.WriteLog("Initializing 'Rise!Engine'", LogType.Info, "Core");
 
+            // Show a very cool logo in terminal :)
             DebugLogs.WriteLog("  ____  _          _ _____             _            ", LogType.Info, "Core");
             DebugLogs.WriteLog(" |  _ \\(_)___  ___| | ____|_ __   __ _(_)_ __   ___ ", LogType.Info, "Core");
             DebugLogs.WriteLog(" | |_) | / __|/ _ \\ |  _| | '_ \\ / _` | | '_ \\ / _ \\", LogType.Info, "Core");
             DebugLogs.WriteLog(" |  _ <| \\__ \\  __/_| |___| | | | (_| | | | | |  __/", LogType.Info, "Core");
             DebugLogs.WriteLog(" |_| \\_\\_|___/\\___(_)_____|_| |_|\\__, |_|_| |_|\\___|", LogType.Info, "Core");
             DebugLogs.WriteLog("                                 |___/              ", LogType.Info, "Core");
-
             DebugLogs.WriteLog(" ===================================================", LogType.Info, "Core");
 
             DebugLogs.WriteLog("Rise!Engine version:" + Engine.Version.ToString(), LogType.Info, "Core");
+            
             // Set windows from property.
             Window.Title = "Rise : Le monde est votre seule limite";
             Window.AllowAltF4 = true;
@@ -65,17 +65,14 @@ namespace Maker.RiseEngine.Core
             Window.IsBorderless = false;
 
             // Setup debug console.
-            //System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString();
+            // System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString(); 
+            // (Remove because crash wen terminal is desactivated :/)
             
             // Hide the systeme mouse cursor.
             IsMouseVisible = true;
-
             
-
             base.Initialize();
         }
-
-
 
         protected override void LoadContent()
         {
@@ -98,6 +95,7 @@ namespace Maker.RiseEngine.Core
             Content.Unload();
         }
 
+        // Use for detecting key Up Down.
         MouseState oldMouseState = new MouseState();
         KeyboardState oldKeyBoardState = new KeyboardState();
 
@@ -116,7 +114,6 @@ namespace Maker.RiseEngine.Core
                 sceneManager.Update(playerinput, gameTime);
 
                 DbgScr.Update(playerinput, gameTime);
-                base.Update(gameTime);
 
                 // Update the sound engine.
                 Audio.SongEngine.Update(mouseState, keyboardState, gameTime);
@@ -126,13 +123,18 @@ namespace Maker.RiseEngine.Core
             // Set old inputStats.
             oldMouseState = mouseState;
             oldKeyBoardState = keyboardState;
+            
+            // Update base class.
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            // Setup stopwatch.
             Stopwatch s = new Stopwatch();
             s.Start();
 
+            // Get if the game windows is focus and if is not focus pause the game.
             if (Engine.GameForm.Focused)
             {
                 // Clear graphique device screen.
@@ -181,6 +183,7 @@ namespace Maker.RiseEngine.Core
 
             s.Stop();
 
+            // Update frame counter.
             FrameCounter._sampleFrameTimeBuffer.Enqueue(s.ElapsedMilliseconds);
             if (FrameCounter._sampleFrameTimeBuffer.Count > FrameCounter.MAXIMUM_SAMPLES)
             {
@@ -190,9 +193,7 @@ namespace Maker.RiseEngine.Core
             else
             {
                 FrameCounter.AverageFramesTime = s.ElapsedMilliseconds;
-            }
-
-            
+            } 
         }
     }
 }
