@@ -50,8 +50,8 @@ namespace Maker.twiyol.Scenes.Menu
 
             // Create button.
             buttonPlayLastGame = new Button("Reprendre", new Rectangle(0, 0, 480, 64), Color.White);
-            buttonNewGame = new Button("Nouvelle Partie", new Rectangle(0, 0, 480, 64), Color.White);
-            buttonOpenGame = new Button("Charger une partie", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonNewGame = new Button("Nouveau monde", new Rectangle(0, 0, 480, 64), Color.White);
+            buttonOpenGame = new Button("Charger un monde", new Rectangle(0, 0, 480, 64), Color.White);
 
             buttonOption = new Button("Options", new Rectangle(0, 0, 480, 64), Color.White);
             buttonQuitteGame = new Button("Quitter le jeu en cours", new Rectangle(0, 0, 480, 64), Color.White);

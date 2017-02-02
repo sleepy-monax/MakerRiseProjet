@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maker.Maker.RiseEngine.Core.Properties
+namespace Maker.RiseEngine.Core.Properties
 {
 
 

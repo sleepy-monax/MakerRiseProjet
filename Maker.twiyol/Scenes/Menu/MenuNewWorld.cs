@@ -40,7 +40,7 @@ namespace Maker.twiyol.Scenes.Menu
             controlContainer.Padding = new ControlPadding(16);
             controlContainer.ControlDock = Dock.Bottom;
 
-            createNewWorldButton = new Button("Créer le nouveau monde", new Rectangle(0, 0, 400, 64), Color.White);
+            createNewWorldButton = new Button("Créer", new Rectangle(0, 0, 200, 64), Color.White);
             createNewWorldButton.ControlDock = Dock.Right;
             createNewWorldButton.onMouseClick += CreateNewWorldButton_onMouseClick;
 
@@ -53,15 +53,17 @@ namespace Maker.twiyol.Scenes.Menu
             worldSeedTextBox = new TextBox(new Random().Next().ToString(), new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
             worldSeedTextBox.ControlDock = Dock.Top;
 
-            titleLabel = new Label("Créer un nouveau monde", new Rectangle(0, 0, 128, 96), Color.White);
+            titleLabel = new Label("Nouveau monde", new Rectangle(0, 0, 128, 96), Color.White);
             titleLabel.ControlDock = Dock.Top;
             titleLabel.TextStyle = Style.rectangle;
             titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             nameLabel = new Label("Nom du nouveau monde :", new Rectangle(0, 0, 128, 64), Color.White);
             nameLabel.ControlDock = Dock.Top;
-            seedLabel = new Label("Graine pour la génération du monde :", new Rectangle(0, 0, 128, 64), Color.White);
+            nameLabel.TextAlignment = Alignment.Left;
+            seedLabel = new Label("Graine de la génération :", new Rectangle(0, 0, 128, 64), Color.White);
             seedLabel.ControlDock = Dock.Top;
+            seedLabel.TextAlignment = Alignment.Left;
 
             rootContainer.AddChild(controlContainer);
             rootContainer.AddChild(titleLabel);

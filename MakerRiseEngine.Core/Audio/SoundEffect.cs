@@ -9,35 +9,25 @@ namespace Maker.RiseEngine.Core.Audio
     {
         public List<SoundEffect> soundEffects;
 
-        public SoundEffectColection() {
+        public SoundEffectColection(string pluginName, string name) {
 
             soundEffects = new List<SoundEffect>();
 
-        }
-    }
-
-    public static class SoundEffectParser {
-
-        public static SoundEffectColection Parse(string _PluginName, string _Name) {
-
-            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + _PluginName + "\\SoundsEffects\\" + _Name + ".rise");
+            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + pluginName + "\\SoundsEffects\\" + name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
 
             f = f.Replace(System.Environment.NewLine, "");
             string[] Ls = f.Split(',');
 
-            SoundEffectColection soundEffectColection = new SoundEffectColection();
 
             for (int i = 0; i < Ls.Length; i++)
             {
 
-                soundEffectColection.soundEffects.Add(ContentEngine.SoundEffect(_PluginName, Ls[i]));
+                soundEffects.Add(ContentEngine.SoundEffect(pluginName, Ls[i]));
 
             }
 
-            return soundEffectColection;
         }
-
     }
 }

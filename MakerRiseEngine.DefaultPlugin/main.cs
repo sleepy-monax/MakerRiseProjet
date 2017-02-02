@@ -26,7 +26,7 @@ namespace Maker.twiyal.Base
         {
             get
             {
-                return "twiyol_Base";
+                return "TWIYOL_Base";
             }
         }
 
@@ -45,12 +45,12 @@ namespace Maker.twiyal.Base
             this.AddGameObject("Tilesheet_Water", new SpriteSheet(Name, ContentEngine.Texture2D(Name, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
 
             //Items
-            this.AddGameObject("Stick", new Item(ItemType.Crafting, new string[] { "Stick" },  $"{Name}.Tilesheet_Item"));
+            this.AddGameObject("Stick", new Item(ItemType.Crafting, new string[] { "Stick" }, $"{Name}.Tilesheet_Item"));
             this.AddGameObject("Apple", new Item(ItemType.Food, new string[] { "AppleRed", "AppleGreen", "AppleYellow" }, $"{Name}.Tilesheet_Item"));
 
             //Tiles
             Tile Grass = new Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, $"{Name}.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11));
-            Grass.SetSoundEffect(SoundEffectParser.Parse(this.Name, "dirtfootstep"));
+            Grass.SetSoundEffect(new SoundEffectColection(Name, "dirtfootstep"));
             this.AddGameObject("Grass", Grass);
             this.AddGameObject("FlowerOnGrass", new Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, $"{Name}.Tilesheet_Terrain", System.Drawing.Color.FromArgb(36, 81, 11)) { });
             this.AddGameObject("Sand", new Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, $"{Name}.Tilesheet_Terrain", System.Drawing.Color.Yellow));
@@ -85,7 +85,7 @@ namespace Maker.twiyal.Base
 
 
 
-            this.AddGameObject("Forest", new Biome(new PerlinDistribution(0.1f,0),
+            this.AddGameObject("Forest", new Biome(new PerlinDistribution(0.1f, 0),
                 new KeyWeightPair<int>[] {
                     new KeyWeightPair<int>(this.GetGameObjectIndex("BigTree"), 0.3),
                     new KeyWeightPair<int>(this.GetGameObjectIndex("PinTree"), 0.3),
