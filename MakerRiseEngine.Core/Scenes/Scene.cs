@@ -2,10 +2,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Maker.RiseEngine.Core.Scenes
 {
-    public abstract class Scene
+    public abstract class Scene : IDisposable
     {
 
         public bool Pause { get; set; } = true;
@@ -46,5 +47,11 @@ namespace Maker.RiseEngine.Core.Scenes
 
         public abstract void OnLoad();
         public abstract void OnUnload();
+
+        public void Dispose()
+        {
+            RiseEngine = null;
+            GC.SuppressFinalize(this);
+        }
     }
 }
