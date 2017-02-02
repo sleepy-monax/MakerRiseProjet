@@ -18,7 +18,7 @@ using Maker.twiyol.AI.Entites;
 using Maker.twiyol.Events;
 using Maker.twiyol.Generator.EntitiesDistribution;
 
-namespace Maker.twiyal.Base
+namespace Maker.twiyol.Base
 {
     class Plugin : IPlugin
     {
@@ -66,7 +66,6 @@ namespace Maker.twiyal.Base
             this.AddGameObject("Rock", new Entity(new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, $"{Name}.Tilesheet_Entity", new Vector2(0)));
             this.AddGameObject("Plant", new Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, $"{Name}.Tilesheet_Entity", new Vector2(0)));
             this.AddGameObject("Player", new Creature(new PlayerAI(0, 1, 2, 3, 4, 5, 6, 7), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle_Up", "Player_Idle_Down", "Player_Idle_Left", "Player_Idle_Right" }, $"{Name}.Tilesheet_Creatures", new Vector2(0)));
-
             this.AddGameObject("Cactus", new Entity(new string[] { "Cactus1", "Cactus2" }, $"{Name}.Tilesheet_Entity", new Vector2(0)));
             this.AddGameObject("TaleCactus", new Entity(new string[] { "Cactus0" }, $"{Name}.Tilesheet_Entity", new Vector2(0, -1f)));
 
