@@ -1,22 +1,23 @@
-﻿using Microsoft.Xna.Framework;
-using Maker.RiseEngine.Core.Audio;
-using Maker.RiseEngine.Core.MathExt;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.Content;
-using Maker.RiseEngine.Core.Plugin;
-using System;
-using Maker.twiyol.AI.Action;
-using Maker.twiyol.GameObject.Items;
-using Maker.twiyol.GameObject;
-using Maker.twiyol.GameObject.Tiles;
 using Maker.RiseEngine.Core.GameObject;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.Game;
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.GameObject.Entities;
+using Maker.RiseEngine.Core.MathExt;
+using Maker.RiseEngine.Core.Plugin;
+using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+
+using Maker.twiyol.AI.Action;
 using Maker.twiyol.AI.Entites;
 using Maker.twiyol.Events;
+using Maker.twiyol.Game.GameUtils;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.GameObject;
+using Maker.twiyol.GameObject.Entities;
+using Maker.twiyol.GameObject.Items;
+using Maker.twiyol.GameObject.Tiles;
 using Maker.twiyol.Generator.EntitiesDistribution;
+
+using Microsoft.Xna.Framework;
+using System;
 
 namespace Maker.twiyol.Base
 {
@@ -69,7 +70,6 @@ namespace Maker.twiyol.Base
             this.AddGameObject("Cactus", new Entity(new string[] { "Cactus1", "Cactus2" }, $"{Name}.Tilesheet_Entity", new Vector2(0)));
             this.AddGameObject("TaleCactus", new Entity(new string[] { "Cactus0" }, $"{Name}.Tilesheet_Entity", new Vector2(0, -1f)));
 
-
             //Biome
             this.AddGameObject("Plains", new Biome(new PerlinDistribution(0.1f, 0),
                  new KeyWeightPair<int>[] {
@@ -81,8 +81,6 @@ namespace Maker.twiyol.Base
                     new KeyWeightPair<int>(this.GetGameObjectIndex("Grass"), 0.9),
                     new KeyWeightPair<int>(this.GetGameObjectIndex("FlowerOnGrass"), 0.1)
                  }));
-
-
 
             this.AddGameObject("Forest", new Biome(new PerlinDistribution(0.1f, 0),
                 new KeyWeightPair<int>[] {

@@ -21,13 +21,27 @@ namespace Maker.RiseEngine.Core.Text
 
                 var tags = s.Split('[');
                 tags = tags[0].Split(']');
-                tags = tags[0].Split(',');
+                string text = tags[1];
+                tags = tags[0].Split(';');
 
                 string colorTag = tags[0];
+
+                // Parse color.
+                var colorRGB = colorTag.Split(',');
+
+                int ColorR;
+                int ColorG;
+                int ColorB;
+
+                int.TryParse(colorRGB[0], out ColorR);
+                int.TryParse(colorRGB[1], out ColorG);
+                int.TryParse(colorRGB[2], out ColorB);
+
+                // Parse 
                 string styleTag = tags[1];
 
                 //TODO : finish code here !
-
+                
             }
 
             return Blocks;

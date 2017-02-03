@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26127.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Core", "MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj", "{0B1AE74F-0E04-4402-9C99-D03175C9AA03}"
 EndProject
@@ -21,6 +21,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.twiyol", "Maker.twiyol\Maker.twiyol.csproj", "{409B76CF-7D0C-4D67-9E90-840EE45F3C84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Launcher", "Maker.RiseEngine.Launcher\Maker.RiseEngine.Launcher.csproj", "{A0BEBAF5-A086-4C4C-A7E6-4672D057BFEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Launcher", "Launcher", "{89D19F8F-DD08-435E-84CC-70A6EF186735}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Launcher.Updater", "Maker.RiseEngine.Launcher.Updater\Maker.RiseEngine.Launcher.Updater.csproj", "{C5BBA855-A4B0-4149-81F6-4A91672855FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -120,6 +124,22 @@ Global
 		{A0BEBAF5-A086-4C4C-A7E6-4672D057BFEC}.Release|x64.Build.0 = Release|Any CPU
 		{A0BEBAF5-A086-4C4C-A7E6-4672D057BFEC}.Release|x86.ActiveCfg = Release|Any CPU
 		{A0BEBAF5-A086-4C4C-A7E6-4672D057BFEC}.Release|x86.Build.0 = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|x64.Build.0 = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Debug|x86.Build.0 = Debug|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|ARM.Build.0 = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x64.ActiveCfg = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x64.Build.0 = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x86.ActiveCfg = Release|Any CPU
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +148,7 @@ Global
 		{CE75BBEA-8023-487E-9463-7E984F7CAF75} = {E88F4514-5EDD-45F1-9211-F62E32954F48}
 		{3671E61A-94BA-4CFD-BD61-A31900A224E2} = {9ABA2B92-32CE-4814-9B4B-2E77645F2CC3}
 		{409B76CF-7D0C-4D67-9E90-840EE45F3C84} = {E88F4514-5EDD-45F1-9211-F62E32954F48}
+		{A0BEBAF5-A086-4C4C-A7E6-4672D057BFEC} = {89D19F8F-DD08-435E-84CC-70A6EF186735}
+		{C5BBA855-A4B0-4149-81F6-4A91672855FB} = {89D19F8F-DD08-435E-84CC-70A6EF186735}
 	EndGlobalSection
 EndGlobal
