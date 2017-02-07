@@ -15,7 +15,7 @@ namespace Maker.RiseEngine.Core.Config
         public float Sound_Effect_Level { get; set; }  = 1f;
 
         // Debug.
-        public bool Debug_EnableLogs { get; set; } = false;
+        public bool Debug_EnableLogs { get; set; } = true;
         public bool Debug_FrameCounter { get; set; } = false;
         public bool Debug_GuiFrame { get; set; } = false;
         public bool Debug_WorldOverDraw { get; set; } = false;

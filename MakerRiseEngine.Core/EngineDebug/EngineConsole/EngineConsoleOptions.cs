@@ -45,7 +45,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
             AnimationSpeed = 0.5f;
             CursorBlinkSpeed = 0.5f;
             Height = 300;
-            Width = 300;
+            Width = 700;
             Prompt = "$";
             Cursor = '_';
             Padding = 0;

@@ -93,18 +93,17 @@ namespace Maker.RiseEngine.Core
 
             DebugScreen = new debugScreen();
 
-            // Debug Console.
-
+            // Setup DebugConsole.
             DebugConsole = new EngineConsole(spriteBatch, new GameConsoleOptions
             {
                 ToggleKey = (int)Microsoft.Xna.Framework.Input.Keys.F12,
                 Font = ContentEngine.SpriteFont("Engine", "Consolas_16pt"),
-                FontColor = Color.LawnGreen,
-                Prompt = "$",
-                PromptColor = Color.Crimson,
-                CursorColor = Color.OrangeRed,
-                BackgroundColor = new Color(Color.Black, 150),
-                PastCommandOutputColor = Color.Aqua,
+                FontColor = Color.Gold,
+                Prompt = ">",
+                PromptColor = Color.Gold,
+                CursorColor = Color.White,
+                BackgroundColor = new Color(Color.Black, 100),
+                PastCommandOutputColor = Color.White,
                 BufferColor = Color.Gold
             }, this);
 
@@ -146,6 +145,9 @@ namespace Maker.RiseEngine.Core
                 // Update debug Console.
                 DebugConsole.Update(playerinput, gameTime);
 
+                // Pause game when console is open.
+                if (!DebugConsole.IsOpen) {
+
                 //Update scenemanager.
                 sceneManager.Update(playerinput, gameTime);
 
@@ -154,6 +156,8 @@ namespace Maker.RiseEngine.Core
                 // Update the sound engine.
                 Audio.SongEngine.Update(mouseState, keyboardState, gameTime);
                 Audio.SoundEffectEngine.Update(mouseState, keyboardState, gameTime);
+
+                }
             }
 
             // Set old inputStats.

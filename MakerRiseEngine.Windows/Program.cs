@@ -24,7 +24,6 @@ namespace Maker.RiseEngine.Windows
             {
 
                 game.Run();
-                t.stop();
 
             }
 
