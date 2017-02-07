@@ -23,7 +23,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 do
                 {
 
-                    var text = Console.ReadLine();
+                    var text = System.Console.ReadLine();
 
                     if (text == null) {
                         break;
@@ -55,7 +55,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
                             // Show all inforamtion about a plugin.
                             DebugLogs.WriteLog("What is the name of the plugin ?", LogType.Info, "$");
 
-                            var pName = Console.ReadLine();
+                            var pName = System.Console.ReadLine();
 
                             if (Engine.Plugins.ContainsKey(pName))
                             {

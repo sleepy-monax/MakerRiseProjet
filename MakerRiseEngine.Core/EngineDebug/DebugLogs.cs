@@ -23,22 +23,22 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 switch (_Type)
                 {
                     case LogType.Error:
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        System.Console.ForegroundColor = ConsoleColor.DarkRed;
                         LogTypeText = "E!";
                         break;
 
                     case LogType.Info:
-                        Console.ForegroundColor = ConsoleColor.White;
+                        System.Console.ForegroundColor = ConsoleColor.White;
                         LogTypeText = "I:";
                         break;
 
                     case LogType.Warning:
-                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        System.Console.ForegroundColor = ConsoleColor.Yellow;
                         LogTypeText = "W?";
                         break;
 
                     default:
-                        Console.ForegroundColor = ConsoleColor.White;
+                        System.Console.ForegroundColor = ConsoleColor.White;
                         LogTypeText = "I:";
                         break;
                 }
@@ -47,11 +47,11 @@ namespace Maker.RiseEngine.Core.EngineDebug
                 string t = $"{LogTypeText} {_SenderName} {_Text}";
 
                 //write in console.
-                Console.WriteLine(t);
+                System.Console.WriteLine(t);
 
                 //writing in logs file.
                 LastDebugText = $"{LastDebugText}{t}{Environment.NewLine}";
-                Console.ForegroundColor = ConsoleColor.White;
+                System.Console.ForegroundColor = ConsoleColor.White;
             }
         }
     }

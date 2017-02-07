@@ -1,11 +1,13 @@
 using Maker.RiseEngine.Core.Content;
 using Maker.RiseEngine.Core.EngineDebug;
+using Maker.RiseEngine.Core.EngineDebug.EngineConsole;
+using Maker.RiseEngine.Core.EngineDebug.EngineConsole.Commands.Plugin;
 using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Plugin;
 using Maker.RiseEngine.Core.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,20 +16,22 @@ namespace Maker.RiseEngine.Core
 {
     public class RiseEngine : Game
     {
-        GraphicsDeviceManager graphics;
+        GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
-        debugScreen DbgScr;
-        
+        debugScreen DebugScreen;
+        EngineConsole DebugConsole;
+
+
         public Scenes.SceneManager sceneManager;
 
         public RiseEngine()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Plugins";
             
             // setup game engine.
-            Engine.graphics = graphics;
-            Engine.MainGame = this;
+            Engine.graphics = Graphics;
+            Engine.RiseEngine = this;
             Engine.Window = Window;
             Engine.GameForm = (Form)Control.FromHandle(Window.Handle);
             Engine.GameForm.ResizeEnd += GameForm_ResizeEnd;
@@ -41,6 +45,7 @@ namespace Maker.RiseEngine.Core
             Engine.graphics.PreferredBackBufferWidth = Engine.Window.ClientBounds.Width;
             Engine.graphics.PreferredBackBufferHeight = Engine.Window.ClientBounds.Height;
             Engine.graphics.ApplyChanges();
+            GameConsoleOptions.Options.Height = Engine.Window.ClientBounds.Height;
         }
 
         protected override void Initialize()
@@ -84,7 +89,33 @@ namespace Maker.RiseEngine.Core
             ContentEngine.Content = Content;
             Rendering.SpriteSheets.CommonSheets.Load();
 
-            DbgScr = new debugScreen();
+            DebugScreen = new debugScreen();
+
+            // Debug Console.
+
+            DebugConsole = new EngineConsole(spriteBatch, new GameConsoleOptions
+            {
+                ToggleKey = (int)Microsoft.Xna.Framework.Input.Keys.F12,
+                Font = ContentEngine.SpriteFont("Engine", "Consolas_16pt"),
+                FontColor = Color.LawnGreen,
+                Prompt = "$",
+                PromptColor = Color.Crimson,
+                CursorColor = Color.OrangeRed,
+                BackgroundColor = new Color(Color.Black, 150),
+                PastCommandOutputColor = Color.Aqua,
+                BufferColor = Color.Gold
+            }, this);
+
+            DebugConsole.AddCommand("ping", a =>
+            {
+                // TODO your logic
+                return String.Format("pong");
+            });
+
+            // Add engine commande in the terminal.
+            DebugConsole.AddCommand(new PlugCommand());
+            DebugConsole.AddCommand(new PlugListCommand());
+            DebugConsole.AddCommand(new PlugInfoCommand());
 
             // Show the loading scene.
             sceneManager.AddScene(new Scenes.Scenes.EngineLoading());
@@ -109,11 +140,14 @@ namespace Maker.RiseEngine.Core
             {
                 // Creating player input data structure.
                 GameInput playerinput = new GameInput(mouseState, oldMouseState, keyboardState, oldKeyBoardState);
-                
+
+                // Update debug Console.
+                DebugConsole.Update(playerinput, gameTime);
+
                 //Update scenemanager.
                 sceneManager.Update(playerinput, gameTime);
 
-                DbgScr.Update(playerinput, gameTime);
+                DebugScreen.Update(playerinput, gameTime);
 
                 // Update the sound engine.
                 Audio.SongEngine.Update(mouseState, keyboardState, gameTime);
@@ -155,11 +189,11 @@ namespace Maker.RiseEngine.Core
                 // Show error message if something append on engine initialization.
                 if (Core.Engine.AsErrore)
                 {
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Error Mode !", new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Alignment.Bottom, Style.Bold, Color.Red);
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Error Mode !", new Rectangle(0, 0, Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight), Alignment.Bottom, Style.Bold, Color.Red);
                 }
 
                 // Draw debug info.
-                DbgScr.Draw(spriteBatch, gameTime);
+                DebugScreen.Draw(spriteBatch, gameTime);
 
                 // Draw engine build info.
                 if (Engine.engineConfig.Debug_DebugWaterMark)
@@ -168,6 +202,8 @@ namespace Maker.RiseEngine.Core
                 // End the sprite batch.
                 spriteBatch.End();
 
+                // Draw debugConsole.
+                DebugConsole.Draw(spriteBatch, gameTime);
             }
             else
             {

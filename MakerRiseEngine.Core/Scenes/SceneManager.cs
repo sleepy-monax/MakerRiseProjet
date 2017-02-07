@@ -15,16 +15,12 @@ namespace Maker.RiseEngine.Core.Scenes
 
         RiseEngine Game;
         List<Scene> Scenes;
-        List<Scene> ScenesToRemove;
-        List<Scene> ScenesToAdd;
 
         public SceneManager(RiseEngine game)
         {
 
             Game = game;
             Scenes = new List<Scene>();
-            ScenesToRemove = new List<Scene>();
-            ScenesToAdd = new List<Scene>();
 
         }
 
@@ -41,7 +37,7 @@ namespace Maker.RiseEngine.Core.Scenes
                 EngineDebug.DebugLogs.WriteLog($"Error append during scene loading : \n{ex.ToString()}", EngineDebug.LogType.Error, "SceneManager");
             }
 
-            ScenesToAdd.Add(scene);
+            Scenes.Add(scene);
         }
 
         public void RemoveScene(Scene scene)
@@ -57,61 +53,63 @@ namespace Maker.RiseEngine.Core.Scenes
 
                 throw;
             }
-            ScenesToRemove.Add(scene);
+            Scenes.Remove(scene);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            foreach (Scene s in Scenes)
+            try
             {
-                spriteBatch.Begin();
-                s.sceneDraw(spriteBatch, gameTime);
-
-
-                spriteBatch.End();
-            }
-            if (Engine.engineConfig.Debug_SceneManager)
-            {
-                spriteBatch.Begin();
-
-                spriteBatch.FillRectangle(new Rectangle(16, 48, 256, 16 + 32 * (Scenes.Count + 1)), new Color(Color.Black, 0.4f));
-                spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), "Loaded scenes :", new Rectangle(24, 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
-
-                int i = 1;
                 foreach (Scene s in Scenes)
                 {
+                    spriteBatch.Begin();
+                    s.sceneDraw(spriteBatch, gameTime);
 
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), s.GetType().Name, new Rectangle(24, (32 * i) + 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
 
-                    i++;
+                    spriteBatch.End();
                 }
+                if (Engine.engineConfig.Debug_SceneManager)
+                {
+                    spriteBatch.Begin();
 
-                spriteBatch.End();
+                    spriteBatch.FillRectangle(new Rectangle(16, 48, 256, 16 + 32 * (Scenes.Count + 1)), new Color(Color.Black, 0.4f));
+                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), "Loaded scenes :", new Rectangle(24, 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
+
+                    int i = 1;
+                    foreach (Scene s in Scenes)
+                    {
+
+                        spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), s.GetType().Name, new Rectangle(24, (32 * i) + 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
+
+                        i++;
+                    }
+
+                    spriteBatch.End();
+                }
             }
+            catch (Exception)
+            {
+
+
+            }
+
+
         }
 
         public void Update(GameInput playerInput, GameTime gameTime)
         {
-            foreach (Scene s in ScenesToAdd)
+
+            try
             {
-                Scenes.Add(s);
+                foreach (Scene s in Scenes)
+                {
+                    s.sceneUpdate(playerInput, gameTime);
+                }
+            }
+            catch (Exception)
+            {
 
             }
-
-            ScenesToAdd.Clear();
-
-            foreach (Scene s in Scenes)
-            {
-                s.sceneUpdate(playerInput, gameTime);
-            }
-
-            foreach (Scene s in ScenesToRemove)
-            {
-                Scenes.Remove(s);
-            }
-
-            ScenesToRemove.Clear();
-
         }
     }
 }

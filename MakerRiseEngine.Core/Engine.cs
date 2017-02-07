@@ -14,7 +14,7 @@ namespace Maker.RiseEngine.Core
 
         public static Dictionary<string, IPlugin> Plugins;
         public static GraphicsDeviceManager graphics;
-        public static RiseEngine MainGame;
+        public static RiseEngine RiseEngine;
         public static GraphicsDevice GraphicsDevice;
         public static GameWindow Window;
         public static Form GameForm;

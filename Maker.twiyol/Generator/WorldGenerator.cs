@@ -56,7 +56,7 @@ namespace Maker.twiyol.Generator
 
             // Show the loading scene.
             WorldGenerating sceneGen = new WorldGenerating();
-            var game = Engine.MainGame;
+            var game = Engine.RiseEngine;
             game.sceneManager.AddScene(sceneGen);
             sceneGen.show();
 
