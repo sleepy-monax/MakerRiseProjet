@@ -139,7 +139,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
             if (e.KeyValue == GameConsoleOptions.Options.ToggleKey)
             {
                 ToggleConsole();
-                isHandled = true;
+                //isHandled = true;
             }
 
             switch (e.KeyValue)

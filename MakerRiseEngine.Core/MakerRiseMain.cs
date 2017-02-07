@@ -45,7 +45,9 @@ namespace Maker.RiseEngine.Core
             Engine.graphics.PreferredBackBufferWidth = Engine.Window.ClientBounds.Width;
             Engine.graphics.PreferredBackBufferHeight = Engine.Window.ClientBounds.Height;
             Engine.graphics.ApplyChanges();
+
             GameConsoleOptions.Options.Height = Engine.Window.ClientBounds.Height;
+            //GameConsoleOptions.Options.Width = (int)(Engine.Window.ClientBounds.Width * 0.66f);
         }
 
         protected override void Initialize()

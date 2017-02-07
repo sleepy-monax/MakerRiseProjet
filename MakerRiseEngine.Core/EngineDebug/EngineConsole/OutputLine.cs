@@ -11,7 +11,7 @@
 
     class OutputLine
     {
-        public string Output { get; set; }
+        public string Output { get; set; } = "";
         public OutputLineType Type { get; set; }
 
         public OutputLine(string output, OutputLineType type)

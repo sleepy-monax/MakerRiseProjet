@@ -27,7 +27,6 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
 
         private readonly SpriteBatch spriteBatch;
         private readonly InputProcessor inputProcessor;
-        private readonly int width;
         private State currentState;
         private Vector2 openedPosition, closedPosition, position;
         private DateTime stateChangeTime;
@@ -44,7 +43,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         {
             get
             {
-                return new Rectangle((int)position.X, (int)position.Y, width - (GameConsoleOptions.Options.Margin * 2), GameConsoleOptions.Options.Height);
+                return new Rectangle((int)position.X, (int)position.Y, GameConsoleOptions.Options.Width - (GameConsoleOptions.Options.Margin * 2), GameConsoleOptions.Options.Height);
             }
         }
 
@@ -57,14 +56,13 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         }
 
         private readonly float oneCharacterWidth;
-        private readonly int maxCharactersPerLine;
+        private int maxCharactersPerLine;
 
         public Renderer(Game game, SpriteBatch spriteBatch, InputProcessor inputProcessor)
         {
             currentState = State.Closed;
-            width = game.GraphicsDevice.Viewport.Width;
-            position = closedPosition = new Vector2(GameConsoleOptions.Options.Margin, -GameConsoleOptions.Options.Height);
-            openedPosition = new Vector2(GameConsoleOptions.Options.Margin, 0);
+            position = closedPosition = new Vector2(-GameConsoleOptions.Options.Width, 0);
+            openedPosition = new Vector2(0, 0);
             this.spriteBatch = spriteBatch;
             this.inputProcessor = inputProcessor;
             firstCommandPositionOffset = Vector2.Zero;
@@ -74,18 +72,20 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
 
         public void Update(GameTime gameTime)
         {
+            closedPosition = new Vector2(-GameConsoleOptions.Options.Width, 0);
+            maxCharactersPerLine = (int)((Bounds.Width - GameConsoleOptions.Options.Padding * 2) / oneCharacterWidth);
             if (currentState == State.Opening)
             {
-                position.Y = MathHelper.SmoothStep(position.Y, openedPosition.Y, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
-                if (position.Y == openedPosition.Y)
+                position.X = MathHelper.SmoothStep(position.X, openedPosition.X, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
+                if (position.X == openedPosition.X)
                 {
                     currentState = State.Opened;
                 }
             }
             if (currentState == State.Closing)
             {
-                position.Y = MathHelper.SmoothStep(position.Y, closedPosition.Y, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
-                if (position.Y == closedPosition.Y)
+                position.X = MathHelper.SmoothStep(position.X, closedPosition.X, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
+                if (position.X == closedPosition.X)
                 {
                     currentState = State.Closed;
                 }
@@ -99,6 +99,8 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
                 return;
             }
             spriteBatch.FillRectangle(Bounds, GameConsoleOptions.Options.BackgroundColor);
+            spriteBatch.DrawRectangle(Bounds, Color.Black);
+
             var nextCommandPosition = DrawCommands(inputProcessor.Out, FirstCommandPosition);
             nextCommandPosition = DrawPrompt(nextCommandPosition);
             var bufferPosition = DrawCommand(inputProcessor.Buffer.ToString(), nextCommandPosition, GameConsoleOptions.Options.BufferColor); //Draw the buffer

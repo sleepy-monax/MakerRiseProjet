@@ -20,8 +20,6 @@ namespace Maker.RiseEngine.Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            debugTerminal t = new debugTerminal();
-            t.start();
             using (var game = new Core.RiseEngine())
             {
 

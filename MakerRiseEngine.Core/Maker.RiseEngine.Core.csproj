@@ -78,7 +78,6 @@
     <Compile Include="EngineDebug\EngineConsole\OutputLine.cs" />
     <Compile Include="EngineDebug\EngineConsole\Renderer.cs" />
     <Compile Include="EngineDebug\debugScreen.cs" />
-    <Compile Include="EngineDebug\debugTerminal.cs" />
     <Compile Include="GameObject\GameObjectManager.cs" />
     <Compile Include="GameObject\IDrawableGameObject.cs" />
     <Compile Include="GameObject\IGameObject.cs" />
