@@ -101,7 +101,7 @@ namespace Maker.twiyol.Game
             }
 
             // Take screenshots.
-            if (playerInput.IsKeyBoardKeyReleased(Engine.engineConfig.Input_Take_Screenshot)) {
+            if (playerInput.IsKeyBoardKeyPress(Engine.engineConfig.Input_Take_Screenshot)) {
                 
                 string path = $"Screenshots\\{RandomHelper.RandomString(16).ToLower()}.png";
                 FileStream fs = new FileStream(path, FileMode.OpenOrCreate);

@@ -2,7 +2,7 @@
 
 namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole.Commands
 {
-    class CustomCommand:IConsoleCommand
+    public class CustomCommand:IConsoleCommand
     {
         public string Name { get; private set; }
         public string Description { get; private set; }

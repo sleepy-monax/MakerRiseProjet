@@ -36,7 +36,7 @@ namespace Maker.twiyol.Game
 
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
-            if (playerInput.IsKeyBoardKeyReleased(Engine.engineConfig.Input_ShowMenu))
+            if (playerInput.IsKeyBoardKeyPress(Engine.engineConfig.Input_ShowMenu))
             {
                 if (!IsPause)
                     PauseGame();

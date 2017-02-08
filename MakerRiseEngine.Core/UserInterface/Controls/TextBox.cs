@@ -58,8 +58,8 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             {
 
                 //Char Index
-                if (playerInput.IsKeyBoardKeyReleased(Keys.Left)) { CharIndex--;  }
-                if (playerInput.IsKeyBoardKeyReleased(Keys.Right)) { CharIndex++;  }
+                if (playerInput.IsKeyBoardKeyPress(Keys.Left)) { CharIndex--;  }
+                if (playerInput.IsKeyBoardKeyPress(Keys.Right)) { CharIndex++;  }
                 if (CharIndex < 0) { CharIndex = 0; }
                 if (CharIndex > Text.ToCharArray().Count()) { CharIndex = Text.ToCharArray().Count(); }
 

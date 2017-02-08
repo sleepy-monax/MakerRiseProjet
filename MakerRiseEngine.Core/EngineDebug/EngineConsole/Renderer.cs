@@ -4,10 +4,12 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Input;
+using Microsoft.Xna.Framework.Input;
 
 namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
 {
-    class Renderer
+    class Renderer : IDrawable
     {
         enum State
         {
@@ -70,42 +72,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
             maxCharactersPerLine = (int)((Bounds.Width - GameConsoleOptions.Options.Padding * 2) / oneCharacterWidth);
         }
 
-        public void Update(GameTime gameTime)
-        {
-            closedPosition = new Vector2(-GameConsoleOptions.Options.Width, 0);
-            maxCharactersPerLine = (int)((Bounds.Width - GameConsoleOptions.Options.Padding * 2) / oneCharacterWidth);
-            if (currentState == State.Opening)
-            {
-                position.X = MathHelper.SmoothStep(position.X, openedPosition.X, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
-                if (position.X == openedPosition.X)
-                {
-                    currentState = State.Opened;
-                }
-            }
-            if (currentState == State.Closing)
-            {
-                position.X = MathHelper.SmoothStep(position.X, closedPosition.X, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
-                if (position.X == closedPosition.X)
-                {
-                    currentState = State.Closed;
-                }
-            }
-        }
-
-        public void Draw(GameTime gameTime)
-        {
-            if (currentState == State.Closed) //Do not draw if the console is closed
-            {
-                return;
-            }
-            spriteBatch.FillRectangle(Bounds, GameConsoleOptions.Options.BackgroundColor);
-            spriteBatch.DrawRectangle(Bounds, Color.Black);
-
-            var nextCommandPosition = DrawCommands(inputProcessor.Out, FirstCommandPosition);
-            nextCommandPosition = DrawPrompt(nextCommandPosition);
-            var bufferPosition = DrawCommand(inputProcessor.Buffer.ToString(), nextCommandPosition, GameConsoleOptions.Options.BufferColor); //Draw the buffer
-            DrawCursor(bufferPosition, gameTime);
-        }
+     
 
         void DrawCursor(Vector2 pos, GameTime gameTime)
         {
@@ -219,6 +186,60 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         bool IsInBounds(float yPosition)
         {
             return yPosition < openedPosition.Y + GameConsoleOptions.Options.Height;
+        }
+
+        public void Update(GameInput playerInput, GameTime gameTime)
+        {
+            closedPosition = new Vector2(-GameConsoleOptions.Options.Width, 0);
+            maxCharactersPerLine = (int)((Bounds.Width - GameConsoleOptions.Options.Padding * 2) / oneCharacterWidth);
+            if (currentState == State.Opening)
+            {
+                position.X = MathHelper.SmoothStep(position.X, openedPosition.X, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
+                if (position.X == openedPosition.X)
+                {
+                    currentState = State.Opened;
+                }
+            }
+            if (currentState == State.Closing)
+            {
+                position.X = MathHelper.SmoothStep(position.X, closedPosition.X, ((float)((DateTime.Now - stateChangeTime).TotalSeconds / GameConsoleOptions.Options.AnimationSpeed)));
+                if (position.X == closedPosition.X)
+                {
+                    currentState = State.Closed;
+                }
+            }
+
+            if (currentState == State.Opened)
+            {
+
+                if (playerInput.IsKeyBoardKeyPress(Keys.PageUp)){
+
+                    firstCommandPositionOffset.Y -= 16;
+
+                }
+
+                if (playerInput.IsKeyBoardKeyPress(Keys.PageDown)){
+
+                    firstCommandPositionOffset.Y += 16;
+
+                }
+
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            if (currentState == State.Closed) //Do not draw if the console is closed
+            {
+                return;
+            }
+            spriteBatch.FillRectangle(Bounds, GameConsoleOptions.Options.BackgroundColor);
+            spriteBatch.DrawRectangle(Bounds, Color.Black);
+
+            var nextCommandPosition = DrawCommands(inputProcessor.Out, FirstCommandPosition);
+            nextCommandPosition = DrawPrompt(nextCommandPosition);
+            var bufferPosition = DrawCommand(inputProcessor.Buffer.ToString(), nextCommandPosition, GameConsoleOptions.Options.BufferColor); //Draw the buffer
+            DrawCursor(bufferPosition, gameTime);
         }
     }
 }

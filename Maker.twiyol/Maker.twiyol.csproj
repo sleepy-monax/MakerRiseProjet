@@ -55,6 +55,7 @@
     <Compile Include="AI\Utils.cs" />
     <Compile Include="Events\GameEventHandler.cs" />
     <Compile Include="Events\WorldEventArgs.cs" />
+    <Compile Include="GameDebug\Command\GameCommands.cs" />
     <Compile Include="GameObject\Biome.cs" />
     <Compile Include="GameObject\Entities\Creature.cs" />
     <Compile Include="GameObject\Entities\Entity.cs" />

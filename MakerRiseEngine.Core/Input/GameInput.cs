@@ -42,7 +42,7 @@ namespace Maker.RiseEngine.Core.Input
             return _keyboardState.IsKeyUp(key);
         }
 
-        public bool IsKeyBoardKeyReleased(Keys key) {
+        public bool IsKeyBoardKeyPress(Keys key) {
             return _oldKeyboardState.IsKeyDown(key) &&
                   _keyboardState.IsKeyUp(key);
         }

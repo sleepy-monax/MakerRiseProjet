@@ -52,14 +52,14 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
 
         public void Update(GameInput playerInput, GameTime gameTime)
         {
-            Renderer.Update(gameTime);
+            Renderer.Update(playerInput,gameTime);
 
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             SpriteBatch.Begin();
-            Renderer.Draw(gameTime);
+            Renderer.Draw(spriteBatch,gameTime);
             SpriteBatch.End();
         }
 

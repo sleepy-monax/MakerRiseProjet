@@ -19,7 +19,7 @@ namespace Maker.RiseEngine.Core
         GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
         debugScreen DebugScreen;
-        EngineConsole DebugConsole;
+        public EngineConsole DebugConsole;
 
 
         public Scenes.SceneManager sceneManager;
