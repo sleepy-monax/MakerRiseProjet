@@ -16,13 +16,11 @@ namespace Maker.RiseEngine.Core
 {
     public class RiseEngine : Game
     {
+        public EngineConsole DebugConsole;
+        public Scenes.SceneManager sceneManager;
         GraphicsDeviceManager Graphics;
         SpriteBatch spriteBatch;
         debugScreen DebugScreen;
-        public EngineConsole DebugConsole;
-
-
-        public Scenes.SceneManager sceneManager;
 
         public RiseEngine()
         {
@@ -85,16 +83,15 @@ namespace Maker.RiseEngine.Core
         {
             DebugLogs.WriteLog("LoadContent...", LogType.Info, "Core");
 
+            // Setup game.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             Engine.GraphicsDevice = GraphicsDevice;
             ContentEngine.Content = Content;
             Rendering.SpriteSheets.CommonSheets.Load();
-
             DebugScreen = new debugScreen();
 
             // Setup DebugConsole.
-            DebugConsole = new EngineConsole(spriteBatch, new GameConsoleOptions
+            DebugConsole = new EngineConsole(new GameConsoleOptions
             {
                 ToggleKey = (int)Microsoft.Xna.Framework.Input.Keys.F12,
                 Font = ContentEngine.SpriteFont("Engine", "Consolas_16pt"),
@@ -106,13 +103,7 @@ namespace Maker.RiseEngine.Core
                 PastCommandOutputColor = Color.White,
                 BufferColor = Color.Gold
             }, this);
-
-            DebugConsole.AddCommand("ping", a =>
-            {
-                // TODO your logic
-                return String.Format("pong");
-            });
-
+            
             // Add engine commande in the terminal.
             DebugConsole.AddCommand(new PlugCommand());
             DebugConsole.AddCommand(new PlugListCommand());
@@ -133,10 +124,11 @@ namespace Maker.RiseEngine.Core
 
         protected override void Update(GameTime gameTime)
         {
-            //Geting Mouse and Keyboard stats
+            // Geting Mouse and Keyboard stats.
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyboardState = Keyboard.GetState();
 
+            // Pause the game went the game windows is't focus.
             if (Engine.GameForm.Focused)
             {
                 // Creating player input data structure.
@@ -147,16 +139,11 @@ namespace Maker.RiseEngine.Core
 
                 // Pause game when console is open.
                 if (!DebugConsole.IsOpen) {
-
-                //Update scenemanager.
-                sceneManager.Update(playerinput, gameTime);
-
-                DebugScreen.Update(playerinput, gameTime);
-
-                // Update the sound engine.
-                Audio.SongEngine.Update(mouseState, keyboardState, gameTime);
-                Audio.SoundEffectEngine.Update(mouseState, keyboardState, gameTime);
-
+                    //Update the engine.
+                    sceneManager.Update(playerinput, gameTime);
+                    DebugScreen.Update(playerinput, gameTime);
+                    Audio.SongEngine.Update(mouseState, keyboardState, gameTime);
+                    Audio.SoundEffectEngine.Update(mouseState, keyboardState, gameTime);
                 }
             }
 
@@ -188,19 +175,14 @@ namespace Maker.RiseEngine.Core
                 // Draw the scenemanager.
                 sceneManager.Draw(spriteBatch, gameTime);
 
-                // Prepare the spritebatch.
+                // Prepare the spritebatch to draw debug informations.
                 spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
-
-
+                
                 // Show error message if something append on engine initialization.
                 if (Core.Engine.AsErrore)
-                {
                     spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Error Mode !", new Rectangle(0, 0, Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight), Alignment.Bottom, Style.Bold, Color.Red);
-                }
-
                 // Draw debug info.
                 DebugScreen.Draw(spriteBatch, gameTime);
-
                 // Draw engine build info.
                 if (Engine.engineConfig.Debug_DebugWaterMark)
                     spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), "Maker RiseEngine Build #" + Engine.Version.Revision, new Rectangle(24, 16, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
@@ -213,19 +195,20 @@ namespace Maker.RiseEngine.Core
             }
             else
             {
-
                 // Draw pause indicator.
                 spriteBatch.Begin();
                 string text = "Le jeux est en pause.";
                 spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), text, new Rectangle(16, 16, 256, 64), Alignment.Center, Style.rectangle, Color.White);
                 spriteBatch.End();
-
             }
+            
+            // Draw base class.
             base.Draw(gameTime);
-
+            
+            // Stop the stopwatch.
             s.Stop();
 
-            // Update frame counter.
+            // Update frame counter' s frametime graph.
             FrameCounter._sampleFrameTimeBuffer.Enqueue(s.ElapsedMilliseconds);
             if (FrameCounter._sampleFrameTimeBuffer.Count > FrameCounter.MAXIMUM_SAMPLES)
             {
