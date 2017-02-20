@@ -1,6 +1,9 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Content;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.Rendering;
+using Maker.twiyol.Game.WorldDataStruct;
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -38,7 +41,6 @@ namespace Maker.twiyol.Game.GameUtils
                 {
                     if (Tx >= 0 && Ty >= 0 && Tx < G.World.Size * 16 - 1 && Ty < G.World.Size * 16 - 1)
                     {
-
                         //Calcule des emplacements
                         Point CurrentLocation = new Point(Tx, Ty);
                         Point OnScreenLocation = new Point(
@@ -49,29 +51,38 @@ namespace Maker.twiyol.Game.GameUtils
                         {
 
                             //Recuperation des arguments
-                            GameObject.Event.GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
+                            GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
 
                             //recuperation des objets
-                            WorldDataStruct.DataTile T = G.World.GetTile(CurrentLocation);
+                            DataTile T = G.World.GetTile(CurrentLocation);
 
 
                             //desin des objets
-
-
-                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, tSpriteBatch, gameTime);
-
-
+                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, tSpriteBatch, gameTime);
 
                             if (!(T.Entity == -1))
                             {
-                                WorldDataStruct.DataEntity E = G.World.GetEntity(CurrentLocation);
-                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
+                                DataEntity E = G.World.GetEntity(CurrentLocation);
+                                Vector2 onTileOffset = (E.GetOnTileOffset() * G.Camera.TileUnit);
 
-                                if (Engine.engineConfig.Debug_WorldOverDraw && E.IsFocus)
+                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
+
+                                if (E.Tags.HasTag("attack_cooldown") && E.Tags.GetTag("attack_cooldown", 0) > 0)
+                                {
+                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 51 + (int)onTileOffset.X, OnScreenLocation.Y - 21 + (int)onTileOffset.Y, 102, 12), new Color(Color.Black, 0.5f));
+                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 50 + (int)onTileOffset.X, OnScreenLocation.Y - 20 + (int)onTileOffset.Y, (int)(E.Tags.GetTag("attack_cooldown", 0) * 3.33f), 10), Color.White);
+                                }
+
+                                if (E.Tags.HasTag("heal") && E.Tags.GetTag("heal", 0) < E.ToGameObject().MaxHeal) {
+                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 51 + (int)onTileOffset.X, OnScreenLocation.Y - 31 + (int)onTileOffset.Y, 102, 12), new Color(Color.Black, 0.5f));
+                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 50 + (int)onTileOffset.X, OnScreenLocation.Y - 30 + (int)onTileOffset.Y, E.Tags.GetTag("heal", 0) * (100 / E.ToGameObject().MaxHeal), 10), Color.DarkRed);
+                                }
+
+                               
+                                if (Engine.engineConfig.Debug_WorldOverDraw && E.IsCameraFocus)
                                 {
 
-                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + new Vector2(2, 2) + E.GetOnTileLocation(), Color.Black);
-                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + E.GetOnTileLocation(), Color.White);
+                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + (E.GetOnTileOffset() * G.Camera.TileUnit), Color.White);
 
                                 }
                             }

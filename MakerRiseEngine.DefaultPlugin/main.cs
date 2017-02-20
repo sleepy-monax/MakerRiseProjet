@@ -1,6 +1,6 @@
 ﻿using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.Content;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Plugin;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
@@ -19,7 +19,7 @@ using Maker.twiyol.Generator.EntitiesDistribution;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Maker.twiyol.Base
+namespace Maker.twiyol_Base
 {
     class Plugin : IPlugin
     {
@@ -110,7 +110,7 @@ namespace Maker.twiyol.Base
             WorldEventArgs w = (WorldEventArgs)e;
 
             DataEntity E = new DataEntity(this.GetGameObjectIndex("Player"), 0);
-            E.IsFocus = true;
+            E.IsCameraFocus = true;
 
             w.World.RemoveEntityData(new WorldLocation(new Point(5, 5), new Point(5, 5)));
             w.World.AddEntityData(E, new WorldLocation(new Point(5, 5), new Point(5, 5)));

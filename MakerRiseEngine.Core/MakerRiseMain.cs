@@ -4,9 +4,12 @@ using Maker.RiseEngine.Core.EngineDebug.EngineConsole;
 using Maker.RiseEngine.Core.EngineDebug.EngineConsole.Commands.Plugin;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.Core.Scenes;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -20,9 +23,7 @@ namespace Maker.RiseEngine.Core
         SpriteBatch spriteBatch;
         debugScreen DebugScreen;
         public EngineConsole DebugConsole;
-
-
-        public Scenes.SceneManager sceneManager;
+        public SceneManager sceneManager;
 
         public RiseEngine()
         {

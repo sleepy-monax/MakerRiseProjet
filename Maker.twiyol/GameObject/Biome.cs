@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.twiyol.Generator.EntitiesDistribution;
 using System.Collections.Generic;

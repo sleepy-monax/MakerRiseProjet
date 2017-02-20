@@ -3,7 +3,7 @@
     public interface IEntity : IWorldGameObject
     {
 
-        int MaxLife { get; set; }
+        int MaxHeal { get; set; }
         int MoveSpeed { get; set; }
         int MoveRunSpeed { get; set; }
 
@@ -17,7 +17,7 @@
         /// This event is raise when the entity take damages.
         /// </summary>
         /// <param name="e">GameObjectEventArgs.</param>
-        void OnDamageTaken(Event.GameObjectEventArgs e);
+        void OnDamagesTaken(Event.GameObjectEventArgs e);
         
         /// <summary>
         /// This event is raise when the entity is destroy.

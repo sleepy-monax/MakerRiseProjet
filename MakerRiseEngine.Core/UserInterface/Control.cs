@@ -93,37 +93,7 @@ namespace Maker.RiseEngine.Core.UserInterface
             Childs.Remove(ChildControl);
         }
 
-        // Mouse Stats.
-        public MouseStats mouseStats = MouseStats.None;
-
-        // Interfacing.
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-        {
-            if (Visible)
-            {
-                // Draw the controls.
-                OnDraw(spriteBatch, gameTime);
-
-                // Draw debug.
-                if (Engine.engineConfig.Debug_GuiFrame)
-                {
-                    spriteBatch.DrawRectangle(ControlRectangle, Color.Black);
-                    if (Childs.Count > 0)
-                    {
-                        spriteBatch.FillRectangle(Padding.ToRectangle(ControlRectangle), new Color(Color.Blue, 0.0001f));
-                    }
-                }
-
-                // Draw child controls.
-                foreach (Control c in Childs)
-                {
-                    c.Draw(spriteBatch, gameTime);
-                }
-            }
-        }
-
-        public void Update(GameInput playerInput, GameTime gameTime)
-        {
+        public void refreshLayout() {
             Rectangle parrentRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
 
             // Update Enchore.
@@ -199,7 +169,8 @@ namespace Maker.RiseEngine.Core.UserInterface
                 foreach (Control c in this.Childs)
                 {
 
-                    if (c.Visible) {
+                    if (c.Visible)
+                    {
 
                         switch (c.ControlDock)
                         {
@@ -211,7 +182,7 @@ namespace Maker.RiseEngine.Core.UserInterface
                                 break;
                             case Dock.Bottom:
 
-                                c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height , childControlHost.Width, c.ControlRectangle.Height);
+                                c.ControlRectangle = new Rectangle(childControlHost.Location.X, childControlHost.Location.Y + childControlHost.Height - c.ControlRectangle.Height, childControlHost.Width, c.ControlRectangle.Height);
                                 childControlHost = new Rectangle(childControlHost.Location, new Point(childControlHost.Width, childControlHost.Height - c.ControlRectangle.Height - ChildMargin.Down));
 
                                 break;
@@ -233,10 +204,44 @@ namespace Maker.RiseEngine.Core.UserInterface
 
                                 break;
                         }
-                    }   
+                    }
                 }
             }
+        }
 
+        // Mouse Stats.
+        public MouseStats mouseStats = MouseStats.None;
+
+        // Interfacing.
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            refreshLayout();
+
+            if (Visible)
+            {
+                // Draw the controls.
+                OnDraw(spriteBatch, gameTime);
+
+                // Draw debug.
+                if (Engine.engineConfig.Debug_GuiFrame)
+                {
+                    spriteBatch.DrawRectangle(ControlRectangle, Color.Black);
+                    if (Childs.Count > 0)
+                    {
+                        spriteBatch.FillRectangle(Padding.ToRectangle(ControlRectangle), new Color(Color.Blue, 0.0001f));
+                    }
+                }
+
+                // Draw child controls.
+                foreach (Control c in Childs)
+                {
+                    c.Draw(spriteBatch, gameTime);
+                }
+            }
+        }
+
+        public void Update(GameInput playerInput, GameTime gameTime)
+        {
             if (Visible)
             {
                 // Update the controls.

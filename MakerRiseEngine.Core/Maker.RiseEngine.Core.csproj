@@ -21,7 +21,7 @@
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.DateStamp.TimeStamp.Increment</AssemblyVersionSettings>
-    <AssemblyVersion>0.17033.1901.1114</AssemblyVersion>
+    <AssemblyVersion>0.17048.1526.1117</AssemblyVersion>
     <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -80,7 +80,7 @@
     <Compile Include="EngineDebug\debugScreen.cs" />
     <Compile Include="GameObject\GameObjectManager.cs" />
     <Compile Include="GameObject\IDrawableGameObject.cs" />
-    <Compile Include="GameObject\IGameObject.cs" />
+    <Compile Include="GameObject\IGameComponent.cs" />
     <Compile Include="Input\GameInput.cs" />
     <Compile Include="MathExt\Geometry.cs" />
     <Compile Include="MathExt\FastRandom.cs" />
@@ -93,11 +93,31 @@
     <Compile Include="IDrawable.cs" />
     <Compile Include="EngineDebug\FrameCounter.cs" />
     <Compile Include="EngineDebug\DebugLogs.cs" />
+    <Compile Include="MathExt\RectangleF.cs" />
     <Compile Include="MathExt\Utils.cs" />
     <Compile Include="Audio\SoundEffect.cs" />
     <Compile Include="Inventory\ObjInventory.cs" />
     <Compile Include="Inventory\ObjSlot.cs" />
+    <Compile Include="MathExt\Values.cs" />
+    <Compile Include="MathExt\Vector2.cs" />
     <Compile Include="Network\HTTPServer.cs" />
+    <Compile Include="Physic\Box.cs" />
+    <Compile Include="Physic\Collision.cs" />
+    <Compile Include="Physic\Grid.cs" />
+    <Compile Include="Physic\Hit.cs" />
+    <Compile Include="Physic\IBox.cs" />
+    <Compile Include="Physic\ICollision.cs" />
+    <Compile Include="Physic\IHit.cs" />
+    <Compile Include="Physic\IMovement.cs" />
+    <Compile Include="Physic\IPhysicManager.cs" />
+    <Compile Include="Physic\Movement.cs" />
+    <Compile Include="Physic\Responses\BounceResponce.cs" />
+    <Compile Include="Physic\Responses\CollisionResponse.cs" />
+    <Compile Include="Physic\Responses\CrossResponse.cs" />
+    <Compile Include="Physic\Responses\ICollisionResponse.cs" />
+    <Compile Include="Physic\Responses\SlideResponse.cs" />
+    <Compile Include="Physic\Responses\ToucheResponse.cs" />
+    <Compile Include="Physic\PhysicManager.cs" />
     <Compile Include="Plugin\Builder.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Plugin\PluginLoader.cs" />
@@ -115,6 +135,7 @@
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Storage\FileFormatHelper.cs" />
+    <Compile Include="Storage\ListSheet.cs" />
     <Compile Include="Storage\SerializationHelper.cs" />
     <Compile Include="MakerRiseMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,8 +149,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Text\RichTextParser.cs" />
-    <Compile Include="Text\TextBlock.cs" />
     <Compile Include="UserInterface\Control.cs" />
     <Compile Include="UserInterface\Controls\Button.cs" />
     <Compile Include="UserInterface\Controls\Console.cs" />
@@ -137,7 +156,6 @@
     <Compile Include="UserInterface\Controls\Label.cs" />
     <Compile Include="UserInterface\Controls\Panel.cs" />
     <Compile Include="UserInterface\Controls\PictureBox.cs" />
-    <Compile Include="UserInterface\Controls\RichLabel.cs" />
     <Compile Include="UserInterface\Controls\TextBox.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +171,6 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsFormsIntegration" />

@@ -18,6 +18,7 @@ namespace Maker.twiyol.Game.GameUtils
 
         public Point StartTile;
         public Point EndTile;
+        public Point DeltaTile;
 
         public GameCamera(GameScene _WorldScene)
         {
@@ -94,6 +95,8 @@ namespace Maker.twiyol.Game.GameUtils
 
             DeltaX = EndX - StartX;
             DeltaY = EndY - StartY;
+
+            DeltaTile = new Point(DeltaX, DeltaY);
 
             OrigineX = (int)((Size.X / 2) - (DeltaX * TileUnit) / 2 - (PreciseFocusLocation.X * TileUnit));
             OrigineY = (int)((Size.Y / 2) - (DeltaY * TileUnit) / 2 - (PreciseFocusLocation.Y * TileUnit));

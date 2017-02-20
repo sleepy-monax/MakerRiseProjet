@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
 
@@ -20,7 +20,7 @@ namespace Maker.twiyol.GameObject.Items
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
 
             }
 

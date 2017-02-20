@@ -1,6 +1,6 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.EngineDebug;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Plugin;
 using Maker.twiyol.Events;
@@ -137,7 +137,7 @@ namespace Maker.twiyol.Generator
 
             foreach (int id in GeneratorFeatures)
             {
-                GameObjectManager.GetGameObject<IGeneratorFeature>(id).OnRegionCreation(regionGrid);
+                GameComponentManager.GetGameObject<IGeneratorFeature>(id).OnRegionCreation(regionGrid);
             }
 
             // Set loading message.

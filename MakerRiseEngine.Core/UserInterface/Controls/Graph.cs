@@ -28,18 +28,18 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
         Sprite panelMidLeft = CommonSheets.GUI.GetSprite("BoxML");
         Sprite panelMidRight = CommonSheets.GUI.GetSprite("BoxMR");
 
-        private Queue<float> ValueBuffer;
+        private Queue<float> DataSet;
         private float AverageValue;
 
         public int MAXIMUM_SAMPLES { get; private set; }
 
         public void AddValue(float Value) {
-            ValueBuffer.Enqueue(Value);
+            DataSet.Enqueue(Value);
 
-            if (ValueBuffer.Count > MAXIMUM_SAMPLES)
+            if (DataSet.Count > MAXIMUM_SAMPLES)
             {
-                ValueBuffer.Dequeue();
-                AverageValue = ValueBuffer.Average(i => i);
+                DataSet.Dequeue();
+                AverageValue = DataSet.Average(i => i);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
         public Graph(Rectangle rect, Color color)
         {
-            ValueBuffer = new Queue<float>();
+            DataSet = new Queue<float>();
 
             ControlRectangle = rect;
             ControlColor = color;
@@ -75,7 +75,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             DrawSprite(spriteBatch, panelMidDown, new Rectangle(64, ControlRectangle.Height - 64, ControlRectangle.Width - 128, 64), ControlColor, gameTime);
 
             var index = 0;
-            foreach (var sample in ValueBuffer)
+            foreach (var sample in DataSet)
             {
                 spriteBatch.DrawLine(new Vector2(ControlRectangle.X + index, ControlRectangle.Y - ControlRectangle.Height - sample * 10), new Vector2(ControlRectangle.X + index, ControlRectangle.Y + ControlRectangle.Height), Color.Green);
                 index++;

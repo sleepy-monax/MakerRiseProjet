@@ -20,7 +20,7 @@ namespace Maker.twiyol.Scenes.Menu
         Game.GameScene CurrentGame;
         
         // Declaring user inteface elements.
-        Panel panelMainMenu;
+        Panel rootPanel;
 
         Button buttonPlayLastGame;
         Button buttonNewGame;
@@ -43,10 +43,10 @@ namespace Maker.twiyol.Scenes.Menu
             Logo = ContentEngine.Texture2D("Engine", "Logo");
 
             // Panel.
-            panelMainMenu = new Panel(new Rectangle(-256, -112, 512, 224), new Color(new Vector4(0f)));
-            panelMainMenu.ControlAnchor = Anchor.Center;
-            panelMainMenu.Padding = new ControlPadding(16);
-            panelMainMenu.ChildMargin = new ControlPadding(16);
+            rootPanel = new Panel(new Rectangle(-256, -112, 512, 224), new Color(new Vector4(0f)));
+            rootPanel.ControlAnchor = Anchor.Center;
+            rootPanel.Padding = new ControlPadding(16);
+            rootPanel.ChildMargin = new ControlPadding(16);
 
             // Create button.
             buttonPlayLastGame = new Button("Reprendre", new Rectangle(0, 0, 480, 64), Color.White);
@@ -75,20 +75,42 @@ namespace Maker.twiyol.Scenes.Menu
             buttonNewGame.onMouseClick += ButtonNewGame_onMouseClick;
             buttonQuitte.onMouseClick += ButtonQuitte_onMouseClick;
             buttonOpenGame.onMouseClick += ButtonOpenGame_onMouseClick;
+            buttonOption.onMouseClick += ButtonOption_onMouseClick;
 
             // Add child control to root panel.
-            panelMainMenu.AddChild(buttonPlayLastGame);
-            panelMainMenu.AddChild(buttonNewGame);
-            panelMainMenu.AddChild(buttonOpenGame);
-            panelMainMenu.AddChild(buttonOption);
-            panelMainMenu.AddChild(buttonQuitteGame);
-            panelMainMenu.AddChild(buttonQuitte);
+            rootPanel.AddChild(buttonPlayLastGame);
+            rootPanel.AddChild(buttonNewGame);
+            rootPanel.AddChild(buttonOpenGame);
+            rootPanel.AddChild(buttonOption);
+            rootPanel.AddChild(buttonQuitteGame);
+            rootPanel.AddChild(buttonQuitte);
 
-            foreach (var i in panelMainMenu.Childs)
+            foreach (var i in rootPanel.Childs)
             {
                 i.ControlDock = Dock.Top;
             }
 
+        }
+
+        private void ButtonOption_onMouseClick()
+        {
+            this.hide();
+
+            Scene scene;
+
+            if (asGame)
+            {
+                scene = new MenuOption(CurrentGame);
+            }
+            else
+            {
+                scene = new MenuOption();
+            }
+
+            RiseEngine.sceneManager.AddScene(scene);
+            scene.show();
+
+            RiseEngine.sceneManager.RemoveScene(this);
         }
 
         private void ButtonOpenGame_onMouseClick()
@@ -147,7 +169,7 @@ namespace Maker.twiyol.Scenes.Menu
             spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
             spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
 
-            panelMainMenu.Draw(spriteBatch, gameTime);
+            rootPanel.Draw(spriteBatch, gameTime);
 
         }
 
@@ -155,7 +177,7 @@ namespace Maker.twiyol.Scenes.Menu
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
 
-            panelMainMenu.Update(playerInput, gameTime);
+            rootPanel.Update(playerInput, gameTime);
 
         }
 

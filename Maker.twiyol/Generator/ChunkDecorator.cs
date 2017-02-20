@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.EngineDebug;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject;
@@ -57,16 +57,16 @@ namespace Maker.twiyol.Generator
                     if (Chunk.Tiles[tX, tY].ID == -1)
                     {
 
-                        Chunk.Tiles[tX, tY].ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Random);
-                        Chunk.Tiles[tX, tY].Variant = Random.Next(0, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
+                        Chunk.Tiles[tX, tY].ID = RandomHelper.GetRandomValueByWeight<int>(GameComponentManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomTile, Random);
+                        Chunk.Tiles[tX, tY].Variant = Random.Next(0, GameComponentManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MaxVariantCount);
 
-                        G.World.WorldBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameObjectManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
+                        G.World.WorldBitmap.SetPixel(cX * 16 + tX, cY * 16 + tY, GameComponentManager.GetGameObject<ITile>(Chunk.Tiles[tX, tY].ID).MapColor);
 
-                        if (Random.NextDouble() < GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).Rule.GetValue(cX*16 + tX, cY*16 + tY))
+                        if (Random.NextDouble() < GameComponentManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).Rule.GetValue(cX*16 + tX, cY*16 + tY))
                         {
 
-                            int ID = RandomHelper.GetRandomValueByWeight<int>(GameObjectManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Random);
-                            int Variant = Random.Next(0, GameObjectManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
+                            int ID = RandomHelper.GetRandomValueByWeight<int>(GameComponentManager.GetGameObject<Biome>(G.World.regions[Chunk.Tiles[tX, tY].Region].BiomeID).RandomEntity, Random);
+                            int Variant = Random.Next(0, GameComponentManager.GetGameObject<IEntity>(ID).MaxVariantCount + 1);
 
                             Chunk.AddEntity(new DataEntity(ID, Variant), new Microsoft.Xna.Framework.Point(tX, tY));
 

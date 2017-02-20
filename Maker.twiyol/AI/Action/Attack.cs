@@ -1,9 +1,12 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.GameComponent;
+using Maker.twiyol.AI;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject;
 using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
+using System;
+using static Maker.twiyol.AI.Utils;
 
 namespace Maker.twiyol.AI.Action
 {
@@ -19,65 +22,41 @@ namespace Maker.twiyol.AI.Action
 
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
+            DataEntity attackerEntity = e.ParrentEntity;
+            Point targetLocation = e.CurrentLocation.ToPoint() + e.ParrentEntity.Tags.GetTag("facing", Facing.Down).ToPoint();
 
-            Point CurrentLocation = e.CurrentLocation.ToPoint() + e.ParrentEntity.Facing.ToPoint();
-
-            if (!(e.Game.World.IsEntityFree(CurrentLocation.ToWorldLocation())))
+            // Checking if there are a entity on target location and if the attack cool down.
+            if (!(e.Game.World.IsEntityFree(targetLocation.ToWorldLocation())) && attackerEntity.Tags.GetTag<int>("attack_cooldown", 0) == 0)
             {
+                // Get attacker damages.
+                float attackerDamages = e.ParrentEntity.ToGameObject().GetDamage(e);
 
-                e.ParrentEntity.ActionProgress += GameObjectManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
+                // Get target life and defense
+                DataEntity targetEntity = e.Game.World.GetEntity(targetLocation);
+                GameObjectEventArgs targetEntityEventsArgs = e.Game.eventsManager.GetEventArgs(targetLocation.ToWorldLocation(), e.OnScreenLocation);
+                int targetHeal = targetEntity.Tags.GetTag("heal", targetEntity.ToGameObject().MaxHeal);
+                float targetDefense = targetEntity.ToGameObject().GetDefence(targetEntityEventsArgs);
 
-                if (e.ParrentEntity.ActionProgress == 100)
-                {
+                // Calculate attack points.
+                float totalDamages = attackerDamages - targetDefense;
 
-                    // Get entityies.
-                    DataEntity attackedEntity = e.Game.World.GetEntity(CurrentLocation);
-                    GameObjectEventArgs attackedEntityEventsArgs = e.Game.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), e.OnScreenLocation);
+                totalDamages = attackerDamages < 0 ? 0 : totalDamages;
 
-                    float defense = attackedEntityEventsArgs.ParrentEntity.ToGameObject().GetDefence(attackedEntityEventsArgs);
-                    float damages = e.ParrentEntity.ToGameObject().GetDamage(e);
+                targetHeal -= (int)totalDamages;
+                targetEntity.Tags.SetTag("heal", targetHeal);
+                targetEntity.ToGameObject().OnDamagesTaken(targetEntityEventsArgs);
 
-
-                    float totalDamages = damages - defense;
-                    if (totalDamages < 0)
-                        totalDamages = 0;
-
-                    attackedEntityEventsArgs.ParrentEntity.heal -= totalDamages;
-
-                    attackedEntityEventsArgs.ParrentEntity.ToGameObject().OnDamageTaken(attackedEntityEventsArgs);
-
-                    if (attackedEntityEventsArgs.ParrentEntity.heal <= 0)
-                    {
-                        attackedEntityEventsArgs.ParrentEntity.heal = 0;
-                        attackedEntityEventsArgs.ParrentEntity.ToGameObject().OnEntityKilled(attackedEntityEventsArgs, e.ParrentEntity);
-                    }
-
-                    // remove the action.
-                    e.ParrentEntity.Action = -1;
-                    e.ParrentEntity.ActionProgress = 0;
-                    e.ParrentEntity.SetOnTileLocation(new Vector2(0));
-
+                // Kill the entity if heal is under 0.
+                if (targetHeal <= 0) {
+                    targetEntity.ToGameObject().OnEntityKilled(targetEntityEventsArgs, attackerEntity);
                 }
-                else
-                {
-                    if (e.ParrentEntity.ActionProgress > 75)
-                    {
-                        e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2((50 - e.ParrentEntity.ActionProgress) / 2));
-                    }
-                    else
-                    {
-                        e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress / 2));
-                    }
 
-                }
+                attackerEntity.Tags.SetTag("attack_cooldown", 30);
+               
             }
-            else
-            {
 
-                e.ParrentEntity.Action = -1;
-                e.ParrentEntity.ActionProgress = 0;
-
-            }
+            // Remove the action.
+            attackerEntity.Tags.SetTag("ai_action", -1);
 
         }
     }

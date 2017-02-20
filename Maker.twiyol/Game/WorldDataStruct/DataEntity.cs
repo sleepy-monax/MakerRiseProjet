@@ -12,33 +12,12 @@ namespace Maker.twiyol.Game.WorldDataStruct
         public int ID = 0;
         public int Variant = 0;
 
-        //Stats
-
-        public float maxHeal = 20;
-        public float heal = 20;
-        
-        //IA
-        public AI.Utils.Facing Facing = AI.Utils.Facing.Down;
-        public AI.Utils.Facing[] Path;
+        public float OnTileOffsetX = 0;
+        public float OnTileOffsetY = 0;
+        public Tags.TagManger Tags = new Tags.TagManger();
         public WorldLocation Location;
-        public int Action = -1;
-        public int ActionProgress = 0;
 
-        //entity Moving
-        public float OnTileLocationX = 0;
-        public float OnTileLocationY = 0;
-
-        public void SetOnTileLocation(Vector2 v) {
-            OnTileLocationX = v.X;
-            OnTileLocationY = v.Y;
-        }
-
-        public Vector2 GetOnTileLocation() {
-            return new Vector2(OnTileLocationX, OnTileLocationY);
-        }
-
-
-        public bool IsFocus = false;
+        public bool IsCameraFocus = false;
 
         public DataEntity(int _ID, int _Variant)
         {
@@ -46,7 +25,13 @@ namespace Maker.twiyol.Game.WorldDataStruct
             Variant = _Variant;
         }
 
-        
+        public void SetOnTileOffset(Vector2 v) {
+            OnTileOffsetX = v.X;
+            OnTileOffsetY = v.Y;
+        }
 
+        public Vector2 GetOnTileOffset() {
+            return new Vector2(OnTileOffsetX, OnTileOffsetY);
+        }
     }
 }

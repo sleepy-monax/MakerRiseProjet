@@ -1,6 +1,6 @@
 ﻿
 using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Input;
 using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
@@ -10,7 +10,6 @@ namespace Maker.twiyol.AI.Entites
 {
     public class PlayerAI : AIbase
     {
-
 
         int IdleUpVariante { get; set; }
         int IdleDownVariante { get; set; }
@@ -40,55 +39,55 @@ namespace Maker.twiyol.AI.Entites
         public override void Tick(GameObjectEventArgs e, GameInput playerInput, GameTime gameTime)
         {
            
-            int moveActionIndex = GameObjectManager.GetGameObjectIndex("TWIYOL_Base.Move");
-            int attckActionIndex = GameObjectManager.GetGameObjectIndex("TWIYOL_Base.Attack");
+            int moveActionIndex = GameComponentManager.GetGameObjectIndex("TWIYOL_Base.Move");
+            int attackActionIndex = GameComponentManager.GetGameObjectIndex("TWIYOL_Base.Attack");
 
-            if (e.ParrentEntity.Action == -1)
+            if (e.ParrentEntity.Tags.GetTag("ai_action", -1) == -1)
             {
                 if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveUp))
                 {
-                    e.ParrentEntity.Facing = Utils.Facing.Up;
-                    e.ParrentEntity.Action = moveActionIndex;
+                    e.ParrentEntity.Tags.SetTag("facing", Facing.Up);
+                    e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveUpVariante;
                 }
                 else if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveDown))
                 {
-                    e.ParrentEntity.Facing = Utils.Facing.Down;
-                    e.ParrentEntity.Action = moveActionIndex;
+                    e.ParrentEntity.Tags.SetTag("facing", Facing.Down);
+                    e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveDownVariante;
                 }
                 else if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveLeft))
                 {
-                    e.ParrentEntity.Facing = Utils.Facing.Left;
-                    e.ParrentEntity.Action = moveActionIndex;
+                    e.ParrentEntity.Tags.SetTag("facing", Facing.Left);
+                    e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveLeftVariante;
                 }
                 else if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_MoveRight))
                 {
-                    e.ParrentEntity.Facing = Utils.Facing.Right;
-                    e.ParrentEntity.Action = moveActionIndex;
+                    e.ParrentEntity.Tags.SetTag("facing", Facing.Right);
+                    e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveRightVariante;
                 }
                 else
                 {
 
-                    if (playerInput.IsKeyBoardKeyDown(Engine.engineConfig.Input_Attack))
+                    if (playerInput.IsKeyBoardKeyPress(Engine.engineConfig.Input_Attack))
                     {
-                        e.ParrentEntity.Action = attckActionIndex;
+                        e.ParrentEntity.Tags.SetTag("ai_action", attackActionIndex);
                     }
 
-                    switch (e.ParrentEntity.Facing)
+                    switch (e.ParrentEntity.Tags.GetTag("facing", Facing.Down))
                     {
-                        case Utils.Facing.Up:
+                        case Facing.Up:
                             e.ParrentEntity.Variant = IdleUpVariante;
                             break;
-                        case Utils.Facing.Down:
+                        case Facing.Down:
                             e.ParrentEntity.Variant = IdleDownVariante;
                             break;
-                        case Utils.Facing.Left:
+                        case Facing.Left:
                             e.ParrentEntity.Variant = IdleLeftVariante;
                             break;
-                        case Utils.Facing.Right:
+                        case Facing.Right:
                             e.ParrentEntity.Variant = IdleRightVariante;
                             break;
                         default:

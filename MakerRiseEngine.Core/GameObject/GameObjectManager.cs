@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core.GameObject
+namespace Maker.RiseEngine.Core.GameComponent
 {
-    public static class GameObjectManager
+    public static class GameComponentManager
     {
 
         static List<IGameObject> gameObject = new List<IGameObject>();

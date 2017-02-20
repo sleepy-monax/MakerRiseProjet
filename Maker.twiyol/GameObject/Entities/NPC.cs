@@ -1,4 +1,5 @@
-﻿using Maker.RiseEngine.Core.Input;
+﻿using System;
+using Maker.RiseEngine.Core.Input;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
@@ -14,7 +15,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         public string GameObjectName { get; set; }
 
-        public int MaxLife { get; set; }
+        public int MaxHeal { get; set; }
 
         public int MaxVariantCount { get; set; }
 
@@ -23,6 +24,8 @@ namespace Maker.twiyol.GameObject.Entities
         public int MoveSpeed { get; set; }
 
         public string PluginName { get; set; }
+
+        public DrawLayer Layer => throw new NotImplementedException();
 
         public float GetDamage(GameObjectEventArgs e)
         {
@@ -34,7 +37,7 @@ namespace Maker.twiyol.GameObject.Entities
             return 0;
         }
 
-        public void OnDamageTaken(GameObjectEventArgs e)
+        public void OnDamagesTaken(GameObjectEventArgs e)
         {
             
         }

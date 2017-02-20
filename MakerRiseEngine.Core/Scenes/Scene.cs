@@ -1,8 +1,11 @@
 ﻿using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Core.Physic;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+
 using System;
+using System.Collections.Generic;
 
 namespace Maker.RiseEngine.Core.Scenes
 {

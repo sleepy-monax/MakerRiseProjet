@@ -7,9 +7,10 @@ namespace Maker.twiyol.Game.WorldDataStruct
     {
         public int ID = -1;
         public int Variant = 0;
-        public int Entity = -1; //si cette valeur est = à -1 alors il n'y a pas d'entity prensente.
-        public int LightLevel = 0;
+        public int Entity = -1; // If this value is = -1, there are no etity on the tile.
         public int Region = 0;
+
+        public Tags.TagManger Tags = new Tags.TagManger();
 
     }
 }

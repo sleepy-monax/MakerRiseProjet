@@ -1,5 +1,5 @@
 ﻿
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.GameObject;
 using Maker.twiyol.GameObject.Event;
@@ -28,34 +28,34 @@ namespace Maker.twiyol.AI.Action
 
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
-            e.ParrentEntity.ActionProgress += GameObjectManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed;
-            WorldLocation FocusLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Facing.ToPoint());
+            e.ParrentEntity.Tags.SetTag("move_progress", e.ParrentEntity.Tags.GetTag("move_progress", 0) + GameComponentManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed);
+            WorldLocation DestinationLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Tags.GetTag("facing", Facing.Down).ToPoint());
 
-            if (!(e.Game.World.IsEntityFree(FocusLocation)))
+            if (!(e.Game.World.IsEntityFree(DestinationLocation)))
             {
-                e.ParrentEntity.Action = -1;
-                e.ParrentEntity.ActionProgress = 0;
-                e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
+                e.ParrentEntity.Tags.SetTag("ai_action", -1);
+                e.ParrentEntity.Tags.SetTag("move_progress", 0);
+                e.ParrentEntity.SetOnTileOffset(Vector2.Zero);
             }
             else
             {
-                if (e.ParrentEntity.ActionProgress >= 100)
+                if (e.ParrentEntity.Tags.GetTag("move_progress", 100) >= 100)
                 {
-                    e.ParrentEntity.ActionProgress = 0;
-                    e.ParrentEntity.SetOnTileLocation(Vector2.Zero);
-                    e.Game.World.MoveEntity(e.CurrentLocation, FocusLocation);
-                    e.ParrentEntity.Action = -1;
-                    GameObjectManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);
+                    e.ParrentEntity.Tags.SetTag("move_progress", 0);
+                    e.ParrentEntity.SetOnTileOffset(Vector2.Zero);
+                    e.Game.World.MoveEntity(e.CurrentLocation, DestinationLocation);
+                    e.ParrentEntity.Tags.SetTag("ai_action", -1);
+                    GameComponentManager.GetGameObject<ITile>(e.ParrentTile.ID).OnEntityWalkIn(e, gametime);
                 }
                 else
                 {
-                    e.ParrentEntity.SetOnTileLocation(e.ParrentEntity.Facing.ToVector2(e.ParrentEntity.ActionProgress));
+                    e.ParrentEntity.SetOnTileOffset(e.ParrentEntity.Tags.GetTag("facing",Facing.Down).ToVector2(e.ParrentEntity.Tags.GetTag("move_progress", 0)));
                 }
 
-                if (e.ParrentEntity.IsFocus)
+                if (e.ParrentEntity.IsCameraFocus)
                 {
                     e.Game.World.Camera.FocusLocation = e.ParrentEntity.Location;
-                    e.Game.Camera.PreciseFocusLocation = e.ParrentEntity.GetOnTileLocation();
+                    e.Game.Camera.PreciseFocusLocation = e.ParrentEntity.GetOnTileOffset();
                 }
             }
         }

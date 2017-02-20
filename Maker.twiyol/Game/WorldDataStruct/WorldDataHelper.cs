@@ -1,6 +1,6 @@
 ﻿
 
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.twiyol.GameObject;
 
 namespace Maker.twiyol.Game.WorldDataStruct
@@ -11,14 +11,14 @@ namespace Maker.twiyol.Game.WorldDataStruct
         public static IEntity ToGameObject(this DataEntity Entity)
         {
 
-            return GameObjectManager.GetGameObject<IEntity>(Entity.ID);
+            return GameComponentManager.GetGameObject<IEntity>(Entity.ID);
 
         }
 
         public static ITile ToGameObject(this DataTile Tile)
         {
 
-            return GameObjectManager.GetGameObject<ITile>(Tile.ID);
+            return GameComponentManager.GetGameObject<ITile>(Tile.ID);
 
         }
 

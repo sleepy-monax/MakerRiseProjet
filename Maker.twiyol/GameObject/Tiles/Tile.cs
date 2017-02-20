@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Audio;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.twiyol.GameObject.Event;
@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System;
 
 namespace Maker.twiyol.GameObject.Tiles
 {
@@ -15,12 +16,11 @@ namespace Maker.twiyol.GameObject.Tiles
         public string GameObjectName { get; set; }
         public string PluginName { get; set; }
 
-
         public System.Drawing.Color MapColor { get; set; }
 
         public int MaxVariantCount { get; set; }
 
-
+        public DrawLayer Layer => throw new NotImplementedException();
 
         public List<Sprite> Variant;
 
@@ -35,7 +35,7 @@ namespace Maker.twiyol.GameObject.Tiles
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameObjectManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
 
             }
             MaxVariantCount = Variant.Count;

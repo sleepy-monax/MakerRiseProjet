@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26127.3
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Core", "MakerRiseEngine.Core\Maker.RiseEngine.Core.csproj", "{0B1AE74F-0E04-4402-9C99-D03175C9AA03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.twiyol.Base", "MakerRiseEngine.DefaultPlugin\Maker.twiyol.Base.csproj", "{CE75BBEA-8023-487E-9463-7E984F7CAF75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.twiyol_Base", "MakerRiseEngine.DefaultPlugin\Maker.twiyol_Base.csproj", "{CE75BBEA-8023-487E-9463-7E984F7CAF75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Windows", "MakerRiseEngine.Windows\Maker.RiseEngine.Windows.csproj", "{4D2C3C25-14F7-4555-9692-331897F1F3CA}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -25,6 +25,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Launcher", "Launcher", "{89D19F8F-DD08-435E-84CC-70A6EF186735}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.Launcher.Updater", "Maker.RiseEngine.Launcher.Updater\Maker.RiseEngine.Launcher.Updater.csproj", "{C5BBA855-A4B0-4149-81F6-4A91672855FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maker.RiseEngine.PluginManager", "Maker.RiseEngine.PluginManager\Maker.RiseEngine.PluginManager.csproj", "{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{279B246D-1EC5-4A92-9295-D6C4447A1AD9}"
+	ProjectSection(SolutionItems) = preProject
+		Tags.md = Tags.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,6 +147,22 @@ Global
 		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x64.Build.0 = Release|Any CPU
 		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x86.ActiveCfg = Release|Any CPU
 		{C5BBA855-A4B0-4149-81F6-4A91672855FB}.Release|x86.Build.0 = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|ARM.Build.0 = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|x64.Build.0 = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Debug|x86.Build.0 = Debug|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|ARM.ActiveCfg = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|ARM.Build.0 = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|x64.ActiveCfg = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|x64.Build.0 = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|x86.ActiveCfg = Release|Any CPU
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,5 +173,6 @@ Global
 		{409B76CF-7D0C-4D67-9E90-840EE45F3C84} = {E88F4514-5EDD-45F1-9211-F62E32954F48}
 		{A0BEBAF5-A086-4C4C-A7E6-4672D057BFEC} = {89D19F8F-DD08-435E-84CC-70A6EF186735}
 		{C5BBA855-A4B0-4149-81F6-4A91672855FB} = {89D19F8F-DD08-435E-84CC-70A6EF186735}
+		{FB2884E1-2A90-4B7E-9302-0E0E4599B3F8} = {9ABA2B92-32CE-4814-9B4B-2E77645F2CC3}
 	EndGlobalSection
 EndGlobal

@@ -22,6 +22,7 @@ namespace Maker.RiseEngine.Core.Config
         public bool Debug_WorldFocusLocation { get; set; } = false;
         public bool Debug_DebugWaterMark { get; set; } = false;
         public bool Debug_SceneManager { get; set; } = false;
+        public bool Debug_ShowErrorMessages { get; set; } = false;
 
         // GFX
         public int GFX_ViewDistance { get; set; } = 16;

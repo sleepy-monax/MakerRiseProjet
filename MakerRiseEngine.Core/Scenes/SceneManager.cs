@@ -87,10 +87,10 @@ namespace Maker.RiseEngine.Core.Scenes
                     spriteBatch.End();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                if (Engine.engineConfig.Debug_ShowErrorMessages)
+                    MessageBox.Show(ex.ToString());
             }
 
 
@@ -106,9 +106,10 @@ namespace Maker.RiseEngine.Core.Scenes
                     s.sceneUpdate(playerInput, gameTime);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                if (Engine.engineConfig.Debug_ShowErrorMessages)
+                    MessageBox.Show(ex.ToString());
             }
         }
     }

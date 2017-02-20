@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {
-    public class SpriteSheet : IGameObject
+    public class SpriteSheet : GameComponent.IGameObject
     {
 
         public Dictionary<string, TilesheetColectionItem> SpriteColection;

@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Plugin;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Maker.RiseEngine.Core;
@@ -14,7 +14,6 @@ namespace Maker.twiyol
 
         public void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader) where PluginType : IPlugin
         {
-            
             // Stating the game...
             Scenes.Menu.MenuBackground b = new Scenes.Menu.MenuBackground();
             Scenes.Menu.MenuMain m = new Scenes.Menu.MenuMain();

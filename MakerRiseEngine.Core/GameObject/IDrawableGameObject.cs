@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Maker.RiseEngine.Core.GameObject
+namespace Maker.RiseEngine.Core.GameComponent
 {
-    interface IDrawableGameObject : IGameObject
+    interface IDrawableGameComponent : IGameObject
     {
 
         void OnUpdate(GameInput playerInput, GameTime gametime);

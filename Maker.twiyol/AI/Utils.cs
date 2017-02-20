@@ -2,13 +2,14 @@
 
 namespace Maker.twiyol.AI
 {
+    public enum Facing
+    {
+        Up, Down, Left, Right
+    }
+
     public static class Utils
     {
 
-        public enum Facing
-        {
-            Up, Down, Left, Right
-        }
 
         public static Point ToPoint(this Facing _Facing)
         {

@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -15,8 +15,8 @@ namespace Maker.twiyol.AI
 
         public void ExecuteAction(GameObject.Event.GameObjectEventArgs e, GameTime gametime)
         {
-            if (e.ParrentEntity.Action != -1) 
-                GameObjectManager.GetGameObject<IAction>(e.ParrentEntity.Action).Performe(e, gametime);
+            if (e.ParrentEntity.Tags.GetTag("ai_action", -1) != -1) 
+                GameComponentManager.GetGameObject<IAction>(e.ParrentEntity.Tags.GetTag("ai_action", -1)).Performe(e, gametime);
         }
     }
 }

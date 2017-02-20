@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObject;
+﻿using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.twiyol.Game.GameUtils;
@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System;
 
 namespace Maker.twiyol.GameObject.Entities
 {
@@ -28,7 +29,7 @@ namespace Maker.twiyol.GameObject.Entities
 
         public int MoveSpeed { get; set; } = 5;
 
-        public int MaxLife { get; set; } = 20;
+        public int MaxHeal { get; set; } = 20;
 
         public int MoveRunSpeed { get; set; } = 10;
 
@@ -36,13 +37,15 @@ namespace Maker.twiyol.GameObject.Entities
 
         public bool CanBeKilled { get; set; } = false;
 
+        public DrawLayer Layer => throw new NotImplementedException();
+
         public Entity(string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation)
         {
             Variant = new List<Sprite>();
 
             foreach (string str in _SpriteVariant)
             {
-                Variant.Add(GameObjectManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
             }
             SpriteLocation = _SpriteLocation;
             DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));
@@ -52,8 +55,8 @@ namespace Maker.twiyol.GameObject.Entities
         public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
             Variant[e.ParrentEntity.Variant].Draw(spritebatch, new Rectangle(
-                   e.OnScreenLocation.X + (int)(e.Game.Camera.TileUnit * (this.SpriteLocation.X + e.ParrentEntity.OnTileLocationX)),
-                   e.OnScreenLocation.Y + (int)(e.Game.Camera.TileUnit * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileLocationY)),
+                   e.OnScreenLocation.X + (int)(e.Game.Camera.TileUnit * (this.SpriteLocation.X + e.ParrentEntity.OnTileOffsetX)),
+                   e.OnScreenLocation.Y + (int)(e.Game.Camera.TileUnit * (this.SpriteLocation.Y + +e.ParrentEntity.OnTileOffsetY)),
                    this.DrawBox.Width * e.Game.Camera.TileUnit, this.DrawBox.Height * e.Game.Camera.TileUnit), Color.White, gametime);
         }
 
@@ -89,7 +92,7 @@ namespace Maker.twiyol.GameObject.Entities
             return defence;
         }
 
-        public void OnDamageTaken(GameObjectEventArgs e)
+        public void OnDamagesTaken(GameObjectEventArgs e)
         {
 
         }

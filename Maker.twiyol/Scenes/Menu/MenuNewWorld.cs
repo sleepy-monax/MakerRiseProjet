@@ -36,6 +36,11 @@ namespace Maker.twiyol.Scenes.Menu
             rootContainer.Padding = new ControlPadding(16);
             rootContainer.ControlAnchor = Anchor.Center;
 
+            titleLabel = new Label("Nouveau monde", new Rectangle(0, 0, 64, 64), Color.White);
+            titleLabel.ControlDock = Dock.Top;
+            titleLabel.TextStyle = Style.rectangle;
+            titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
+
             controlContainer = new Panel(new Rectangle(0, 0, 0, 96), Color.White);
             controlContainer.Padding = new ControlPadding(16);
             controlContainer.ControlDock = Dock.Bottom;
@@ -50,17 +55,15 @@ namespace Maker.twiyol.Scenes.Menu
 
             worldNameTexBox = new TextBox("Monde sans nom", new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
             worldNameTexBox.ControlDock = Dock.Top;
+
             worldSeedTextBox = new TextBox(new Random().Next().ToString(), new Rectangle(0, 0, 128, 64), Color.White, Color.Black);
             worldSeedTextBox.ControlDock = Dock.Top;
-
-            titleLabel = new Label("Nouveau monde", new Rectangle(0, 0, 128, 96), Color.White);
-            titleLabel.ControlDock = Dock.Top;
-            titleLabel.TextStyle = Style.rectangle;
-            titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             nameLabel = new Label("Nom du nouveau monde :", new Rectangle(0, 0, 128, 64), Color.White);
             nameLabel.ControlDock = Dock.Top;
             nameLabel.TextAlignment = Alignment.Left;
+
+
             seedLabel = new Label("Graine de la génération :", new Rectangle(0, 0, 128, 64), Color.White);
             seedLabel.ControlDock = Dock.Top;
             seedLabel.TextAlignment = Alignment.Left;
@@ -76,13 +79,16 @@ namespace Maker.twiyol.Scenes.Menu
             controlContainer.AddChild(goBackButton);
         }
 
-        private void CreateNewWorldButton_onMouseClick()
-        {
+        private void CreateNewWorldButton_onMouseClick() { 
+       
             ThreadStart GenHandle = new ThreadStart(delegate
             {
                 RiseEngine.sceneManager.RemoveScene(this);
 
-                GeneratorProperty generatorProperty = new GeneratorProperty(worldNameTexBox.Text, int.Parse(worldSeedTextBox.Text));
+                int result;
+                int.TryParse(worldSeedTextBox.Text, out result);
+
+                GeneratorProperty generatorProperty = new GeneratorProperty(worldNameTexBox.Text, result);
 
                 WorldGenerator Gen = new WorldGenerator(generatorProperty);
                 var world = Gen.Generate();
@@ -100,7 +106,7 @@ namespace Maker.twiyol.Scenes.Menu
 
         private void GoBackButton_onMouseClick()
         {
-            Scene menu = new Menu.MenuMain();
+            Scene menu = new MenuMain();
             RiseEngine.sceneManager.AddScene(menu);
             menu.show();
             RiseEngine.sceneManager.RemoveScene(this);

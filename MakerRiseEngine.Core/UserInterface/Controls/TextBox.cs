@@ -12,7 +12,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
     public class TextBox : Control
     {
         public int MaxChar = 0;
-        public int CharIndex = 0;
+        public int CharIndex;
 
         Sprite TxtM;
         Sprite TxtL;
@@ -37,6 +37,8 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             TxtM = CommonSheets.GUI.GetSprite("TxtM");
             TxtL = CommonSheets.GUI.GetSprite("TxtL");
             TxtR = CommonSheets.GUI.GetSprite("TxtR");
+
+            CharIndex = text.Length;
 
             Engine.Window.TextInput += Window_TextInput;
         }
@@ -73,9 +75,6 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                     else
                         InputChar(LastInputChar);
                 }
-
-
-
 
             }
             else CharInput = false;

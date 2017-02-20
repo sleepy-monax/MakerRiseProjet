@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameObject;
+using Maker.RiseEngine.Core.GameComponent;
 using Maker.RiseEngine.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -43,8 +43,8 @@ namespace Maker.twiyol.Game.GameUtils
                             //recuperation des objets
                             WorldDataStruct.DataTile T = G.World.GetTile(CurrentLocation);
 
-                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
-                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, playerInput, gameTime);
+                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).OnTick(e, gameTime);
+                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).OnUpdate(e, playerInput, gameTime);
 
                             if (!(T.Entity == -1))
                             {
@@ -52,12 +52,15 @@ namespace Maker.twiyol.Game.GameUtils
                                 WorldDataStruct.DataEntity E = G.World.GetEntity(CurrentLocation);
                                 E.Location = CurrentLocation.ToWorldLocation();
 
-                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
-                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, playerInput, gameTime);
+                                if (e.ParrentEntity.Tags.HasTag("attack_cooldown") && e.ParrentEntity.Tags.GetTag("attack_cooldown", 0) > 0) {
+                                    e.ParrentEntity.Tags.SetTag("attack_cooldown", (e.ParrentEntity.Tags.GetTag("attack_cooldown", 1) - 1) );
+                                }
+
+                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).OnTick(e, gameTime);
+                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).OnUpdate(e, playerInput, gameTime);
                             }
                         }
                     }
-
                 }
             }
 
