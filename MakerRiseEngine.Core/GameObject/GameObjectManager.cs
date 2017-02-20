@@ -13,22 +13,22 @@ namespace Maker.RiseEngine.Core.GameComponent
         static List<IGameObject> gameObject = new List<IGameObject>();
         static Dictionary<string, int> gameObjectDict = new Dictionary<string, int>();
 
-        public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject _gameObject)
+        public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject gameObject)
         {
             int gameObjectID = gameObject.Count;
 
-            _gameObject.GameObjectName = gameObjectName;
-            _gameObject.PluginName = plugin.Name;
+            gameObject.GameObjectName = gameObjectName;
+            gameObject.PluginName = plugin.Name;
 
             gameObject.Add(_gameObject);
             gameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);
 
-            _gameObject.OnGameObjectAdded();
+            gameObject.OnGameObjectAdded();
         }
 
-        public static int GetGameObjectIndex(string gameObjectID)
+        public static int GetGameObjectIndex(string gameObjectName)
         {
-            string[] Names = gameObjectID.Split('.');
+            string[] Names = gameObjectName.Split('.');
             return GetGameObjectIndex(Names[0], Names[1]);
         }
 

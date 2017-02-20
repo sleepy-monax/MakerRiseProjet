@@ -26,8 +26,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
                 return currentState == State.Opened;
             }
         }
-
-        private readonly SpriteBatch spriteBatch;
+        
         private readonly InputProcessor inputProcessor;
         private State currentState;
         private Vector2 openedPosition, closedPosition, position;
@@ -60,12 +59,11 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         private readonly float oneCharacterWidth;
         private int maxCharactersPerLine;
 
-        public Renderer(Game game, SpriteBatch spriteBatch, InputProcessor inputProcessor)
+        public Renderer(Game game, InputProcessor inputProcessor)
         {
             currentState = State.Closed;
             position = closedPosition = new Vector2(-GameConsoleOptions.Options.Width, 0);
             openedPosition = new Vector2(0, 0);
-            this.spriteBatch = spriteBatch;
             this.inputProcessor = inputProcessor;
             firstCommandPositionOffset = Vector2.Zero;
             oneCharacterWidth = GameConsoleOptions.Options.Font.MeasureString("x").X;
