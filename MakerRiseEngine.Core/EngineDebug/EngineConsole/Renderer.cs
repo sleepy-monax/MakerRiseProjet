@@ -72,7 +72,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
 
      
 
-        void DrawCursor(Vector2 pos, GameTime gameTime)
+        void DrawCursor(SpriteBatch spriteBatch, Vector2 pos, GameTime gameTime)
         {
             if (!IsInBounds(pos.Y))
             {
@@ -91,7 +91,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         /// <param name="pos"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        Vector2 DrawCommand(string command, Vector2 pos, Color color)
+        Vector2 DrawCommand(SpriteBatch spriteBatch, string command, Vector2 pos, Color color)
         {
             var splitLines = command.Length > maxCharactersPerLine ? SplitCommand(command, maxCharactersPerLine) : new[] { command };
             foreach (var line in splitLines)
@@ -125,17 +125,17 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         /// <param name="lines"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        Vector2 DrawCommands(IEnumerable<OutputLine> lines, Vector2 pos)
+        Vector2 DrawCommands(SpriteBatch spriteBatch, IEnumerable<OutputLine> lines, Vector2 pos)
         {
             var originalX = pos.X;
             foreach (var command in lines)
             {
                 if (command.Type == OutputLineType.Command)
                 {
-                    pos = DrawPrompt(pos);
+                    pos = DrawPrompt(spriteBatch, pos);
                 }
                 //position.Y = DrawCommand(command.ToString(), position, GameConsoleOptions.Options.FontColor).Y;
-                pos.Y = DrawCommand(command.ToString(), pos, command.Type == OutputLineType.Command ? GameConsoleOptions.Options.PastCommandColor : GameConsoleOptions.Options.PastCommandOutputColor).Y;
+                pos.Y = DrawCommand(spriteBatch, command.ToString(), pos, command.Type == OutputLineType.Command ? GameConsoleOptions.Options.PastCommandColor : GameConsoleOptions.Options.PastCommandOutputColor).Y;
                 pos.X = originalX;
             }
             return pos;
@@ -146,9 +146,9 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        Vector2 DrawPrompt(Vector2 pos)
+        Vector2 DrawPrompt(SpriteBatch spritebatch, Vector2 pos)
         {
-            spriteBatch.DrawString(GameConsoleOptions.Options.Font, GameConsoleOptions.Options.Prompt, pos, GameConsoleOptions.Options.PromptColor);
+            spritebatch.DrawString(GameConsoleOptions.Options.Font, GameConsoleOptions.Options.Prompt, pos, GameConsoleOptions.Options.PromptColor);
             pos.X += oneCharacterWidth * GameConsoleOptions.Options.Prompt.Length + oneCharacterWidth;
             return pos;
         }
@@ -234,10 +234,10 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
             spriteBatch.FillRectangle(Bounds, GameConsoleOptions.Options.BackgroundColor);
             spriteBatch.DrawRectangle(Bounds, Color.Black);
 
-            var nextCommandPosition = DrawCommands(inputProcessor.Out, FirstCommandPosition);
-            nextCommandPosition = DrawPrompt(nextCommandPosition);
-            var bufferPosition = DrawCommand(inputProcessor.Buffer.ToString(), nextCommandPosition, GameConsoleOptions.Options.BufferColor); //Draw the buffer
-            DrawCursor(bufferPosition, gameTime);
+            var nextCommandPosition = DrawCommands(spriteBatch, inputProcessor.Out, FirstCommandPosition);
+            nextCommandPosition = DrawPrompt(spriteBatch, nextCommandPosition);
+            var bufferPosition = DrawCommand(spriteBatch, inputProcessor.Buffer.ToString(), nextCommandPosition, GameConsoleOptions.Options.BufferColor); //Draw the buffer
+            DrawCursor(spriteBatch, bufferPosition, gameTime);
         }
     }
 }

@@ -10,18 +10,18 @@ namespace Maker.RiseEngine.Core.GameComponent
     public static class GameComponentManager
     {
 
-        static List<IGameObject> gameObject = new List<IGameObject>();
-        static Dictionary<string, int> gameObjectDict = new Dictionary<string, int>();
+        static List<IGameObject> GameObject = new List<IGameObject>();
+        static Dictionary<string, int> GameObjectDict = new Dictionary<string, int>();
 
         public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject gameObject)
         {
-            int gameObjectID = gameObject.Count;
+            int gameObjectID = GameObject.Count;
 
             gameObject.GameObjectName = gameObjectName;
             gameObject.PluginName = plugin.Name;
 
-            gameObject.Add(_gameObject);
-            gameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);
+            GameObject.Add(gameObject);
+            GameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);
 
             gameObject.OnGameObjectAdded();
         }
@@ -34,9 +34,9 @@ namespace Maker.RiseEngine.Core.GameComponent
 
         public static T GetGameObject<T>(int index) where T : IGameObject
         {
-            if (0 <= index && index <= gameObject.Count())
+            if (0 <= index && index <= GameObject.Count())
             {
-                return (T)gameObject[index];
+                return (T)GameObject[index];
             }
             else
             {
@@ -62,9 +62,9 @@ namespace Maker.RiseEngine.Core.GameComponent
 
         public static int GetGameObjectIndex(string pluginName, string gameObjectName)
         {
-            if (gameObjectDict.ContainsKey(pluginName + '.' + gameObjectName))
+            if (GameObjectDict.ContainsKey(pluginName + '.' + gameObjectName))
             {
-                return gameObjectDict[pluginName + '.' + gameObjectName];
+                return GameObjectDict[pluginName + '.' + gameObjectName];
             }
             else
             {

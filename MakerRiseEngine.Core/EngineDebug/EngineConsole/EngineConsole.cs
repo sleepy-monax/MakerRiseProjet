@@ -20,14 +20,15 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         private readonly Renderer Renderer;
         public GameConsoleOptions Options { get { return GameConsoleOptions.Options; } }
         public List<IConsoleCommand> Commands { get { return GameConsoleOptions.Commands; } }
+        SpriteBatch sb;
 
-        public EngineConsole(GameConsoleOptions options, RiseEngine game)
+        public EngineConsole(SpriteBatch spriteBatch, GameConsoleOptions options, RiseEngine game)
         {
             if (options.Font == null)
                 throw new NullReferenceException("Please, provide SpriteFont for console font!");
 
             GameConsoleOptions.Options = options;
-            SpriteBatch = spriteBatch;
+            sb = spriteBatch;
 
             Input = new InputProcessor(new CommandProcesser(this), game.Window);
             Renderer = new Renderer(game, Input);
@@ -56,9 +57,9 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            SpriteBatch.Begin();
+            sb.Begin();
             Renderer.Draw(spriteBatch,gameTime);
-            SpriteBatch.End();
+            sb.End();
         }
 
 
