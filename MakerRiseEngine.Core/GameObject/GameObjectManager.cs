@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.RiseEngine.Core.GameComponent
+namespace Maker.RiseEngine.Core.GameObjects
 {
     public static class GameComponentManager
     {
@@ -13,17 +13,19 @@ namespace Maker.RiseEngine.Core.GameComponent
         static List<IGameObject> GameObject = new List<IGameObject>();
         static Dictionary<string, int> GameObjectDict = new Dictionary<string, int>();
 
-        public static void AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject gameObject)
+        public static int AddGameObject(this IPlugin plugin, string gameObjectName, IGameObject gameObject)
         {
             int gameObjectID = GameObject.Count;
 
             gameObject.GameObjectName = gameObjectName;
-            gameObject.PluginName = plugin.Name;
+            gameObject.PluginName = plugin.PluginName;
 
             GameObject.Add(gameObject);
-            GameObjectDict.Add(plugin.Name + '.' + gameObjectName, gameObjectID);
+            GameObjectDict.Add(plugin.PluginName + '.' + gameObjectName, gameObjectID);
 
             gameObject.OnGameObjectAdded();
+
+            return gameObjectID;
         }
 
         public static int GetGameObjectIndex(string gameObjectName)
@@ -46,7 +48,7 @@ namespace Maker.RiseEngine.Core.GameComponent
 
         public static T GetGameObject<T>(this IPlugin plugin, string gameObjectName) where T : IGameObject
         {
-            return GetGameObject<T>(plugin.Name, gameObjectName);
+            return GetGameObject<T>(plugin.PluginName, gameObjectName);
         }
         public static T GetGameObject<T>(string pluginName, string gameObjectName) where T : IGameObject
         {
@@ -56,7 +58,7 @@ namespace Maker.RiseEngine.Core.GameComponent
         public static int GetGameObjectIndex(this IPlugin plugin, string gameObjectName)
         {
 
-            return GetGameObjectIndex(plugin.Name, gameObjectName);
+            return GetGameObjectIndex(plugin.PluginName, gameObjectName);
 
         }
 

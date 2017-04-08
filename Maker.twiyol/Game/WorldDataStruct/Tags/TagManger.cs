@@ -12,10 +12,10 @@ namespace Maker.twiyol.Game.WorldDataStruct.Tags
 
         Dictionary<string, Tag> Tags = new Dictionary<string, Tag>();
 
-        public T GetTag<T>(string name, T defaultValue)
+        public T GetTag<T>(string tagName, T defaultValue)
         {
-            if (Tags.ContainsKey(name)) {
-                return (T)Tags[name].Value;
+            if (HasTag(tagName)) {
+                return (T)Tags[tagName].Value;
             }
             else
             {

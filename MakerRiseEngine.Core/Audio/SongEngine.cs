@@ -1,21 +1,26 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 namespace Maker.RiseEngine.Core.Audio
 {
-    public static class SongEngine
+    public class SongsManager
     {
 
 
-        static float FadeVolume;
-        static bool IsFading = false;
-        static bool Play = false;
-        static string NextSong;
-        static string PluginName;
+        float FadeVolume;
+        bool IsFading = false;
+        bool Play = false;
+        string NextSong;
+        string PluginName;
+        engine ENGINE;
 
-        public static void SwitchSong(string _PluginName, string _Name)
+        public SongsManager(engine engine) {
+            ENGINE = engine;
+        }
+
+        public  void SwitchSong(string _PluginName, string _Name)
         {
             FadeVolume = 1f;
             IsFading = true;
@@ -25,10 +30,10 @@ namespace Maker.RiseEngine.Core.Audio
         }
 
 
-        public static void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
+        public  void Update(MouseState Mouse, KeyboardState KeyBoard, GameTime gameTime)
         {
 
-            MediaPlayer.Volume = (((Engine.engineConfig.Sound_Master_Level * Engine.engineConfig.Sound_Song_Level) / 2) * FadeVolume);
+            MediaPlayer.Volume = (((rise.engineConfig.Sound_Master_Level * rise.engineConfig.Sound_Song_Level) / 2) * FadeVolume);
 
             if (Play == true)
             {
@@ -52,7 +57,7 @@ namespace Maker.RiseEngine.Core.Audio
                 if (!(PluginName == null || NextSong == null))
                 {
 
-                    MediaPlayer.Play(ContentEngine.Song(PluginName, NextSong));
+                    MediaPlayer.Play(ENGINE.RESSOUCES.Song(PluginName, NextSong));
                     Play = true;
                     IsFading = false;
 

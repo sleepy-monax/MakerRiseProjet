@@ -1,6 +1,6 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Content;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.Ressources;
+using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject.Event;
@@ -20,16 +20,16 @@ namespace Maker.twiyol.Game.GameUtils
         public WorldRender(GameScene _WorldScene)
         {
             G = _WorldScene;
-            tSpriteBatch = new SpriteBatch(Engine.GraphicsDevice);
-            eSpriteBatch = new SpriteBatch(Engine.GraphicsDevice);
+            tSpriteBatch = new SpriteBatch(rise.GraphicsDevice);
+            eSpriteBatch = new SpriteBatch(rise.GraphicsDevice);
         }
 
 
 
         public void Draw(RenderTarget2D r,GameTime gameTime)
         {
-            Engine.GraphicsDevice.SetRenderTarget(r);
-            Engine.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
+            rise.GraphicsDevice.SetRenderTarget(r);
+            rise.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
 
             tSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
             eSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
@@ -58,14 +58,14 @@ namespace Maker.twiyol.Game.GameUtils
 
 
                             //desin des objets
-                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).OnDraw(e, tSpriteBatch, gameTime);
+                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).Draw(e, tSpriteBatch, gameTime);
 
                             if (!(T.Entity == -1))
                             {
                                 DataEntity E = G.World.GetEntity(CurrentLocation);
                                 Vector2 onTileOffset = (E.GetOnTileOffset() * G.Camera.TileUnit);
 
-                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).OnDraw(e, eSpriteBatch, gameTime);
+                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).Draw(e, eSpriteBatch, gameTime);
 
                                 if (E.Tags.HasTag("attack_cooldown") && E.Tags.GetTag("attack_cooldown", 0) > 0)
                                 {
@@ -79,10 +79,10 @@ namespace Maker.twiyol.Game.GameUtils
                                 }
 
                                
-                                if (Engine.engineConfig.Debug_WorldOverDraw && E.IsCameraFocus)
+                                if (rise.engineConfig.Debug_WorldOverDraw && E.IsCameraFocus)
                                 {
 
-                                    eSpriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + (E.GetOnTileOffset() * G.Camera.TileUnit), Color.White);
+                                    eSpriteBatch.DrawString(G.ENGINE.RESSOUCES.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + (E.GetOnTileOffset() * G.Camera.TileUnit), Color.White);
 
                                 }
                             }
@@ -95,7 +95,7 @@ namespace Maker.twiyol.Game.GameUtils
             tSpriteBatch.End();
             eSpriteBatch.End();
 
-            Engine.GraphicsDevice.SetRenderTarget(null);
+            rise.GraphicsDevice.SetRenderTarget(null);
         }
     }
 }

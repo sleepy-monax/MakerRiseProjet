@@ -22,7 +22,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole
         public List<IConsoleCommand> Commands { get { return GameConsoleOptions.Commands; } }
         SpriteBatch sb;
 
-        public EngineConsole(SpriteBatch spriteBatch, GameConsoleOptions options, RiseEngine game)
+        public EngineConsole(SpriteBatch spriteBatch, GameConsoleOptions options, engine game)
         {
             if (options.Font == null)
                 throw new NullReferenceException("Please, provide SpriteFont for console font!");

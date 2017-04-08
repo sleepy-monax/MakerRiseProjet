@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
@@ -54,7 +54,7 @@ namespace Maker.RiseEngine.Core.UserInterface
         public string Text { get; set; } = "Control";
         public Color ControlColor { get; set; } = Color.White;
         public Color TextColor { get; set; } = Color.White;
-        public SpriteFont TextFont = ContentEngine.SpriteFont("Engine", "segoeUI_16pt");
+        public SpriteFont TextFont = rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt");
         public ControlPadding Padding { get; set; } = new ControlPadding();
         public ControlPadding ChildMargin { get; set; } = new ControlPadding();
 
@@ -94,7 +94,7 @@ namespace Maker.RiseEngine.Core.UserInterface
         }
 
         public void refreshLayout() {
-            Rectangle parrentRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
+            Rectangle parrentRectangle = new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight);
 
             // Update Enchore.
             {
@@ -223,7 +223,7 @@ namespace Maker.RiseEngine.Core.UserInterface
                 OnDraw(spriteBatch, gameTime);
 
                 // Draw debug.
-                if (Engine.engineConfig.Debug_GuiFrame)
+                if (rise.engineConfig.Debug_GuiFrame)
                 {
                     spriteBatch.DrawRectangle(ControlRectangle, Color.Black);
                     if (Childs.Count > 0)

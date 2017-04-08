@@ -55,9 +55,9 @@ namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
             if (MainSprite.Animated == true)
             {
 
-                if (!(LasteFrame == Engine.CurrentFrame))
+                if (!(LasteFrame == rise.CurrentFrame))
                 {
-                    LasteFrame = Engine.CurrentFrame;
+                    LasteFrame = rise.CurrentFrame;
 
                     ElapsedTime += _gameTime.ElapsedGameTime.Milliseconds;
 

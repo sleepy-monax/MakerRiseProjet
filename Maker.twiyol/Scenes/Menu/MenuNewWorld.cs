@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
@@ -39,7 +39,7 @@ namespace Maker.twiyol.Scenes.Menu
             titleLabel = new Label("Nouveau monde", new Rectangle(0, 0, 64, 64), Color.White);
             titleLabel.ControlDock = Dock.Top;
             titleLabel.TextStyle = Style.rectangle;
-            titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
+            titleLabel.TextFont = ENGINE.RESSOUCES.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             controlContainer = new Panel(new Rectangle(0, 0, 0, 96), Color.White);
             controlContainer.Padding = new ControlPadding(16);
@@ -83,7 +83,7 @@ namespace Maker.twiyol.Scenes.Menu
        
             ThreadStart GenHandle = new ThreadStart(delegate
             {
-                RiseEngine.sceneManager.RemoveScene(this);
+                ENGINE.SCENES.RemoveScene(this);
 
                 int result;
                 int.TryParse(worldSeedTextBox.Text, out result);
@@ -94,10 +94,10 @@ namespace Maker.twiyol.Scenes.Menu
                 var world = Gen.Generate();
                 Game.GameScene wrldsc = new Game.GameScene(world);
 
-                RiseEngine.sceneManager.AddScene(wrldsc);
+                ENGINE.SCENES.AddScene(wrldsc);
 
                 wrldsc.show();
-                RiseEngine.sceneManager.RemoveScene(this);
+                ENGINE.SCENES.RemoveScene(this);
             });
 
             Thread t = new Thread(GenHandle);
@@ -107,9 +107,9 @@ namespace Maker.twiyol.Scenes.Menu
         private void GoBackButton_onMouseClick()
         {
             Scene menu = new MenuMain();
-            RiseEngine.sceneManager.AddScene(menu);
+            ENGINE.SCENES.AddScene(menu);
             menu.show();
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
         }
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)

@@ -1,6 +1,7 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Input;
+using Maker.twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,15 +17,14 @@ namespace Maker.twiyol.GameObject
         D,
         E,
     }
-    public interface IWorldGameObject : RiseEngine.Core.GameComponent.IGameObject
+    public interface IWorldGameObject : IGameObject
     {
 
         int MaxVariantCount { get; }
-        DrawLayer Layer { get; }
 
-        void OnTick(Event.GameObjectEventArgs e, GameTime gametime);
-        void OnUpdate(Event.GameObjectEventArgs e, GameInput playerInput, GameTime gametime);
-        void OnDraw(Event.GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime);
+        void Tick(GameObjectEventArgs e, GameTime gametime);
+        void Update(GameObjectEventArgs e, GameInput playerInput, GameTime gametime);
+        void Draw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime);
 
     }
 }

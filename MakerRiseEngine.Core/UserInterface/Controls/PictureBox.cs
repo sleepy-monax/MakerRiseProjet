@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
         public PictureBox(System.Drawing.Bitmap picture, Rectangle rect, Color color)
         {
 
-            Picture = Rendering.BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, picture);
+            Picture = Rendering.BitmapHelper.BitmapToTexture2D(rise.GraphicsDevice, picture);
             ControlRectangle = rect;
             ControlColor = color;
 

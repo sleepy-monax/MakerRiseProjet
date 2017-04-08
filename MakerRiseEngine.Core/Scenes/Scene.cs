@@ -14,7 +14,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
         public bool Pause { get; set; } = true;
         public bool Visible { get; set; } = false;
-        public RiseEngine RiseEngine;
+        public engine ENGINE;
 
         public void hide()
         {
@@ -53,7 +53,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
         public void Dispose()
         {
-            RiseEngine = null;
+            ENGINE = null;
             GC.SuppressFinalize(this);
         }
     }

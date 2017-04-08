@@ -19,7 +19,7 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole.Commands.Plugin
             output.Append("This is the list of loaded plugins :\n");
             output.Append("------------------------------------\n");
 
-            foreach (var p in Engine.Plugins)
+            foreach (var p in rise.Plugins)
             {
 
                 output.Append($" - {p.Key}\n");

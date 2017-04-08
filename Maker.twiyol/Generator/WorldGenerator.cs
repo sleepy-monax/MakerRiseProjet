@@ -1,6 +1,6 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.EngineDebug;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Plugin;
 using Maker.twiyol.Events;
@@ -56,8 +56,8 @@ namespace Maker.twiyol.Generator
 
             // Show the loading scene.
             WorldGenerating sceneGen = new WorldGenerating();
-            var game = Engine.RiseEngine;
-            game.sceneManager.AddScene(sceneGen);
+            var game = rise.ENGINE;
+            game.SCENES.AddScene(sceneGen);
             sceneGen.show();
 
             int maxWorldSize = GeneratorProperty.WorldSize * 16;
@@ -177,7 +177,7 @@ namespace Maker.twiyol.Generator
             stopwatch.Stop();
             DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
 
-            game.sceneManager.RemoveScene(sceneGen);
+            game.SCENES.RemoveScene(sceneGen);
 
             return newWorld;
         }

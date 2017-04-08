@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
 
@@ -25,7 +25,7 @@ namespace Maker.twiyol.GameObject
 
         
         ItemType Type { get; set; }
-        List<Sprite> Variant { get; set; }
+        Sprite ItemSprite { get; set; }
 
     }
 }

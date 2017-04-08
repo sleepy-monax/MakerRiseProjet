@@ -28,7 +28,7 @@ namespace Maker.RiseEngine.Core.Audio
 
             SoundEffectInstance newSoundEffectInstance = soundEffect.CreateInstance();
             soundEffectInstance.Add(newSoundEffectInstance);
-            newSoundEffectInstance.Volume = (Engine.engineConfig.Sound_Master_Level * Engine.engineConfig.Sound_Effect_Level);
+            newSoundEffectInstance.Volume = (rise.engineConfig.Sound_Master_Level * rise.engineConfig.Sound_Effect_Level);
             newSoundEffectInstance.Play();
 
         }
@@ -50,7 +50,7 @@ namespace Maker.RiseEngine.Core.Audio
                     else
                     {
 
-                        i.Volume = (Engine.engineConfig.Sound_Master_Level * Engine.engineConfig.Sound_Effect_Level);
+                        i.Volume = (rise.engineConfig.Sound_Master_Level * rise.engineConfig.Sound_Effect_Level);
 
                     }
                 }

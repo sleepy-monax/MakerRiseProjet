@@ -1,7 +1,7 @@
 ﻿
 
 using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.GameObjects;
 
 namespace Maker.twiyol.Generator.GeneratorFeatures
 {

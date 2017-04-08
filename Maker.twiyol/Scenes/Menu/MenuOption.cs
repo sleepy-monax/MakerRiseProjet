@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
@@ -53,7 +53,7 @@ namespace Maker.twiyol.Scenes.Menu
 
             titleLabel = new Label("Options", new Rectangle(0, -80, 512, 64), Color.White);
             titleLabel.TextStyle = Style.rectangle;
-            titleLabel.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
+            titleLabel.TextFont = ENGINE.RESSOUCES.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             buttonInput = new Button("Controls", new Rectangle(0, 0, 64, 64), Color.White);
             buttonInput.ControlDock = Dock.Top;
@@ -95,9 +95,9 @@ namespace Maker.twiyol.Scenes.Menu
 
             }
 
-            RiseEngine.sceneManager.AddScene(menu);
+            ENGINE.SCENES.AddScene(menu);
             menu.show();
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
         }
 
         public override void OnUnload()

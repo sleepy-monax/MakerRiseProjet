@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Maker.RiseEngine.Core.GameComponent
+namespace Maker.RiseEngine.Core.GameObjects
 {
     interface IDrawableGameComponent : IGameObject
     {

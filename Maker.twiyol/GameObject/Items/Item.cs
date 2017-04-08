@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameComponent;
+﻿using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
 
@@ -10,21 +10,15 @@ namespace Maker.twiyol.GameObject.Items
         public string PluginName { get; set; }
 
         public ItemType Type { get; set; }
-        public List<Sprite> Variant { get; set; }
+        public Sprite ItemSprite { get; set; }
 
-        public Item(ItemType _Type, string[] _SpriteVariant, string _SpriteSheet)
+        public int MaxStackSize { get; set; } = 64;
+
+        public Item(ItemType type, string spriteName, int spriteSheetID, int maxStackSize = 64)
         {
-            Type = _Type;
-
-            Variant = new List<Sprite>();
-            foreach (string str in _SpriteVariant)
-            {
-
-                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
-
-            }
-
-
+            Type = type;
+            ItemSprite =  GameComponentManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(spriteName);
+            MaxStackSize = maxStackSize;
         }
 
         public void OnGameObjectAdded()

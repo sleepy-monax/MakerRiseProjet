@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
@@ -27,7 +27,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
         public TextBox(string text, Rectangle rect, Color color, Color textColor)
         {
-            CharSize = ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString("_");
+            CharSize = rise.ENGINE.RESSOUCES.SpriteFont("Engine", "Consolas_16pt").MeasureString("_");
             Text = text;
             this.ControlRectangle = rect;
             ControlColor = color;
@@ -40,7 +40,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
             CharIndex = text.Length;
 
-            Engine.Window.TextInput += Window_TextInput;
+            rise.Window.TextInput += Window_TextInput;
         }
 
         private void Window_TextInput(object sender, TextInputEventArgs e)
@@ -117,11 +117,11 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
 
             // Draw text.
-            DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(16, 0, ControlRectangle.Width, ControlRectangle.Height), TextColor, Alignment.Left, Style.Regular);
+            DrawText(spriteBatch, rise.ENGINE.RESSOUCES.SpriteFont("Engine", "Consolas_16pt"), Text, new Rectangle(16, 0, ControlRectangle.Width, ControlRectangle.Height), TextColor, Alignment.Left, Style.Regular);
 
             // Draw selection.
             if (mouseStats == MouseStats.Over)
-                spriteBatch.FillRectangle(new Rectangle((int)ContentEngine.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + ControlRectangle.X + 16, ControlRectangle.Y + 16, 1, (int)CharSize.Y), Color.Black);
+                spriteBatch.FillRectangle(new Rectangle((int)rise.ENGINE.RESSOUCES.SpriteFont("Engine", "Consolas_16pt").MeasureString(" ").X * CharIndex + ControlRectangle.X + 16, ControlRectangle.Y + 16, 1, (int)CharSize.Y), Color.Black);
 
         }
 

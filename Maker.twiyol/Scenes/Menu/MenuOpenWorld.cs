@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.UserInterface;
@@ -30,7 +30,7 @@ namespace Maker.twiyol.Scenes.Menu
             MenuTitle = new Label("Charger un monde", new Rectangle(0, 0, 64, 64), Color.White);
             MenuTitle.TextStyle = Maker.RiseEngine.Core.Rendering.Style.rectangle;
             MenuTitle.ControlDock = Dock.Top;
-            MenuTitle.TextFont = ContentEngine.SpriteFont("Engine", "Bebas_Neue_48pt");
+            MenuTitle.TextFont = ENGINE.RESSOUCES.SpriteFont("Engine", "Bebas_Neue_48pt");
 
             controlContainer = new Panel(new Rectangle(0, 0, 0, 96), Color.White);
             controlContainer.Padding = new ControlPadding(16);
@@ -66,18 +66,18 @@ namespace Maker.twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuNewWorld();
-            RiseEngine.sceneManager.AddScene(scene);
+            ENGINE.SCENES.AddScene(scene);
             scene.show();
 
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
         }
 
         private void GoBackButton_onMouseClick()
         {
             Scene menu = new Menu.MenuMain();
-            RiseEngine.sceneManager.AddScene(menu);
+            ENGINE.SCENES.AddScene(menu);
             menu.show();
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
         }
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)

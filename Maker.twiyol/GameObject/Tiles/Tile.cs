@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Audio;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.twiyol.GameObject.Event;
@@ -26,7 +26,7 @@ namespace Maker.twiyol.GameObject.Tiles
 
         SoundEffectColection SE;
 
-        public Tile(string[] _SpriteVariant, string _SpriteSheet, System.Drawing.Color _MapColor)
+        public Tile(string[] _SpriteVariant, int spriteSheetID, System.Drawing.Color _MapColor)
         {
             MapColor = _MapColor;
 
@@ -35,7 +35,7 @@ namespace Maker.twiyol.GameObject.Tiles
             foreach (string str in _SpriteVariant)
             {
 
-                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(_SpriteSheet.Split('.')[0], _SpriteSheet.Split('.')[1]).GetSprite(str));
+                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(str));
 
             }
             MaxVariantCount = Variant.Count;
@@ -49,7 +49,7 @@ namespace Maker.twiyol.GameObject.Tiles
 
         }
 
-        public void OnDraw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
+        public void Draw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
             Variant[e.ParrentTile.Variant].Draw(spritebatch,
                 new Rectangle(
@@ -67,12 +67,12 @@ namespace Maker.twiyol.GameObject.Tiles
 
         }
 
-        public void OnTick(GameObjectEventArgs e, GameTime gametime)
+        public void Tick(GameObjectEventArgs e, GameTime gametime)
         {
 
         }
 
-        public void OnUpdate(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
+        public void Update(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
         {
 
         }

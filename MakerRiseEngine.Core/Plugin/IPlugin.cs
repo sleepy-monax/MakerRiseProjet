@@ -2,7 +2,7 @@
 {
     public interface IPlugin
     {
-        string Name { get; }
-        void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader) where PluginType : IPlugin;
+        string PluginName { get; }
+        void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader, engine ENGINE) where PluginType : IPlugin;
     }
 }

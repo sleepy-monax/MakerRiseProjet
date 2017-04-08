@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework;
@@ -85,7 +85,7 @@ namespace Maker.RiseEngine.Core.Rendering
             var culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             culture.NumberFormat.NumberDecimalSeparator = ".";
 
-            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + _PluginName + "\\Textures2D\\Parallax\\" + _Name + ".rise");
+            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + _PluginName + "\\assets\\images\\parallax\\" + _Name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
             f = f.Replace(System.Environment.NewLine, "");
@@ -99,7 +99,7 @@ namespace Maker.RiseEngine.Core.Rendering
 
                 string[] sub = Ls[i].Split(':');
                 if (sub.Length == 2)
-                    paralaxeLayerList.Add(new ParallaxLayer(ContentEngine.Texture2D(_PluginName, "Parallax\\" + _Name + "\\" + sub[0]), float.Parse(sub[1], culture)));
+                    paralaxeLayerList.Add(new ParallaxLayer(rise.ENGINE.RESSOUCES.Texture2D(_PluginName, "parallax\\" + _Name + "\\" + sub[0]), float.Parse(sub[1], culture)));
 
             }
 

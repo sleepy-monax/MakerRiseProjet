@@ -18,6 +18,8 @@ namespace Maker.twiyol.Game.WorldDataStruct
         public Dictionary<int, DataRegion> regions;
         public DataCamera Camera;
 
+        public DataEntity playerEntity;
+
         public DataWorld(string name, int seed, int size)
         {
             Name = name;

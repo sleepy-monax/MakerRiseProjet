@@ -10,14 +10,14 @@ namespace Maker.twiyol.GameObject.Entities
     {
         public AI.AIbase IA { get; set; }
 
-        public Creature(AI.AIbase _IA, string[] _SpriteVariant, string _SpriteSheet, Vector2 _SpriteLocation) : base(_SpriteVariant, _SpriteSheet, _SpriteLocation)
+        public Creature(AI.AIbase _IA, string[] _SpriteVariant, int spriteSheetID, Vector2 _SpriteLocation) : base(_SpriteVariant, spriteSheetID, _SpriteLocation)
         {
             IA = _IA;
         }
 
-        public override void OnTick(GameObjectEventArgs e, GameTime gametime) { }
+        public override void Tick(GameObjectEventArgs e, GameTime gametime) { }
 
-        public override void OnUpdate(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
+        public override void Update(GameObjectEventArgs e, GameInput playerInput, GameTime gametime)
         {
             IA.Tick(e, playerInput, gametime);
             IA.ExecuteAction(e, gametime);

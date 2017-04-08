@@ -15,7 +15,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
         /// <param name="_SenderName">Name of the sender modules.</param>
         public static void WriteLog(string _Text, LogType _Type = LogType.Info, string _SenderName = "Debug")
         {
-            if (Engine.engineConfig.Debug_EnableLogs)
+            if (rise.engineConfig.Debug_EnableLogs)
             {
                 //Getting logs type texte.
                 string LogTypeText = "";

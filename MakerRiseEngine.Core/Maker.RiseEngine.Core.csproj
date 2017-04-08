@@ -58,8 +58,8 @@
   <ItemGroup>
     <Compile Include="Audio\SongEngine.cs" />
     <Compile Include="Audio\SoundEffectEngine.cs" />
-    <Compile Include="Content\ContentEngine.cs" />
-    <Compile Include="Engine.cs" />
+    <Compile Include="Ressources\ContentEngine.cs" />
+    <Compile Include="rise.cs" />
     <Compile Include="Config\EngineConfig.cs" />
     <Compile Include="EngineDebug\EngineConsole\CommandHistory.cs" />
     <Compile Include="EngineDebug\EngineConsole\CommandProcesser.cs" />
@@ -96,8 +96,6 @@
     <Compile Include="MathExt\RectangleF.cs" />
     <Compile Include="MathExt\Utils.cs" />
     <Compile Include="Audio\SoundEffect.cs" />
-    <Compile Include="Inventory\ObjInventory.cs" />
-    <Compile Include="Inventory\ObjSlot.cs" />
     <Compile Include="MathExt\Values.cs" />
     <Compile Include="MathExt\Vector2.cs" />
     <Compile Include="Network\HTTPServer.cs" />
@@ -137,7 +135,7 @@
     <Compile Include="Storage\FileFormatHelper.cs" />
     <Compile Include="Storage\ListSheet.cs" />
     <Compile Include="Storage\SerializationHelper.cs" />
-    <Compile Include="MakerRiseMain.cs" />
+    <Compile Include="engine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -187,7 +185,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Localization\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

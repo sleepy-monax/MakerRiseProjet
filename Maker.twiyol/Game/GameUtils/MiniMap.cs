@@ -20,7 +20,7 @@ namespace Maker.twiyol.Game.GameUtils
         public void RefreshMiniMap()
         {
 
-            MiniMapTexture2D = BitmapHelper.BitmapToTexture2D(Engine.GraphicsDevice, G.World.WorldBitmap);
+            MiniMapTexture2D = BitmapHelper.BitmapToTexture2D(rise.GraphicsDevice, G.World.WorldBitmap);
 
         }
     }

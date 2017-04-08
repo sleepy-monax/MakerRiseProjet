@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Storage;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Maker.RiseEngine.Core.Audio
 
             soundEffects = new List<SoundEffect>();
 
-            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + pluginName + "\\SoundsEffects\\" + name + ".rise");
+            System.IO.StreamReader sr = new System.IO.StreamReader("Plugins\\" + pluginName + "\\assets\\sounds_effects\\" + name + ".rise");
             string f = sr.ReadToEnd().ToDosLineEnd();
             sr.Close();
 
@@ -24,7 +24,7 @@ namespace Maker.RiseEngine.Core.Audio
             for (int i = 0; i < Ls.Length; i++)
             {
 
-                soundEffects.Add(ContentEngine.SoundEffect(pluginName, Ls[i]));
+                soundEffects.Add(rise.ENGINE.RESSOUCES.SoundEffect(pluginName, Ls[i]));
 
             }
 

@@ -1,6 +1,7 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Scenes;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,6 +14,7 @@ namespace Maker.twiyol.Game
         GameScene G;
         Scenes.Menu.MenuMain MainMenu;
         bool IsPause = false;
+
 
         public GameUIScene(GameScene _gameScene)
         {
@@ -36,14 +38,28 @@ namespace Maker.twiyol.Game
 
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
-            if (playerInput.IsKeyBoardKeyPress(Engine.engineConfig.Input_ShowMenu))
+            if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_ShowMenu))
             {
                 if (!IsPause)
                     PauseGame();
 
             }
 
+            if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_ShowInventory)) {
+                if (!IsPause)
+                    ShowInventory();
 
+            }
+
+        }
+
+        public void ShowInventory() {
+            IsPause = true;
+            G.PauseSimulation = true;
+
+            GameUI.Inventory inventoryScene = new GameUI.Inventory(G.World.playerEntity, G);
+            ENGINE.SCENES.AddScene(inventoryScene);
+            inventoryScene.show();
         }
 
         public void PauseGame()
@@ -51,14 +67,14 @@ namespace Maker.twiyol.Game
             IsPause = true;
             G.PauseSimulation = true;
             MainMenu = new Scenes.Menu.MenuMain(G);
-            RiseEngine.sceneManager.AddScene(MainMenu);
+            ENGINE.SCENES.AddScene(MainMenu);
             MainMenu.show();
         }
 
-        public void GoBackToGame()
+        public void GoBackToGame(Scene currentMenu)
         {
 
-            RiseEngine.sceneManager.RemoveScene(MainMenu);
+            ENGINE.SCENES.RemoveScene(currentMenu);
             G.PauseSimulation = false;
             IsPause = false;
 

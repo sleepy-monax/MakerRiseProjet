@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.EngineDebug;
-using Maker.RiseEngine.Core.GameComponent;
+using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.twiyol.Game.WorldDataStruct;
 using Maker.twiyol.GameObject;

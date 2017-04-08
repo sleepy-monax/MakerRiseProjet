@@ -20,7 +20,7 @@ namespace Maker.RiseEngine.Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (var game = new Core.RiseEngine())
+            using (var game = new Core.engine())
             {
 
                 game.Run();

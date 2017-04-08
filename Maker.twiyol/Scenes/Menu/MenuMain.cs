@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
@@ -40,7 +40,7 @@ namespace Maker.twiyol.Scenes.Menu
 
         public override void OnLoad()
         {
-            Logo = ContentEngine.Texture2D("Engine", "Logo");
+            Logo = rise.ENGINE.RESSOUCES.Texture2D("Engine", "Logo");
 
             // Panel.
             rootPanel = new Panel(new Rectangle(-256, -112, 512, 224), new Color(new Vector4(0f)));
@@ -107,10 +107,10 @@ namespace Maker.twiyol.Scenes.Menu
                 scene = new MenuOption();
             }
 
-            RiseEngine.sceneManager.AddScene(scene);
+            ENGINE.SCENES.AddScene(scene);
             scene.show();
 
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
         }
 
         private void ButtonOpenGame_onMouseClick()
@@ -119,10 +119,10 @@ namespace Maker.twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuOpenWorld();
-            RiseEngine.sceneManager.AddScene(scene);
+            ENGINE.SCENES.AddScene(scene);
             scene.show();
 
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
 
         }
 
@@ -130,19 +130,19 @@ namespace Maker.twiyol.Scenes.Menu
         {
             CurrentGame.SaveWorld();
 
-            CurrentGame.GameUIScene.GoBackToGame();
-            RiseEngine.sceneManager.RemoveScene(CurrentGame.GameUIScene);
-            RiseEngine.sceneManager.RemoveScene(CurrentGame);
+            CurrentGame.GameUIScene.GoBackToGame(this);
+            ENGINE.SCENES.RemoveScene(CurrentGame.GameUIScene);
+            ENGINE.SCENES.RemoveScene(CurrentGame);
 
             MenuMain m = new MenuMain();
             m.show();
-            RiseEngine.sceneManager.AddScene(m);
+            ENGINE.SCENES.AddScene(m);
 
         }
 
         private void ButtonPlayLastGame_onMouseClick()
         {
-            CurrentGame.GameUIScene.GoBackToGame();
+            CurrentGame.GameUIScene.GoBackToGame(this);
         }
 
         private void ButtonNewGame_onMouseClick()
@@ -150,24 +150,24 @@ namespace Maker.twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuNewWorld();
-            RiseEngine.sceneManager.AddScene(scene);
+            ENGINE.SCENES.AddScene(scene);
             scene.show();
 
-            RiseEngine.sceneManager.RemoveScene(this);
+            ENGINE.SCENES.RemoveScene(this);
         }
 
         private void ButtonQuitte_onMouseClick()
         {
             CurrentGame?.SaveWorld();
-            Engine.STOP();
+            rise.STOP();
         }
 
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
-            spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
-            spriteBatch.Draw(Logo, new Vector2(Engine.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, Engine.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
+            spriteBatch.Draw(Logo, new Vector2(rise.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, rise.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
+            spriteBatch.Draw(Logo, new Vector2(rise.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, rise.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
 
             rootPanel.Draw(spriteBatch, gameTime);
 
@@ -176,6 +176,11 @@ namespace Maker.twiyol.Scenes.Menu
 
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
+
+            if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_ShowMenu)) {
+                CurrentGame.GameUIScene.GoBackToGame(this);
+            }
+            
 
             rootPanel.Update(playerInput, gameTime);
 

@@ -26,27 +26,27 @@ namespace Maker.twiyol.Scenes.Menu
             BackgroundSB.Begin();
             Background.Draw(BackgroundSB, gameTime);
             BackgroundSB.End();
-            spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 128));
+            spriteBatch.FillRectangle(new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 128));
         }
 
         public override void OnLoad()
         {
 
             //Back Ground.
-            BackgroundSB = new SpriteBatch(Engine.GraphicsDevice);
+            BackgroundSB = new SpriteBatch(rise.GraphicsDevice);
             switch (new Random().Next(3))
             {
                 case 0:
-                    Background = ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    SongEngine.SwitchSong("Engine", "A Title");
+                    Background = ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
+                    ENGINE.SONGS.SwitchSong("Engine", "A Title");
                     break;
                 case 1:
-                    Background = ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    SongEngine.SwitchSong("Engine", "Look Up");
+                    Background = ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
+                    ENGINE.SONGS.SwitchSong("Engine", "Look Up");
                     break;
                 case 2:
-                    Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight));
-                    SongEngine.SwitchSong("Engine", "Clouds of Orange Juice");
+                    Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
+                    ENGINE.SONGS.SwitchSong("Engine", "Clouds of Orange Juice");
                     break;
                 default:
                     break;
@@ -62,7 +62,7 @@ namespace Maker.twiyol.Scenes.Menu
 
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
-            Background.DestinationRectangle = new Rectangle(0, 0, Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
+            Background.DestinationRectangle = new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight);
             Background.Update(playerInput, gameTime);
         }
     }

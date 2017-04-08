@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Content;
+﻿using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
@@ -47,7 +47,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                 }
 
                 // Draw text.
-                DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text,
+                DrawText(spriteBatch, rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), Text,
                     // Placing.
                     new Rectangle(0,0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.
@@ -65,7 +65,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
 
                 // Draw text.
                 // Draw text.
-                DrawText(spriteBatch, ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), Text,
+                DrawText(spriteBatch, rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), Text,
                     // Placing.
                     new Rectangle(0, 0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.

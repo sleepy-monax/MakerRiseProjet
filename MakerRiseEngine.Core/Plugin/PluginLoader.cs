@@ -24,7 +24,7 @@ namespace Maker.RiseEngine.Core.Plugin
 
             foreach (PluginType p in LoadPluginFrom(pluginPath)) {
 
-                Plugins.Add(p.Name, p);
+                Plugins.Add(p.PluginName, p);
 
             }
         }
@@ -45,7 +45,7 @@ namespace Maker.RiseEngine.Core.Plugin
                 if (!LoadedPlugins.Contains(pluginName)) {
                     DebugLogs.WriteLog("Load pluging :" + plug.GetType().Name, LogType.Info, GetType().Name);
                     OnIntializationPlugin.Add(pluginName);
-                    plug.Initialize(this);
+                    plug.Initialize(this, rise.ENGINE);
                     OnIntializationPlugin.Remove(pluginName);
 
                     LoadedPlugins.Add(pluginName);

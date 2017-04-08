@@ -1,4 +1,27 @@
-Stick:0,0:1,1;
-AppleRed:1,0:1,1;
-AppleGreen:1,1:1,1;
-AppleYellow:1,2:1,1;
+// Apple base items.
+AppleOnStick:0,1;
+AppleGreen:1,1;
+AppleRed:1,0;
+AppleYellow:1,2;
+
+// Gold items.
+GoldIngot:3,1;
+GoldOre:2,1;
+
+// Iron items.
+IronIngot:3,2;
+IronOre:2,2;
+
+// Iron tools
+IronAxe:3,3;
+IronPickaxe:1,3;
+IronShovel:2,3;
+IronSword:0,3;
+
+// Misc stuff.
+Stick:0,0;
+Stone:2,0;
+StoneBrick:3,0;
+Sugar:0,2;
+TreeSeed:4,1;
+WoodLog:4,0;

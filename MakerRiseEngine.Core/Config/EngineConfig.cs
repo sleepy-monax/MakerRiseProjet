@@ -31,6 +31,7 @@ namespace Maker.RiseEngine.Core.Config
         // Input.
         public Keys Input_ShowChat { get; set; } = Keys.T;
         public Keys Input_ShowMenu { get; set; } = Keys.Escape;
+        public Keys Input_ShowInventory { get; set; } = Keys.I;
 
         public Keys Input_MoveUp { get; set; } = Keys.Z;
         public Keys Input_MoveLeft { get; set; } = Keys.Q;

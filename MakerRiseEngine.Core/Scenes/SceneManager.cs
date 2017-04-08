@@ -6,20 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core.Content;
+using Maker.RiseEngine.Core.Ressources;
 
 namespace Maker.RiseEngine.Core.Scenes
 {
     public class SceneManager : IDrawable
     {
 
-        RiseEngine Game;
+        engine ENGINE;
         List<Scene> Scenes;
 
-        public SceneManager(RiseEngine game)
+        public SceneManager(engine engine)
         {
 
-            Game = game;
+            ENGINE = engine;
             Scenes = new List<Scene>();
 
         }
@@ -29,8 +29,8 @@ namespace Maker.RiseEngine.Core.Scenes
             EngineDebug.DebugLogs.WriteLog($"Switching to {scene.GetType().Name}", EngineDebug.LogType.Info, nameof(SceneManager));
             try
             {
-                scene.RiseEngine = Game;
-                Engine.GameForm.Invoke(new MethodInvoker(() => scene.OnLoad()));
+                scene.ENGINE = ENGINE;
+                rise.GameForm.Invoke(new MethodInvoker(() => scene.OnLoad()));
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace Maker.RiseEngine.Core.Scenes
 
             try
             {
-                Engine.GameForm.Invoke(new MethodInvoker(() => scene.OnUnload()));
+                rise.GameForm.Invoke(new MethodInvoker(() => scene.OnUnload()));
             }
             catch (Exception ex)
             {
@@ -68,18 +68,18 @@ namespace Maker.RiseEngine.Core.Scenes
 
                     spriteBatch.End();
                 }
-                if (Engine.engineConfig.Debug_SceneManager)
+                if (rise.engineConfig.Debug_SceneManager)
                 {
                     spriteBatch.Begin();
 
                     spriteBatch.FillRectangle(new Rectangle(16, 48, 256, 16 + 32 * (Scenes.Count + 1)), new Color(Color.Black, 0.4f));
-                    spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), "Loaded scenes :", new Rectangle(24, 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
+                    spriteBatch.DrawString(ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), "Loaded scenes :", new Rectangle(24, 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
 
                     int i = 1;
                     foreach (Scene s in Scenes)
                     {
 
-                        spriteBatch.DrawString(ContentEngine.SpriteFont("Engine", "segoeUI_16pt"), s.GetType().Name, new Rectangle(24, (32 * i) + 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
+                        spriteBatch.DrawString(ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), s.GetType().Name, new Rectangle(24, (32 * i) + 48, 256, 32), Alignment.Left, Style.DropShadow, Color.White);
 
                         i++;
                     }
@@ -89,7 +89,7 @@ namespace Maker.RiseEngine.Core.Scenes
             }
             catch (Exception ex)
             {
-                if (Engine.engineConfig.Debug_ShowErrorMessages)
+                if (rise.engineConfig.Debug_ShowErrorMessages)
                     MessageBox.Show(ex.ToString());
             }
 
@@ -108,7 +108,7 @@ namespace Maker.RiseEngine.Core.Scenes
             }
             catch (Exception ex)
             {
-                if (Engine.engineConfig.Debug_ShowErrorMessages)
+                if (rise.engineConfig.Debug_ShowErrorMessages)
                     MessageBox.Show(ex.ToString());
             }
         }

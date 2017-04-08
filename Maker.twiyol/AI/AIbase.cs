@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameComponent;
+﻿using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;

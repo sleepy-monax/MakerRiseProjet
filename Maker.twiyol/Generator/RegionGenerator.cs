@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameComponent;
+﻿using Maker.RiseEngine.Core.GameObjects;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;

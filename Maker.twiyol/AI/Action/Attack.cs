@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameComponent;
+﻿using Maker.RiseEngine.Core.GameObjects;
 using Maker.twiyol.AI;
 using Maker.twiyol.Game.GameUtils;
 using Maker.twiyol.Game.WorldDataStruct;
@@ -29,7 +29,7 @@ namespace Maker.twiyol.AI.Action
             if (!(e.Game.World.IsEntityFree(targetLocation.ToWorldLocation())) && attackerEntity.Tags.GetTag<int>("attack_cooldown", 0) == 0)
             {
                 // Get attacker damages.
-                float attackerDamages = e.ParrentEntity.ToGameObject().GetDamage(e);
+                float attackerDamages = e.ParrentEntity.ToGameObject().GetDamages(e);
 
                 // Get target life and defense
                 DataEntity targetEntity = e.Game.World.GetEntity(targetLocation);

@@ -16,10 +16,10 @@ namespace Maker.RiseEngine.Core.EngineDebug.EngineConsole.Commands.Plugin
         {
             var pName = arguments[0];
 
-            if (Engine.Plugins.ContainsKey(pName))
+            if (rise.Plugins.ContainsKey(pName))
             {
                 var output = new StringBuilder();
-                var p = Engine.Plugins[pName];
+                var p = rise.Plugins[pName];
                 output.Append("Name : " + pName);
                 output.Append("\nVersion : " + p.GetType().Assembly.GetName().Version);
                 output.Append("\nNamespace : " + p.GetType().FullName);

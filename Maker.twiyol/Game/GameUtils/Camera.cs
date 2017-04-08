@@ -26,7 +26,7 @@ namespace Maker.twiyol.Game.GameUtils
             G = _WorldScene;
 
             TileUnit = 64;
-            Size = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
+            Size = new Point(rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight);
 
             PreciseFocusLocation = Vector2.Zero;
 
@@ -62,12 +62,12 @@ namespace Maker.twiyol.Game.GameUtils
         {
             Point FocusLocation = G.World.Camera.FocusLocation.ToPoint();
 
-            Size = new Point(Engine.graphics.PreferredBackBufferWidth, Engine.graphics.PreferredBackBufferHeight);
-            DrawStartX = FocusLocation.X - Engine.engineConfig.GFX_ViewDistance;
-            DrawStartY = FocusLocation.Y - Engine.engineConfig.GFX_ViewDistance;
+            Size = new Point(rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight);
+            DrawStartX = FocusLocation.X - rise.engineConfig.GFX_ViewDistance;
+            DrawStartY = FocusLocation.Y - rise.engineConfig.GFX_ViewDistance;
 
-            StartX = FocusLocation.X - Engine.engineConfig.GFX_ViewDistance;
-            StartY = FocusLocation.Y - Engine.engineConfig.GFX_ViewDistance;
+            StartX = FocusLocation.X - rise.engineConfig.GFX_ViewDistance;
+            StartY = FocusLocation.Y - rise.engineConfig.GFX_ViewDistance;
 
             if (DrawStartX <= 0)
             {
@@ -82,11 +82,11 @@ namespace Maker.twiyol.Game.GameUtils
 
             StartTile = new Point(StartX, StartY);
 
-            DrawEndX = FocusLocation.X + Engine.engineConfig.GFX_ViewDistance;
-            DrawEndY = FocusLocation.Y + Engine.engineConfig.GFX_ViewDistance;
+            DrawEndX = FocusLocation.X + rise.engineConfig.GFX_ViewDistance;
+            DrawEndY = FocusLocation.Y + rise.engineConfig.GFX_ViewDistance;
 
-            EndX = FocusLocation.X + Engine.engineConfig.GFX_ViewDistance;
-            EndY = FocusLocation.Y + Engine.engineConfig.GFX_ViewDistance;
+            EndX = FocusLocation.X + rise.engineConfig.GFX_ViewDistance;
+            EndY = FocusLocation.Y + rise.engineConfig.GFX_ViewDistance;
 
             if (DrawEndX > (G.World.Size * 16) - 1) DrawEndX = (G.World.Size * 16) - 1;
             if (DrawEndY > (G.World.Size * 16) - 1) DrawEndY = (G.World.Size * 16) - 1;
