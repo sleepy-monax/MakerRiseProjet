@@ -1,0 +1,10 @@
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Data\Base\MakerRiseEngine.DefaultPlugin.dll
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Data\Base\MakerRiseEngine.DefaultPlugin.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.DefaultPlugin\obj\Debug\Maker.RiseEngine.DefaultPlugin.csprojResolveAssemblyReference.cache
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Data\twiyol\plugin.risemeta
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Data\twiyol\MakerRiseEngine.DefaultPlugin.dll
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Data\twiyol\MakerRiseEngine.DefaultPlugin.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Plugins\twiyol_Base\twiyol_Base.dll
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\Plugins\twiyol_Base\twiyol_Base.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.dll
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.pdb

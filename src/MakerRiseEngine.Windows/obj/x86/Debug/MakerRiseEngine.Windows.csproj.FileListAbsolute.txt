@@ -1,0 +1,11 @@
+C:\Users\nicov\Documents\Projet\MakerRiseFull\MakerRiseEngine.Windows.exe
+C:\Users\nicov\Documents\Projet\MakerRiseFull\MakerRiseEngine.Windows.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.csprojResolveAssemblyReference.cache
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.exe
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.Properties.Resources.resources
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.csproj.GenerateResource.Cache
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Build\MakerRiseEngine.Windows.exe
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Build\MakerRiseEngine.Windows.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\MakerRiseEngine.Windows.exe
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\MakerRiseEngine.Windows.pdb

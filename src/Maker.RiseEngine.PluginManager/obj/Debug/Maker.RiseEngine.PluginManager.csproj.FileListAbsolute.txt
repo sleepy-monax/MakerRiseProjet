@@ -1,0 +1,11 @@
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\bin\Debug\Maker.RiseEngine.PluginManager.exe.config
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\bin\Debug\Maker.RiseEngine.PluginManager.exe
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\bin\Debug\Maker.RiseEngine.PluginManager.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\obj\Debug\Maker.RiseEngine.PluginManager.csprojResolveAssemblyReference.cache
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\obj\Debug\Maker.RiseEngine.PluginManager.Form1.resources
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\obj\Debug\Maker.RiseEngine.PluginManager.Properties.Resources.resources
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\obj\Debug\Maker.RiseEngine.PluginManager.csproj.GenerateResource.Cache
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\obj\Debug\Maker.RiseEngine.PluginManager.exe
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\obj\Debug\Maker.RiseEngine.PluginManager.pdb
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\bin\Debug\Maker.RiseEngine.PluginManager.exe.CodeAnalysisLog.xml
+C:\Users\nicov\Documents\Projet\MakerRiseProjet\Maker.RiseEngine.PluginManager\bin\Debug\Maker.RiseEngine.PluginManager.exe.lastcodeanalysissucceeded
