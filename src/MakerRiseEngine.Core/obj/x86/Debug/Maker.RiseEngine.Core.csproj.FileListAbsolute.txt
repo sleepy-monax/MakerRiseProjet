@@ -1,17 +1,2 @@
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\MakerRiseEngine.Core.dll
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\MakerRiseEngine.Core.pdb
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\fr\Microsoft.VisualStudio.DebuggerVisualizers.resources.dll
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.Properties.Resources.resources
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.csproj.GenerateResource.Cache
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\MakerRiseEngine.Core.dll
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\MakerRiseEngine.Core.pdb
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.csprojResolveAssemblyReference.cache
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\MakerRiseEngine.Core.dll
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\MakerRiseEngine.Core.pdb
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\bin\Windows\Debug\fr\Microsoft.VisualStudio.DebuggerVisualizers.resources.dll
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.csprojResolveAssemblyReference.cache
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.Properties.Resources.resources
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.csproj.GenerateResource.Cache
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\MakerRiseEngine.Core.dll
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Core\obj\x86\Debug\MakerRiseEngine.Core.pdb
+C:\Users\Nicolas Van Bossuyt\Documents\Dev Project\MakerRiseProjet\src\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.Properties.Resources.resources
+C:\Users\Nicolas Van Bossuyt\Documents\Dev Project\MakerRiseProjet\src\MakerRiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.csproj.GenerateResource.Cache

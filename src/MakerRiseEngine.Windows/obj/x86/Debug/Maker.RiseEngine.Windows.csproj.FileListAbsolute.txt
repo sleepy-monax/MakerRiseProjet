@@ -1,14 +1,2 @@
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\MakerRiseEngine.Windows.exe
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\Assemblie\MakerRiseEngine.Windows.pdb
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.csprojResolveAssemblyReference.cache
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.Properties.Resources.resources
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.csproj.GenerateResource.Cache
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.exe
-C:\Users\nicov\Documents\Projet\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.pdb
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\Assemblie\MakerRiseEngine.Windows.exe
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\Assemblie\MakerRiseEngine.Windows.pdb
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.csprojResolveAssemblyReference.cache
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.Properties.Resources.resources
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.csproj.GenerateResource.Cache
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.exe
-C:\Users\Nicolas Van Bossuyt\Desktop\MakerRiseProjet\MakerRiseEngine.Windows\obj\x86\Debug\MakerRiseEngine.Windows.pdb
+C:\Users\Nicolas Van Bossuyt\Documents\Dev Project\MakerRiseProjet\src\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.Properties.Resources.resources
+C:\Users\Nicolas Van Bossuyt\Documents\Dev Project\MakerRiseProjet\src\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.csproj.GenerateResource.Cache

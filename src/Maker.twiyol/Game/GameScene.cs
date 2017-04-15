@@ -1,5 +1,4 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Rendering;
@@ -10,7 +9,6 @@ using Maker.twiyol.Game.WorldDataStruct;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 using System;
 using System.IO;

@@ -76,7 +76,7 @@ namespace Maker.RiseEngine.Core
 
             // Setup debug console.
             // System.Console.Title = "Maker Rise!Engine Debug Tool - " + Engine.Version.ToString(); 
-            // (Remove because crash wen terminal is desactivated :/)
+            // (Remove because crash when terminal is desactivated :/)
             
             // Hide the systeme mouse cursor.
             IsMouseVisible = true;
@@ -155,14 +155,14 @@ namespace Maker.RiseEngine.Core
                 // Pause game when console is open.
                 if (!DebugConsole.IsOpen) {
 
-                //Update scenemanager.
-                SCENES.Update(playerinput, gameTime);
+                    //Update scenemanager.
+                    SCENES.Update(playerinput, gameTime);
 
-                DebugScreen.Update(playerinput, gameTime);
+                    DebugScreen.Update(playerinput, gameTime);
 
-                // Update the sound engine.
-                SONGS.Update(mouseState, keyboardState, gameTime);
-                Audio.SoundEffectEngine.Update(mouseState, keyboardState, gameTime);
+                    // Update the sound engine.
+                    SONGS.Update(mouseState, keyboardState, gameTime);
+                    SoundEffectEngine.Update(mouseState, keyboardState, gameTime);
 
                 }
             }
