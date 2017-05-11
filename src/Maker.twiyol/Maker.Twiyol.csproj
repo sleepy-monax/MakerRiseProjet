@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{409B76CF-7D0C-4D67-9E90-840EE45F3C84}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maker.twiyol</RootNamespace>
+    <AssemblyName>Maker.twiyol</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Assemblie\Plugins\twiyol\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblie\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AI\Action\Attack.cs" />
+    <Compile Include="AI\Action\Move.cs" />
+    <Compile Include="AI\AIbase.cs" />
+    <Compile Include="AI\Entites\PlayerAI.cs" />
+    <Compile Include="AI\IAction.cs" />
+    <Compile Include="AI\Utils.cs" />
+    <Compile Include="Events\GameEventHandler.cs" />
+    <Compile Include="Events\WorldEventArgs.cs" />
+    <Compile Include="GameDebug\Command\GameCommands.cs" />
+    <Compile Include="GameObject\Biome.cs" />
+    <Compile Include="GameObject\Entities\Creature.cs" />
+    <Compile Include="GameObject\Entities\Entity.cs" />
+    <Compile Include="GameObject\Event\GameObjectEventArgs.cs" />
+    <Compile Include="GameObject\IEntity.cs" />
+    <Compile Include="GameObject\IItem.cs" />
+    <Compile Include="GameObject\ItemDrop.cs" />
+    <Compile Include="GameObject\Items\Item.cs" />
+    <Compile Include="GameObject\ITile.cs" />
+    <Compile Include="GameObject\IWorldGameObject.cs" />
+    <Compile Include="GameObject\Tiles\Tile.cs" />
+    <Compile Include="Game\GameScene.cs" />
+    <Compile Include="Game\GameUIScene.cs" />
+    <Compile Include="Game\GameUI\Craft.cs" />
+    <Compile Include="Game\GameUI\Inventory.cs" />
+    <Compile Include="Game\GameUI\ItemSlot.cs" />
+    <Compile Include="Game\GameUtils\Camera.cs" />
+    <Compile Include="Game\WorldDataStruct\ChunkDataHelper.cs" />
+    <Compile Include="Game\WorldDataStruct\EntityDataHelper.cs" />
+    <Compile Include="Game\GameUtils\EventsManager.cs" />
+    <Compile Include="Game\GameUtils\Location.cs" />
+    <Compile Include="Game\GameUtils\MiniMap.cs" />
+    <Compile Include="Game\GameUtils\WorldRender.cs" />
+    <Compile Include="Game\GameUtils\WorldUpdater.cs" />
+    <Compile Include="Game\WorldDataStruct\DataCamera.cs" />
+    <Compile Include="Game\WorldDataStruct\DataChunk.cs" />
+    <Compile Include="Game\WorldDataStruct\DataEntity.cs" />
+    <Compile Include="Game\WorldDataStruct\DataRegion.cs" />
+    <Compile Include="Game\WorldDataStruct\DataTile.cs" />
+    <Compile Include="Game\WorldDataStruct\DataWorld.cs" />
+    <Compile Include="Game\WorldDataStruct\Tags\Tag.cs" />
+    <Compile Include="Game\WorldDataStruct\Tags\TagManger.cs" />
+    <Compile Include="Game\WorldDataStruct\WorldDataHelper.cs" />
+    <Compile Include="Generator\ChunkDecorator.cs" />
+    <Compile Include="Generator\EntitiesDistribution\FlatDistribution.cs" />
+    <Compile Include="Generator\EntitiesDistribution\IEntitiesDistributionRule.cs" />
+    <Compile Include="Generator\EntitiesDistribution\PerlinDistribution.cs" />
+    <Compile Include="Generator\GeneratorFeatures\IGeneratorFeature.cs" />
+    <Compile Include="Generator\GeneratorProperty.cs" />
+    <Compile Include="Generator\RegionGenerator.cs" />
+    <Compile Include="Generator\WorldEdit.cs" />
+    <Compile Include="Generator\WorldGenerator.cs" />
+    <Compile Include="Inventory\DataItem.cs" />
+    <Compile Include="Inventory\DataInventory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Menu\MenuBackground.cs" />
+    <Compile Include="Scenes\Menu\MenuMain.cs" />
+    <Compile Include="Scenes\Menu\MenuNewWorld.cs" />
+    <Compile Include="Scenes\Menu\MenuOpenWorld.cs" />
+    <Compile Include="Scenes\Menu\MenuOption.cs" />
+    <Compile Include="Scenes\Menu\Option\KeyBindingDialogue.cs" />
+    <Compile Include="Scenes\Menu\Option\MenuGameplayOption.cs" />
+    <Compile Include="Scenes\Menu\Option\MenuInputOption.cs" />
+    <Compile Include="Scenes\Menu\Option\MenuSoundOption.cs" />
+    <Compile Include="Scenes\WorldGenerating.cs" />
+    <Compile Include="twiyolGamePlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.Core.csproj">
+      <Project>{5ab33e8b-6cf3-4d3d-be25-fe66d565d780}</Project>
+      <Name>Maker.RiseEngine.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

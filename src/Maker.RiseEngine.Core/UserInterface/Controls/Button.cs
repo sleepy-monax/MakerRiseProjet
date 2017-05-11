@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
@@ -46,7 +46,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                 }
 
                 // Draw text.
-                DrawText(spriteBatch, rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), Text,
+                DrawText(spriteBatch, rise.ENGINE.RESSOUCES.GetSpriteFont("Engine", "segoeUI_16pt"), Text,
                     // Placing.
                     new Rectangle(0,0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.
@@ -64,7 +64,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
                 DrawSprite(spriteBatch, ButtonRightDown, new Rectangle(ControlRectangle.Width - 64, 0, 64, 64), ControlColor, gameTime);
 
                 // Draw text.
-                DrawText(spriteBatch, rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), Text,
+                DrawText(spriteBatch, rise.ENGINE.RESSOUCES.GetSpriteFont("Engine", "segoeUI_16pt"), Text,
                     // Placing.
                     new Rectangle(0, 0, ControlRectangle.Width, ControlRectangle.Height),
                     // Style.

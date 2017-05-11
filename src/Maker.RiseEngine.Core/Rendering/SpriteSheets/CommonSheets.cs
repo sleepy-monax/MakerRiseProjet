@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 
 namespace Maker.RiseEngine.Core.Rendering.SpriteSheets
 {

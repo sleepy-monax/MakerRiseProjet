@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core.Config;
-using Maker.RiseEngine.Core.Ressources;
+
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Plugin;
 using Maker.RiseEngine.Core.Rendering;
@@ -47,7 +47,7 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
 
                 rise.IsLoaded = true;
 
-                ENGINE.SCENES.RemoveScene(this);
+                RiseEngine.ScenesManager.RemoveScene(this);
             });
             Thread t = new Thread(GenHandle);
             t.Start();
@@ -80,8 +80,8 @@ namespace Maker.RiseEngine.Core.Scenes.Scenes
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            spriteBatch.Draw(ENGINE.RESSOUCES.GetTexture2D("Engine", "MakerLogo"), new Rectangle(0,0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Color.White);
-            spriteBatch.DrawString(ENGINE.RESSOUCES.SpriteFont("Engine", "Consolas_16pt"), Message, new Rectangle(0, 16, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Alignment.Top, Style.DropShadow, Color.White);
+            spriteBatch.Draw(RiseEngine.RESSOUCES.GetTexture2D("Engine", "MakerLogo"), new Rectangle(0,0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Color.White);
+            spriteBatch.DrawString(RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Consolas_16pt"), Message, new Rectangle(0, 16, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Alignment.Top, Style.DropShadow, Color.White);
         }
     }
 }

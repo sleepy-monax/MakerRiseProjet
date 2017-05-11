@@ -17,8 +17,8 @@ namespace Maker.Twiyol
             // Stating the game...
             Scenes.Menu.MenuBackground b = new Scenes.Menu.MenuBackground();
             Scenes.Menu.MenuMain m = new Scenes.Menu.MenuMain();
-            rise.ENGINE.SCENES.AddScene(b);
-            rise.ENGINE.SCENES.AddScene(m);
+            rise.ENGINE.ScenesManager.AddScene(b);
+            rise.ENGINE.ScenesManager.AddScene(m);
             b.show();
             m.show();
         }

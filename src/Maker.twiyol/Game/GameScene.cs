@@ -111,8 +111,8 @@ namespace Maker.Twiyol.Game
 
         public override void OnLoad()
         {
-            ENGINE.SONGS.SwitchSong("Engine", "A Title");
-            ENGINE.SCENES.AddScene(GameUIScene);
+            RiseEngine.SONGS.SwitchSong("Engine", "A Title");
+            RiseEngine.ScenesManager.AddScene(GameUIScene);
             GameUIScene.show();
         }
 

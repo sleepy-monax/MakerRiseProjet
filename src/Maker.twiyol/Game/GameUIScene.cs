@@ -58,7 +58,7 @@ namespace Maker.Twiyol.Game
             G.PauseSimulation = true;
 
             GameUI.Inventory inventoryScene = new GameUI.Inventory(G.World.playerEntity, G);
-            ENGINE.SCENES.AddScene(inventoryScene);
+            RiseEngine.ScenesManager.AddScene(inventoryScene);
             inventoryScene.show();
         }
 
@@ -67,14 +67,14 @@ namespace Maker.Twiyol.Game
             IsPause = true;
             G.PauseSimulation = true;
             MainMenu = new Scenes.Menu.MenuMain(G);
-            ENGINE.SCENES.AddScene(MainMenu);
+            RiseEngine.ScenesManager.AddScene(MainMenu);
             MainMenu.show();
         }
 
         public void GoBackToGame(Scene currentMenu)
         {
 
-            ENGINE.SCENES.RemoveScene(currentMenu);
+            RiseEngine.ScenesManager.RemoveScene(currentMenu);
             G.PauseSimulation = false;
             IsPause = false;
 

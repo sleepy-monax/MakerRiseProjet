@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -57,7 +57,7 @@ namespace Maker.RiseEngine.Core.Audio
                 if (!(PluginName == null || NextSong == null))
                 {
 
-                    MediaPlayer.Play(ENGINE.RESSOUCES.Song(PluginName, NextSong));
+                    MediaPlayer.Play(ENGINE.RESSOUCES.GetSong(PluginName, NextSong));
                     Play = true;
                     IsFading = false;
 

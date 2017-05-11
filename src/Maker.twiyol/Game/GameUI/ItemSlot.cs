@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Ressources;
+
 using Maker.Twiyol.Inventory;
 using Maker.RiseEngine.Core;
 

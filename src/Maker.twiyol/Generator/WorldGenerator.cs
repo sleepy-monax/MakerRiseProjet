@@ -57,7 +57,7 @@ namespace Maker.Twiyol.Generator
             // Show the loading scene.
             WorldGenerating sceneGen = new WorldGenerating();
             var game = rise.ENGINE;
-            game.SCENES.AddScene(sceneGen);
+            game.ScenesManager.AddScene(sceneGen);
             sceneGen.show();
 
             int maxWorldSize = GeneratorProperty.WorldSize * 16;
@@ -177,7 +177,7 @@ namespace Maker.Twiyol.Generator
             stopwatch.Stop();
             DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
 
-            game.SCENES.RemoveScene(sceneGen);
+            game.ScenesManager.RemoveScene(sceneGen);
 
             return newWorld;
         }

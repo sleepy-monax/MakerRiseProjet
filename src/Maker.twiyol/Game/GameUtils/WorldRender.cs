@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Ressources;
+
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.Twiyol.Game.WorldDataStruct;
@@ -82,7 +82,7 @@ namespace Maker.Twiyol.Game.GameUtils
                                 if (rise.engineConfig.Debug_WorldOverDraw && E.IsCameraFocus)
                                 {
 
-                                    eSpriteBatch.DrawString(G.ENGINE.RESSOUCES.SpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + (E.GetOnTileOffset() * G.Camera.TileUnit), Color.White);
+                                    eSpriteBatch.DrawString(G.RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + (E.GetOnTileOffset() * G.Camera.TileUnit), Color.White);
 
                                 }
                             }

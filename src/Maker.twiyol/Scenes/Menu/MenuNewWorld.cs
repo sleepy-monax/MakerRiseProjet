@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
@@ -39,7 +39,7 @@ namespace Maker.Twiyol.Scenes.Menu
             titleLabel = new Label("Nouveau monde", new Rectangle(0, 0, 64, 64), Color.White);
             titleLabel.ControlDock = Dock.Top;
             titleLabel.TextStyle = Style.rectangle;
-            titleLabel.TextFont = ENGINE.RESSOUCES.SpriteFont("Engine", "Bebas_Neue_48pt");
+            titleLabel.TextFont = RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Bebas_Neue_48pt");
 
             controlContainer = new Panel(new Rectangle(0, 0, 0, 96), Color.White);
             controlContainer.Padding = new ControlPadding(16);
@@ -83,7 +83,7 @@ namespace Maker.Twiyol.Scenes.Menu
        
             ThreadStart GenHandle = new ThreadStart(delegate
             {
-                ENGINE.SCENES.RemoveScene(this);
+                RiseEngine.ScenesManager.RemoveScene(this);
 
                 int result;
                 int.TryParse(worldSeedTextBox.Text, out result);
@@ -94,10 +94,10 @@ namespace Maker.Twiyol.Scenes.Menu
                 var world = Gen.Generate();
                 Game.GameScene wrldsc = new Game.GameScene(world);
 
-                ENGINE.SCENES.AddScene(wrldsc);
+                RiseEngine.ScenesManager.AddScene(wrldsc);
 
                 wrldsc.show();
-                ENGINE.SCENES.RemoveScene(this);
+                RiseEngine.ScenesManager.RemoveScene(this);
             });
 
             Thread t = new Thread(GenHandle);
@@ -107,9 +107,9 @@ namespace Maker.Twiyol.Scenes.Menu
         private void GoBackButton_onMouseClick()
         {
             Scene menu = new MenuMain();
-            ENGINE.SCENES.AddScene(menu);
+            RiseEngine.ScenesManager.AddScene(menu);
             menu.show();
-            ENGINE.SCENES.RemoveScene(this);
+            RiseEngine.ScenesManager.RemoveScene(this);
         }
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)

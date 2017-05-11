@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 using Maker.RiseEngine.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,7 +11,7 @@ namespace Maker.RiseEngine.Core.EngineDebug
     class debugScreen : IDrawable
     {
         double FPS;
-        SpriteFont NormalFont = rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt");
+        SpriteFont NormalFont = rise.ENGINE.RESSOUCES.GetSpriteFont("Engine", "segoeUI_16pt");
         List<int> KeyDown = new List<int>();
 
         public void Update(GameInput playerInput, GameTime gameTime)

@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Ressources;
+
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
@@ -19,17 +19,20 @@ namespace Maker.Twiyol.Scenes.Menu
 
     public class MenuOption : Scene
     {
-
+        // The root panel of the GUI.
         Panel rootPanel;
 
+        // Title of the GUI.
         Label titleLabel;
 
+        // Button to switch to other option.
         Button buttonInput;
         Button buttonGameplay;
         Button buttonSound;
         Button buttonGraphics;
         Button buttonBack;
 
+        // Get if a game is curently running.
         bool asGame;
         GameScene CurrentGame;
 
@@ -46,14 +49,16 @@ namespace Maker.Twiyol.Scenes.Menu
         public override void OnLoad()
         {
 
-            rootPanel = new Panel(new Rectangle(-256, -208, 512, 416), Color.Transparent);
-            rootPanel.ControlAnchor = Anchor.Center;
-            rootPanel.Padding = new ControlPadding(16);
-            rootPanel.ChildMargin = new ControlPadding(16);
+            rootPanel = new Panel(new Rectangle(-256, -208, 512, 416), Color.Transparent)
+            {
+                ControlAnchor = Anchor.Center,
+                Padding = new ControlPadding(16),
+                ChildMargin = new ControlPadding(16)
+            };
 
             titleLabel = new Label("Options", new Rectangle(0, -80, 512, 64), Color.White);
             titleLabel.TextStyle = Style.rectangle;
-            titleLabel.TextFont = ENGINE.RESSOUCES.SpriteFont("Engine", "Bebas_Neue_48pt");
+            titleLabel.TextFont = RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Bebas_Neue_48pt");
 
             buttonInput = new Button("Controls", new Rectangle(0, 0, 64, 64), Color.White);
             buttonInput.ControlDock = Dock.Top;
@@ -82,22 +87,15 @@ namespace Maker.Twiyol.Scenes.Menu
 
         private void GoBack()
         {
-
+            // Go back to the MainMenu.
             Scene menu;
 
-            if (asGame) {
-
-                menu = new MenuMain(CurrentGame);
-
-            } else {
-
-                menu = new MenuMain();
-
-            }
-
-            ENGINE.SCENES.AddScene(menu);
+            if (asGame) menu = new MenuMain(CurrentGame);
+            else menu = new MenuMain();
+            // Hide the current scene and show the main menu.            
+            RiseEngine.ScenesManager.AddScene(menu);
             menu.show();
-            ENGINE.SCENES.RemoveScene(this);
+            RiseEngine.ScenesManager.RemoveScene(this);
         }
 
         public override void OnUnload()
@@ -109,16 +107,12 @@ namespace Maker.Twiyol.Scenes.Menu
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-
             rootPanel.Draw(spriteBatch, gameTime);
-
         }
 
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
-
             rootPanel.Update(playerInput, gameTime);
-
         }
 
     }

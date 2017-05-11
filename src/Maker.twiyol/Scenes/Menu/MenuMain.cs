@@ -1,5 +1,5 @@
 ﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Ressources;
+
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
@@ -107,10 +107,10 @@ namespace Maker.Twiyol.Scenes.Menu
                 scene = new MenuOption();
             }
 
-            ENGINE.SCENES.AddScene(scene);
+            RiseEngine.ScenesManager.AddScene(scene);
             scene.show();
 
-            ENGINE.SCENES.RemoveScene(this);
+            RiseEngine.ScenesManager.RemoveScene(this);
         }
 
         private void ButtonOpenGame_onMouseClick()
@@ -119,10 +119,10 @@ namespace Maker.Twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuOpenWorld();
-            ENGINE.SCENES.AddScene(scene);
+            RiseEngine.ScenesManager.AddScene(scene);
             scene.show();
 
-            ENGINE.SCENES.RemoveScene(this);
+            RiseEngine.ScenesManager.RemoveScene(this);
 
         }
 
@@ -131,12 +131,12 @@ namespace Maker.Twiyol.Scenes.Menu
             CurrentGame.SaveWorld();
 
             CurrentGame.GameUIScene.GoBackToGame(this);
-            ENGINE.SCENES.RemoveScene(CurrentGame.GameUIScene);
-            ENGINE.SCENES.RemoveScene(CurrentGame);
+            RiseEngine.ScenesManager.RemoveScene(CurrentGame.GameUIScene);
+            RiseEngine.ScenesManager.RemoveScene(CurrentGame);
 
             MenuMain m = new MenuMain();
             m.show();
-            ENGINE.SCENES.AddScene(m);
+            RiseEngine.ScenesManager.AddScene(m);
 
         }
 
@@ -150,10 +150,10 @@ namespace Maker.Twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuNewWorld();
-            ENGINE.SCENES.AddScene(scene);
+            RiseEngine.ScenesManager.AddScene(scene);
             scene.show();
 
-            ENGINE.SCENES.RemoveScene(this);
+            RiseEngine.ScenesManager.RemoveScene(this);
         }
 
         private void ButtonQuitte_onMouseClick()

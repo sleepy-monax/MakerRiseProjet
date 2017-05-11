@@ -7,33 +7,33 @@ namespace Maker.Twiyol.Game.GameUtils
     {
 
         //Converti un point en worldLocation
-        public static WorldLocation ToWorldLocation(this Point Location)
+        public static WorldLocation ToWorldLocation(this Point currentLocation)
         {
 
-            WorldLocation WipLocation = new WorldLocation();
+            WorldLocation worldLocation = new WorldLocation();
 
-            Point ChunkXY = new Point();
-            Point TileXY = new Point();
+            Point chunkLocation = new Point();
+            Point tileLocation = new Point();
 
-            ChunkXY.X = Location.X / 16;
-            TileXY.X = Location.X % 16;
-            if (TileXY.X < 0)
+            chunkLocation.X = currentLocation.X / 16;
+            tileLocation.X = currentLocation.X % 16;
+            if (tileLocation.X < 0)
             {
-                TileXY.X = 0;
+                tileLocation.X = 0;
             }
 
 
-            ChunkXY.Y = Location.Y / 16;
-            TileXY.Y = Location.Y % 16;
-            if (TileXY.Y < 0)
+            chunkLocation.Y = currentLocation.Y / 16;
+            tileLocation.Y = currentLocation.Y % 16;
+            if (tileLocation.Y < 0)
             {
-                TileXY.Y = 0;
+                tileLocation.Y = 0;
             }
 
-            WipLocation.SetTilePoint(TileXY);
-            WipLocation.SetChunkPoint(ChunkXY);
+            worldLocation.SetTilePoint(tileLocation);
+            worldLocation.SetChunkPoint(chunkLocation);
 
-            return WipLocation;
+            return worldLocation;
 
         }
 
@@ -43,7 +43,7 @@ namespace Maker.Twiyol.Game.GameUtils
             return new Point(WorldLocation.chunkX * 16 + WorldLocation.tileX, WorldLocation.chunkY * 16 + WorldLocation.tileY);
         }
 
-        //ajoute les cooordonné d'un point a une worldLOcation
+        //ajoute les cooordonné d'un point a une worldLocation
         public static WorldLocation AddPoint(this WorldLocation _WorldLocation, Point _Point)
         {
 

@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Microsoft.Xna.Framework;
@@ -84,7 +84,7 @@ namespace Maker.RiseEngine.Core.UserInterface.Controls
             Vector2 averageLocation = new Vector2(ControlRectangle.X, ControlRectangle.Y - ControlRectangle.Height - AverageValue * 10);
             spriteBatch.DrawLine(averageLocation, averageLocation + new Vector2(ControlRectangle.Width, 0), Color.Red);
 
-            DrawText(spriteBatch, rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(new Point(16), ControlRectangle.Size), TextColor);
+            DrawText(spriteBatch, rise.ENGINE.RESSOUCES.GetSpriteFont("Engine", "segoeUI_16pt"), Text, new Rectangle(new Point(16), ControlRectangle.Size), TextColor);
         }
     }
 }

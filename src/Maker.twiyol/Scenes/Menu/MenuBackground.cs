@@ -38,15 +38,15 @@ namespace Maker.Twiyol.Scenes.Menu
             {
                 case 0:
                     Background = ParallaxParse.Parse("Engine", "Dusk Mountain", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
-                    ENGINE.SONGS.SwitchSong("Engine", "A Title");
+                    RiseEngine.SONGS.SwitchSong("Engine", "A Title");
                     break;
                 case 1:
                     Background = ParallaxParse.Parse("Engine", "Forest", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
-                    ENGINE.SONGS.SwitchSong("Engine", "Look Up");
+                    RiseEngine.SONGS.SwitchSong("Engine", "Look Up");
                     break;
                 case 2:
                     Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
-                    ENGINE.SONGS.SwitchSong("Engine", "Clouds of Orange Juice");
+                    RiseEngine.SONGS.SwitchSong("Engine", "Clouds of Orange Juice");
                     break;
                 default:
                     break;

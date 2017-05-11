@@ -22,3 +22,4 @@ C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug
 C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.pdb
 C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.Core.exe
 C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.Core.pdb
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.Core.csprojResolveAssemblyReference.cache

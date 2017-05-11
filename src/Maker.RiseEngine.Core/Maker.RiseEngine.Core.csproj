@@ -118,7 +118,7 @@
     <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
     <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
     <Compile Include="Rendering\SpriteSheets\SpriteSheetColectionItem.cs" />
-    <Compile Include="Ressources\ContentEngine.cs" />
+    <Compile Include="RessourcesManager.cs" />
     <Compile Include="rise.cs" />
     <Compile Include="Scenes\EngineLoading.cs" />
     <Compile Include="Scenes\Scene.cs" />

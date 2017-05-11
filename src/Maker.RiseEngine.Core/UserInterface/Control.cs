@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Ressources;
+﻿
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
@@ -54,7 +54,7 @@ namespace Maker.RiseEngine.Core.UserInterface
         public string Text { get; set; } = "Control";
         public Color ControlColor { get; set; } = Color.White;
         public Color TextColor { get; set; } = Color.White;
-        public SpriteFont TextFont = rise.ENGINE.RESSOUCES.SpriteFont("Engine", "segoeUI_16pt");
+        public SpriteFont TextFont = rise.ENGINE.RESSOUCES.GetSpriteFont("Engine", "segoeUI_16pt");
         public ControlPadding Padding { get; set; } = new ControlPadding();
         public ControlPadding ChildMargin { get; set; } = new ControlPadding();
 
