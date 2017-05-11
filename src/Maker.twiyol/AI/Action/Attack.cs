@@ -1,14 +1,14 @@
 ﻿using Maker.RiseEngine.Core.GameObjects;
-using Maker.twiyol.AI;
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.GameObject;
-using Maker.twiyol.GameObject.Event;
+using Maker.Twiyol.AI;
+using Maker.Twiyol.Game.GameUtils;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.GameObject;
+using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using System;
-using static Maker.twiyol.AI.Utils;
+using static Maker.Twiyol.AI.Utils;
 
-namespace Maker.twiyol.AI.Action
+namespace Maker.Twiyol.AI.Action
 {
     public class Attack : IAction
     {

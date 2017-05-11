@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Maker.twiyol.Game.WorldDataStruct
+namespace Maker.Twiyol.Game.WorldDataStruct
 {
     [Serializable]
     public class DataWorld

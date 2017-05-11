@@ -5,16 +5,16 @@ using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Plugin;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 
-using Maker.twiyol.AI.Action;
-using Maker.twiyol.AI.Entites;
-using Maker.twiyol.Events;
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.GameObject;
-using Maker.twiyol.GameObject.Entities;
-using Maker.twiyol.GameObject.Items;
-using Maker.twiyol.GameObject.Tiles;
-using Maker.twiyol.Generator.EntitiesDistribution;
+using Maker.Twiyol.AI.Action;
+using Maker.Twiyol.AI.Entites;
+using Maker.Twiyol.Events;
+using Maker.Twiyol.Game.GameUtils;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.GameObject;
+using Maker.Twiyol.GameObject.Entities;
+using Maker.Twiyol.GameObject.Items;
+using Maker.Twiyol.GameObject.Tiles;
+using Maker.Twiyol.Generator.EntitiesDistribution;
 
 using Microsoft.Xna.Framework;
 using System;
@@ -47,11 +47,11 @@ namespace Maker.twiyol_Base
             // TileSheets
             // ----------------------------------------------------------------
 
-            var TILESHEET_TERRAIN   = this.AddGameObject("Tilesheet_Terrain", new SpriteSheet(PluginName, ENGINE.RESSOUCES.Texture2D(PluginName, "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
-            var TILESHEET_ENTITY    = this.AddGameObject("Tilesheet_Entity", new SpriteSheet(PluginName, ENGINE.RESSOUCES.Texture2D(PluginName, "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
-            var TILESHEET_ITEM      = this.AddGameObject("Tilesheet_Item", new SpriteSheet(PluginName, ENGINE.RESSOUCES.Texture2D(PluginName, "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
-            var TILESHEET_CREATURES = this.AddGameObject("Tilesheet_Creatures", new SpriteSheet(PluginName, ENGINE.RESSOUCES.Texture2D(PluginName, "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
-            var TILESHEET_WATER     = this.AddGameObject("Tilesheet_Water", new SpriteSheet(PluginName, ENGINE.RESSOUCES.Texture2D(PluginName, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
+            var TILESHEET_TERRAIN   = this.AddGameObject("Tilesheet_Terrain", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
+            var TILESHEET_ENTITY    = this.AddGameObject("Tilesheet_Entity", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
+            var TILESHEET_ITEM      = this.AddGameObject("Tilesheet_Item", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
+            var TILESHEET_CREATURES = this.AddGameObject("Tilesheet_Creatures", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
+            var TILESHEET_WATER     = this.AddGameObject("Tilesheet_Water", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
 
             // Items
             // ----------------------------------------------------------------

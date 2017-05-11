@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.twiyol.GameObject
+namespace Maker.Twiyol.GameObject
 {
     public class ItemDrop
     {

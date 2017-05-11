@@ -2,12 +2,12 @@
 using Maker.RiseEngine.Core.Ressources;
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Rendering;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.GameObject.Event;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Maker.twiyol.Game.GameUtils
+namespace Maker.Twiyol.Game.GameUtils
 {
     public class WorldRender
     {

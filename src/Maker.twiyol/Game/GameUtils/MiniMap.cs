@@ -1,9 +1,9 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Rendering;
-using Maker.twiyol.Game;
+using Maker.Twiyol.Game;
 using System.Drawing;
 
-namespace Maker.twiyol.Game.GameUtils
+namespace Maker.Twiyol.Game.GameUtils
 {
     public class MiniMap
     {

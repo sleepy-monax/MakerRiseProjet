@@ -1,11 +1,11 @@
 ﻿using Maker.RiseEngine.Core.EngineDebug;
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.MathExt;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.GameObject;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.GameObject;
 using System;
 
-namespace Maker.twiyol.Generator
+namespace Maker.Twiyol.Generator
 {
     public class ChunkDecorator
     {

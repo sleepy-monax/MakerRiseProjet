@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Maker.twiyol.AI
+namespace Maker.Twiyol.AI
 {
     public enum Facing
     {

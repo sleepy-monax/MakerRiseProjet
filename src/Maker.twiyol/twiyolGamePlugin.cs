@@ -6,7 +6,7 @@ using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Input;
 using System;
 
-namespace Maker.twiyol
+namespace Maker.Twiyol
 {
     class twiyolGamePlugin : IPlugin
     {

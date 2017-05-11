@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Maker.twiyol.Game.WorldDataStruct
+namespace Maker.Twiyol.Game.WorldDataStruct
 {
 
     public enum chunkStatutList { Done, onDecoration, needDecoration }

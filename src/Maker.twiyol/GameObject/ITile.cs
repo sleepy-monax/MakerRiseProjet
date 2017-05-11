@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Maker.twiyol.GameObject
+namespace Maker.Twiyol.GameObject
 {
     public interface ITile : IWorldGameObject
     {

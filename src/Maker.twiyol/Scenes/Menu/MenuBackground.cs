@@ -12,7 +12,7 @@ using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Audio;
 using Maker.RiseEngine.Core.Input;
 
-namespace Maker.twiyol.Scenes.Menu
+namespace Maker.Twiyol.Scenes.Menu
 {
     public class MenuBackground : Scene
     {

@@ -1,4 +1,4 @@
-﻿namespace Maker.twiyol.GameObject
+﻿namespace Maker.Twiyol.GameObject
 {
     public interface IEntity : IWorldGameObject
     {

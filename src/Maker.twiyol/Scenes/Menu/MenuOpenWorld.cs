@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
 
-namespace Maker.twiyol.Scenes.Menu
+namespace Maker.Twiyol.Scenes.Menu
 {
     public class MenuOpenWorld : Scene
     {

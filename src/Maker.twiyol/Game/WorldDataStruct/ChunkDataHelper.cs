@@ -1,7 +1,7 @@
-﻿using Maker.twiyol.Game.WorldDataStruct;
+﻿using Maker.Twiyol.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;
 
-namespace Maker.twiyol.Game.GameUtils
+namespace Maker.Twiyol.Game.GameUtils
 {
     public static class ChunkDataHelper
 

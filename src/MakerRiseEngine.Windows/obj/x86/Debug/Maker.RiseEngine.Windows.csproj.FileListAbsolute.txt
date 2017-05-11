@@ -1,2 +1,0 @@
-C:\Users\Nicolas Van Bossuyt\Documents\Dev Project\MakerRiseProjet\src\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.Properties.Resources.resources
-C:\Users\Nicolas Van Bossuyt\Documents\Dev Project\MakerRiseProjet\src\MakerRiseEngine.Windows\obj\x86\Debug\Maker.RiseEngine.Windows.csproj.GenerateResource.Cache

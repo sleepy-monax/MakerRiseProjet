@@ -6,7 +6,7 @@ using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.UserInterface;
 using Maker.RiseEngine.Core.UserInterface.Controls;
 
-using Maker.twiyol.Game;
+using Maker.Twiyol.Game;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.Input;
 
 using System;
 
-namespace Maker.twiyol.Scenes.Menu
+namespace Maker.Twiyol.Scenes.Menu
 {
 
     public class MenuOption : Scene

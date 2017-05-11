@@ -1,7 +1,7 @@
 ﻿using Maker.RiseEngine.Core.GameObjects;
 using Microsoft.Xna.Framework;
 
-namespace Maker.twiyol.AI
+namespace Maker.Twiyol.AI
 {
     public interface IAction : RiseEngine.Core.GameObjects.IGameObject
     {

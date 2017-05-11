@@ -3,7 +3,7 @@ using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
 
-namespace Maker.twiyol.GameObject
+namespace Maker.Twiyol.GameObject
 {
     public enum ItemType
     {

@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 
 
-namespace Maker.twiyol.Scenes.Menu
+namespace Maker.Twiyol.Scenes.Menu
 {
     public class MenuMain : Scene
     {
@@ -40,7 +40,7 @@ namespace Maker.twiyol.Scenes.Menu
 
         public override void OnLoad()
         {
-            Logo = rise.ENGINE.RESSOUCES.Texture2D("Engine", "Logo");
+            Logo = rise.ENGINE.RESSOUCES.GetTexture2D("Engine", "Logo");
 
             // Panel.
             rootPanel = new Panel(new Rectangle(-256, -112, 512, 224), new Color(new Vector4(0f)));

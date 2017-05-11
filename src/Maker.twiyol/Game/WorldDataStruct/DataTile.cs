@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maker.twiyol.Game.WorldDataStruct
+namespace Maker.Twiyol.Game.WorldDataStruct
 {
     [Serializable]
     public class DataTile

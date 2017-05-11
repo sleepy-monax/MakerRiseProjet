@@ -2,17 +2,17 @@
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.GameObject.Event;
-using Maker.twiyol.Inventory;
+using Maker.Twiyol.Game.GameUtils;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.GameObject.Event;
+using Maker.Twiyol.Inventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using System;
 using System.Collections.Generic;
 
-namespace Maker.twiyol.GameObject.Entities
+namespace Maker.Twiyol.GameObject.Entities
 {
     public class Entity : IEntity
     {
@@ -20,16 +20,14 @@ namespace Maker.twiyol.GameObject.Entities
         public string GameObjectName { get; set; }
         public string PluginName { get; set; }
 
-        //Drawing Property
         public Rectangle DrawBox;
         public List<Sprite> Variant;
 
-        //Determine la position de l'entiter sur la case
         public Vector2 SpriteLocation = new Vector2(0, -1f);
 
         public int MaxVariantCount { get; set; }
 
-        public int MoveSpeed => 5;
+        public int MoveSpeed => 32;
 
         public int MaxHeal => 20;
 

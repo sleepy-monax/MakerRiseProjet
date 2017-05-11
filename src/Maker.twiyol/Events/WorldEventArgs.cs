@@ -1,13 +1,13 @@
-﻿using Maker.twiyol.Game;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.Generator;
+﻿using Maker.Twiyol.Game;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.Generator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.twiyol.Events
+namespace Maker.Twiyol.Events
 {
     public class WorldEventArgs : EventArgs
     {

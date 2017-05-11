@@ -1,6 +1,6 @@
-﻿using Maker.twiyol.Game.WorldDataStruct;
+﻿using Maker.Twiyol.Game.WorldDataStruct;
 
-namespace Maker.twiyol.Game.GameUtils
+namespace Maker.Twiyol.Game.GameUtils
 {
     public static class EntityDataManager
     {

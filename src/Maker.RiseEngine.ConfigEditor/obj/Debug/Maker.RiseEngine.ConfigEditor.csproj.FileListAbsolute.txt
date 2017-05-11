@@ -1,0 +1,10 @@
+C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.ConfigEditor.exe.config
+C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.ConfigEditor.exe
+C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.ConfigEditor.pdb
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.csprojResolveAssemblyReference.cache
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.Form1.resources
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.MainFrm.resources
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.Properties.Resources.resources
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.csproj.GenerateResource.Cache
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.exe
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.RiseEngine.ConfigEditor\obj\Debug\Maker.RiseEngine.ConfigEditor.pdb

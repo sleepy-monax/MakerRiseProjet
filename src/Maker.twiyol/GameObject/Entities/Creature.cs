@@ -1,10 +1,10 @@
 ﻿
 using Maker.RiseEngine.Core.Input;
-using Maker.twiyol.GameObject.Event;
+using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.twiyol.GameObject.Entities
+namespace Maker.Twiyol.GameObject.Entities
 {
     public class Creature : Entity
     {

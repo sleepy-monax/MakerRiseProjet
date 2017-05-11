@@ -3,18 +3,18 @@ using Maker.RiseEngine.Core.EngineDebug;
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.MathExt;
 using Maker.RiseEngine.Core.Plugin;
-using Maker.twiyol.Events;
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.Generator.GeneratorFeatures;
-using Maker.twiyol.Scenes;
+using Maker.Twiyol.Events;
+using Maker.Twiyol.Game.GameUtils;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.Generator.GeneratorFeatures;
+using Maker.Twiyol.Scenes;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 
-namespace Maker.twiyol.Generator
+namespace Maker.Twiyol.Generator
 {
     public class WorldGenerator
     {

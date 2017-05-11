@@ -8,16 +8,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Ressources;
-using Maker.twiyol.Inventory;
+using Maker.Twiyol.Inventory;
 using Maker.RiseEngine.Core;
 
-namespace Maker.twiyol.Game.GameUI
+namespace Maker.Twiyol.Game.GameUI
 {
     public class ItemSlot : Control
     {
         DataInventory Inventory;
         int ItemIndex;
-        Texture2D slotT2D = rise.ENGINE.RESSOUCES.Texture2D("twiyol", "Item_Slot");
+        Texture2D slotT2D = rise.ENGINE.RESSOUCES.GetTexture2D("twiyol", "Item_Slot");
 
         public ItemSlot(Point location, DataInventory inventory, int itemIndex) {
             Inventory = inventory;

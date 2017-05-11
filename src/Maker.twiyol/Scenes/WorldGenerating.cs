@@ -8,7 +8,7 @@ using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Input;
 using System;
 
-namespace Maker.twiyol.Scenes
+namespace Maker.Twiyol.Scenes
 {
     class WorldGenerating : Scene
     {

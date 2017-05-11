@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.twiyol.Game
+namespace Maker.Twiyol.Game
 {
     public class GameUIScene : Scene
     {

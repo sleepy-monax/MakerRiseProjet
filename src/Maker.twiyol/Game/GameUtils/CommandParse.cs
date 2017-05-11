@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maker.twiyol.Game.GameUtils
+namespace Maker.Twiyol.Game.GameUtils
 {
     public class CommandParse
     {

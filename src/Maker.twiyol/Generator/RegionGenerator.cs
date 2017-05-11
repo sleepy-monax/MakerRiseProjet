@@ -1,10 +1,10 @@
 ﻿using Maker.RiseEngine.Core.GameObjects;
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.Game.GameUtils;
+using Maker.Twiyol.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Maker.twiyol.Generator
+namespace Maker.Twiyol.Generator
 {
     public class RegionGenerator
     {

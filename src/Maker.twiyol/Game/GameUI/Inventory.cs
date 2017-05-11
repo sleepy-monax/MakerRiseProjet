@@ -4,15 +4,15 @@ using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.UserInterface;
 using Maker.RiseEngine.Core.UserInterface.Controls;
 
-using Maker.twiyol.Game.WorldDataStruct;
-using Maker.twiyol.Inventory;
+using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.Inventory;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
 
-namespace Maker.twiyol.Game.GameUI
+namespace Maker.Twiyol.Game.GameUI
 {
     public class Inventory : Scene
     {

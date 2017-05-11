@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.twiyol.Generator.EntitiesDistribution
+namespace Maker.Twiyol.Generator.EntitiesDistribution
 {
     public class FlatDistribution : IEntitiesDistributionRule
     {

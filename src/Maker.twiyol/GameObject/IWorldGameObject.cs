@@ -1,13 +1,13 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Input;
-using Maker.twiyol.GameObject.Event;
+using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace Maker.twiyol.GameObject
+namespace Maker.Twiyol.GameObject
 {
     public enum DrawLayer
     {

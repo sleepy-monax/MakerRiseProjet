@@ -2,7 +2,7 @@
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using System.Collections.Generic;
 
-namespace Maker.twiyol.GameObject.Items
+namespace Maker.Twiyol.GameObject.Items
 {
     public class Item : IItem
     {

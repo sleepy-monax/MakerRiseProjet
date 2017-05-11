@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.twiyol.Scenes.Menu.Option
+namespace Maker.Twiyol.Scenes.Menu.Option
 {
     class MenuSoundOption
     {

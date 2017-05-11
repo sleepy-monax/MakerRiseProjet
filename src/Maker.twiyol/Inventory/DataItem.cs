@@ -1,13 +1,13 @@
 ﻿using Maker.RiseEngine.Core.GameObjects;
-using Maker.twiyol.Game.WorldDataStruct.Tags;
-using Maker.twiyol.GameObject.Items;
+using Maker.Twiyol.Game.WorldDataStruct.Tags;
+using Maker.Twiyol.GameObject.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.twiyol.Inventory
+namespace Maker.Twiyol.Inventory
 {
     [Serializable]
     public class DataItem

@@ -5,7 +5,7 @@ using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.Storage;
 
-using Maker.twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.Game.WorldDataStruct;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
 
-namespace Maker.twiyol.Game
+namespace Maker.Twiyol.Game
 {
     public class GameScene : Scene
     {

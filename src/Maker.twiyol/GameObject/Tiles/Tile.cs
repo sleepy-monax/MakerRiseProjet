@@ -2,14 +2,14 @@
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Input;
 using Maker.RiseEngine.Core.Rendering.SpriteSheets;
-using Maker.twiyol.GameObject.Event;
+using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
 
-namespace Maker.twiyol.GameObject.Tiles
+namespace Maker.Twiyol.GameObject.Tiles
 {
     public class Tile : ITile
     {

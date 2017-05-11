@@ -1,0 +1,5 @@
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.csprojResolveAssemblyReference.cache
+C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.dll
+C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.pdb
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.dll
+C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.pdb

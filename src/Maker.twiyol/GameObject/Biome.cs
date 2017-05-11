@@ -1,10 +1,10 @@
 ﻿using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.MathExt;
-using Maker.twiyol.Generator.EntitiesDistribution;
+using Maker.Twiyol.Generator.EntitiesDistribution;
 using System.Collections.Generic;
 
-namespace Maker.twiyol.GameObject
+namespace Maker.Twiyol.GameObject
 {
     public class Biome : IGameObject
     {

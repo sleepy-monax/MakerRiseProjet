@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maker.twiyol.Generator
+namespace Maker.Twiyol.Generator
 {
     public static class WorldEdit
     {

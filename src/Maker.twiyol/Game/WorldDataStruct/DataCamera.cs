@@ -1,11 +1,11 @@
-﻿using Maker.twiyol.Game.GameUtils;
+﻿using Maker.Twiyol.Game.GameUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maker.twiyol.Game.WorldDataStruct
+namespace Maker.Twiyol.Game.WorldDataStruct
 {
     [Serializable]
     public class DataCamera

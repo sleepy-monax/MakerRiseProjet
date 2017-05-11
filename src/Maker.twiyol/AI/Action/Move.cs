@@ -1,25 +1,19 @@
-﻿
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.twiyol.Game.GameUtils;
-using Maker.twiyol.GameObject;
-using Maker.twiyol.GameObject.Event;
+﻿using Maker.RiseEngine.Core.GameObjects;
+
+using Maker.Twiyol.Game.GameUtils;
+using Maker.Twiyol.GameObject;
+using Maker.Twiyol.GameObject.Event;
+
 using Microsoft.Xna.Framework;
 
-namespace Maker.twiyol.AI.Action
+namespace Maker.Twiyol.AI.Action
 {
     public class Move : IAction
     {
-        public string GameObjectName
-        {
-            get;
-            set;
-        }
+        public string GameObjectName { get; set; }
 
-        public string PluginName
-        {
-            get;
-            set;
-        }
+        public string PluginName { get; set; }
+
 
         public void OnGameObjectAdded()
         {
@@ -28,9 +22,10 @@ namespace Maker.twiyol.AI.Action
 
         public void Performe(GameObjectEventArgs e, GameTime gametime)
         {
+
             e.ParrentEntity.Tags.SetTag("move_progress", e.ParrentEntity.Tags.GetTag("move_progress", 0) + GameComponentManager.GetGameObject<IEntity>(e.ParrentEntity.ID).MoveSpeed);
             WorldLocation DestinationLocation = e.CurrentLocation.AddPoint(e.ParrentEntity.Tags.GetTag("facing", Facing.Down).ToPoint());
-
+            
             if (!(e.Game.World.IsEntityFree(DestinationLocation)))
             {
                 e.ParrentEntity.Tags.SetTag("ai_action", -1);
@@ -39,7 +34,7 @@ namespace Maker.twiyol.AI.Action
             }
             else
             {
-                if (e.ParrentEntity.Tags.GetTag("move_progress", 100) >= 100)
+                if (e.ParrentEntity.Tags.GetTag("move_progress", 100) > 100)
                 {
                     e.ParrentEntity.Tags.SetTag("move_progress", 0);
                     e.ParrentEntity.SetOnTileOffset(Vector2.Zero);

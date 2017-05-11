@@ -1,7 +1,7 @@
-﻿using Maker.twiyol.Game.GameUtils;
+﻿using Maker.Twiyol.Game.GameUtils;
 using Microsoft.Xna.Framework;
 
-namespace Maker.twiyol.GameObject.Event
+namespace Maker.Twiyol.GameObject.Event
 {
     public class GameObjectEventArgs
     {

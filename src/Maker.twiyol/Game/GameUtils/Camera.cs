@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Maker.twiyol.Game.GameUtils
+namespace Maker.Twiyol.Game.GameUtils
 {
     public class GameCamera
     {
@@ -72,7 +72,6 @@ namespace Maker.twiyol.Game.GameUtils
             if (DrawStartX <= 0)
             {
                 DrawStartX = 0;
-
             }
             if (DrawStartY <= 0)
             {

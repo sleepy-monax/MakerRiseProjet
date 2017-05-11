@@ -2,11 +2,11 @@
 using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.GameObjects;
 using Maker.RiseEngine.Core.Input;
-using Maker.twiyol.GameObject.Event;
+using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Maker.twiyol.AI.Entites
+namespace Maker.Twiyol.AI.Entites
 {
     public class PlayerAI : AIbase
     {

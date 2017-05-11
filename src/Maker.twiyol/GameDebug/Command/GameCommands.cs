@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Maker.RiseEngine.Core.EngineDebug.EngineConsole.Commands;
 
-namespace Maker.twiyol.GameDebug.Command
+namespace Maker.Twiyol.GameDebug.Command
 {
     public static class GameCommands
     {

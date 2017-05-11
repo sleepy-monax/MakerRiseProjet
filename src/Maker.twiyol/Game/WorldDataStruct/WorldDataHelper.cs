@@ -1,9 +1,9 @@
 ﻿
 
 using Maker.RiseEngine.Core.GameObjects;
-using Maker.twiyol.GameObject;
+using Maker.Twiyol.GameObject;
 
-namespace Maker.twiyol.Game.WorldDataStruct
+namespace Maker.Twiyol.Game.WorldDataStruct
 {
     public static class WorldDataHelper
     {

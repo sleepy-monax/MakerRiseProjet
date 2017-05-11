@@ -3,7 +3,7 @@
 using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.GameObjects;
 
-namespace Maker.twiyol.Generator.GeneratorFeatures
+namespace Maker.Twiyol.Generator.GeneratorFeatures
 {
     interface IGeneratorFeature : IGameObject
     {
