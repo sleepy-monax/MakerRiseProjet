@@ -1,0 +1,7 @@
+DataType:"Parallax";
+Parallax.LayerCount:"5";
+Parallax.Layer0:"Backgound,0.1";
+Parallax.Layer1:"FarStars,0.2";
+Parallax.Layer2:"Noise,0.25";
+Parallax.Layer3:"Stars,0.3";
+Parallax.Layer4:"Cloud,0.4";

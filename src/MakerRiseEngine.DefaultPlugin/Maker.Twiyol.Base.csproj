@@ -36,23 +36,17 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.Core.csproj">
+    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.csproj">
       <Project>{5ab33e8b-6cf3-4d3d-be25-fe66d565d780}</Project>
-      <Name>Maker.RiseEngine.Core</Name>
+      <Name>Maker.RiseEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\Maker.twiyol\Maker.Twiyol.csproj">
       <Project>{409b76cf-7d0c-4d67-9e90-840ee45f3c84}</Project>

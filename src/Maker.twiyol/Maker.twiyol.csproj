@@ -29,6 +29,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -74,7 +78,6 @@
     <Compile Include="Game\GameUI\ItemSlot.cs" />
     <Compile Include="Game\GameUtils\Camera.cs" />
     <Compile Include="Game\WorldDataStruct\ChunkDataHelper.cs" />
-    <Compile Include="Game\GameUtils\CommandParse.cs" />
     <Compile Include="Game\WorldDataStruct\EntityDataHelper.cs" />
     <Compile Include="Game\GameUtils\EventsManager.cs" />
     <Compile Include="Game\GameUtils\Location.cs" />
@@ -88,7 +91,7 @@
     <Compile Include="Game\WorldDataStruct\DataTile.cs" />
     <Compile Include="Game\WorldDataStruct\DataWorld.cs" />
     <Compile Include="Game\WorldDataStruct\Tags\Tag.cs" />
-    <Compile Include="Game\WorldDataStruct\Tags\TagManger.cs" />
+    <Compile Include="Game\WorldDataStruct\Tags\TagManager.cs" />
     <Compile Include="Game\WorldDataStruct\WorldDataHelper.cs" />
     <Compile Include="Generator\ChunkDecorator.cs" />
     <Compile Include="Generator\EntitiesDistribution\FlatDistribution.cs" />
@@ -115,9 +118,9 @@
     <Compile Include="twiyolGamePlugin.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.Core.csproj">
+    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.csproj">
       <Project>{5ab33e8b-6cf3-4d3d-be25-fe66d565d780}</Project>
-      <Name>Maker.RiseEngine.Core</Name>
+      <Name>Maker.RiseEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

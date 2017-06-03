@@ -11,79 +11,60 @@ namespace Maker.Twiyol.Game.GameUtils
 {
     public class WorldRender
     {
+        GameScene gameScene;
+        SpriteBatch tileSpriteBatch;
+        SpriteBatch entitySpritebatch;
+        GameEngine Engine;
 
-        GameScene G;
-        SpriteBatch tSpriteBatch;
-        SpriteBatch eSpriteBatch;
-        
-
-        public WorldRender(GameScene _WorldScene)
+        public WorldRender(GameEngine engine, GameScene worldScene)
         {
-            G = _WorldScene;
-            tSpriteBatch = new SpriteBatch(rise.GraphicsDevice);
-            eSpriteBatch = new SpriteBatch(rise.GraphicsDevice);
+            Engine = engine;
+            gameScene = worldScene;
+            tileSpriteBatch = new SpriteBatch(Engine.GraphicsDevice);
+            entitySpritebatch = new SpriteBatch(Engine.GraphicsDevice);
         }
 
-
-
-        public void Draw(RenderTarget2D r,GameTime gameTime)
+        public void DrawWorld(RenderTarget2D renderTarget, GameTime gameTime)
         {
-            rise.GraphicsDevice.SetRenderTarget(r);
-            rise.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
+            Engine.GraphicsDevice.SetRenderTarget(renderTarget);
+            Engine.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
 
-            tSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
-            eSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
+            tileSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
+            entitySpritebatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
 
-
-            for (int Ty = G.Camera.StartTile.Y; Ty <= G.Camera.EndTile.Y; Ty++)
+            for (int Ty = gameScene.Camera.StartTile.Y; Ty <= gameScene.Camera.EndTile.Y; Ty++)
             {
-                for (int Tx = G.Camera.StartTile.X; Tx <= G.Camera.EndTile.X; Tx++)
+                for (int Tx = gameScene.Camera.StartTile.X; Tx <= gameScene.Camera.EndTile.X; Tx++)
                 {
-                    if (Tx >= 0 && Ty >= 0 && Tx < G.World.Size * 16 - 1 && Ty < G.World.Size * 16 - 1)
+                    if (Tx >= 0 && Ty >= 0 && Tx < gameScene.World.Size * 16 - 1 && Ty < gameScene.World.Size * 16 - 1)
                     {
-                        //Calcule des emplacements
                         Point CurrentLocation = new Point(Tx, Ty);
                         Point OnScreenLocation = new Point(
-                            (Tx - G.Camera.StartTile.X) * G.Camera.TileUnit + G.Camera.ScreenOrigine.X,
-                             (Ty - G.Camera.StartTile.Y) * G.Camera.TileUnit + G.Camera.ScreenOrigine.Y);
+                            (Tx - gameScene.Camera.StartTile.X) * gameScene.Camera.TileUnit + gameScene.Camera.ScreenOrigine.X,
+                            (Ty - gameScene.Camera.StartTile.Y) * gameScene.Camera.TileUnit + gameScene.Camera.ScreenOrigine.Y);
 
-                        if (G.chunkDecorator.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
+                        if (gameScene.chunkDecorator.PrepareChunk(CurrentLocation.ToWorldLocation().chunkX, CurrentLocation.ToWorldLocation().chunkY))
                         {
+                            GameObjectEventArgs e = gameScene.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
+                            DataTile tileData = gameScene.World.GetTile(CurrentLocation);
+                            GameObjectManager.GetGameObject<GameObject.ITile>(tileData.ID).Draw(e, tileSpriteBatch, gameTime);
 
-                            //Recuperation des arguments
-                            GameObjectEventArgs e = G.eventsManager.GetEventArgs(CurrentLocation.ToWorldLocation(), OnScreenLocation);
-
-                            //recuperation des objets
-                            DataTile T = G.World.GetTile(CurrentLocation);
-
-
-                            //desin des objets
-                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).Draw(e, tSpriteBatch, gameTime);
-
-                            if (!(T.Entity == -1))
+                            if (!(tileData.Entity == -1))
                             {
-                                DataEntity E = G.World.GetEntity(CurrentLocation);
-                                Vector2 onTileOffset = (E.GetOnTileOffset() * G.Camera.TileUnit);
+                                DataEntity E = gameScene.World.GetEntity(CurrentLocation);
+                                Vector2 onTileOffset = (E.GetOnTileOffset() * gameScene.Camera.TileUnit);
 
-                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).Draw(e, eSpriteBatch, gameTime);
+                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).Draw(e, entitySpritebatch, gameTime);
 
                                 if (E.Tags.HasTag("attack_cooldown") && E.Tags.GetTag("attack_cooldown", 0) > 0)
                                 {
-                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 51 + (int)onTileOffset.X, OnScreenLocation.Y - 21 + (int)onTileOffset.Y, 102, 12), new Color(Color.Black, 0.5f));
-                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 50 + (int)onTileOffset.X, OnScreenLocation.Y - 20 + (int)onTileOffset.Y, (int)(E.Tags.GetTag("attack_cooldown", 0) * 3.33f), 10), Color.White);
+                                    entitySpritebatch.FillRectangle(new Rectangle(OnScreenLocation.X + gameScene.Camera.TileUnit / 2 - 51 + (int)onTileOffset.X, OnScreenLocation.Y - 21 + (int)onTileOffset.Y, 102, 12), new Color(Color.Black, 0.5f));
+                                    entitySpritebatch.FillRectangle(new Rectangle(OnScreenLocation.X + gameScene.Camera.TileUnit / 2 - 50 + (int)onTileOffset.X, OnScreenLocation.Y - 20 + (int)onTileOffset.Y, (int)(E.Tags.GetTag("attack_cooldown", 0) * 3.33f), 10), Color.White);
                                 }
 
                                 if (E.Tags.HasTag("heal") && E.Tags.GetTag("heal", 0) < E.ToGameObject().MaxHeal) {
-                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 51 + (int)onTileOffset.X, OnScreenLocation.Y - 31 + (int)onTileOffset.Y, 102, 12), new Color(Color.Black, 0.5f));
-                                    eSpriteBatch.FillRectangle(new Rectangle(OnScreenLocation.X + G.Camera.TileUnit / 2 - 50 + (int)onTileOffset.X, OnScreenLocation.Y - 30 + (int)onTileOffset.Y, E.Tags.GetTag("heal", 0) * (100 / E.ToGameObject().MaxHeal), 10), Color.DarkRed);
-                                }
-
-                               
-                                if (rise.engineConfig.Debug_WorldOverDraw && E.IsCameraFocus)
-                                {
-
-                                    eSpriteBatch.DrawString(G.RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Consolas_16pt"), $"ID : {E.ID}\nV : {E.Variant}", OnScreenLocation.ToVector2() + (E.GetOnTileOffset() * G.Camera.TileUnit), Color.White);
-
+                                    entitySpritebatch.FillRectangle(new Rectangle(OnScreenLocation.X + gameScene.Camera.TileUnit / 2 - 51 + (int)onTileOffset.X, OnScreenLocation.Y - 31 + (int)onTileOffset.Y, 102, 12), new Color(Color.Black, 0.5f));
+                                    entitySpritebatch.FillRectangle(new Rectangle(OnScreenLocation.X + gameScene.Camera.TileUnit / 2 - 50 + (int)onTileOffset.X, OnScreenLocation.Y - 30 + (int)onTileOffset.Y, E.Tags.GetTag("heal", 0) * (100 / E.ToGameObject().MaxHeal), 10), Color.DarkRed);
                                 }
                             }
                         }
@@ -91,11 +72,10 @@ namespace Maker.Twiyol.Game.GameUtils
                 }
             }
 
-            // Terminate SpriteBatch.
-            tSpriteBatch.End();
-            eSpriteBatch.End();
+            tileSpriteBatch.End();
+            entitySpritebatch.End();
 
-            rise.GraphicsDevice.SetRenderTarget(null);
+            Engine.GraphicsDevice.SetRenderTarget(null);
         }
     }
 }

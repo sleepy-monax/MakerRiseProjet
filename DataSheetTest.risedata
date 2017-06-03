@@ -1,0 +1,19 @@
+// Data type declaration;
+DataType:"SpriteSheet";
+
+// SpriteScheetCreation;
+SpriteSheet.Texture:"test.png";
+SpriteSheet.Sprites:"Pomme,Poire";
+SpriteSheet.Size:"8x8"
+
+// Sprites defs;
+Pomme.Type:"StaticSprite";
+Pomme.Size:"1x1";
+Pomme.Location:"1,1";
+
+Poire.Type:"AnimSprite";
+Pomme.FramesCount:"3";
+Pomme.Size:"1x1";
+Pomme.Frame0:"0,0";
+Pomme.Frame1:"1,0";
+Pomme.Frame2:"2,0";

@@ -16,7 +16,7 @@ namespace Maker.Twiyol.AI
         public void ExecuteAction(GameObject.Event.GameObjectEventArgs e, GameTime gametime)
         {
             if (e.ParrentEntity.Tags.GetTag("ai_action", -1) != -1) 
-                GameComponentManager.GetGameObject<IAction>(e.ParrentEntity.Tags.GetTag("ai_action", -1)).Performe(e, gametime);
+                GameObjectManager.GetGameObject<IAction>(e.ParrentEntity.Tags.GetTag("ai_action", -1)).Performe(e, gametime);
         }
     }
 }

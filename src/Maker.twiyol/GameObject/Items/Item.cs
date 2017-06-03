@@ -17,7 +17,7 @@ namespace Maker.Twiyol.GameObject.Items
         public Item(ItemType type, string spriteName, int spriteSheetID, int maxStackSize = 64)
         {
             Type = type;
-            ItemSprite =  GameComponentManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(spriteName);
+            ItemSprite =  GameObjectManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(spriteName);
             MaxStackSize = maxStackSize;
         }
 

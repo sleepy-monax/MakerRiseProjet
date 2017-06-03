@@ -11,14 +11,14 @@ namespace Maker.Twiyol.Game.WorldDataStruct
         public static IEntity ToGameObject(this DataEntity Entity)
         {
 
-            return GameComponentManager.GetGameObject<IEntity>(Entity.ID);
+            return GameObjectManager.GetGameObject<IEntity>(Entity.ID);
 
         }
 
         public static ITile ToGameObject(this DataTile Tile)
         {
 
-            return GameComponentManager.GetGameObject<ITile>(Tile.ID);
+            return GameObjectManager.GetGameObject<ITile>(Tile.ID);
 
         }
 

@@ -17,12 +17,12 @@ namespace Maker.Twiyol.Game.GameUI
     {
         DataInventory Inventory;
         int ItemIndex;
-        Texture2D slotT2D = rise.ENGINE.RESSOUCES.GetTexture2D("twiyol", "Item_Slot");
+        Texture2D slotT2D = Rise.Engine.ressourceManager.GetTexture2D("twiyol", "Item_Slot");
 
         public ItemSlot(Point location, DataInventory inventory, int itemIndex) {
             Inventory = inventory;
             ItemIndex = itemIndex;
-            this.ControlRectangle = new Rectangle(location, new Point(64));
+            this.Bound = new Rectangle(location, new Point(64));
         }
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)

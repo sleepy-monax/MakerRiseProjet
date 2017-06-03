@@ -19,13 +19,9 @@ namespace Maker.Twiyol.GameObject
 
         public Biome(IEntitiesDistributionRule rule, KeyWeightPair<int>[] _RandomEntity, KeyWeightPair<int>[] _RandomTile)
         {
-
             Rule = rule;
             RandomEntity = _RandomEntity;
             RandomTile = _RandomTile;
-
-            
-
         }
 
         public void OnGameObjectAdded()

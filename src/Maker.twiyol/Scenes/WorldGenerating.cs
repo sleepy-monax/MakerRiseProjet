@@ -18,8 +18,8 @@ namespace Maker.Twiyol.Scenes
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            SpriteFontDraw.DrawString(spriteBatch, RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Bebas_Neue_48pt"), message, new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Alignment.Center, Style.rectangle, Color.White);
-            SpriteFontDraw.DrawString(spriteBatch, RiseEngine.RESSOUCES.GetSpriteFont("Engine", "segoeUI_16pt"), Progress + "%", new Rectangle(0, 128, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Alignment.Center, Style.DropShadow, Color.White);
+            SpriteFontDraw.DrawString(spriteBatch, Engine.ressourceManager.GetSpriteFont("Engine", "Bebas_Neue_48pt"), message, new Rectangle(0, 0, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), Alignment.Center, Style.rectangle, Color.White);
+            SpriteFontDraw.DrawString(spriteBatch, Engine.ressourceManager.GetSpriteFont("Engine", "segoeUI_16pt"), Progress + "%", new Rectangle(0, 128, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), Alignment.Center, Style.DropShadow, Color.White);
         }
 
         public override void OnLoad()

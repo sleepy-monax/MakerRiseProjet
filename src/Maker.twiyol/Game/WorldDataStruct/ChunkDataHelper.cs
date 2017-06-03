@@ -45,18 +45,18 @@ namespace Maker.Twiyol.Game.GameUtils
 
         #region GetEntity
 
-        public static DataEntity GetEntity(this DataWorld world, WorldLocation _WorldLocation)
+        public static DataEntity GetEntity(this DataWorld world, WorldLocation worldLocation)
         {
 
-            DataChunk chk = world.GetChunk(_WorldLocation);
-            return chk.Entities[world.GetTile(_WorldLocation).Entity];
+            DataChunk chunk = world.GetChunk(worldLocation);
+            return chunk.Entities[world.GetTile(worldLocation).Entity];
 
         }
 
-        public static DataEntity GetEntity(this DataWorld world, Point _Location)
+        public static DataEntity GetEntity(this DataWorld world, Point location)
         {
 
-            return world.GetEntity(_Location.ToWorldLocation());
+            return world.GetEntity(location.ToWorldLocation());
 
         }
 

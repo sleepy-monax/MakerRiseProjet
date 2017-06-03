@@ -5,7 +5,9 @@ using Maker.RiseEngine.Core.Rendering;
 using Maker.RiseEngine.Core.Scenes;
 using Maker.RiseEngine.Core.Storage;
 
+using Maker.Twiyol.Game.GameUtils;
 using Maker.Twiyol.Game.WorldDataStruct;
+using Maker.Twiyol.Generator;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,22 +20,19 @@ namespace Maker.Twiyol.Game
     public class GameScene : Scene
     {
         public DataWorld World;
-        public Generator.ChunkDecorator chunkDecorator;
+        public ChunkDecorator chunkDecorator;
 
         public Random Rnd;
 
-        public GameUtils.GameCamera Camera;
-        public Rectangle SelectionRect;
+        public GameCamera Camera;
 
-        public GameUtils.WorldRender worldRender;
+        public WorldRender worldRender;
 
-        public GameUtils.WorldUpdater worldUpdater;
-        public GameUtils.EventsManager eventsManager;
-        public GameUtils.MiniMap miniMap;
+        public WorldUpdater worldUpdater;
+        public EventsManager eventsManager;
+        public MiniMap miniMap;
 
         public GameUIScene GameUIScene;
-        SpriteBatch BackgroundSB;
-        Parallax Background;
 
         public bool PauseSimulation = false;
 
@@ -45,59 +44,43 @@ namespace Maker.Twiyol.Game
             Rnd = new Random(World.Seed);
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
 
-            worldUpdater = new GameUtils.WorldUpdater(this);
-            eventsManager = new GameUtils.EventsManager(this);
-            miniMap = new GameUtils.MiniMap(this);
+            worldUpdater = new WorldUpdater(this);
+            eventsManager = new EventsManager(this);
+            miniMap = new MiniMap(this);
 
-            Camera = new GameUtils.GameCamera(this);
+            Camera = new GameCamera(this);
 
-            worldRender = new GameUtils.WorldRender(this);
-
-            BackgroundSB = new SpriteBatch(rise.GraphicsDevice);
-            Background = ParallaxParse.Parse("Engine", "Void", new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight));
 
             GameUIScene = new GameUIScene(this);
 
-            WorldRenderTarget = new RenderTarget2D(
-                rise.GraphicsDevice,
-                rise.GraphicsDevice.PresentationParameters.BackBufferWidth,
-                rise.GraphicsDevice.PresentationParameters.BackBufferHeight,
-                false,
-                rise.GraphicsDevice.PresentationParameters.BackBufferFormat,
-                DepthFormat.Depth24);
+
         }
 
         // Implement interface.
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            BackgroundSB.Begin();
-            Background.Draw(BackgroundSB, gameTime);
-            BackgroundSB.End();
-
-            worldRender.Draw(WorldRenderTarget,gameTime);
-            spriteBatch.Draw(WorldRenderTarget, new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), Color.White);
-
-
+            worldRender.DrawWorld(WorldRenderTarget, gameTime);
+            
             if (PauseSimulation)
             {
-                spriteBatch.FillRectangle(new Rectangle(0, 0, rise.graphics.PreferredBackBufferWidth, rise.graphics.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
-
+                spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
+            }
+            else
+            {
+                spriteBatch.Draw(WorldRenderTarget, new Rectangle(0, 0, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), Color.White);
             }
         }
 
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
-
             // Update game.
             if (!PauseSimulation)
             {
-                Background.Update(playerInput, gameTime);
                 worldUpdater.Update(playerInput, gameTime);
-
             }
 
             // Take screenshots.
-            if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_Take_Screenshot)) {
+            if (playerInput.IsKeyBoardKeyPress(Engine.userConfig.InputScreenshot)) {
                 
                 string path = $"Screenshots\\{RandomHelper.RandomString(16).ToLower()}.png";
                 FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
@@ -105,15 +88,22 @@ namespace Maker.Twiyol.Game
                 fs.Close();
             }
 
-
             Camera.Update();
         }
 
         public override void OnLoad()
         {
-            RiseEngine.SONGS.SwitchSong("Engine", "A Title");
-            RiseEngine.ScenesManager.AddScene(GameUIScene);
-            GameUIScene.show();
+            worldRender = new WorldRender(Engine, this);
+            WorldRenderTarget = new RenderTarget2D(
+    Engine.GraphicsDevice,
+    Engine.GraphicsDevice.PresentationParameters.BackBufferWidth,
+    Engine.GraphicsDevice.PresentationParameters.BackBufferHeight,
+    false,
+    Engine.GraphicsDevice.PresentationParameters.BackBufferFormat,
+    DepthFormat.Depth24);
+            Engine.songManager.SwitchSong("Engine", "A Title");
+            Engine.sceneManager.AddScene(GameUIScene);
+            GameUIScene.Show();
         }
 
         public override void OnUnload()

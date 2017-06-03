@@ -100,9 +100,9 @@
     <Content Include="Zerode-Plump-Document-config.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.Core.csproj">
+    <ProjectReference Include="..\Maker.RiseEngine.Core\Maker.RiseEngine.csproj">
       <Project>{5ab33e8b-6cf3-4d3d-be25-fe66d565d780}</Project>
-      <Name>Maker.RiseEngine.Core</Name>
+      <Name>Maker.RiseEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

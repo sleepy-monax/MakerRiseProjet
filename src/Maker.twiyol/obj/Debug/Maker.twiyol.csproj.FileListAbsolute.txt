@@ -3,3 +3,13 @@ C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiy
 C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.pdb
 C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.dll
 C:\Users\nicov\Documents\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.pdb
+D:\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.Twiyol.csprojResolveAssemblyReference.cache
+D:\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.dll
+D:\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.pdb
+E:\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.Twiyol.csprojResolveAssemblyReference.cache
+E:\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.dll
+E:\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.pdb
+E:\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.dll
+E:\MakerRiseProjet\src\Maker.twiyol\obj\Debug\Maker.twiyol.pdb
+D:\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.dll
+D:\MakerRiseProjet\src\Assemblie\Plugins\twiyol\Maker.twiyol.pdb

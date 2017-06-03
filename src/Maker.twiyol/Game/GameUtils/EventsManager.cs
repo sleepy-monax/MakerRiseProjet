@@ -11,31 +11,22 @@ namespace Maker.Twiyol.Game.GameUtils
             G = _WorldScene;
         }
 
-
-        public GameObjectEventArgs GetEventArgs(WorldLocation Location, Point _OnScreenLocation)
+        public GameObjectEventArgs GetEventArgs(WorldLocation location, Point onScreenLocation)
         {
+            GameObjectEventArgs args = new GameObjectEventArgs()
+            {
+                CurrentLocation = location,
+                ParrentTile = G.World.GetTile(location),
+                Game = G,
+                OnScreenLocation = onScreenLocation
+            };
 
-            GameObject.Event.GameObjectEventArgs args = new GameObject.Event.GameObjectEventArgs();
-
-            args.CurrentLocation = Location;
-
-            args.ParrentTile = G.World.GetTile(Location);
-
-            if (args.ParrentTile.Entity == -1) {
-
+            if (args.ParrentTile.Entity == -1)
                 args.ParrentEntity = new WorldDataStruct.DataEntity( -1 , -1);
-
-            } else {
-
-            args.ParrentEntity = G.World.GetEntity(Location);
-
-            }
-
-            args.Game = G;
-            args.OnScreenLocation = _OnScreenLocation;
+            else
+                args.ParrentEntity = G.World.GetEntity(location);
 
             return args;
-
         }
     }
 }

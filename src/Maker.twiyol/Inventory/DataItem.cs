@@ -26,7 +26,7 @@ namespace Maker.Twiyol.Inventory
         }
 
         public Item ToGameObject() {
-            return GameComponentManager.GetGameObject<Item>(ID);
+            return GameObjectManager.GetGameObject<Item>(ID);
         }
 
     }

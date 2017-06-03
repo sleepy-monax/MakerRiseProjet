@@ -35,13 +35,6 @@ namespace Maker.Twiyol.Generator
             GeneratorFeatures = new List<int>();
         }
 
-        public void AddGeneratorFeatures(string gameObjectID)
-        {
-
-
-
-        }
-
         public DataWorld Generate()
         {
             // Start the stop watch to count generation delta time.
@@ -56,9 +49,9 @@ namespace Maker.Twiyol.Generator
 
             // Show the loading scene.
             WorldGenerating sceneGen = new WorldGenerating();
-            var game = rise.ENGINE;
-            game.ScenesManager.AddScene(sceneGen);
-            sceneGen.show();
+            var game = Rise.Engine;
+            game.sceneManager.AddScene(sceneGen);
+            sceneGen.Show();
 
             int maxWorldSize = GeneratorProperty.WorldSize * 16;
             int[,] regionGrid = new int[maxWorldSize, maxWorldSize];
@@ -137,7 +130,7 @@ namespace Maker.Twiyol.Generator
 
             foreach (int id in GeneratorFeatures)
             {
-                GameComponentManager.GetGameObject<IGeneratorFeature>(id).OnRegionCreation(regionGrid);
+                GameObjectManager.GetGameObject<IGeneratorFeature>(id).OnRegionCreation(regionGrid);
             }
 
             // Set loading message.
@@ -175,9 +168,9 @@ namespace Maker.Twiyol.Generator
             GameEventHandler.RaiseOnWorldGeneratingEnd(this, newWorld, this);
 
             stopwatch.Stop();
-            DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ElapsedMilliseconds, LogType.Info, "WorldGenerator");
+            DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ToString(), LogType.Info, "WorldGenerator");
 
-            game.ScenesManager.RemoveScene(sceneGen);
+            game.sceneManager.RemoveScene(sceneGen);
 
             return newWorld;
         }

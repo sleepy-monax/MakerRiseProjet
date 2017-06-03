@@ -43,8 +43,8 @@ namespace Maker.Twiyol.Game.GameUtils
                             //recuperation des objets
                             WorldDataStruct.DataTile T = G.World.GetTile(CurrentLocation);
 
-                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).Tick(e, gameTime);
-                            GameComponentManager.GetGameObject<GameObject.ITile>(T.ID).Update(e, playerInput, gameTime);
+                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).Tick(e, gameTime);
+                            GameObjectManager.GetGameObject<GameObject.ITile>(T.ID).Update(e, playerInput, gameTime);
 
                             if (!(T.Entity == -1))
                             {
@@ -56,8 +56,8 @@ namespace Maker.Twiyol.Game.GameUtils
                                     e.ParrentEntity.Tags.SetTag("attack_cooldown", (e.ParrentEntity.Tags.GetTag("attack_cooldown", 1) - 1) );
                                 }
 
-                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).Tick(e, gameTime);
-                                GameComponentManager.GetGameObject<GameObject.IEntity>(E.ID).Update(e, playerInput, gameTime);
+                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).Tick(e, gameTime);
+                                GameObjectManager.GetGameObject<GameObject.IEntity>(E.ID).Update(e, playerInput, gameTime);
                             }
                         }
                     }

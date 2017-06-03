@@ -34,7 +34,7 @@ namespace Maker.twiyol_Base
 
         
 
-        public void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader, engine ENGINE) where PluginType : IPlugin
+        public void Initialize(PluginLoader pluginLoader, GameEngine gameEngine)
         {
             pluginLoader.Include(this, "TWIYOL");
 
@@ -47,11 +47,11 @@ namespace Maker.twiyol_Base
             // TileSheets
             // ----------------------------------------------------------------
 
-            var TILESHEET_TERRAIN   = this.AddGameObject("Tilesheet_Terrain", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
-            var TILESHEET_ENTITY    = this.AddGameObject("Tilesheet_Entity", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
-            var TILESHEET_ITEM      = this.AddGameObject("Tilesheet_Item", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
-            var TILESHEET_CREATURES = this.AddGameObject("Tilesheet_Creatures", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
-            var TILESHEET_WATER     = this.AddGameObject("Tilesheet_Water", new SpriteSheet(PluginName, ENGINE.RESSOUCES.GetTexture2D(PluginName, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
+            var TILESHEET_TERRAIN   = this.AddGameObject("Tilesheet_Terrain", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
+            var TILESHEET_ENTITY    = this.AddGameObject("Tilesheet_Entity", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
+            var TILESHEET_ITEM      = this.AddGameObject("Tilesheet_Item", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
+            var TILESHEET_CREATURES = this.AddGameObject("Tilesheet_Creatures", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
+            var TILESHEET_WATER     = this.AddGameObject("Tilesheet_Water", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
 
             // Items
             // ----------------------------------------------------------------
@@ -69,15 +69,15 @@ namespace Maker.twiyol_Base
 
             // Tiles
             // ----------------------------------------------------------------
-            Tile Grass = new Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, TILESHEET_TERRAIN, System.Drawing.Color.FromArgb(36, 81, 11));
-            Grass.SetSoundEffect(new SoundEffectColection(PluginName, "dirtfootstep"));
+            Tile Grass = new Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, TILESHEET_TERRAIN, new Color(36, 81, 11));
+            Grass.SetWalkInSoundEffect(new SoundEffectColection(PluginName, "dirtfootstep"));
 
             var TILE_GRASS         = this.AddGameObject("tile_grass", Grass);
-            var TILE_FLOWER = this.AddGameObject("tile_flower_on_grass", new Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, TILESHEET_TERRAIN, System.Drawing.Color.FromArgb(36, 81, 11)) { });
-            var TILE_SAND = this.AddGameObject("tile_sand", new Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, TILESHEET_TERRAIN, System.Drawing.Color.Yellow));
-            var TILE_STONE         = this.AddGameObject("tile_stone", new Tile(new string[] { "Stone0", "Stone1", "Stone2", "Stone3" }, TILESHEET_TERRAIN, System.Drawing.Color.Gray));
-            var TILE_DIRT          = this.AddGameObject("tile_dirt", new Tile(new string[] { "Dirt0", "Dirt1", "Dirt2", "Dirt3" }, TILESHEET_TERRAIN, System.Drawing.Color.Gray));
-            var TILE_WATER         = this.AddGameObject("tile_water", new Tile(new string[] { "Water" }, TILESHEET_WATER, System.Drawing.Color.Blue));
+            var TILE_FLOWER        = this.AddGameObject("tile_flower_on_grass", new Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, TILESHEET_TERRAIN, new Color(36, 81, 11)) { });
+            var TILE_SAND          = this.AddGameObject("tile_sand", new Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, TILESHEET_TERRAIN, Color.Yellow));
+            var TILE_STONE         = this.AddGameObject("tile_stone", new Tile(new string[] { "Stone0", "Stone1", "Stone2", "Stone3" }, TILESHEET_TERRAIN, Color.Gray));
+            var TILE_DIRT          = this.AddGameObject("tile_dirt", new Tile(new string[] { "Dirt0", "Dirt1", "Dirt2", "Dirt3" }, TILESHEET_TERRAIN, Color.Gray));
+            var TILE_WATER         = this.AddGameObject("tile_water", new Tile(new string[] { "Water" }, TILESHEET_WATER, Color.Blue));
 
             // Entities
             // ----------------------------------------------------------------

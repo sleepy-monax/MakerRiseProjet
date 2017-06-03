@@ -5,22 +5,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Maker.RiseEngine.Core;
 using Maker.RiseEngine.Core.Input;
 using System;
+using Maker.Twiyol.Scenes.Menu;
 
 namespace Maker.Twiyol
 {
-    class twiyolGamePlugin : IPlugin
+    class TwiyolGamePlugin : IPlugin
     {
-        public string PluginName { get; } = "TWIYOL";
+        public string PluginName => "TWIYOL";
 
-        public void Initialize<PluginType>(PluginLoader<PluginType> pluginLoader, engine ENGINE) where PluginType : IPlugin
+        public void Initialize(PluginLoader pluginLoader, GameEngine engine)
         {
-            // Stating the game...
-            Scenes.Menu.MenuBackground b = new Scenes.Menu.MenuBackground();
-            Scenes.Menu.MenuMain m = new Scenes.Menu.MenuMain();
-            rise.ENGINE.ScenesManager.AddScene(b);
-            rise.ENGINE.ScenesManager.AddScene(m);
-            b.show();
-            m.show();
+            MainMenuBackground mainMenuBackground = new MainMenuBackground();
+            MainMenu mainMenu = new MainMenu();
+
+            engine.sceneManager.AddScene(mainMenuBackground);
+            engine.sceneManager.AddScene(mainMenu);
+
+            mainMenuBackground.Show();
+            mainMenu.Show();
         }
     }
 }

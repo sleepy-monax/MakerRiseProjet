@@ -39,30 +39,30 @@ namespace Maker.Twiyol.AI.Entites
         public override void Tick(GameObjectEventArgs e, GameInput playerInput, GameTime gameTime)
         {
            
-            int moveActionIndex = GameComponentManager.GetGameObjectIndex("TWIYOL_Base.Move");
-            int attackActionIndex = GameComponentManager.GetGameObjectIndex("TWIYOL_Base.Attack");
+            int moveActionIndex = GameObjectManager.GetGameObjectIndex("TWIYOL_Base.Move");
+            int attackActionIndex = GameObjectManager.GetGameObjectIndex("TWIYOL_Base.Attack");
 
             if (e.ParrentEntity.Tags.GetTag("ai_action", -1) == -1)
             {
-                if (playerInput.IsKeyBoardKeyDown(rise.engineConfig.Input_MoveUp))
+                if (playerInput.IsKeyBoardKeyDown(Rise.Engine.userConfig.InputMoveUp))
                 {
                     e.ParrentEntity.Tags.SetTag("facing", Facing.Up);
                     e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveUpVariante;
                 }
-                else if (playerInput.IsKeyBoardKeyDown(rise.engineConfig.Input_MoveDown))
+                else if (playerInput.IsKeyBoardKeyDown(Rise.Engine.userConfig.InputMoveDown))
                 {
                     e.ParrentEntity.Tags.SetTag("facing", Facing.Down);
                     e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveDownVariante;
                 }
-                else if (playerInput.IsKeyBoardKeyDown(rise.engineConfig.Input_MoveLeft))
+                else if (playerInput.IsKeyBoardKeyDown(Rise.Engine.userConfig.InputMoveLeft))
                 {
                     e.ParrentEntity.Tags.SetTag("facing", Facing.Left);
                     e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
                     e.ParrentEntity.Variant = MoveLeftVariante;
                 }
-                else if (playerInput.IsKeyBoardKeyDown(rise.engineConfig.Input_MoveRight))
+                else if (playerInput.IsKeyBoardKeyDown(Rise.Engine.userConfig.InputMoveRight))
                 {
                     e.ParrentEntity.Tags.SetTag("facing", Facing.Right);
                     e.ParrentEntity.Tags.SetTag("ai_action", moveActionIndex);
@@ -71,7 +71,7 @@ namespace Maker.Twiyol.AI.Entites
                 else
                 {
 
-                    if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_Attack))
+                    if (playerInput.IsKeyBoardKeyPress(Rise.Engine.userConfig.InputAttack))
                     {
                         e.ParrentEntity.Tags.SetTag("ai_action", attackActionIndex);
                     }

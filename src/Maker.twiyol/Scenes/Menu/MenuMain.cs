@@ -13,7 +13,7 @@ using System;
 
 namespace Maker.Twiyol.Scenes.Menu
 {
-    public class MenuMain : Scene
+    public class MainMenu : Scene
     {
         Texture2D Logo;
         bool asGame = false;
@@ -30,9 +30,9 @@ namespace Maker.Twiyol.Scenes.Menu
         Button buttonQuitteGame;
         Button buttonQuitte;
 
-        public MenuMain() { asGame = false; }
+        public MainMenu() { asGame = false; }
 
-        public MenuMain(Game.GameScene gameScene)
+        public MainMenu(Game.GameScene gameScene)
         {
             CurrentGame = gameScene;
             asGame = true;
@@ -40,11 +40,11 @@ namespace Maker.Twiyol.Scenes.Menu
 
         public override void OnLoad()
         {
-            Logo = rise.ENGINE.RESSOUCES.GetTexture2D("Engine", "Logo");
+            Logo = Rise.Engine.ressourceManager.GetTexture2D("Engine", "Logo");
 
             // Panel.
             rootPanel = new Panel(new Rectangle(-256, -112, 512, 224), new Color(new Vector4(0f)));
-            rootPanel.ControlAnchor = Anchor.Center;
+            rootPanel.Anchor = Anchors.Center;
             rootPanel.Padding = new ControlPadding(16);
             rootPanel.ChildMargin = new ControlPadding(16);
 
@@ -70,12 +70,12 @@ namespace Maker.Twiyol.Scenes.Menu
 
 
             // Create event handle.
-            buttonPlayLastGame.onMouseClick += ButtonPlayLastGame_onMouseClick;
-            buttonQuitteGame.onMouseClick += ButtonQuitteGame_onMouseClick;
-            buttonNewGame.onMouseClick += ButtonNewGame_onMouseClick;
-            buttonQuitte.onMouseClick += ButtonQuitte_onMouseClick;
-            buttonOpenGame.onMouseClick += ButtonOpenGame_onMouseClick;
-            buttonOption.onMouseClick += ButtonOption_onMouseClick;
+            buttonPlayLastGame.MouseClick += ButtonPlayLastGame_onMouseClick;
+            buttonQuitteGame.MouseClick += ButtonQuitteGame_onMouseClick;
+            buttonNewGame.MouseClick += ButtonNewGame_onMouseClick;
+            buttonQuitte.MouseClick += ButtonQuitte_onMouseClick;
+            buttonOpenGame.MouseClick += ButtonOpenGame_onMouseClick;
+            buttonOption.MouseClick += ButtonOption_onMouseClick;
 
             // Add child control to root panel.
             rootPanel.AddChild(buttonPlayLastGame);
@@ -85,9 +85,9 @@ namespace Maker.Twiyol.Scenes.Menu
             rootPanel.AddChild(buttonQuitteGame);
             rootPanel.AddChild(buttonQuitte);
 
-            foreach (var i in rootPanel.Childs)
+            foreach (var i in rootPanel.ChildsControls)
             {
-                i.ControlDock = Dock.Top;
+                i.Dock = Docks.Top;
             }
 
         }
@@ -107,10 +107,10 @@ namespace Maker.Twiyol.Scenes.Menu
                 scene = new MenuOption();
             }
 
-            RiseEngine.ScenesManager.AddScene(scene);
-            scene.show();
+            Engine.sceneManager.AddScene(scene);
+            scene.Show();
 
-            RiseEngine.ScenesManager.RemoveScene(this);
+            Engine.sceneManager.RemoveScene(this);
         }
 
         private void ButtonOpenGame_onMouseClick()
@@ -119,10 +119,10 @@ namespace Maker.Twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuOpenWorld();
-            RiseEngine.ScenesManager.AddScene(scene);
-            scene.show();
+            Engine.sceneManager.AddScene(scene);
+            scene.Show();
 
-            RiseEngine.ScenesManager.RemoveScene(this);
+            Engine.sceneManager.RemoveScene(this);
 
         }
 
@@ -131,12 +131,12 @@ namespace Maker.Twiyol.Scenes.Menu
             CurrentGame.SaveWorld();
 
             CurrentGame.GameUIScene.GoBackToGame(this);
-            RiseEngine.ScenesManager.RemoveScene(CurrentGame.GameUIScene);
-            RiseEngine.ScenesManager.RemoveScene(CurrentGame);
+            Engine.sceneManager.RemoveScene(CurrentGame.GameUIScene);
+            Engine.sceneManager.RemoveScene(CurrentGame);
 
-            MenuMain m = new MenuMain();
-            m.show();
-            RiseEngine.ScenesManager.AddScene(m);
+            MainMenu m = new MainMenu();
+            m.Show();
+            Engine.sceneManager.AddScene(m);
 
         }
 
@@ -150,24 +150,24 @@ namespace Maker.Twiyol.Scenes.Menu
             this.hide();
 
             Scene scene = new MenuNewWorld();
-            RiseEngine.ScenesManager.AddScene(scene);
-            scene.show();
+            Engine.sceneManager.AddScene(scene);
+            scene.Show();
 
-            RiseEngine.ScenesManager.RemoveScene(this);
+            Engine.sceneManager.RemoveScene(this);
         }
 
         private void ButtonQuitte_onMouseClick()
         {
             CurrentGame?.SaveWorld();
-            rise.STOP();
+            Rise.STOP();
         }
 
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
-            spriteBatch.Draw(Logo, new Vector2(rise.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, rise.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
-            spriteBatch.Draw(Logo, new Vector2(rise.graphics.PreferredBackBufferWidth / 2 - Logo.Width / 2, rise.graphics.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
+            spriteBatch.Draw(Logo, new Vector2(Engine.graphicsDeviceManager.PreferredBackBufferWidth / 2 - Logo.Width / 2 + 2, Engine.graphicsDeviceManager.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230 + 2), new Color(0, 0, 0, 125));
+            spriteBatch.Draw(Logo, new Vector2(Engine.graphicsDeviceManager.PreferredBackBufferWidth / 2 - Logo.Width / 2, Engine.graphicsDeviceManager.PreferredBackBufferHeight / 2 - Logo.Height / 2 - 230));
 
             rootPanel.Draw(spriteBatch, gameTime);
 
@@ -177,7 +177,7 @@ namespace Maker.Twiyol.Scenes.Menu
         public override void OnUpdate(GameInput playerInput, GameTime gameTime)
         {
 
-            if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_ShowMenu)) {
+            if (playerInput.IsKeyBoardKeyPress(Engine.userConfig.InputShowMainMenu)) {
                 CurrentGame.GameUIScene.GoBackToGame(this);
             }
             

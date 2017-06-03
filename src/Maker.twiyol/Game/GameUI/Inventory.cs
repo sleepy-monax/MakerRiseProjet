@@ -27,7 +27,7 @@ namespace Maker.Twiyol.Game.GameUI
             G = game;
             Slots = new List<ItemSlot>();
             rootPanel = new Panel(new Rectangle(-256, -128, 512, 256), Color.White);
-            rootPanel.ControlAnchor = Anchor.Center;
+            rootPanel.Anchor = Anchors.Center;
             PlayerInventory = Player.Tags.GetTag("inventory", new DataInventory(32));
 
             for (int x = 0; x < 8; x++)
@@ -60,7 +60,7 @@ namespace Maker.Twiyol.Game.GameUI
         {
             rootPanel.Update(playerInput, gameTime);
 
-            if (playerInput.IsKeyBoardKeyPress(rise.engineConfig.Input_ShowMenu)) {
+            if (playerInput.IsKeyBoardKeyPress(Engine.userConfig.InputShowMainMenu)) {
 
                 G.GameUIScene.GoBackToGame(this);
             }

@@ -3,3 +3,13 @@ C:\Users\nicov\Documents\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\D
 C:\Users\nicov\Documents\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.pdb
 C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Plugins\twiyol_Base\twiyol_Base.dll
 C:\Users\nicov\Documents\MakerRiseProjet\src\Assemblie\Plugins\twiyol_Base\twiyol_Base.pdb
+D:\MakerRiseProjet\src\Assemblie\Plugins\twiyol_Base\twiyol_Base.dll
+D:\MakerRiseProjet\src\Assemblie\Plugins\twiyol_Base\twiyol_Base.pdb
+D:\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\Maker.Twiyol.Base.csprojResolveAssemblyReference.cache
+D:\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.dll
+D:\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.pdb
+E:\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\Maker.Twiyol.Base.csprojResolveAssemblyReference.cache
+E:\MakerRiseProjet\src\Assemblie\Plugins\twiyol_Base\twiyol_Base.dll
+E:\MakerRiseProjet\src\Assemblie\Plugins\twiyol_Base\twiyol_Base.pdb
+E:\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.dll
+E:\MakerRiseProjet\src\MakerRiseEngine.DefaultPlugin\obj\Debug\twiyol_Base.pdb

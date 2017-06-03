@@ -5,9 +5,7 @@ using Maker.RiseEngine.Core.Rendering.SpriteSheets;
 using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System;
 
 namespace Maker.Twiyol.GameObject.Tiles
 {
@@ -15,60 +13,37 @@ namespace Maker.Twiyol.GameObject.Tiles
     {
         public string GameObjectName { get; set; }
         public string PluginName { get; set; }
-
-        public System.Drawing.Color MapColor { get; set; }
-
+        public Color MapColor { get; set; }
         public int MaxVariantCount { get; set; }
+        public List<Sprite> SpriteVariante;
 
-        public DrawLayer Layer => throw new NotImplementedException();
+        SoundEffectColection walkInSoundEffect;
 
-        public List<Sprite> Variant;
-
-        SoundEffectColection SE;
-
-        public Tile(string[] _SpriteVariant, int spriteSheetID, System.Drawing.Color _MapColor)
+        public Tile(string[] tileVariantSprite, int spriteSheetID, Color onMiniMapColor)
         {
-            MapColor = _MapColor;
+            SpriteVariante = new List<Sprite>();
 
-            this.Variant = new List<Sprite>();
+            MapColor = onMiniMapColor;
+            MaxVariantCount = SpriteVariante.Count;
 
-            foreach (string str in _SpriteVariant)
+            foreach (string str in tileVariantSprite)
             {
-
-                Variant.Add(GameComponentManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(str));
-
+                SpriteVariante.Add(GameObjectManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(str));
             }
-            MaxVariantCount = Variant.Count;
+        }
+
+        public void OnGameObjectAdded()
+        {
 
         }
 
-        public void SetSoundEffect(SoundEffectColection _SE)
+        public virtual void Draw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
         {
-
-            SE = _SE;
-
-        }
-
-        public void Draw(GameObjectEventArgs e, SpriteBatch spritebatch, GameTime gametime)
-        {
-            Variant[e.ParrentTile.Variant].Draw(spritebatch,
+            SpriteVariante[e.ParrentTile.Variant].Draw(spritebatch,
                 new Rectangle(
                 new Point(e.OnScreenLocation.X - e.Game.Camera.TileUnit / 2, e.OnScreenLocation.Y - e.Game.Camera.TileUnit / 2),
                 new Point(e.Game.Camera.TileUnit * 2, e.Game.Camera.TileUnit * 2)),
                 Color.White, gametime);
-
-        }
-
-        public void OnEntityWalkIn(GameObjectEventArgs e, GameTime gametime)
-        {
-
-            if (SE != null)
-                SoundEffectEngine.PlaySoundEffect(SE);
-
-        }
-
-        public void Tick(GameObjectEventArgs e, GameTime gametime)
-        {
 
         }
 
@@ -77,8 +52,23 @@ namespace Maker.Twiyol.GameObject.Tiles
 
         }
 
-        public void OnGameObjectAdded()
+        public void Tick(GameObjectEventArgs e, GameTime gametime)
         {
+
+        }
+
+        public void OnEntityWalkIn(GameObjectEventArgs e, GameTime gametime)
+        {
+            /*
+            if (walkInSoundEffect != null)
+                SoundEffectManager.PlaySoundEffect(walkInSoundEffect);
+                */
+        }
+
+        public void SetWalkInSoundEffect(SoundEffectColection SoundEffect)
+        {
+
+            walkInSoundEffect = SoundEffect;
 
         }
     }

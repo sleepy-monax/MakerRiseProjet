@@ -51,30 +51,30 @@ namespace Maker.Twiyol.Scenes.Menu
 
             rootPanel = new Panel(new Rectangle(-256, -208, 512, 416), Color.Transparent)
             {
-                ControlAnchor = Anchor.Center,
+                Anchor = Anchors.Center,
                 Padding = new ControlPadding(16),
                 ChildMargin = new ControlPadding(16)
             };
 
             titleLabel = new Label("Options", new Rectangle(0, -80, 512, 64), Color.White);
             titleLabel.TextStyle = Style.rectangle;
-            titleLabel.TextFont = RiseEngine.RESSOUCES.GetSpriteFont("Engine", "Bebas_Neue_48pt");
+            titleLabel.TextFont = Engine.ressourceManager.GetSpriteFont("Engine", "Bebas_Neue_48pt");
 
             buttonInput = new Button("Controls", new Rectangle(0, 0, 64, 64), Color.White);
-            buttonInput.ControlDock = Dock.Top;
+            buttonInput.Dock = Docks.Top;
 
             buttonGameplay = new Button("Jeux", new Rectangle(0, 0, 64, 64), Color.White);
-            buttonGameplay.ControlDock = Dock.Top;
+            buttonGameplay.Dock = Docks.Top;
 
             buttonSound = new Button("Sons", new Rectangle(0, 0, 64, 64), Color.White);
-            buttonSound.ControlDock = Dock.Top;
+            buttonSound.Dock = Docks.Top;
 
             buttonGraphics = new Button("Graphismes", new Rectangle(0, 0, 64, 64), Color.White);
-            buttonGraphics.ControlDock = Dock.Top;
+            buttonGraphics.Dock = Docks.Top;
 
             buttonBack = new Button("Retour", new Rectangle(0, 0, 64, 64), Color.White);
-            buttonBack.ControlDock = Dock.Top;
-            buttonBack.onMouseClick += GoBack;
+            buttonBack.Dock = Docks.Top;
+            buttonBack.MouseClick += GoBack;
 
             rootPanel.AddChild(titleLabel);
             rootPanel.AddChild(buttonInput);
@@ -90,12 +90,12 @@ namespace Maker.Twiyol.Scenes.Menu
             // Go back to the MainMenu.
             Scene menu;
 
-            if (asGame) menu = new MenuMain(CurrentGame);
-            else menu = new MenuMain();
+            if (asGame) menu = new MainMenu(CurrentGame);
+            else menu = new MainMenu();
             // Hide the current scene and show the main menu.            
-            RiseEngine.ScenesManager.AddScene(menu);
-            menu.show();
-            RiseEngine.ScenesManager.RemoveScene(this);
+            Engine.sceneManager.AddScene(menu);
+            menu.Show();
+            Engine.sceneManager.RemoveScene(this);
         }
 
         public override void OnUnload()

@@ -24,7 +24,7 @@ namespace Maker.Twiyol.Generator
             DataRegion NewRegion = new DataRegion();
             NewRegion.Name = "Region_" + ID;
             NewRegion.Origine = Location;
-            NewRegion.BiomeID = GameComponentManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
+            NewRegion.BiomeID = GameObjectManager.GetGameObjectIndex(GameObject.Biome.Biomes[rnd.Next(GameObject.Biome.Biomes.Count)]);
             //NewRegion.Color = new Color(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
 
