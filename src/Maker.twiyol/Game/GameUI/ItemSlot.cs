@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.UserInterface;
+﻿using Maker.RiseEngine.UserInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Input;
 
 using Maker.Twiyol.Inventory;
-using Maker.RiseEngine.Core;
+using Maker.RiseEngine;
 
 namespace Maker.Twiyol.Game.GameUI
 {
@@ -27,7 +27,7 @@ namespace Maker.Twiyol.Game.GameUI
 
         public override void OnDraw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            DrawT2D(spriteBatch, slotT2D, new Rectangle(0, 0, 64, 64), Color.White);
+            DrawTexture2D(spriteBatch, slotT2D, new Rectangle(0, 0, 64, 64), Color.White);
             if (Inventory.Slots[ItemIndex] != null) {
 
                 DrawSprite(spriteBatch, Inventory.Slots[ItemIndex].ToGameObject().ItemSprite , new Rectangle(0, 0, 64, 64), Color.White, gameTime);

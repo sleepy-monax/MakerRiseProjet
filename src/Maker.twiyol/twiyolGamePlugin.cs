@@ -1,9 +1,9 @@
-﻿using Maker.RiseEngine.Core.Plugin;
-using Maker.RiseEngine.Core.GameObjects;
+﻿using Maker.RiseEngine.Plugin;
+using Maker.RiseEngine.GameObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine;
+using Maker.RiseEngine.Input;
 using System;
 using Maker.Twiyol.Scenes.Menu;
 
@@ -11,7 +11,7 @@ namespace Maker.Twiyol
 {
     class TwiyolGamePlugin : IPlugin
     {
-        public string PluginName => "TWIYOL";
+        public string Name => "TWIYOL";
 
         public void Initialize(PluginLoader pluginLoader, GameEngine engine)
         {

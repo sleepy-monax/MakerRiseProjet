@@ -1,7 +1,7 @@
-﻿using Maker.RiseEngine.Core;
+﻿using Maker.RiseEngine;
 
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.Rendering;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.Rendering;
 using Maker.Twiyol.Game.WorldDataStruct;
 using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;

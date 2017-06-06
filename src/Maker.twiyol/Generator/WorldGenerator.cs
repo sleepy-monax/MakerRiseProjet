@@ -1,14 +1,15 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.EngineDebug;
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.MathExt;
-using Maker.RiseEngine.Core.Plugin;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.EngineDebug;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.MathExt;
+using Maker.RiseEngine.Plugin;
 using Maker.Twiyol.Events;
 using Maker.Twiyol.Game.GameUtils;
 using Maker.Twiyol.Game.WorldDataStruct;
 using Maker.Twiyol.Generator.GeneratorFeatures;
 using Maker.Twiyol.Scenes;
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -21,16 +22,14 @@ namespace Maker.Twiyol.Generator
 
         GeneratorProperty GeneratorProperty;
         RegionGenerator regionGenerator;
-        System.Random Rnd;
-        FastRandom FastRnd;
+        Random random;
 
         private List<int> GeneratorFeatures;
 
         public WorldGenerator(GeneratorProperty generatorProperty)
         {
             GeneratorProperty = generatorProperty;
-            Rnd = new System.Random(generatorProperty.Seed);
-            FastRnd = new FastRandom(generatorProperty.Seed);
+            random = new Random(generatorProperty.Seed);
             regionGenerator = new RegionGenerator(this);
             GeneratorFeatures = new List<int>();
         }
@@ -57,18 +56,18 @@ namespace Maker.Twiyol.Generator
             int[,] regionGrid = new int[maxWorldSize, maxWorldSize];
 
             // Adding randome Region
-            DebugLogs.WriteLog("Creating Random Point...", LogType.Info, "WorldGenerator");
+            Debug.WriteLog("Creating Random Point...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation des régions...";
             Thread.Sleep(500);
 
             for (int rID = 0; rID <= GeneratorProperty.MaxRegionCount; rID++)
             {
                 // Get Random Region location.
-                int x = FastRnd.Next(maxWorldSize);
-                int y = FastRnd.Next(maxWorldSize);
+                int x = random.Next(maxWorldSize);
+                int y = random.Next(maxWorldSize);
 
                 // Create the region.
-                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), newWorld, Rnd);
+                regionGenerator.GenerateRegion(rID, Location.ToWorldLocation(new Microsoft.Xna.Framework.Point(x, y)), newWorld, random);
 
                 // Create the source tile.
                 regionGrid.SetTile(x, y, rID);
@@ -77,7 +76,7 @@ namespace Maker.Twiyol.Generator
             }
 
             //expanding Region
-            DebugLogs.WriteLog("Expending Region...", LogType.Info, "WorldGenerator");
+            Debug.WriteLog("Expending Region...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Expansion des regions...";
             Thread.Sleep(500);
 
@@ -92,7 +91,7 @@ namespace Maker.Twiyol.Generator
                         {
 
                             int RegionID = regionGrid[x, y];
-                            int Direction = FastRnd.Next(0, 5);
+                            int Direction = random.Next(0, 5);
 
                             // Placing Pixel at coordinate.
                             switch (Direction)
@@ -125,7 +124,7 @@ namespace Maker.Twiyol.Generator
 
 
             // Apply generator features.
-            DebugLogs.WriteLog("Apply features...", LogType.Info, "WorldGenerator");
+            Debug.WriteLog("Apply features...", LogType.Info, "WorldGenerator");
             sceneGen.message = "Apply features...";
 
             foreach (int id in GeneratorFeatures)
@@ -134,7 +133,7 @@ namespace Maker.Twiyol.Generator
             }
 
             // Set loading message.
-            DebugLogs.WriteLog("Converting Chunk... ", LogType.Info, "WorldGenerator");
+            Debug.WriteLog("Converting Chunk... ", LogType.Info, "WorldGenerator");
             sceneGen.message = "Creation du Terrain...";
             Thread.Sleep(500);
 
@@ -168,7 +167,7 @@ namespace Maker.Twiyol.Generator
             GameEventHandler.RaiseOnWorldGeneratingEnd(this, newWorld, this);
 
             stopwatch.Stop();
-            DebugLogs.WriteLog("Generator elapsed time : " + stopwatch.ToString(), LogType.Info, "WorldGenerator");
+            Debug.WriteLog("Generator elapsed time : " + stopwatch.ToString(), LogType.Info, "WorldGenerator");
 
             game.sceneManager.RemoveScene(sceneGen);
 

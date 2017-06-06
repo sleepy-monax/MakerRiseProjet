@@ -1,6 +1,6 @@
-﻿using Maker.RiseEngine.Core.EngineDebug;
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.MathExt;
+﻿using Maker.RiseEngine.EngineDebug;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.MathExt;
 using Maker.Twiyol.Game.WorldDataStruct;
 using Maker.Twiyol.GameObject;
 using System;
@@ -47,7 +47,7 @@ namespace Maker.Twiyol.Generator
             Chunk.chunkStatut = chunkStatutList.onDecoration;
 
 
-            DebugLogs.WriteLog("Generating " + cX + ":" + cY + "...", LogType.Info);
+            Debug.WriteLog("Generating " + cX + ":" + cY + "...", LogType.Info);
 
             for (int tX = 0; tX <= 15; tX++)
             {

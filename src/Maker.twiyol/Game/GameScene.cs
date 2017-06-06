@@ -1,9 +1,9 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.MathExt;
-using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core.Storage;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.MathExt;
+using Maker.RiseEngine.Rendering;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine.Storage;
 
 using Maker.Twiyol.Game.GameUtils;
 using Maker.Twiyol.Game.WorldDataStruct;
@@ -43,17 +43,11 @@ namespace Maker.Twiyol.Game
             World = world;
             Rnd = new Random(World.Seed);
             chunkDecorator = new Generator.ChunkDecorator(this, Rnd);
-
             worldUpdater = new WorldUpdater(this);
             eventsManager = new EventsManager(this);
             miniMap = new MiniMap(this);
-
             Camera = new GameCamera(this);
-
-
             GameUIScene = new GameUIScene(this);
-
-
         }
 
         // Implement interface.
@@ -63,6 +57,8 @@ namespace Maker.Twiyol.Game
             
             if (PauseSimulation)
             {
+                spriteBatch.Draw(WorldRenderTarget, new Rectangle(0, 0, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), Color.White);
+                spriteBatch.Draw(WorldRenderTarget, new Rectangle(1, 1, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), new Color(255, 255, 255, 150));
                 spriteBatch.FillRectangle(new Rectangle(0, 0, Engine.graphicsDeviceManager.PreferredBackBufferWidth, Engine.graphicsDeviceManager.PreferredBackBufferHeight), new Color(0, 0, 0, 150));
             }
             else
@@ -95,12 +91,13 @@ namespace Maker.Twiyol.Game
         {
             worldRender = new WorldRender(Engine, this);
             WorldRenderTarget = new RenderTarget2D(
-    Engine.GraphicsDevice,
-    Engine.GraphicsDevice.PresentationParameters.BackBufferWidth,
-    Engine.GraphicsDevice.PresentationParameters.BackBufferHeight,
-    false,
-    Engine.GraphicsDevice.PresentationParameters.BackBufferFormat,
-    DepthFormat.Depth24);
+                Engine.GraphicsDevice,
+                Engine.GraphicsDevice.PresentationParameters.BackBufferWidth,
+                Engine.GraphicsDevice.PresentationParameters.BackBufferHeight,
+                false,
+                Engine.GraphicsDevice.PresentationParameters.BackBufferFormat,
+                DepthFormat.Depth24);
+
             Engine.songManager.SwitchSong("Engine", "A Title");
             Engine.sceneManager.AddScene(GameUIScene);
             GameUIScene.Show();

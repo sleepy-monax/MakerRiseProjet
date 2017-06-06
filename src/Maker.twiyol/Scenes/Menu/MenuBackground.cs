@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Audio;
-using Maker.RiseEngine.Core.Input;
+
+using Maker.RiseEngine.Rendering;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine;
+using Maker.RiseEngine.Input;
 
 namespace Maker.Twiyol.Scenes.Menu
 {

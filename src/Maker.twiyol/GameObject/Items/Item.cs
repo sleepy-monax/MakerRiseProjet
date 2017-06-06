@@ -1,5 +1,5 @@
-﻿using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.Rendering.SpriteSheets;
 using System.Collections.Generic;
 
 namespace Maker.Twiyol.GameObject.Items

@@ -1,6 +1,6 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Scenes;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.Scenes;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

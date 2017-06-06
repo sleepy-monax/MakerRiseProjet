@@ -1,6 +1,6 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.Input;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.Input;
 using Maker.Twiyol.GameObject.Event;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

@@ -35,81 +35,57 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Core\MakerRiseLogo.ico</ApplicationIcon>
+    <ApplicationIcon>MakerRiseLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Core\Audio\SongManager.cs" />
-    <Compile Include="Core\Audio\SoundEffect.cs" />
-    <Compile Include="Core\Audio\SoundEffectManager.cs" />
-    <Compile Include="Core\Config\EngineConfig.cs" />
-    <Compile Include="Core\GameEngine.cs" />
-    <Compile Include="Core\EngineDebug\DebugLogs.cs" />
-    <Compile Include="Core\EngineDebug\debugScreen.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\CommandHistory.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\CommandProcesser.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\ClearScreenCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\CommandComparer.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\CustomCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\ExitCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\HelpCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\IConsoleCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\Plugin\PlugCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\Plugin\PlugInfoCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Commands\Plugin\PlugListCommand.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\EngineConsole.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\EngineConsoleOptions.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\InputProcessor.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\OutputLine.cs" />
-    <Compile Include="Core\EngineDebug\EngineConsole\Renderer.cs" />
-    <Compile Include="Core\EngineDebug\FrameCounter.cs" />
-    <Compile Include="Core\GameObject\GameObjectManager.cs" />
-    <Compile Include="Core\GameObject\IDrawableGameObject.cs" />
-    <Compile Include="Core\GameObject\IGameComponent.cs" />
-    <Compile Include="Core\Idrawable.cs" />
-    <Compile Include="Core\Input\GameInput.cs" />
-    <Compile Include="Core\MathExt\FastRandom.cs" />
-    <Compile Include="Core\MathExt\Geometry.cs" />
-    <Compile Include="Core\MathExt\KeyWeightPair.cs" />
-    <Compile Include="Core\MathExt\MinMax.cs" />
-    <Compile Include="Core\MathExt\Noise\Perlin.cs" />
-    <Compile Include="Core\MathExt\Noise\Simplex.cs" />
-    <Compile Include="Core\MathExt\RandomHelper.cs" />
-    <Compile Include="Core\MathExt\RectangleF.cs" />
-    <Compile Include="Core\MathExt\Utils.cs" />
-    <Compile Include="Core\Network\HTTPServer.cs" />
-    <Compile Include="Core\Plugin\Builder.cs" />
-    <Compile Include="Core\Plugin\IPlugin.cs" />
-    <Compile Include="Core\Plugin\PluginLoader.cs" />
+    <Compile Include="Audio.cs" />
+    <Compile Include="Config\EngineConfig.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="EngineDebug\debugScreen.cs" />
+    <Compile Include="EngineDebug\FrameCounter.cs" />
+    <Compile Include="GameObject\GameObjectManager.cs" />
+    <Compile Include="GameObject\IDrawableGameObject.cs" />
+    <Compile Include="GameObject\IGameComponent.cs" />
+    <Compile Include="Idrawable.cs" />
+    <Compile Include="Input\GameInput.cs" />
+    <Compile Include="MathExt\KeyWeightPair.cs" />
+    <Compile Include="MathExt\Noise\Perlin.cs" />
+    <Compile Include="MathExt\RandomHelper.cs" />
+    <Compile Include="MathExt\MathUtils.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
+    <Compile Include="Plugin\PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\Rendering\BitmapHelper.cs" />
-    <Compile Include="Core\Rendering\Parallax.cs" />
-    <Compile Include="Core\Rendering\Primitives2D.cs" />
-    <Compile Include="Core\Rendering\SpriteFontDraw.cs" />
-    <Compile Include="Core\Rendering\SpriteSheets\CommonSheets.cs" />
-    <Compile Include="Core\Rendering\SpriteSheets\Sprite.cs" />
-    <Compile Include="Core\Rendering\SpriteSheets\SpriteSheet.cs" />
-    <Compile Include="Core\Rendering\SpriteSheets\SpriteSheetColectionItem.cs" />
-    <Compile Include="Core\RessourcesManager.cs" />
-    <Compile Include="Core\rise.cs" />
-    <Compile Include="Core\Scenes\EngineLoading.cs" />
-    <Compile Include="Core\Scenes\Scene.cs" />
-    <Compile Include="Core\Scenes\SceneManager.cs" />
-    <Compile Include="Core\Storage\DataSheet.cs" />
-    <Compile Include="Core\Storage\FileFormatHelper.cs" />
-    <Compile Include="Core\Storage\ListSheet.cs" />
-    <Compile Include="Core\Storage\SerializationHelper.cs" />
-    <Compile Include="Core\UserInterface\Control.cs" />
-    <Compile Include="Core\UserInterface\Controls\Button.cs" />
-    <Compile Include="Core\UserInterface\Controls\Console.cs" />
-    <Compile Include="Core\UserInterface\Controls\Graph.cs" />
-    <Compile Include="Core\UserInterface\Controls\Label.cs" />
-    <Compile Include="Core\UserInterface\Controls\Panel.cs" />
-    <Compile Include="Core\UserInterface\Controls\PictureBox.cs" />
-    <Compile Include="Core\UserInterface\Controls\TextBox.cs" />
+    <Compile Include="Rendering\BitmapHelper.cs" />
+    <Compile Include="Rendering\Parallax.cs" />
+    <Compile Include="Rendering\Primitives2D.cs" />
+    <Compile Include="Rendering\SpriteFontDraw.cs" />
+    <Compile Include="Rendering\SpriteSheets\Sprite.cs" />
+    <Compile Include="Rendering\SpriteSheets\SpriteSheet.cs" />
+    <Compile Include="RessourcesManager.cs" />
+    <Compile Include="Ressources\Common.cs" />
+    <Compile Include="Ressources\DataFile.cs" />
+    <Compile Include="Ressources\Helper.cs" />
+    <Compile Include="rise.cs" />
+    <Compile Include="Scenes\EngineLoading.cs" />
+    <Compile Include="Scenes\Scene.cs" />
+    <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Storage\DataSheet.cs" />
+    <Compile Include="Storage\FileFormatHelper.cs" />
+    <Compile Include="Storage\ListSheet.cs" />
+    <Compile Include="Storage\SerializationHelper.cs" />
+    <Compile Include="UserInterface\Control.cs" />
+    <Compile Include="UserInterface\Controls\Button.cs" />
+    <Compile Include="UserInterface\Controls\Console.cs" />
+    <Compile Include="UserInterface\Controls\Graph.cs" />
+    <Compile Include="UserInterface\Controls\Label.cs" />
+    <Compile Include="UserInterface\Controls\Panel.cs" />
+    <Compile Include="UserInterface\Controls\PictureBox.cs" />
+    <Compile Include="UserInterface\Controls\TextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -122,10 +98,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Core\MakerRiseLogo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <Content Include="MakerRiseLogo.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

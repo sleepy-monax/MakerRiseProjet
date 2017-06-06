@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObjects;
+﻿using Maker.RiseEngine.GameObjects;
 
 using Maker.Twiyol.Game.GameUtils;
 using Maker.Twiyol.GameObject;

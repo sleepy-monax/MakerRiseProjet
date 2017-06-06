@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.Input;
+﻿using Maker.RiseEngine.Input;
 
 using Maker.Twiyol.AI;
 using Maker.Twiyol.GameObject.Event;

@@ -1,10 +1,10 @@
-﻿using Maker.RiseEngine.Core;
+﻿using Maker.RiseEngine;
 
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core.Storage;
-using Maker.RiseEngine.Core.UserInterface;
-using Maker.RiseEngine.Core.UserInterface.Controls;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine.Storage;
+using Maker.RiseEngine.UserInterface;
+using Maker.RiseEngine.UserInterface.Controls;
 using Maker.Twiyol.Game.WorldDataStruct;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,7 +32,7 @@ namespace Maker.Twiyol.Scenes.Menu
             RootContainer.ChildMargin = new ControlPadding(16);
 
             MenuTitle = new Label("Charger un monde", new Rectangle(0, 0, 64, 64), Color.White);
-            MenuTitle.TextStyle = Maker.RiseEngine.Core.Rendering.Style.rectangle;
+            MenuTitle.TextStyle = Maker.RiseEngine.Rendering.Style.rectangle;
             MenuTitle.Dock = Docks.Top;
             MenuTitle.TextFont = Engine.ressourceManager.GetSpriteFont("Engine", "Bebas_Neue_48pt");
 
@@ -53,16 +53,6 @@ namespace Maker.Twiyol.Scenes.Menu
 
             RootContainer.AddChild(MenuTitle);
             RootContainer.AddChild(controlContainer);
-
-            WorldNameTextBox = new TextBox("", new Rectangle(0, 0, 200, 64), Color.White, Color.Black);
-            WorldNameTextBox.Dock = Docks.Top;
-            RootContainer.AddChild(WorldNameTextBox);
-            Button ButtonLoadWorld = new Button("Load World", new Rectangle(0, 0, 64, 64), Color.White);
-            ButtonLoadWorld.Dock = Docks.Top;
-            ButtonLoadWorld.MouseClick += B_MouseClick;
-
-            RootContainer.AddChild(ButtonLoadWorld);
-            return;
 
             foreach (var i in Directory.GetFiles("Saves"))
             {
@@ -93,7 +83,7 @@ namespace Maker.Twiyol.Scenes.Menu
             t.Start();
         }
 
-        private void CreateNewWorldButton_onMouseClick()
+        private void CreateNewWorldButton_onMouseClick(Control sender)
         {
             this.hide();
 
@@ -104,7 +94,7 @@ namespace Maker.Twiyol.Scenes.Menu
             Engine.sceneManager.RemoveScene(this);
         }
 
-        private void GoBackButton_onMouseClick()
+        private void GoBackButton_onMouseClick(Control sender)
         {
             Scene menu = new Menu.MainMenu();
             Engine.sceneManager.AddScene(menu);

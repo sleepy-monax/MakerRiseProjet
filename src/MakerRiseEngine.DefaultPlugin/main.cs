@@ -1,9 +1,9 @@
-﻿using Maker.RiseEngine.Core.Audio;
-
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.MathExt;
-using Maker.RiseEngine.Core.Plugin;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.Audio;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.MathExt;
+using Maker.RiseEngine.Plugin;
+using Maker.RiseEngine.Rendering.SpriteSheets;
 
 using Maker.Twiyol.AI.Action;
 using Maker.Twiyol.AI.Entites;
@@ -17,22 +17,20 @@ using Maker.Twiyol.GameObject.Tiles;
 using Maker.Twiyol.Generator.EntitiesDistribution;
 
 using Microsoft.Xna.Framework;
+
 using System;
-using Maker.RiseEngine.Core;
 
 namespace Maker.twiyol_Base
 {
     public class Plugin : IPlugin
     {
-        public string PluginName
+        public string Name
         {
             get
             {
                 return "TWIYOL_Base";
             }
         }
-
-        
 
         public void Initialize(PluginLoader pluginLoader, GameEngine gameEngine)
         {
@@ -47,11 +45,11 @@ namespace Maker.twiyol_Base
             // TileSheets
             // ----------------------------------------------------------------
 
-            var TILESHEET_TERRAIN   = this.AddGameObject("Tilesheet_Terrain", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
-            var TILESHEET_ENTITY    = this.AddGameObject("Tilesheet_Entity", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
-            var TILESHEET_ITEM      = this.AddGameObject("Tilesheet_Item", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
-            var TILESHEET_CREATURES = this.AddGameObject("Tilesheet_Creatures", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
-            var TILESHEET_WATER     = this.AddGameObject("Tilesheet_Water", new SpriteSheet(PluginName, gameEngine.ressourceManager.GetTexture2D(PluginName, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
+            var TILESHEET_TERRAIN   = this.AddGameObject("Tilesheet_Terrain", new SpriteSheet(Name, gameEngine.ressourceManager.GetTexture2D(Name, "Tilesheet_Terrain"), "Tilesheet_Terrain", new Point(32)));
+            var TILESHEET_ENTITY    = this.AddGameObject("Tilesheet_Entity", new SpriteSheet(Name, gameEngine.ressourceManager.GetTexture2D(Name, "Tilesheet_Entity"), "Tilesheet_Entity", new Point(16)));
+            var TILESHEET_ITEM      = this.AddGameObject("Tilesheet_Item", new SpriteSheet(Name, gameEngine.ressourceManager.GetTexture2D(Name, "Tilesheet_Item"), "Tilesheet_Item", new Point(16)));
+            var TILESHEET_CREATURES = this.AddGameObject("Tilesheet_Creatures", new SpriteSheet(Name, gameEngine.ressourceManager.GetTexture2D(Name, "Tilesheet_Creatures"), "Tilesheet_Creatures", new Point(16)));
+            var TILESHEET_WATER     = this.AddGameObject("Tilesheet_Water", new SpriteSheet(Name, gameEngine.ressourceManager.GetTexture2D(Name, "Tilesheet_Water"), "Tilesheet_Water", new Point(32)));
 
             // Items
             // ----------------------------------------------------------------
@@ -70,28 +68,28 @@ namespace Maker.twiyol_Base
             // Tiles
             // ----------------------------------------------------------------
             Tile Grass = new Tile(new string[] { "Grass0", "Grass1", "Grass2", "Grass3" }, TILESHEET_TERRAIN, new Color(36, 81, 11));
-            Grass.SetWalkInSoundEffect(new SoundEffectColection(PluginName, "dirtfootstep"));
+            Grass.SetWalkInSoundEffect(new SoundEffectColection(gameEngine, Name, "dirtfootstep"));
 
-            var TILE_GRASS         = this.AddGameObject("tile_grass", Grass);
-            var TILE_FLOWER        = this.AddGameObject("tile_flower_on_grass", new Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, TILESHEET_TERRAIN, new Color(36, 81, 11)) { });
-            var TILE_SAND          = this.AddGameObject("tile_sand", new Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, TILESHEET_TERRAIN, Color.Yellow));
-            var TILE_STONE         = this.AddGameObject("tile_stone", new Tile(new string[] { "Stone0", "Stone1", "Stone2", "Stone3" }, TILESHEET_TERRAIN, Color.Gray));
-            var TILE_DIRT          = this.AddGameObject("tile_dirt", new Tile(new string[] { "Dirt0", "Dirt1", "Dirt2", "Dirt3" }, TILESHEET_TERRAIN, Color.Gray));
-            var TILE_WATER         = this.AddGameObject("tile_water", new Tile(new string[] { "Water" }, TILESHEET_WATER, Color.Blue));
+            var TILE_GRASS  = this.AddGameObject("tile_grass", Grass);
+            var TILE_FLOWER = this.AddGameObject("tile_flower_on_grass", new Tile(new string[] { "YellowFlowerGrass", "PurpleFlowerGrass" }, TILESHEET_TERRAIN, new Color(36, 81, 11)) { });
+            var TILE_SAND   = this.AddGameObject("tile_sand", new Tile(new string[] { "Sand0", "Sand1", "Sand2", "Sand3" }, TILESHEET_TERRAIN, Color.Yellow));
+            var TILE_STONE  = this.AddGameObject("tile_stone", new Tile(new string[] { "Stone0", "Stone1", "Stone2", "Stone3" }, TILESHEET_TERRAIN, Color.Gray));
+            var TILE_DIRT   = this.AddGameObject("tile_dirt", new Tile(new string[] { "Dirt0", "Dirt1", "Dirt2", "Dirt3" }, TILESHEET_TERRAIN, Color.Gray));
+            var TILE_WATER  = this.AddGameObject("tile_water", new Tile(new string[] { "Water" }, TILESHEET_WATER, Color.Blue));
 
             // Entities
             // ----------------------------------------------------------------
-            var ENTITY_TREE_BIG    = this.AddGameObject("entity_tree_big", new Entity(new string[] { "BigTree0" }, TILESHEET_ENTITY, new Vector2(-0.5f, -3f)));
-            var ENTITY_TREE_PIN    = this.AddGameObject("entity_tree_pin", new Entity(new string[] { "PinTree0" }, TILESHEET_ENTITY, new Vector2(-0.5f, -3f)));
-            var ENTITY_TREE_LARGE  = this.AddGameObject("entity_tree_large", new Entity(new string[] { "LargeTree0" }, TILESHEET_ENTITY , new Vector2(-0.5f, -1f)));
-            var ENTITY_TREE_STUMP  = this.AddGameObject("entity_tree_stump", new Entity(new string[] { "stump0", "stump1", "stump2" }, TILESHEET_ENTITY, new Vector2(0)));
-            var ENTITY_ROCK        = this.AddGameObject("entity_rock", new Entity(new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, TILESHEET_ENTITY, new Vector2(0)));
-            var ENTITY_PLANT       = this.AddGameObject("entity_plant", new Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, TILESHEET_ENTITY, new Vector2(0)));
+            var ENTITY_TREE_BIG   = this.AddGameObject("entity_tree_big", new Entity(new string[] { "BigTree0" }, TILESHEET_ENTITY, new Vector2(-0.5f, -3f)));
+            var ENTITY_TREE_PIN   = this.AddGameObject("entity_tree_pin", new Entity(new string[] { "PinTree0" }, TILESHEET_ENTITY, new Vector2(-0.5f, -3f)));
+            var ENTITY_TREE_LARGE = this.AddGameObject("entity_tree_large", new Entity(new string[] { "LargeTree0" }, TILESHEET_ENTITY , new Vector2(-0.5f, -1f)));
+            var ENTITY_TREE_STUMP = this.AddGameObject("entity_tree_stump", new Entity(new string[] { "stump0", "stump1", "stump2" }, TILESHEET_ENTITY, new Vector2(0)));
+            var ENTITY_ROCK       = this.AddGameObject("entity_rock", new Entity(new string[] { "Rock0", "Rock1", "Rock2", "Rock3" }, TILESHEET_ENTITY, new Vector2(0)));
+            var ENTITY_PLANT      = this.AddGameObject("entity_plant", new Entity(new string[] { "Plant0", "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" }, TILESHEET_ENTITY, new Vector2(0)));
 
             var ENTITY_CATUS       = this.AddGameObject("entity_Cactus", new Entity(new string[] { "Cactus1", "Cactus2" }, TILESHEET_ENTITY, new Vector2(0)));
             var ENTITY_CACTUS_TALE = this.AddGameObject("entity_cactus_tale", new Entity(new string[] { "Cactus0" }, TILESHEET_ENTITY, new Vector2(0, -1f)));
 
-            var ENTITY_PLAYER      = this.AddGameObject("entity_player", new Creature(new PlayerAI(0, 1, 2, 3, 4, 5, 6, 7), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle_Up", "Player_Idle_Down", "Player_Idle_Left", "Player_Idle_Right" }, TILESHEET_CREATURES, new Vector2(0)));
+            var ENTITY_PLAYER = this.AddGameObject("entity_player", new Creature(new PlayerAI(0, 1, 2, 3, 4, 5, 6, 7), new string[] { "Player_Move_Up", "Player_Move_Down", "Player_Move_Left", "Player_Move_Right", "Player_Idle_Up", "Player_Idle_Down", "Player_Idle_Left", "Player_Idle_Right" }, TILESHEET_CREATURES, new Vector2(0)));
 
             // Biomes
             // ----------------------------------------------------------------

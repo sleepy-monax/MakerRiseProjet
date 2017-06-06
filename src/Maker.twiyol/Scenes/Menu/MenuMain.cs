@@ -1,10 +1,10 @@
-﻿using Maker.RiseEngine.Core;
+﻿using Maker.RiseEngine;
 
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core.UserInterface;
-using Maker.RiseEngine.Core.UserInterface.Controls;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.Rendering;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine.UserInterface;
+using Maker.RiseEngine.UserInterface.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -92,7 +92,7 @@ namespace Maker.Twiyol.Scenes.Menu
 
         }
 
-        private void ButtonOption_onMouseClick()
+        private void ButtonOption_onMouseClick(Control sender)
         {
             this.hide();
 
@@ -113,7 +113,7 @@ namespace Maker.Twiyol.Scenes.Menu
             Engine.sceneManager.RemoveScene(this);
         }
 
-        private void ButtonOpenGame_onMouseClick()
+        private void ButtonOpenGame_onMouseClick(Control sender)
         {
 
             this.hide();
@@ -126,7 +126,7 @@ namespace Maker.Twiyol.Scenes.Menu
 
         }
 
-        private void ButtonQuitteGame_onMouseClick()
+        private void ButtonQuitteGame_onMouseClick(Control sender)
         {
             CurrentGame.SaveWorld();
 
@@ -140,12 +140,12 @@ namespace Maker.Twiyol.Scenes.Menu
 
         }
 
-        private void ButtonPlayLastGame_onMouseClick()
+        private void ButtonPlayLastGame_onMouseClick(Control sender)
         {
             CurrentGame.GameUIScene.GoBackToGame(this);
         }
 
-        private void ButtonNewGame_onMouseClick()
+        private void ButtonNewGame_onMouseClick(Control sender)
         {
             this.hide();
 
@@ -156,10 +156,10 @@ namespace Maker.Twiyol.Scenes.Menu
             Engine.sceneManager.RemoveScene(this);
         }
 
-        private void ButtonQuitte_onMouseClick()
+        private void ButtonQuitte_onMouseClick(Control sender)
         {
             CurrentGame?.SaveWorld();
-            Rise.STOP();
+            Rise.Engine.Exit();
         }
 
 

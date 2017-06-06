@@ -1,5 +1,5 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Rendering;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.Rendering;
 using Maker.Twiyol.Game;
 using System.Drawing;
 

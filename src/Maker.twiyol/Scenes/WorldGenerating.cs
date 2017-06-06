@@ -2,10 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Input;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine.Rendering;
+using Maker.RiseEngine;
+using Maker.RiseEngine.Input;
 using System;
 
 namespace Maker.Twiyol.Scenes

@@ -1,0 +1,24 @@
+## Setup spritesheet.
+DataType:"SpriteSheet";
+SpriteSheet.TileSize:"16x16";
+SpriteSheet.Sprites:"Stick,RedApple,Rock,Brick,Wood,AppleOnStick,YellowApple,GoldNugget,GoldBar,Seed,Sugar,GreenApple,IronNugget,IronBar,IronSword,IronPickaxe,IronShovel,IronAxe";
+
+## Setup Sprites.
+Sprite.Stick:"Static,1x1,0-0";
+Sprite.RedApple:"Static,1x1,0-1";
+Sprite.Rock:"Static,1x1,0-2";
+Sprite.Brick:"Static,1x1,0-3";
+Sprite.Wood:"Static,1x1,0-4";
+Sprite.AppleOnStick:"Static,1x1,1-0";
+Sprite.YellowApple:"Static,1x1,1-1";
+Sprite.GoldNugget:"Static,1x1,1-2";
+Sprite.GoldBar:"Static,1x1,1-3";
+Sprite.Seed:"Static,1x1,1-4";
+Sprite.Sugar:"Static,1x1,2-0";
+Sprite.GreenApple:"Static,1x1,2-1";
+Sprite.IronNugget:"Static,1x1,2-2";
+Sprite.IronBar:"Static,1x1,2-3";
+Sprite.IronSword:"Static,1x1,3-0";
+Sprite.IronPickaxe:"Static,1x1,3-1";
+Sprite.IronShovel:"Static,1x1,3-2";
+Sprite.IronAxe:"Static,1x1,3-3";

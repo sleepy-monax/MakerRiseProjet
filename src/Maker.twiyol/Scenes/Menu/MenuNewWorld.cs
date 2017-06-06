@@ -1,9 +1,9 @@
 ﻿
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Rendering;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core.UserInterface;
-using Maker.RiseEngine.Core.UserInterface.Controls;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.Rendering;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine.UserInterface;
+using Maker.RiseEngine.UserInterface.Controls;
 using Maker.Twiyol.Game.GameUtils;
 using Maker.Twiyol.Generator;
 using Microsoft.Xna.Framework;
@@ -79,7 +79,7 @@ namespace Maker.Twiyol.Scenes.Menu
             controlContainer.AddChild(goBackButton);
         }
 
-        private void CreateNewWorldButton_onMouseClick() { 
+        private void CreateNewWorldButton_onMouseClick(Control sender) { 
        
             ThreadStart GenHandle = new ThreadStart(delegate
             {
@@ -103,7 +103,7 @@ namespace Maker.Twiyol.Scenes.Menu
             t.Start();
         }
 
-        private void GoBackButton_onMouseClick()
+        private void GoBackButton_onMouseClick(Control sender)
         {
             Scene menu = new MainMenu();
             Engine.sceneManager.AddScene(menu);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Maker.RiseEngine.EngineDebug;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -28,7 +29,7 @@ namespace Maker.Twiyol.Game.WorldDataStruct
             else
             {
 
-                RiseEngine.Core.EngineDebug.DebugLogs.WriteLog("Illegal placing at " + EntityID, RiseEngine.Core.EngineDebug.LogType.Warning, "ObjChunk");
+                Debug.WriteLog("Illegal placing at " + EntityID, LogType.Warning, "ObjChunk");
 
             }
 

@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.GameObjects;
+﻿using Maker.RiseEngine.GameObjects;
 using Maker.Twiyol.Game.WorldDataStruct.Tags;
 using Maker.Twiyol.GameObject.Items;
 using System;

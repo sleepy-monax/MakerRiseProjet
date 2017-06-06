@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core.MathExt.Noise;
+﻿using Maker.RiseEngine.MathExt.Noise;
 using System;
 using System.Collections.Generic;
 using System.Linq;

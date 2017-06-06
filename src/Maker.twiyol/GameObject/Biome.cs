@@ -1,6 +1,6 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.MathExt;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.MathExt;
 using Maker.Twiyol.Generator.EntitiesDistribution;
 using System.Collections.Generic;
 

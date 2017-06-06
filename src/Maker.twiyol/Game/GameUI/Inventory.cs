@@ -1,8 +1,8 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Scenes;
-using Maker.RiseEngine.Core.UserInterface;
-using Maker.RiseEngine.Core.UserInterface.Controls;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.Scenes;
+using Maker.RiseEngine.UserInterface;
+using Maker.RiseEngine.UserInterface.Controls;
 
 using Maker.Twiyol.Game.WorldDataStruct;
 using Maker.Twiyol.Inventory;

@@ -1,6 +1,6 @@
-﻿using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.Input;
-using Maker.RiseEngine.Core.Rendering.SpriteSheets;
+﻿using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.Input;
+using Maker.RiseEngine.Rendering.SpriteSheets;
 
 using Maker.Twiyol.Game.GameUtils;
 using Maker.Twiyol.Game.WorldDataStruct;
@@ -46,7 +46,7 @@ namespace Maker.Twiyol.GameObject.Entities
                 Variant.Add(GameObjectManager.GetGameObject<SpriteSheet>(spriteSheetID).GetSprite(str));
             }
             SpriteLocation = _SpriteLocation;
-            DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].sprites[0].Width, Variant[0].sprites[0].Height));
+            DrawBox = new Rectangle(Point.Zero, new Point(Variant[0].AnimationFrames[0].Width, Variant[0].AnimationFrames[0].Height));
             this.MaxVariantCount = Variant.Count - 1;
         }
 

@@ -1,4 +1,4 @@
-﻿using Maker.RiseEngine.Core;
+﻿using Maker.RiseEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

@@ -1,13 +1,13 @@
-﻿using Maker.RiseEngine.Core;
-using Maker.RiseEngine.Core.GameObjects;
-using Maker.RiseEngine.Core.Input;
+﻿using Maker.RiseEngine;
+using Maker.RiseEngine.GameObjects;
+using Maker.RiseEngine.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Maker.Twiyol.Game.GameUtils
 {
-    public class WorldUpdater : RiseEngine.Core.IDrawable
+    public class WorldUpdater
     {
         GameScene G;
 

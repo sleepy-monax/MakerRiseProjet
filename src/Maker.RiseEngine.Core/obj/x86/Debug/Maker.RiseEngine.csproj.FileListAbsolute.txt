@@ -6,4 +6,5 @@ E:\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.exe
 E:\MakerRiseProjet\src\Assemblie\Maker.RiseEngine.pdb
 E:\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.exe
 E:\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.pdb
+E:\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.csprojResolveAssemblyReference.cache
 D:\MakerRiseProjet\src\Maker.RiseEngine.Core\obj\x86\Debug\Maker.RiseEngine.csprojResolveAssemblyReference.cache
